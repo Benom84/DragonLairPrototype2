@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour {
 
-    public enum EnemyType { Knight, Rider, Healer, Archer };
+    public enum EnemyType { Knight, Cavalier, Healer, Archer };
     
     public int health = 100;
     public int attackDamage = 1;
