@@ -35,6 +35,7 @@ public class Player : MonoBehaviour {
     private GameObject activeAttack;
     private GameObject[] dragonAttacks;
     private float lastStaminaChange;
+    private GameController gameController;
 
 
 
@@ -44,6 +45,8 @@ public class Player : MonoBehaviour {
 
 		activeAttack = attack1;
         dragonAttacks = new GameObject[] { attack1, attack2, attack3 };
+
+        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         
         dragonMouth = transform.FindChild("Mouth").position;
 
@@ -77,9 +80,13 @@ public class Player : MonoBehaviour {
 
     }
 
-	public void Hit() {
-	
+	public void Hit(int damage) {
+
+        currHealth -= damage;
+        currHealth = Mathf.Max(currHealth, 0);
 		healthBar.setValue (currHealth);
+        if (currHealth == 0)
+            Die();
 	
 	}
 
@@ -176,4 +183,10 @@ public class Player : MonoBehaviour {
         }
     }
 
+    private void Die()
+    {
+        gameController.gameEnded = true;
+        gameController.gameLost = true;
+        GameObject.Destroy(gameObject);
+    }
 }

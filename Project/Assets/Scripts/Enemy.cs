@@ -15,7 +15,9 @@ public class Enemy : MonoBehaviour {
     public EnemyType enemyType;
 
     private Player player;
+    private GameController gameController;
     private bool arrivedAtDestination = false;
+    private float lastAttackTime = 0.0f;
 
     
     // Use this for initialization
@@ -23,11 +25,18 @@ public class Enemy : MonoBehaviour {
 
         walkingSpeed = walkingSpeed / 100;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (gameController.gameEnded)
+            return;
+        
+        if ((arrivedAtDestination) && (lastAttackTime + attackDelay <= Time.time))
+            Attack();
 	
 	}
 
@@ -66,5 +75,12 @@ public class Enemy : MonoBehaviour {
     {
 
         GameObject.Destroy(gameObject);
+    }
+
+    private void Attack()
+    {
+        lastAttackTime = Time.time;
+        player.Hit(attackDamage);
+
     }
 }
