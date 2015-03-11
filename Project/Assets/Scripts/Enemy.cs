@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy : MonoBehaviour {
+public class Enemy : MonoBehaviour
+{
 
-    public enum EnemyType { Knight, Rider, Healer, Archer };
-    
+    public enum EnemyType { Knight, Cavalier, Healer, Archer };
+
     public int health = 100;
     public int attackDamage = 1;
     public float attackDelay = 1.0f;
@@ -19,36 +20,39 @@ public class Enemy : MonoBehaviour {
     private bool arrivedAtDestination = false;
     private float lastAttackTime = 0.0f;
 
-    
+
     // Use this for initialization
-	void Start () {
+    void Start()
+    {
 
         walkingSpeed = walkingSpeed / 100;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
 
         if (gameController.gameEnded)
             return;
-        
+
         if ((arrivedAtDestination) && (lastAttackTime + attackDelay <= Time.time))
             Attack();
-	
-	}
+
+    }
 
     void FixedUpdate()
     {
-        if (!arrivedAtDestination) {
+        if (!arrivedAtDestination)
+        {
             Vector3 newPos = transform.position;
             newPos.x -= walkingSpeed;
             transform.position = newPos;
 
         }
-            
+
 
 
     }
@@ -57,6 +61,12 @@ public class Enemy : MonoBehaviour {
     {
         
         if (col.gameObject.tag == "Player")
+            arrivedAtDestination = true;
+
+        if ((col.gameObject.tag == "ArcherStop") && (enemyType == EnemyType.Archer))
+            arrivedAtDestination = true;
+
+        if ((col.gameObject.tag == "HealerStop") && (enemyType == EnemyType.Healer))
             arrivedAtDestination = true;
         
 
