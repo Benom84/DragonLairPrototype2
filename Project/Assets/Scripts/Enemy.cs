@@ -22,8 +22,11 @@ public class Enemy : MonoBehaviour
     private Player player;
 
     private SpriteRenderer healthBar;			// Reference to the sprite renderer of the health bar.
+    private SpriteRenderer healthOutline;
     private Vector3 healthScale;				// The local scale of the health bar initially (with full health).
 
+    private bool showHealthBar = false;
+    private float lastHit = 0f;
 
     // Use this for initialization
     void Start()
@@ -34,7 +37,14 @@ public class Enemy : MonoBehaviour
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
 
         health = maxHealth;
+        
         healthBar = transform.Find("ui_healthDisplay/Enemy_HealthBar").GetComponent<SpriteRenderer>();
+        ColorHandler(healthBar, 0.0f);
+
+        healthOutline = transform.Find("ui_healthDisplay/Enemy_HealthOutline").GetComponent<SpriteRenderer>();
+        ColorHandler(healthOutline, 0.0f);
+
+
         healthScale = healthBar.transform.localScale;
         healthBar.transform.localScale = new Vector3(healthScale.x * health/maxHealth, 1, 1);
 
@@ -50,6 +60,12 @@ public class Enemy : MonoBehaviour
 
         if ((arrivedAtDestination) && (lastAttackTime + attackDelay <= Time.time))
             Attack();
+
+        if ((showHealthBar == true) && (Time.time > lastHit + 1.0f))
+        {
+            ColorHandler(healthBar, 0.0f);
+            ColorHandler(healthOutline, 0.0f);
+        }
 
     }
 
@@ -84,6 +100,8 @@ public class Enemy : MonoBehaviour
     {
 
         health -= damage;
+        lastHit = Time.time;
+        showHealthBar = true;
         UpdateHealthBar();
         if (health <= 0f)
             Death();
@@ -105,10 +123,22 @@ public class Enemy : MonoBehaviour
 
     public void UpdateHealthBar()
     {
+        ColorHandler(healthBar, 1.0f);
+        ColorHandler(healthOutline, 1.0f);
+
+
         // Set the health bar's colour to proportion of the way between green and red based on the player's health.
         healthBar.material.color = Color.Lerp(Color.green, Color.red, 1 - health / maxHealth);
 
         // Set the scale of the health bar to be proportional to the player's health.
         healthBar.transform.localScale = new Vector3(healthScale.x * health / maxHealth, 1, 1);
+    }
+
+
+    public void ColorHandler(SpriteRenderer spriteRenderer, float f)
+    {
+        Color temporaryColorHolder = spriteRenderer.material.color;
+        temporaryColorHolder.a = f;
+        spriteRenderer.material.color = temporaryColorHolder;
     }
 }
