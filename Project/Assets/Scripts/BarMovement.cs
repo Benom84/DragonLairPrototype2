@@ -22,12 +22,8 @@ public class BarMovement : MonoBehaviour {
         maxXPosValue = barTransform.anchoredPosition.x;
 		minXPosValue = maxValue - barTransform.rect.width * 0.85f;
 
-
-
         maxValue = 100;
-        currValue = maxValue;
-
-        
+        currValue = maxValue; 
 	
 	}
 	
@@ -49,7 +45,6 @@ public class BarMovement : MonoBehaviour {
 		currValue = amount;
 		float valuePercent = Mathf.Max(((1.0f * currValue) / (1.0f * maxValue)), 0.0f);
 		float newXPos = valuePercent * (maxXPosValue - minXPosValue) + minXPosValue;
-        
 
 		barTransform.anchoredPosition = new Vector3 (newXPos, cachedY);
 
