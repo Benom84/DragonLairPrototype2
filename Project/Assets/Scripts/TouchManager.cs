@@ -4,12 +4,9 @@ using System.Collections;
 public class TouchManager : MonoBehaviour
 {
 
-
     private Player player;
     private GameObject gameArea;
     private GameObject[] dragonAttackButtons;
-    private GameObject[] specialAttackButtons;
-    private GameObject specialAttackSelectd;
     private int attackTouchIndex = -1;
 
     // Use this for initialization
@@ -19,7 +16,6 @@ public class TouchManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         gameArea = transform.FindChild("GameArea").gameObject;
         dragonAttackButtons = GameObject.FindGameObjectsWithTag("AttackChooser");
-        specialAttackButtons = GameObject.FindGameObjectsWithTag("SpecialAttack");
 
     }
 
@@ -33,71 +29,28 @@ public class TouchManager : MonoBehaviour
             Vector3 wp = Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position);
             Vector2 touchPos = new Vector2(wp.x, wp.y);
 
-            // If the touch is starting
-            if (Input.GetTouch(i).phase == TouchPhase.Began)
-            {
+            // If the touch is on the game area
+            if (gameArea.collider2D == Physics2D.OverlapPoint(touchPos))
+                gameAreaTouchHandler(touchPos, i);
 
-                // If the touch is in the gamearea
-                if (gameArea.collider2D == Physics2D.OverlapPoint(touchPos))
-                    gameAreaTouchHandler(touchPos, i);
-
-                // If the touch is on the attack chooser
-                for (int j = 0; j < dragonAttackButtons.Length; j++)
-                    if (dragonAttackButtons[j].collider2D == Physics2D.OverlapPoint(touchPos))
-                        attackChooserTouchHandler(touchPos, j);
-
-                // If the touch is on the special attack
-                for (int j = 0; j < specialAttackButtons.Length; j++)
-                    if (specialAttackButtons[j].collider2D == Physics2D.OverlapPoint(touchPos))
-                    {
-                        specialAttackSelectd = specialAttackButtons[j];
-                        specialAttacksTouchHandler(touchPos, i);
-
-                    }
-            }
-
-            // If the touch is a change
-            if (Input.GetTouch(i).phase == TouchPhase.Moved)
-            {
-
-                // If the touch is on the special attack
-
-                if ((specialAttackSelectd != null) && (specialAttackSelectd.collider2D == Physics2D.OverlapPoint(touchPos)))
-                {
-                    specialAttackSelectd.GetComponent<SpecialAttackButton>().setButtonPosition(touchPos);
-
-                    // No need to check the game area
-                    return;
-                }
+            // If the touch is on the attack chooser
+            for (int j = 0; j < dragonAttackButtons.Length; j++)
+                if (dragonAttackButtons[j].collider2D == Physics2D.OverlapPoint(touchPos))
+                    attackChooserTouchHandler(touchPos, i, j);
 
 
+            // Making sure that no matter where the attack touch ended it is initialize
+            if ((attackTouchIndex == i) && (Input.GetTouch(i).phase == TouchPhase.Ended))
+                attackTouchIndex = -1;
 
-                // If the touch is in the gamearea
-                if (gameArea.collider2D == Physics2D.OverlapPoint(touchPos))
-                    gameAreaTouchHandler(touchPos, i);
-            }
 
-            // If the touch is an end
-            if (Input.GetTouch(i).phase == TouchPhase.Ended)
-            {
+            // If the touch is on the special moves - TODO
 
-                if (i == attackTouchIndex)
-                    i = -1;
+            // If the touch is on another UI - In the future
 
-                if ((specialAttackSelectd != null) && (specialAttackSelectd.collider2D == Physics2D.OverlapPoint(touchPos)))
-                    specialAttackSelectd.GetComponent<SpecialAttackButton>().StartAttack(touchPos);
-                specialAttackSelectd = null;
 
-            }
 
         }
-
-
-
-
-
-
-
 #if UNITY_EDITOR
         if (Input.GetMouseButtonDown(0))
         {
@@ -128,20 +81,25 @@ public class TouchManager : MonoBehaviour
     private void gameAreaTouchHandler(Vector2 touchPos, int touchIndex)
     {
 
-        // If no other touch is currently generating an attack
-        if ((attackTouchIndex == -1) || (attackTouchIndex == touchIndex))
+        if (Input.GetTouch(touchIndex).phase != TouchPhase.Ended)
         {
-            player.StartAttack(touchPos);
-            attackTouchIndex = touchIndex;
-        }
 
+
+            // If no other touch is currently generating an attack
+            if ((attackTouchIndex == -1) || (attackTouchIndex == touchIndex))
+            {
+                player.StartAttack(touchPos);
+                attackTouchIndex = touchIndex;
+            }
+        }
     }
-    private void attackChooserTouchHandler(Vector2 touchPos, int attackButtonIndex)
+    private void attackChooserTouchHandler(Vector2 touchPos, int touchIndex, int attackButtonIndex)
     {
 
-        player.setActiveAttack(dragonAttackButtons[attackButtonIndex].GetComponent<DragonAttackButton>().attack);
+        if (Input.GetTouch(touchIndex).phase == TouchPhase.Began)
+            player.setActiveAttack(dragonAttackButtons[touchIndex].GetComponent<DragonAttackButton>().attack);
 
     }
-  
+    private void specialMovesTouchHandler(Vector2 touchPos, int touchIndex) { }
 
 }
