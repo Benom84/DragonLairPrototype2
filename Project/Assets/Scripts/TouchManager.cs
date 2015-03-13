@@ -85,12 +85,19 @@ public class TouchManager : MonoBehaviour
 
 
             for (int j = 0; j < dragonAttackButtons.Length; j++)
-                if (dragonAttackButtons[j].collider2D == Physics2D.OverlapPoint(Input.mousePosition))
+                if (dragonAttackButtons[j].collider2D == Physics2D.OverlapPoint(touchPos))
                 {
                     Debug.Log("A button was pressed miLord");
                     player.setActiveAttack(dragonAttackButtons[j].GetComponent<DragonAttackButton>().attack);
                 }
 
+            // If the touch is on the special moves - TODO
+            for (int j = 0; j < specialAttackButtons.Length; j++)
+            if (specialAttackButtons[j].collider2D == Physics2D.OverlapPoint(touchPos))
+            {
+                specialAttackTouchHandler(touchPos, 0, j);
+                Debug.Log("The index is: " + j);
+            }
 
         }
 
@@ -124,6 +131,9 @@ public class TouchManager : MonoBehaviour
     private void specialAttackTouchHandler(Vector2 touchPos, int touchIndex, int specialAttackIndex) 
     {
         Debug.Log("The specialAttackTouchHandler was called");
+        specialAttackButtons[specialAttackIndex].GetComponent<SpecialAttackButton>().StartAttack(touchPos);
+        return;
+
 
         if (Input.GetTouch(touchIndex).phase == TouchPhase.Began)
         {
