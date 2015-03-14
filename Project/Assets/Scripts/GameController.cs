@@ -16,6 +16,16 @@ public class GameController : MonoBehaviour {
     private bool fourthWaveEnded;
     private bool fifthWaveEnded;
     private bool sixthWaveEnded;
+
+    private bool firstWaveStarted = false;
+    private bool secondWaveStarted = false;
+    private bool thirdWaveStarted = false;
+    private bool fourthWaveStarted = false;
+    private bool fifthWaveStarted = false;
+    private bool sixthWaveStarted = false;
+
+    private float startTime = 0;
+
     
 	void Start () {
 
@@ -54,12 +64,9 @@ public class GameController : MonoBehaviour {
 	}
 
     void FirstWave() {
-       
-        bool firstEnter = true;
-        float startTime = 0;
-        if (firstEnter) {
+        if (!firstWaveStarted) {
             startTime = Time.time;
-            firstEnter = false;
+            firstWaveStarted = true;
         }
 
         float currentTime = Time.time;
@@ -74,12 +81,10 @@ public class GameController : MonoBehaviour {
     }
 
     void SecondWave() {
-       
-        bool firstEnter = true;
-        float startTime = 0;
-        if (firstEnter) {
+
+        if (!secondWaveStarted) {
             startTime = Time.time;
-            firstEnter = false;
+            secondWaveStarted = true;
         }
 
         float currentTime = Time.time;
@@ -95,11 +100,9 @@ public class GameController : MonoBehaviour {
 
     void ThirdWave() {
        
-        bool firstEnter = true;
-        float startTime = 0;
-        if (firstEnter) {
+        if (!thirdWaveStarted) {
             startTime = Time.time;
-            firstEnter = false;
+            thirdWaveStarted = true;
         }
 
         float currentTime = Time.time;
@@ -117,12 +120,10 @@ public class GameController : MonoBehaviour {
     }
 
     void FourthWave() {
-       
-        bool firstEnter = true;
-        float startTime = 0;
-        if (firstEnter) {
+     
+        if (!fourthWaveStarted) {
             startTime = Time.time;
-            firstEnter = false;
+            fourthWaveStarted = true;
         }
 
         float currentTime = Time.time;
@@ -140,12 +141,10 @@ public class GameController : MonoBehaviour {
     }
 
     void FifthWave() {
-       
-        bool firstEnter = true;
-        float startTime = 0;
-        if (firstEnter) {
+
+        if (!fifthWaveStarted) {
             startTime = Time.time;
-            firstEnter = false;
+            fifthWaveStarted = true;
         }
 
         float currentTime = Time.time;
@@ -167,11 +166,9 @@ public class GameController : MonoBehaviour {
 
     void SixthWave() {
 
-        bool firstEnter = true;
-        float startTime = 0;
-        if (firstEnter) {
+        if (!sixthWaveStarted) {
             startTime = Time.time;
-            firstEnter = false;
+            sixthWaveStarted = true;
         }
 
         float currentTime = Time.time;

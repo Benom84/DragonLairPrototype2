@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b774f3c5457e24a42977e13ed1c67970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 500
   maxIceStamina: 100
   maxFireStamina: 100
   maxAcidStamina: 100
