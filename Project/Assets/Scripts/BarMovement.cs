@@ -11,7 +11,6 @@ public class BarMovement : MonoBehaviour {
 	private float minXPosValue;
 	private float maxXPosValue;
 
-
 	// Use this for initialization
 	void Awake () {
 
@@ -28,8 +27,7 @@ public class BarMovement : MonoBehaviour {
 	}
 	
 	void Update () {
-
-	
+        
 	}
 
 

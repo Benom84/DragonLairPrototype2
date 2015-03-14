@@ -73,7 +73,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 171616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.18999958, y: .689999998, z: 0}
+  m_LocalPosition: {x: 9.25, y: .680000007, z: 0}
   m_LocalScale: {x: 1.6598258, y: 1.6598264, z: 1.6598264}
   m_Children:
   - {fileID: 471622}
@@ -110,8 +110,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 171622}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.36158848, y: -2.39181638, z: 0}
-  m_LocalScale: {x: .602472842, y: .602472663, z: .602472663}
+  m_LocalPosition: {x: .0900000036, y: .660000026, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 471618}
   - {fileID: 471620}
@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 645e7f256821310408a922c05dddaa73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 6
   attackDamage: 1
   attackDelay: 1
   walkingSpeed: 3
