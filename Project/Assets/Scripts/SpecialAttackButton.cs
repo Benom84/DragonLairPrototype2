@@ -9,9 +9,11 @@ public class SpecialAttackButton : MonoBehaviour {
     public SpecialAttackType attackType;
     public int damage = 2;
     public int numberOfAttacksLeft = 1;
+    public float attackDelay = 1.0f;
 
     private CameraShake camShake;
     private Text numberOfAttacksText;
+    private float lastAttackTime;
     
     // Use this for initialization
 	void Start () {
@@ -37,7 +39,7 @@ public class SpecialAttackButton : MonoBehaviour {
     public void StartAttack(Vector3 attackPosition)
     {
 
-        if ((attackType == SpecialAttackType.Earthquake) && (numberOfAttacksLeft > 0))
+        if ((attackType == SpecialAttackType.Earthquake) && (numberOfAttacksLeft > 0) && (Time.time > lastAttackTime + attackDelay))
         {
 
             GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -49,6 +51,7 @@ public class SpecialAttackButton : MonoBehaviour {
             }
 
             camShake.shake = 1.0f;
+            lastAttackTime = Time.time;
             numberOfAttacksLeft--;
             numberOfAttacksText.text = "" + numberOfAttacksLeft;
 

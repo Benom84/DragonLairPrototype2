@@ -4,18 +4,22 @@ using System.Collections;
 public class TouchManager : MonoBehaviour
 {
 
+    public float touchFireDelay = 0.2f;
+    
     private Player player;
+    private Collider2D dragonBody;
     private GameObject gameArea;
     private GameObject[] dragonAttackButtons;
     private GameObject[] specialAttackButtons;
-    private GameObject selectedSpecialAttack;
     private int attackTouchIndex = -1;
+    private float lastTouchUpdate = 0f;
 
     // Use this for initialization
     void Start()
     {
 
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        dragonBody = GameObject.FindGameObjectWithTag("Player").transform.Find("Body").GetComponent<Collider2D>();
         gameArea = transform.FindChild("GameArea").gameObject;
         dragonAttackButtons = GameObject.FindGameObjectsWithTag("AttackChooser");
         specialAttackButtons = GameObject.FindGameObjectsWithTag("SpecialAttack");
@@ -43,16 +47,23 @@ public class TouchManager : MonoBehaviour
                     attackChooserTouchHandler(touchPos, i, j);
 
 
-            // If the touch is on the special moves - TODO
+            // If the touch is on the special moves
+            if (Input.GetTouch(i).phase == TouchPhase.Began)
             for (int j = 0; j < specialAttackButtons.Length; j++)
             {
                 //Debug.Log("Checking if it is a special");
                 if (specialAttackButtons[j].collider2D == Physics2D.OverlapPoint(touchPos))
                 {
                     specialAttackTouchHandler(touchPos, i, j);
-                    Debug.Log("The index is: " + j);
-                }
-                    
+                }           
+            }
+
+            // If the touch is on the dragon itself - physical attack
+            if (dragonBody == Physics2D.OverlapPoint(touchPos))
+            {
+
+                Debug.Log("Dragon: 'someone touched me!!!'");
+                player.PhysicalAttack();
             }
                 
                 
@@ -99,6 +110,14 @@ public class TouchManager : MonoBehaviour
                 Debug.Log("The index is: " + j);
             }
 
+            // If the touch is on the dragon itself - physical attack
+            if (dragonBody == Physics2D.OverlapPoint(touchPos))
+            {
+                Debug.Log("Dragon: 'someone touched me!!!'");
+                player.PhysicalAttack();
+            }
+                
+
         }
 
 
@@ -112,12 +131,17 @@ public class TouchManager : MonoBehaviour
         if (Input.GetTouch(touchIndex).phase != TouchPhase.Ended)
         {
 
-
+            
             // If no other touch is currently generating an attack
             if ((attackTouchIndex == -1) || (attackTouchIndex == touchIndex))
             {
-                player.StartAttack(touchPos);
-                attackTouchIndex = touchIndex;
+                if (Time.time > lastTouchUpdate + touchFireDelay)
+                {
+                    player.StartAttack(touchPos);
+                    attackTouchIndex = touchIndex;
+                    lastTouchUpdate = Time.time;
+                }
+                
             }
         }
     }
@@ -133,23 +157,6 @@ public class TouchManager : MonoBehaviour
         Debug.Log("The specialAttackTouchHandler was called");
         specialAttackButtons[specialAttackIndex].GetComponent<SpecialAttackButton>().StartAttack(touchPos);
         return;
-
-
-        if (Input.GetTouch(touchIndex).phase == TouchPhase.Began)
-        {
-            
-            selectedSpecialAttack = specialAttackButtons[specialAttackIndex];
-            Debug.Log("A touch has began on " + selectedSpecialAttack.name);
-        }
-
-
-
-        if ((selectedSpecialAttack == specialAttackButtons[specialAttackIndex]) && (Input.GetTouch(touchIndex).phase == TouchPhase.Moved))
-        {
-            selectedSpecialAttack.GetComponent<SpecialAttackButton>().setButtonPosition(touchPos);
-            Debug.Log("A touch is going on on " + selectedSpecialAttack.name);
-        }
-            
     }
 
 }

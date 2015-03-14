@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\BarMovement.cs" />
+     <Compile Include="Assets\Scripts\ButtonStamina.cs" />
      <Compile Include="Assets\Scripts\CameraShake.cs" />
      <Compile Include="Assets\Scripts\DragonAttack.cs" />
      <Compile Include="Assets\Scripts\DragonAttackButton.cs" />

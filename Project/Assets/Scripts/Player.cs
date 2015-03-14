@@ -1,41 +1,57 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Player : MonoBehaviour {
 
 	public int maxHealth = 100;
-	public int maxMana = 100;
-	public float maxStamina = 3.0f;
+	public int maxIceStamina = 100;
+	public int maxFireStamina = 100;
+    public int maxAcidStamina = 100;
     public float staminaRefillTime = 1.0f;
-    public float staminaPrice = 0.5f;
-    public GameObject attack1;
-    public GameObject attack2;
-    public GameObject attack3;
+    public int endlessStaminaRefill = 1;
+    public GameObject fireAttack;
+    public GameObject iceAttack;
+    public GameObject acidAttack;
     public float fireAttackSpeed = 5.0f;
     public float iceAttackSpeed = 5.0f;
     public float acidAttackSpeed = 5.0f;
     public int fireAttackDamage = 1;
     public int iceAttackDamage = 2;
     public int acidAttackDamage = 3;
-    public int attack1ManaCost = 0;
-    public int attack2ManaCost = 2;
-    public int attack3ManaCost = 3;
+    public int physicalAttackDamage = 1;
+    public int fireAttackStaminaCost = 2;
+    public int iceAttackStaminaCost = 2;
+    public int acidAttackStaminaCost = 3;
+    public float physicalAttackRestTime = 1.0f;
+    public float physicalAttackRadius = 3.0f;
     
 
 
 
 	private int currHealth;
-	private int currMana;
-	private float currStamina;
+	private int currIceStamina;
+	private int currFireStamina;
+    private int currAcidStamina;
     private int activeAttackManaCost;
 	private BarMovement healthBar;
-	private BarMovement manaBar;
+	private BarMovement iceManaBar;
+    private GameObject[] iceManaBarGUI;
 	private BarMovement staminaBar;
     private Vector3 dragonMouth;
     private GameObject activeAttack;
     private GameObject[] dragonAttacks;
-    private float lastStaminaChange;
+    private float lastFireStaminaChange;
     private GameController gameController;
+    private float lastPhysicalAttackTime;
+    private GameObject dragonSlash;
+    private bool dragonSlashVisible;
+    private GameObject[] dragonAttackButtons;
+    private GameObject attack1Button;
+    private GameObject attack2Button;
+    private GameObject attack3Button;
+    private ButtonStamina fireStamina;
+    private ButtonStamina iceStamina;
 
 
 
@@ -43,31 +59,73 @@ public class Player : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		activeAttack = attack1;
-        dragonAttacks = new GameObject[] { attack1, attack2, attack3 };
-
-        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+		// Setting the attacks
+        activeAttack = fireAttack;
+        dragonAttacks = new GameObject[] { fireAttack, iceAttack, acidAttack };
         
+        // Making sure the slash attack is invisible
+        dragonSlash = transform.Find("DragonSlash").gameObject;
+        Color dragonSlashColor = dragonSlash.GetComponent<SpriteRenderer>().color;
+        dragonSlashColor.a = 0;
+        dragonSlash.GetComponent<SpriteRenderer>().color = dragonSlashColor;
+        dragonSlashVisible = false;
+
+        // Getting the object references
+        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        dragonAttackButtons = GameObject.FindGameObjectsWithTag("AttackChooser");
         dragonMouth = transform.FindChild("Mouth").position;
-
-        currHealth = maxHealth;
-        currMana = maxMana;
-
-        currStamina = maxStamina;
-        lastStaminaChange = Time.time;
-
         healthBar = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<BarMovement>();
-        manaBar = GameObject.FindGameObjectWithTag("ManaBar").GetComponent<BarMovement>();
+        foreach (GameObject button in dragonAttackButtons)
+        {
+            if (button.GetComponent<DragonAttackButton>().attack == DragonAttack.AttackType.Fire)
+                fireStamina = button.transform.Find("Fill").GetComponent<ButtonStamina>();
 
-        manaBar.setMaxValue(maxMana);
-        manaBar.setValue(currMana);
+            if (button.GetComponent<DragonAttackButton>().attack == DragonAttack.AttackType.Ice)
+                iceStamina = button.transform.Find("Fill").GetComponent<ButtonStamina>();
+        }
+
+        // Setting the initial values
+        currHealth = maxHealth;
+        currIceStamina = maxIceStamina;
+        currFireStamina = maxFireStamina;
+        lastFireStaminaChange = Time.time;
         healthBar.setMaxValue(maxHealth);
         healthBar.setValue(currHealth);
+        
+        fireStamina.setMaxValue(maxFireStamina);
+        fireStamina.setValue(currFireStamina);
+        iceStamina.setMaxValue(maxIceStamina);
+        iceStamina.setValue(currIceStamina);
+
+
+
+        //iceManaBar = GameObject.FindGameObjectWithTag("ManaBar").GetComponent<BarMovement>();
+        //iceManaBarGUI = GameObject.FindGameObjectsWithTag("IceManaBar");
+        /*
+        foreach (GameObject guiElement in iceManaBarGUI)
+        {
+            guiElement.SetActive(false);
+        }
+        */
+        //iceManaBar.setMaxValue(maxIceStamina);
+        //iceManaBar.setValue(currIceStamina);
+
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (dragonSlashVisible)
+        {
+            Color dragonSlashColor = dragonSlash.GetComponent<SpriteRenderer>().color;
+            dragonSlashColor.a -= 0.05f;
+            dragonSlashColor.a = Mathf.Max(dragonSlashColor.a, 0);
+            if (dragonSlashColor.a == 0)
+                dragonSlashVisible = false;
+            dragonSlash.GetComponent<SpriteRenderer>().color = dragonSlashColor;
+        }
+        
 
 	
 	}
@@ -75,9 +133,13 @@ public class Player : MonoBehaviour {
     void FixedUpdate()
     {
 
-        if (lastStaminaChange + staminaRefillTime >= Time.time)
-            currStamina = maxStamina;
-
+        if (Time.time >= lastFireStaminaChange + staminaRefillTime)
+        {
+            currFireStamina += endlessStaminaRefill;
+            currFireStamina = Mathf.Min(currFireStamina, maxFireStamina);
+            fireStamina.setValue(currFireStamina);
+            lastFireStaminaChange = Time.time;
+        }
     }
 
 	public void Hit(int damage) {
@@ -92,13 +154,12 @@ public class Player : MonoBehaviour {
 
 	public void StartAttack(Vector2 attackPosition) {
 
-        // Check if we have stamina
-        if (currStamina == 0.0f)
+ 
+        // Check and change if neccessary the current attack vs current stamina
+        if (!CheckStaminaBeforeAttack())
             return;
-        
-        // Check and change if neccessary the current attack vs current mana
-        CheckManaBeforeAttack();
-        
+
+             
         // We will calculate the direction vector the attack is supposed to go
         Vector2 attackDirection = new Vector2(attackPosition.x - dragonMouth.x, attackPosition.y - dragonMouth.y);
 
@@ -110,41 +171,101 @@ public class Player : MonoBehaviour {
         DragonAttack dragonAttack = attack.GetComponent<DragonAttack>();
         dragonAttack.attackDamage = getAttackTypeDamage(dragonAttack.attackType);
         attack.rigidbody2D.velocity = attackDirection;
-        currMana -= activeAttackManaCost;
-        manaBar.setValue(currMana);
-        currStamina = Mathf.Max(currStamina - staminaPrice, 0.0f);
-        lastStaminaChange = Time.time;
+        StaminaManager();
         
 	}
 
-    private void CheckManaBeforeAttack()
+
+    private void StaminaManager()
+    {
+
+        if (activeAttack.GetComponent<DragonAttack>().attackType == DragonAttack.AttackType.Ice)
+        {
+
+            currIceStamina -= iceAttackStaminaCost;
+            iceStamina.setValue(currIceStamina);
+        }
+
+        if (activeAttack.GetComponent<DragonAttack>().attackType == DragonAttack.AttackType.Fire)
+        {
+
+            currFireStamina -= fireAttackStaminaCost;
+            lastFireStaminaChange = Time.time;
+            fireStamina.setValue(currFireStamina);
+        }
+
+        
+
+
+
+    }
+    public void PhysicalAttack()
+    {
+        if (Time.time > lastPhysicalAttackTime + physicalAttackRestTime)
+        {
+
+            lastPhysicalAttackTime = Time.time;
+            Collider2D[] allColliding = Physics2D.OverlapCircleAll(transform.position,physicalAttackRadius);
+
+            GameObject[] allEnemiesInRadius = new GameObject[allColliding.Length];
+            int enemyCount = 0;
+            foreach (Collider2D col in allColliding)
+	        {
+
+		        if (col.tag == "Enemy") {
+                    allEnemiesInRadius[enemyCount] = col.gameObject;
+                    enemyCount++;
+                }
+	        }
+
+
+
+            Color dragonSlashColor = dragonSlash.GetComponent<SpriteRenderer>().color;
+            dragonSlashColor.a = 1;
+            dragonSlash.GetComponent<SpriteRenderer>().color = dragonSlashColor;
+            dragonSlashVisible = true;
+
+
+            for (int i = 0; i < enemyCount; i++)
+            {
+                Enemy enemyScript = allEnemiesInRadius[i].GetComponent<Enemy>();
+                if (enemyScript != null)
+                    enemyScript.Hit(physicalAttackDamage);
+            }
+        }
+
+    }
+
+    private bool CheckStaminaBeforeAttack()
     {
         
-        if (activeAttack == attack2)
+        // If we have enough stamina for the current attack we return true
+        if (activeAttack == iceAttack)
         {
-            if (currMana >= attack2ManaCost)
-            {
+            if (currIceStamina >= iceAttackStaminaCost)
+                return true;
+            else
+                activeAttack = fireAttack;
+        }
+            
 
-                activeAttackManaCost = attack2ManaCost;
-                return;
-            }
-
-
+        else if (activeAttack == acidAttack)
+        {
+            if (currAcidStamina >= acidAttackStaminaCost)
+                return true;
+            else
+                activeAttack = fireAttack;
         }
 
-        else if (activeAttack == attack3)
+        else
         {
-            if (currMana >= attack3ManaCost)
-            {
-
-                activeAttackManaCost = attack3ManaCost;
-                return;
-            }
-
+            if (currFireStamina >= fireAttackStaminaCost)
+                return true;
+            else
+                return false;
         }
 
-        activeAttackManaCost = attack1ManaCost;
-        activeAttack = attack1;
+        return false;
     }
 
     private int getAttackTypeDamage(DragonAttack.AttackType attackType) {
@@ -180,6 +301,7 @@ public class Player : MonoBehaviour {
         {
             if ((dragonAttacks[i] != null) && (dragonAttacks[i].GetComponent<DragonAttack>().attackType == attackType)) 
                 activeAttack = dragonAttacks[i];
+
         }
     }
 
