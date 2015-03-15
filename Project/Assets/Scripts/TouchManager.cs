@@ -83,6 +83,9 @@ public class TouchManager : MonoBehaviour
 
 
         }
+
+#if UNITY_EDITOR
+        //For the editor
         if (Input.GetMouseButtonDown(0))
         {
 
@@ -118,6 +121,7 @@ public class TouchManager : MonoBehaviour
                 
 
         }
+#endif
 
 
 
