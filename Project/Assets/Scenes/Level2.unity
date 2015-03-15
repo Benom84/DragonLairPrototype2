@@ -1300,7 +1300,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 11491824, guid: 063d55a930db91b43aab1f57a79625c7, type: 2}
       propertyPath: enemies.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 491824, guid: 063d55a930db91b43aab1f57a79625c7, type: 2}
       propertyPath: m_LocalPosition.x
@@ -1349,6 +1349,14 @@ Prefab:
     - target: {fileID: 191824, guid: 063d55a930db91b43aab1f57a79625c7, type: 2}
       propertyPath: m_TagString
       value: Spawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 11491824, guid: 063d55a930db91b43aab1f57a79625c7, type: 2}
+      propertyPath: spawnDelay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11491824, guid: 063d55a930db91b43aab1f57a79625c7, type: 2}
+      propertyPath: spawnTime
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 063d55a930db91b43aab1f57a79625c7, type: 2}
@@ -2037,11 +2045,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ce9e7059daaa8045a38669566bb9912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTime: 5
-  spawnDelay: 3
+  spawnTime: 2
+  spawnDelay: 2
   enemies:
   - {fileID: 187862, guid: 208a8f9c76ff1684bba672a17b5e6734, type: 2}
-  - {fileID: 196344, guid: 8b935976a84356848811aa6875e823be, type: 2}
 --- !u!1 &1903168450
 GameObject:
   m_ObjectHideFlags: 0

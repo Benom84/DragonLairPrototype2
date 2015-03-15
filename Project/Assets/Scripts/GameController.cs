@@ -26,13 +26,13 @@ public class GameController : MonoBehaviour {
 
     private float startTime = 0;
 
-    
 	void Start () {
 
         bottomSpawner = GameObject.Find("BottomSpawner");
         topSpawner = GameObject.Find("TopSpawner");
 
         topSpawner.SetActive(false); 
+        
 
         firstWaveEnded = false;
         secondWaveEnded = false;
@@ -71,7 +71,7 @@ public class GameController : MonoBehaviour {
         float currentTime = Time.time;
         if (currentTime - startTime > 5) {
             bottomSpawner.GetComponent<Spawner>().CancelInvoke();
-            if (currentTime - startTime > 14)
+            if (currentTime - startTime > 8)
                 firstWaveEnded = true;
         }
     }
@@ -87,7 +87,7 @@ public class GameController : MonoBehaviour {
         float currentTime = Time.time;
         if (currentTime - startTime > 6) {
             bottomSpawner.GetComponent<Spawner>().CancelInvoke();
-            if (currentTime - startTime > 16)
+            if (currentTime - startTime > 8)
                 secondWaveEnded = true;
         }
     }
@@ -105,7 +105,7 @@ public class GameController : MonoBehaviour {
         if (currentTime - startTime > 5) {
             bottomSpawner.GetComponent<Spawner>().CancelInvoke();
             topSpawner.GetComponent<Spawner>().CancelInvoke();
-            if (currentTime - startTime > 16)
+            if (currentTime - startTime > 10)
                 thirdWaveEnded = true;
         }
     }
@@ -124,7 +124,7 @@ public class GameController : MonoBehaviour {
         if (currentTime - startTime > 4) {
             bottomSpawner.GetComponent<Spawner>().CancelInvoke();
             topSpawner.GetComponent<Spawner>().CancelInvoke();
-            if (currentTime - startTime > 16)
+            if (currentTime - startTime > 10)
                 fourthWaveEnded = true;
         }
     }
@@ -134,7 +134,7 @@ public class GameController : MonoBehaviour {
         if (!fifthWaveStarted) {
             startTime = Time.time;
             fifthWaveStarted = true;
-            bottomSpawner.GetComponent<Spawner>().InvokeRepeating("Spawn", 2f, 2f);
+            bottomSpawner.GetComponent<Spawner>().InvokeRepeating("Spawn", 2f, 1.5f);
             topSpawner.GetComponent<Spawner>().InvokeRepeating("Spawn", 3f, 2.5f); 
         }
 
@@ -144,9 +144,9 @@ public class GameController : MonoBehaviour {
             topSpawner.GetComponent<Spawner>().CancelInvoke();
         
 
-        if (currentTime - startTime > 10) {
+        if (currentTime - startTime > 8) {
             bottomSpawner.GetComponent<Spawner>().CancelInvoke();
-            if (currentTime - startTime > 20)
+            if (currentTime - startTime > 14)
                 fifthWaveEnded = true;
         }
     }
@@ -156,7 +156,7 @@ public class GameController : MonoBehaviour {
         if (!sixthWaveStarted) {
             startTime = Time.time;
             sixthWaveStarted = true;
-            bottomSpawner.GetComponent<Spawner>().InvokeRepeating("Spawn", 2f, 2f);
+            bottomSpawner.GetComponent<Spawner>().InvokeRepeating("Spawn", 2f, 1.5f);
             topSpawner.GetComponent<Spawner>().InvokeRepeating("Spawn", 2f, 2.5f); 
         }
 
@@ -165,9 +165,9 @@ public class GameController : MonoBehaviour {
         if (currentTime - startTime > 6)
             topSpawner.GetComponent<Spawner>().CancelInvoke();       
 
-        if (currentTime - startTime > 10) {
+        if (currentTime - startTime > 8) {
             bottomSpawner.GetComponent<Spawner>().CancelInvoke();
-            if (currentTime - startTime > 20)
+            if (currentTime - startTime > 14)
                 sixthWaveEnded = true;
         }
     }
