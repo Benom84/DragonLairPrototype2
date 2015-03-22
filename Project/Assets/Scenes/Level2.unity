@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b774f3c5457e24a42977e13ed1c67970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 50
   maxIceStamina: 100
   maxFireStamina: 100
   maxAcidStamina: 100
@@ -1308,7 +1308,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 491824, guid: 063d55a930db91b43aab1f57a79625c7, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -3.63000011
+      value: -4.07000017
       objectReference: {fileID: 0}
     - target: {fileID: 491824, guid: 063d55a930db91b43aab1f57a79625c7, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2028,7 +2028,7 @@ Transform:
   m_PrefabInternal: {fileID: 1023254676}
   m_GameObject: {fileID: 1891642152}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.13000011, y: -3.63000011, z: 0}
+  m_LocalPosition: {x: 8.13000011, y: -4.07000017, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
