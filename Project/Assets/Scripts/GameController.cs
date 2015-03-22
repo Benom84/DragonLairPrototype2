@@ -156,7 +156,7 @@ public class GameController : MonoBehaviour {
         if (!sixthWaveStarted) {
             startTime = Time.time;
             sixthWaveStarted = true;
-            bottomSpawner.GetComponent<Spawner>().InvokeRepeating("Spawn", 2f, 1.5f);
+            bottomSpawner.GetComponent<Spawner>().InvokeRepeating("Spawn", 1f, 1f);
             topSpawner.GetComponent<Spawner>().InvokeRepeating("Spawn", 2f, 2.5f); 
         }
 
