@@ -1,174 +1,224 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
+
 
 public class GameController : MonoBehaviour {
 
+    public int knightPoints = 1;
+    public int cavalierPoints = 2;
+    public int archerPoints = 3;
+    public int healerPoints = 4;
+    public int bossPoints = 5;
+    public int maxPointsWhenLosing = 50;
+    
+    [HideInInspector]
     public bool gameEnded = false;
+    [HideInInspector]
     public bool gameLost = false;
-    public bool gameWon = false;
+    [HideInInspector]
+    public int currentLevel = 1;
+    [HideInInspector]
+    public bool noMoreWaves = false;
+    
+    private GameObject touchManager;
+    private GameObject pauseMenu;
+    private GameObject winMenu;
+    private GameObject loseMenu;
+    private GameObject[] specialAttackButtons;
+    private ArrayList knightsOnBoard;
+    private ArrayList archersOnBoard;
+    private ArrayList cavaliersOnBoard;
+    private ArrayList healersOnBoard;
+    private ArrayList bossOnBoard;
+    private ArrayList nonHealersOnBoard;
+    private int knightsKillCount = 0;
+    private int archersKillCount = 0;
+    private int cavaliersKillCount = 0;
+    private int healersKillCount = 0;
+    private int bossKillCount = 0;
 
-    private GameObject bottomSpawner;
-    private GameObject topSpawner;
-
-    private bool firstWaveEnded;
-    private bool secondWaveEnded;
-    private bool thirdWaveEnded;
-    private bool fourthWaveEnded;
-    private bool fifthWaveEnded;
-    private bool sixthWaveEnded;
-
-    private bool firstWaveStarted = false;
-    private bool secondWaveStarted = false;
-    private bool thirdWaveStarted = false;
-    private bool fourthWaveStarted = false;
-    private bool fifthWaveStarted = false;
-    private bool sixthWaveStarted = false;
-
-    private float startTime = 0;
+    
 
 	void Start () {
 
-        bottomSpawner = GameObject.Find("BottomSpawner");
-        topSpawner = GameObject.Find("TopSpawner");
-
-        topSpawner.SetActive(false); 
-        
-
-        firstWaveEnded = false;
-        secondWaveEnded = false;
-        thirdWaveEnded = false;
-        fourthWaveEnded = false;
-        fifthWaveEnded = false;
-        sixthWaveEnded = false;
-
-	}
-	
-	void Update () {
-
-        if (!firstWaveEnded)
-            FirstWave();
-        else if (!secondWaveEnded)
-            SecondWave();
-        else if (!thirdWaveEnded)
-            ThirdWave();
-        else if (!fourthWaveEnded)
-            FourthWave();
-        else if (!fifthWaveEnded)
-            FifthWave();
-        else if (!sixthWaveEnded)
-            SixthWave();
-        else
-            gameWon = true;
-	
-	}
-
-    void FirstWave() {
-        if (!firstWaveStarted) {
-            startTime = Time.time;
-            firstWaveStarted = true;
-        }
-
-        float currentTime = Time.time;
-        if (currentTime - startTime > 5) {
-            bottomSpawner.GetComponent<Spawner>().CancelInvoke();
-            if (currentTime - startTime > 8)
-                firstWaveEnded = true;
-        }
-    }
-
-    void SecondWave() {
-
-        if (!secondWaveStarted) {
-            startTime = Time.time;
-            secondWaveStarted = true;
-            bottomSpawner.GetComponent<Spawner>().InvokeRepeating("Spawn", 2f, 2f);
-        }
-
-        float currentTime = Time.time;
-        if (currentTime - startTime > 6) {
-            bottomSpawner.GetComponent<Spawner>().CancelInvoke();
-            if (currentTime - startTime > 8)
-                secondWaveEnded = true;
-        }
-    }
-
-    void ThirdWave() {
-       
-        if (!thirdWaveStarted) {
-            startTime = Time.time;
-            thirdWaveStarted = true;
-            bottomSpawner.GetComponent<Spawner>().InvokeRepeating("Spawn", 2f, 2.5f); 
-            topSpawner.SetActive(true);
-        }
-
-        float currentTime = Time.time;
-        if (currentTime - startTime > 5) {
-            bottomSpawner.GetComponent<Spawner>().CancelInvoke();
-            topSpawner.GetComponent<Spawner>().CancelInvoke();
-            if (currentTime - startTime > 10)
-                thirdWaveEnded = true;
-        }
-    }
-
-    void FourthWave() {
+        touchManager = GameObject.FindGameObjectWithTag("TouchManager");
+        pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
+        winMenu = GameObject.FindGameObjectWithTag("WinMenu");
+        loseMenu = GameObject.FindGameObjectWithTag("LoseMenu");
+        specialAttackButtons = GameObject.FindGameObjectsWithTag("SpecialAttack");
+        pauseMenu.SetActive(false);
+        winMenu.SetActive(false);
+        loseMenu.SetActive(false);
+        knightsOnBoard = new ArrayList();
+        archersOnBoard = new ArrayList();
+        cavaliersOnBoard = new ArrayList();
+        healersOnBoard = new ArrayList();
+        bossOnBoard = new ArrayList();
+        nonHealersOnBoard = new ArrayList();
      
-        if (!fourthWaveStarted) {
-            startTime = Time.time;
-            fourthWaveStarted = true;
-            bottomSpawner.GetComponent<Spawner>().InvokeRepeating("Spawn", 2f, 2.5f);
-            topSpawner.GetComponent<Spawner>().InvokeRepeating("Spawn", 2f, 2f); 
+	}
 
-        }
+    void FixedUpdate()
+    {
 
-        float currentTime = Time.time;
-        if (currentTime - startTime > 4) {
-            bottomSpawner.GetComponent<Spawner>().CancelInvoke();
-            topSpawner.GetComponent<Spawner>().CancelInvoke();
-            if (currentTime - startTime > 10)
-                fourthWaveEnded = true;
-        }
-    }
-
-    void FifthWave() {
-
-        if (!fifthWaveStarted) {
-            startTime = Time.time;
-            fifthWaveStarted = true;
-            bottomSpawner.GetComponent<Spawner>().InvokeRepeating("Spawn", 2f, 1.5f);
-            topSpawner.GetComponent<Spawner>().InvokeRepeating("Spawn", 3f, 2.5f); 
-        }
-
-        float currentTime = Time.time;
-
-        if (currentTime - startTime > 6) 
-            topSpawner.GetComponent<Spawner>().CancelInvoke();
         
+        // If there are no more waves and the board was emptied or if the game was lost
+        if ((noMoreWaves && ((nonHealersOnBoard.Count + healersOnBoard.Count) == 0)) || gameLost)
+            LevelEnd();
 
-        if (currentTime - startTime > 8) {
-            bottomSpawner.GetComponent<Spawner>().CancelInvoke();
-            if (currentTime - startTime > 14)
-                fifthWaveEnded = true;
+    }
+
+    public void AddEnemy(GameObject enemyObject)
+    {
+
+        Enemy enemy = enemyObject.GetComponent<Enemy>();
+        if (enemy.enemyType == Enemy.EnemyType.Knight) {
+            knightsOnBoard.Add(enemyObject);
+            nonHealersOnBoard.Add(enemyObject);
+
+        }
+        if (enemy.enemyType == Enemy.EnemyType.Archer)
+        {
+            archersOnBoard.Add(enemyObject);
+            nonHealersOnBoard.Add(enemyObject);
+        }
+        if (enemy.enemyType == Enemy.EnemyType.Cavalier)
+        {
+            cavaliersOnBoard.Add(enemyObject);
+            nonHealersOnBoard.Add(enemyObject);
+        }
+        if (enemy.enemyType == Enemy.EnemyType.Boss)
+        {
+            bossOnBoard.Add(enemyObject);
+            nonHealersOnBoard.Add(enemyObject);
+        }
+        if (enemy.enemyType == Enemy.EnemyType.Healer)
+        {
+            healersOnBoard.Add(enemyObject);
         }
     }
 
-    void SixthWave() {
+    public void RemoveEnemy(GameObject enemyObject)
+    {
 
-        if (!sixthWaveStarted) {
-            startTime = Time.time;
-            sixthWaveStarted = true;
-            bottomSpawner.GetComponent<Spawner>().InvokeRepeating("Spawn", 1f, 1f);
-            topSpawner.GetComponent<Spawner>().InvokeRepeating("Spawn", 2f, 2.5f); 
+        Enemy enemy = enemyObject.GetComponent<Enemy>();
+        if (enemy.enemyType == Enemy.EnemyType.Knight) {
+            knightsOnBoard.Remove(enemyObject);
+            nonHealersOnBoard.Remove(enemyObject);
+            knightsKillCount++;
+        }
+        if (enemy.enemyType == Enemy.EnemyType.Archer)
+        {
+            archersOnBoard.Remove(enemyObject);
+            nonHealersOnBoard.Remove(enemyObject);
+            archersKillCount++;
+        }
+        if (enemy.enemyType == Enemy.EnemyType.Cavalier)
+        {
+            cavaliersOnBoard.Remove(enemyObject);
+            nonHealersOnBoard.Remove(enemyObject);
+            cavaliersKillCount++;
+        }
+        if (enemy.enemyType == Enemy.EnemyType.Boss)
+        {
+            bossOnBoard.Remove(enemyObject);
+            nonHealersOnBoard.Remove(enemyObject);
+            bossKillCount++;
+        }
+        if (enemy.enemyType == Enemy.EnemyType.Healer)
+        {
+            healersOnBoard.Remove(enemyObject);
+            healersKillCount++;
         }
 
-        float currentTime = Time.time;
+        GameObject.Destroy(enemyObject);
+    }
 
-        if (currentTime - startTime > 6)
-            topSpawner.GetComponent<Spawner>().CancelInvoke();       
+    public ArrayList nonHealerEnemies()
+    {
+        if (nonHealersOnBoard.Count == 0)
+            return null;
+        return nonHealersOnBoard;
+    }
 
-        if (currentTime - startTime > 8) {
-            bottomSpawner.GetComponent<Spawner>().CancelInvoke();
-            if (currentTime - startTime > 14)
-                sixthWaveEnded = true;
+    public void PauseGame()
+    {
+
+        Time.timeScale = 0;
+        touchManager.SetActive(false);
+        pauseMenu.SetActive(true);
+        foreach (GameObject button in specialAttackButtons)
+        {
+            button.SetActive(false);
+        }
+
+    }
+
+    public void ResumeGame()
+    {
+
+        Time.timeScale = 1;
+        touchManager.SetActive(true);
+        pauseMenu.SetActive(false);
+        foreach (GameObject button in specialAttackButtons)
+        {
+            button.SetActive(true);
         }
     }
+
+    public void Music()
+    {
+
+    }
+
+    public void SFX()
+    {
+
+    }
+
+    public void Exit()
+    {
+
+    }
+
+    private void LevelEnd()
+    {
+        gameEnded = true;
+        Time.timeScale = 0;
+        int points = PointsCalculation(!gameLost);
+        GameObject menu;
+        string message;
+        
+        if (!gameLost) {
+            menu = winMenu;
+            message = "Level Won!\nNumber of points is: " + points;
+        }
+
+        else
+        {
+            menu = loseMenu;
+            message = "Level Lost :(\nNumber of points is: " + points;
+        }
+
+
+
+        menu.transform.FindChild("Message").GetComponent<Text>().text = message;
+        menu.SetActive(true);
+        
+    }
+
+    private int PointsCalculation(bool win)
+    {
+
+        int points = (knightsKillCount * knightPoints) + (cavaliersKillCount * cavalierPoints) + (archersKillCount * archerPoints) + (healersKillCount * healerPoints) + (bossKillCount * bossPoints);
+
+        if (win)
+            points = Mathf.Min(points, maxPointsWhenLosing);
+
+        return points;
+    }
+
+   
 }
+

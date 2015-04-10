@@ -199,10 +199,15 @@ MonoBehaviour:
   attackDamage: 1
   attackDelay: 1
   walkingSpeed: 3
+  healingPower: 10
   resistenceToFire: 0
-  resistenceToIce: 0
-  resistenceToAcid: 0
+  resistenceToWater: 0
+  resistenceToAir: 0
+  resistenceToEarthquake: 0
+  resistenceToScream: 0
   enemyType: 3
+  projectileAttack: {fileID: 122666, guid: 66ab49ffd3e16b444b87faeee1931d53, type: 2}
+  projectileSpeed: 25
 --- !u!212 &21271618
 SpriteRenderer:
   m_ObjectHideFlags: 1

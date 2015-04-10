@@ -1,0 +1,22 @@
+<Level>
+    <Attacks>
+        <Attack>
+            <Id>003</Id>
+            <Difficulty>2</Difficulty>
+            <Time>1</Time>
+            <ChangeChance>0.99</ChangeChance>
+        </Attack>
+        <Attack>
+            <Id>001</Id>
+            <Difficulty>1</Difficulty>
+            <Time>4</Time>
+            <ChangeChance>0.99</ChangeChance>
+        </Attack>
+        <Attack>
+            <Id>001</Id>
+            <Difficulty>1</Difficulty>
+            <Time>6</Time>
+            <ChangeChance>0.99</ChangeChance>
+        </Attack>
+    </Attacks>
+</Level>

@@ -1,39 +1,47 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Enemy : MonoBehaviour
 {
 
-    public enum EnemyType { Knight, Cavalier, Healer, Archer };
+    public enum EnemyType { Knight, Cavalier, Healer, Archer, Boss };
 
     public float maxHealth = 100f;
     public int attackDamage = 1;
     public float attackDelay = 1.0f;
     public float walkingSpeed = 3.0f;
+    public float healingPower = 10f;
     public float resistenceToFire = 0.0f;
-    public float resistenceToIce = 0.0f;
-    public float resistenceToAcid = 0.0f;
+    public float resistenceToWater = 0.0f;
+    public float resistenceToAir = 0.0f;
+    public float resistenceToEarthquake = 0.0f;
+    public float resistenceToScream = 0.0f;
     public EnemyType enemyType;
+    public GameObject projectileAttack;
+    public float projectileSpeed = 5.0f;
 
     private GameController gameController;
     private bool arrivedAtDestination = false;
     private float lastAttackTime = 0.0f;
     private float health;
     private Player player;
+    private GameObject playerObject;
 
     private SpriteRenderer healthBar;			// Reference to the sprite renderer of the health bar.
     private SpriteRenderer healthOutline;
     private Vector3 healthScale;				// The local scale of the health bar initially (with full health).
 
     private bool showHealthBar = false;
-    private float lastHit = 0f;
+    private float lastHealthChange = 0f;
 
     // Use this for initialization
     void Start()
     {
 
         walkingSpeed = walkingSpeed / 100;
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        playerObject = GameObject.FindGameObjectWithTag("Player");
+        player = playerObject.GetComponent<Player>();
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
 
         health = maxHealth;
@@ -61,7 +69,7 @@ public class Enemy : MonoBehaviour
         if ((arrivedAtDestination) && (lastAttackTime + attackDelay <= Time.time))
             Attack();
 
-        if ((showHealthBar == true) && (Time.time > lastHit + 1.0f))
+        if ((showHealthBar == true) && (Time.time > lastHealthChange + 1.0f))
         {
             ColorHandler(healthBar, 0.0f);
             ColorHandler(healthOutline, 0.0f);
@@ -96,33 +104,117 @@ public class Enemy : MonoBehaviour
 
     }
 
-    public void Hit(int damage)
+    public void Hit(int damage, DragonAttack.AttackType attackType)
     {
 
-        health -= damage;
-        lastHit = Time.time;
+        float resistenceToCurrentAttack = 0f;
+        switch (attackType)
+        {
+            case DragonAttack.AttackType.Fire:
+                resistenceToCurrentAttack = resistenceToFire;
+                break;
+            case DragonAttack.AttackType.Water:
+                resistenceToCurrentAttack = resistenceToWater;
+                break;
+            case DragonAttack.AttackType.Air:
+                resistenceToCurrentAttack = resistenceToAir;
+                break;
+            case DragonAttack.AttackType.Earthquake:
+                resistenceToCurrentAttack = resistenceToEarthquake;
+                break;
+            case DragonAttack.AttackType.Scream:
+                resistenceToCurrentAttack = resistenceToScream;
+                break;
+        }
+        health -= (int) (damage * (1 - resistenceToCurrentAttack));
+        lastHealthChange = Time.time;
         showHealthBar = true;
-        UpdateHealthBar();
         if (health <= 0f)
+        {
             Death();
+            return;
+        }
+            
+        UpdateHealthBar();
+        
 
     }
 
     private void Death()
     {
 
-        GameObject.Destroy(gameObject);
+        gameController.RemoveEnemy(gameObject);
     }
 
     private void Attack()
     {
         lastAttackTime = Time.time;
-        player.Hit(attackDamage);
+
+        if (enemyType == EnemyType.Healer)
+        {
+            if (gameController.nonHealerEnemies() != null)
+                Heal();
+            else
+                ProjectileAttack();
+        }
+
+        if (enemyType == EnemyType.Archer)
+            ProjectileAttack();
+        
+        if ((enemyType == EnemyType.Knight) || (enemyType == EnemyType.Cavalier))
+            player.Hit(attackDamage);
+
+    }
+
+    private void Heal()
+    {
+        ArrayList nonHealerEnemies = gameController.nonHealerEnemies();
+        foreach (GameObject enemy in nonHealerEnemies)
+        {
+            enemy.GetComponent<Enemy>().getHealed(healingPower);
+
+        }
+    }
+
+    public void getHealed(float amount)
+    {
+        if (health == maxHealth)
+            return;
+        
+        health += amount;
+        if (health > maxHealth)
+            health = maxHealth;
+        lastHealthChange = Time.time;
+        showHealthBar = true;
+        UpdateHealthBar();
+    }
+
+    private void ProjectileAttack()
+    {
+        
+        // We get the player position and the enemy's
+        Vector2 target = player.transform.position;
+        Vector2 start = transform.position;
+
+        // We will calculate the direction vector the attack is supposed to go
+        Vector2 attackDirection = new Vector2(target.x - start.x, target.y - start.y);
+
+        // Now we normalize it and multiply by the attack speed
+        attackDirection = attackDirection.normalized * projectileSpeed;
+
+        // Now we instantiate the attack at the dragon's mouth, set it's velocity and damage
+        GameObject attack = (GameObject)Instantiate(projectileAttack, start, transform.rotation);
+        EnemyAttack enemyAttack = attack.GetComponent<EnemyAttack>();
+        enemyAttack.attackDamage = attackDamage;
+        attack.rigidbody2D.velocity = attackDirection;
+
+
 
     }
 
     public void UpdateHealthBar()
     {
+        
         ColorHandler(healthBar, 1.0f);
         ColorHandler(healthOutline, 1.0f);
 

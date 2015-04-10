@@ -47,7 +47,7 @@ public class SpecialAttackButton : MonoBehaviour {
             {
                 Enemy enemyScript = enemy.GetComponent<Enemy>();
                 if ((enemyScript != null) &&(enemyScript.enemyType != Enemy.EnemyType.Healer))
-                    enemyScript.Hit(damage);
+                    enemyScript.Hit(damage, DragonAttack.AttackType.Air);
             }
 
             camShake.shake = 1.0f;

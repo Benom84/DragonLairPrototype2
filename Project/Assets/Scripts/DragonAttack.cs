@@ -3,7 +3,7 @@ using System.Collections;
 
 public class DragonAttack : MonoBehaviour {
 
-    public enum AttackType { Fire, Ice, Acid };
+    public enum AttackType { Fire, Water, Air, Earthquake, Scream };
 
     public AttackType attackType;
     [HideInInspector]
@@ -29,7 +29,7 @@ public class DragonAttack : MonoBehaviour {
         if (collider.tag == "Enemy")
         {
 
-            collider.GetComponent<Enemy>().Hit(attackDamage);
+            collider.GetComponent<Enemy>().Hit(attackDamage, attackType);
             GameObject.Destroy(gameObject);
         }
 
