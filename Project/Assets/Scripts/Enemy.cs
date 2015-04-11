@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
     public EnemyType enemyType;
     public GameObject projectileAttack;
     public float projectileSpeed = 5.0f;
+    public float bossThrowBackForce = 4.0f;
 
     private GameController gameController;
     private bool arrivedAtDestination = false;
@@ -34,6 +35,8 @@ public class Enemy : MonoBehaviour
 
     private bool showHealthBar = false;
     private float lastHealthChange = 0f;
+    private float lastWallHit = 0f;
+    private bool beingThrownBack = false;
 
     // Use this for initialization
     void Start()
@@ -79,12 +82,31 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!arrivedAtDestination)
+        if ((!arrivedAtDestination) && (!beingThrownBack))
         {
             Vector3 newPos = transform.position;
             newPos.x -= walkingSpeed;
             transform.position = newPos;
 
+        }
+
+        if (beingThrownBack)
+        {
+            Debug.Log("Boss is being thrown back for sure!");
+            if (rigidbody2D.velocity.x > 0)
+            {
+                Vector2 newVelocity = rigidbody2D.velocity;
+                newVelocity.x -= (bossThrowBackForce / 10);
+                rigidbody2D.velocity = newVelocity;
+            }
+            else
+            {
+
+                beingThrownBack = false;
+                Vector2 newVelocity = rigidbody2D.velocity;
+                newVelocity.x = 0;
+                rigidbody2D.velocity = newVelocity;
+            }
         }
 
     }
@@ -104,6 +126,7 @@ public class Enemy : MonoBehaviour
 
     }
 
+    
     public void Hit(int damage, DragonAttack.AttackType attackType)
     {
 
@@ -137,6 +160,32 @@ public class Enemy : MonoBehaviour
             
         UpdateHealthBar();
         
+
+    }
+
+    public void SpecialHit(int damage, DragonAttack.AttackType attackType)
+    {
+
+        Hit(damage, attackType);
+
+        if (enemyType == EnemyType.Boss)
+        {
+            beingThrownBack = true;
+            arrivedAtDestination = false;
+            rigidbody2D.velocity = new Vector2(bossThrowBackForce, 0);
+            
+        }
+    }
+
+    public void WallHit(int damage, DragonAttack.AttackType attackType, float timeDelay)
+    {
+
+        if (Time.time < lastWallHit + timeDelay)
+            return;
+
+        lastWallHit = Time.time;
+        
+        Hit(damage, attackType);
 
     }
 

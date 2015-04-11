@@ -57,9 +57,12 @@
      <Compile Include="Assets\Scripts\GameMenuButtons.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\SpawnerManager.cs" />
+     <Compile Include="Assets\Scripts\SpecialAttack.cs" />
      <Compile Include="Assets\Scripts\SpecialAttackButton.cs" />
+     <Compile Include="Assets\Scripts\SpecialAttackDragHandler.cs" />
      <Compile Include="Assets\Scripts\Timer.cs" />
      <Compile Include="Assets\Scripts\TouchManager.cs" />
+     <Compile Include="Assets\Scripts\Wall.cs" />
      <Compile Include="Assets\Scripts\XML\Attack.cs" />
      <Compile Include="Assets\Scripts\XML\Level.cs" />
      <Compile Include="Assets\Scripts\XML\Wave.cs" />

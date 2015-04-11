@@ -20,11 +20,15 @@ public class GameController : MonoBehaviour {
     public int currentLevel = 1;
     [HideInInspector]
     public bool noMoreWaves = false;
+    [HideInInspector]
+    public int manaCrystals = 5;
     
     private GameObject touchManager;
     private GameObject pauseMenu;
     private GameObject winMenu;
     private GameObject loseMenu;
+    private Player player;
+    private Text manaCrystalsText;
     private GameObject[] specialAttackButtons;
     private ArrayList knightsOnBoard;
     private ArrayList archersOnBoard;
@@ -37,6 +41,7 @@ public class GameController : MonoBehaviour {
     private int cavaliersKillCount = 0;
     private int healersKillCount = 0;
     private int bossKillCount = 0;
+    
 
     
 
@@ -47,6 +52,9 @@ public class GameController : MonoBehaviour {
         winMenu = GameObject.FindGameObjectWithTag("WinMenu");
         loseMenu = GameObject.FindGameObjectWithTag("LoseMenu");
         specialAttackButtons = GameObject.FindGameObjectsWithTag("SpecialAttack");
+        manaCrystalsText = GameObject.FindGameObjectWithTag("ManaCrystalsText").GetComponent<Text>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        manaCrystalsText.text = "" + manaCrystals;
         pauseMenu.SetActive(false);
         winMenu.SetActive(false);
         loseMenu.SetActive(false);
@@ -208,6 +216,19 @@ public class GameController : MonoBehaviour {
         
     }
 
+    public void UseManaCrystals()
+    {
+
+        if (manaCrystals < 1)
+            return;
+
+        manaCrystals--;
+        manaCrystalsText.text = "" + manaCrystals;
+        player.AddMana();
+
+
+    }
+    
     private int PointsCalculation(bool win)
     {
 

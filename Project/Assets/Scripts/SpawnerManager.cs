@@ -10,6 +10,7 @@ public class SpawnerManager : MonoBehaviour {
     public GameObject Cavalier;
     public GameObject Archer;
     public GameObject Healer;
+    public GameObject Boss;
 
     public float rowDiff = 1.0f;
     public float colDiff = 1.0f;
@@ -182,6 +183,8 @@ public class SpawnerManager : MonoBehaviour {
                 toInstantiate = Healer;
             if (attacker.Type == "Archer")
                 toInstantiate = Archer;
+            if (attacker.Type == "Boss")
+                toInstantiate = Boss;
 
             Vector3 position = this.transform.position;
             position.x += colPosition;

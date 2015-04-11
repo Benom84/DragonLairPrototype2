@@ -11,6 +11,7 @@ GameObject:
   - 212: {fileID: 21296346}
   - 114: {fileID: 11496350}
   - 60: {fileID: 6096350}
+  - 50: {fileID: 5011184}
   m_Layer: 12
   m_Name: Cavalier
   m_TagString: Enemy
@@ -116,6 +117,21 @@ Transform:
   - {fileID: 496348}
   m_Father: {fileID: 496344}
   m_RootOrder: 0
+--- !u!50 &5011184
+Rigidbody2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 196344}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 0
+  m_FixedAngle: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
 --- !u!60 &6096350
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -124,7 +140,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 196344}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Poly:
     m_Paths:
     - - {x: .0350000001, y: -1.06500006}
@@ -215,13 +231,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
-  attackDamage: 2
+  attackDamage: 1
   attackDelay: 1
   walkingSpeed: 3
+  healingPower: 10
   resistenceToFire: 0
-  resistenceToIce: 0
-  resistenceToAcid: 0
+  resistenceToWater: 0
+  resistenceToAir: 0
+  resistenceToEarthquake: 0
+  resistenceToScream: 0
   enemyType: 1
+  projectileAttack: {fileID: 0}
+  projectileSpeed: 5
+  bossThrowBackForce: 4
 --- !u!212 &21296346
 SpriteRenderer:
   m_ObjectHideFlags: 1

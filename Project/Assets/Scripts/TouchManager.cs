@@ -8,7 +8,6 @@ public class TouchManager : MonoBehaviour
     private Player player;
     private Collider2D dragonBody;
     private GameObject gameArea;
-    private GameObject[] specialAttackButtons;
     private int attackTouchIndex = -1;
 
 
@@ -18,8 +17,6 @@ public class TouchManager : MonoBehaviour
 
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         gameArea = transform.FindChild("GameArea").gameObject;
-        specialAttackButtons = GameObject.FindGameObjectsWithTag("SpecialAttack");
-        Debug.Log("Size of special attacks is: " + specialAttackButtons.Length);
 
     }
 

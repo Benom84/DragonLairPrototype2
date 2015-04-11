@@ -6,6 +6,7 @@ public class Player : MonoBehaviour {
 
 	public int maxHealth = 100;
     public int maxMana = 100;
+    public int crystalToManaRatio = 20;
     public int manaRefillAmount = 1;
     public float manaRefillDelay = 1.0f;
     public float attackSpeed = 5.0f;
@@ -33,6 +34,7 @@ public class Player : MonoBehaviour {
     private CameraShake camShake;
     private float lastAttack = 0f;
     private float lastManaChange = 0f;
+    private DragonAttack.AttackType specialAttackType;
 
 
 
@@ -59,6 +61,10 @@ public class Player : MonoBehaviour {
         healthBar.setValue(currHealth);
         manaBar.setMaxValue(maxMana);
         manaBar.setValue(currMana);
+
+        // set special attack type
+        specialAttackType = DragonAttack.AttackType.Fire;
+
 
 
 	
@@ -109,6 +115,7 @@ public class Player : MonoBehaviour {
         DragonAttack dragonAttack = attack.GetComponent<DragonAttack>();
         dragonAttack.attackDamage = getAttackTypeDamage(dragonAttack.attackType);
         attack.rigidbody2D.velocity = attackDirection;
+        lastAttack = Time.time;
         
 	}
 
@@ -160,7 +167,7 @@ public class Player : MonoBehaviour {
         foreach (GameObject enemy in allEnemies)
         {
             Enemy enemyScript = enemy.GetComponent<Enemy>();
-            if ((enemyScript != null) && (enemyScript.enemyType != Enemy.EnemyType.Healer))
+            if (enemyScript != null)
                 enemyScript.Hit(earthquakeAttackDamage, DragonAttack.AttackType.Earthquake);
         }
 
@@ -170,19 +177,32 @@ public class Player : MonoBehaviour {
 
     }
 
-    public void SpecialAttack(DragonAttack.AttackType attackType)
+    public void SpecialAttack(ArrayList enemiesToDamage)
     {
         if (gameController.gameEnded)
             return;
 
-        if (attackType == DragonAttack.AttackType.Fire)
+        if (currMana < specialAttackManaCost)
+            return;
+
+        currMana -= specialAttackManaCost;
+
+        if (specialAttackType == DragonAttack.AttackType.Fire)
             SpecialAttackFire();
 
-        if (attackType == DragonAttack.AttackType.Water)
+        if (specialAttackType == DragonAttack.AttackType.Water)
             SpecialAttackWater();
 
-        if (attackType == DragonAttack.AttackType.Air)
+        if (specialAttackType == DragonAttack.AttackType.Air)
             SpecialAttackAir();
+
+        foreach (GameObject enemy in enemiesToDamage)
+        {
+            Enemy enemyScript = enemy.GetComponent<Enemy>();
+            if (enemyScript != null)
+                enemyScript.SpecialHit(specialAttackDamage, specialAttackType);
+        }
+
     }
 
     private void SpecialAttackFire()
@@ -198,5 +218,16 @@ public class Player : MonoBehaviour {
     private void SpecialAttackAir()
     {
 
+    }
+
+    public void AddMana()
+    {
+        currMana += crystalToManaRatio;
+        currMana = Mathf.Min(currMana, maxMana);
+    }
+
+    public int getCurrentMana()
+    {
+        return currMana;
     }
 }

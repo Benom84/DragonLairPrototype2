@@ -18,5 +18,11 @@
             <Time>6</Time>
             <ChangeChance>0.99</ChangeChance>
         </Attack>
+        <Attack>
+            <Id>005</Id>
+            <Difficulty>3</Difficulty>
+            <Time>15</Time>
+            <ChangeChance>0</ChangeChance>
+        </Attack>
     </Attacks>
 </Level>

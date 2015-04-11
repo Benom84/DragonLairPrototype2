@@ -140,7 +140,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 117850}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Poly:
     m_Paths:
     - - {x: .600000024, y: -.0399999991}
@@ -198,11 +198,12 @@ MonoBehaviour:
   resistenceToFire: 0
   resistenceToWater: 0
   resistenceToAir: 0
-  resistenceToEarthquake: 0
+  resistenceToEarthquake: 1
   resistenceToScream: 0
   enemyType: 2
   projectileAttack: {fileID: 120670, guid: ba74363b48fb03141940e879dfd0b479, type: 2}
   projectileSpeed: 25
+  bossThrowBackForce: 4
 --- !u!212 &21217852
 SpriteRenderer:
   m_ObjectHideFlags: 1

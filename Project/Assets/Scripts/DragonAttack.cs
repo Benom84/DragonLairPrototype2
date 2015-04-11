@@ -9,27 +9,18 @@ public class DragonAttack : MonoBehaviour {
     [HideInInspector]
     public int attackDamage = 1;
 
-    
-    // Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
-    void OnTriggerEnter2D (Collider2D collider)
+
+    void OnTriggerEnter2D(Collider2D collider)
     {
 
-        if (collider.tag == "Border")
+        if (collider.gameObject.tag == "Border")
             GameObject.Destroy(gameObject);
 
-        if (collider.tag == "Enemy")
+        if (collider.gameObject.tag == "Enemy")
         {
 
-            collider.GetComponent<Enemy>().Hit(attackDamage, attackType);
+            collider.gameObject.GetComponent<Enemy>().Hit(attackDamage, attackType);
             GameObject.Destroy(gameObject);
         }
 
