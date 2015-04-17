@@ -187,7 +187,7 @@ public class GameController : MonoBehaviour {
 
     public void Exit()
     {
-
+        Application.Quit();
     }
 
     private void LevelEnd()
