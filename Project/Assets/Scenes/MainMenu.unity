@@ -373,6 +373,75 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 390686328}
+--- !u!1 &398355301
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 398355303}
+  - 114: {fileID: 398355302}
+  m_Layer: 0
+  m_Name: Data
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &398355302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 398355301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e0c4876cee6f17478943b6f514e2556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 0
+  coins: 0
+  crystals: 0
+  b_fireDamage: 0
+  b_fireRange: 0
+  b_fireHeavnlyFire: 0
+  b_fireThunder: 0
+  p_fireCave: 0
+  p_fireLava: 0
+  m_fireScream: 0
+  m_fireMeteor: 0
+  m_fireEarthquake: 0
+  b_airDamage: 0
+  b_airRange: 0
+  b_airSkyFall: 0
+  b_airCursedBreath: 0
+  p_airCave: 0
+  p_airTornado: 0
+  m_airScream: 0
+  m_airTornado: 0
+  m_airEarthquake: 0
+  b_waterDamage: 0
+  b_waterRange: 0
+  b_waterFrozenSky: 0
+  b_waterCursedBreath: 0
+  p_waterCave: 0
+  p_waterIceWall: 0
+  m_waterScream: 0
+  m_waterMist: 0
+  m_waterEarthquake: 0
+--- !u!4 &398355303
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 398355301}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 310.249176, y: 172.402832, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
 --- !u!1 &924629745
 GameObject:
   m_ObjectHideFlags: 0
