@@ -259,7 +259,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 766800764}
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
@@ -448,7 +448,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 766800764}
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
@@ -705,16 +705,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 766800764}
+        m_MethodName: SwitchCanvas
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
+          m_IntArgument: 9
           m_FloatArgument: 0
-          m_StringArgument: AirProtect
+          m_StringArgument: AirProtectCanvas
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -1170,7 +1170,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 766800764}
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
@@ -1270,7 +1270,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: .22188583, g: .675724685, b: .79411763, a: 1}
+    m_NormalColor: {r: .389165223, g: .768650711, b: .867647052, a: 1}
     m_HighlightedColor: {r: .389165223, g: .768650711, b: .867647052, a: 1}
     m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_DisabledColor: {r: .784313738, g: .784313738, b: .784313738, a: .501960814}
@@ -1506,7 +1506,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 766800764}
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
@@ -1778,11 +1778,11 @@ GameObject:
   - 114: {fileID: 137307070}
   m_Layer: 5
   m_Name: AirBreathCanvas
-  m_TagString: Untagged
+  m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
 --- !u!224 &137307069
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2051,16 +2051,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 766800764}
+        m_MethodName: SwitchCanvas
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
+          m_IntArgument: 8
           m_FloatArgument: 0
-          m_StringArgument: WaterMagic
+          m_StringArgument: WaterMagicCanvas
           m_BoolArgument: 0
         m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -2171,7 +2171,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 766800764}
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
@@ -2554,7 +2554,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: .22188583, g: .675724685, b: .79411763, a: 1}
+    m_NormalColor: {r: .389165223, g: .768650711, b: .867647052, a: 1}
     m_HighlightedColor: {r: .389165223, g: .768650711, b: .867647052, a: 1}
     m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_DisabledColor: {r: .784313738, g: .784313738, b: .784313738, a: .501960814}
@@ -2865,7 +2865,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 766800764}
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
@@ -3498,7 +3498,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 766800764}
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
@@ -3618,7 +3618,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 766800764}
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
@@ -3718,7 +3718,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: .22188583, g: .675724685, b: .79411763, a: 1}
+    m_NormalColor: {r: .389165223, g: .768650711, b: .867647052, a: 1}
     m_HighlightedColor: {r: .389165223, g: .768650711, b: .867647052, a: 1}
     m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_DisabledColor: {r: .784313738, g: .784313738, b: .784313738, a: .501960814}
@@ -3890,7 +3890,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 766800764}
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
@@ -4213,7 +4213,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 766800764}
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
@@ -4559,7 +4559,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: .22188583, g: .675724685, b: .79411763, a: 1}
+    m_NormalColor: {r: .389165223, g: .768650711, b: .867647052, a: 1}
     m_HighlightedColor: {r: .389165223, g: .768650711, b: .867647052, a: 1}
     m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_DisabledColor: {r: .784313738, g: .784313738, b: .784313738, a: .501960814}
@@ -4948,16 +4948,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 766800764}
+        m_MethodName: SwitchCanvas
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
-          m_StringArgument: FireBreath
+          m_StringArgument: FireBreathCanvas
           m_BoolArgument: 0
         m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -5452,16 +5452,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 766800764}
+        m_MethodName: SwitchCanvas
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
-          m_StringArgument: AirProtect
+          m_StringArgument: AirProtectCanvas
           m_BoolArgument: 0
         m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -5576,7 +5576,83 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 142072, guid: 31751b5078596fd4ba2c70858a2f7faf, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442078, guid: 31751b5078596fd4ba2c70858a2f7faf, type: 2}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: .389165223
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442078, guid: 31751b5078596fd4ba2c70858a2f7faf, type: 2}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: .768650711
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442078, guid: 31751b5078596fd4ba2c70858a2f7faf, type: 2}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: .867647052
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442048, guid: 31751b5078596fd4ba2c70858a2f7faf, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11442048, guid: 31751b5078596fd4ba2c70858a2f7faf, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwitchCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442048, guid: 31751b5078596fd4ba2c70858a2f7faf, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: FireBreathCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442068, guid: 31751b5078596fd4ba2c70858a2f7faf, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11442068, guid: 31751b5078596fd4ba2c70858a2f7faf, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwitchCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442068, guid: 31751b5078596fd4ba2c70858a2f7faf, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: FireProtectCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 142072, guid: 31751b5078596fd4ba2c70858a2f7faf, type: 2}
+      propertyPath: m_TagString
+      value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442026, guid: 31751b5078596fd4ba2c70858a2f7faf, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11442026, guid: 31751b5078596fd4ba2c70858a2f7faf, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442016, guid: 31751b5078596fd4ba2c70858a2f7faf, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11442016, guid: 31751b5078596fd4ba2c70858a2f7faf, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 142072, guid: 31751b5078596fd4ba2c70858a2f7faf, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442048, guid: 31751b5078596fd4ba2c70858a2f7faf, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442048, guid: 31751b5078596fd4ba2c70858a2f7faf, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442068, guid: 31751b5078596fd4ba2c70858a2f7faf, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442068, guid: 31751b5078596fd4ba2c70858a2f7faf, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 31751b5078596fd4ba2c70858a2f7faf, type: 2}
@@ -5665,11 +5741,11 @@ GameObject:
   - 114: {fileID: 637361108}
   m_Layer: 5
   m_Name: FireBreathCanvas
-  m_TagString: Untagged
+  m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
 --- !u!224 &637361107
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6287,7 +6363,83 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 123418, guid: ab87a9193f27d4b4aa3a544777f8f250, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423444, guid: ab87a9193f27d4b4aa3a544777f8f250, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11423444, guid: ab87a9193f27d4b4aa3a544777f8f250, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwitchCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423444, guid: ab87a9193f27d4b4aa3a544777f8f250, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: WaterMagicCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423406, guid: ab87a9193f27d4b4aa3a544777f8f250, type: 2}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: .389165223
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423406, guid: ab87a9193f27d4b4aa3a544777f8f250, type: 2}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: .768650711
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423406, guid: ab87a9193f27d4b4aa3a544777f8f250, type: 2}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: .867647052
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423450, guid: ab87a9193f27d4b4aa3a544777f8f250, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11423450, guid: ab87a9193f27d4b4aa3a544777f8f250, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwitchCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423450, guid: ab87a9193f27d4b4aa3a544777f8f250, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: WaterProtectCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 123418, guid: ab87a9193f27d4b4aa3a544777f8f250, type: 2}
+      propertyPath: m_TagString
+      value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423456, guid: ab87a9193f27d4b4aa3a544777f8f250, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11423456, guid: ab87a9193f27d4b4aa3a544777f8f250, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423394, guid: ab87a9193f27d4b4aa3a544777f8f250, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11423394, guid: ab87a9193f27d4b4aa3a544777f8f250, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 123418, guid: ab87a9193f27d4b4aa3a544777f8f250, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423444, guid: ab87a9193f27d4b4aa3a544777f8f250, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423444, guid: ab87a9193f27d4b4aa3a544777f8f250, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423450, guid: ab87a9193f27d4b4aa3a544777f8f250, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423450, guid: ab87a9193f27d4b4aa3a544777f8f250, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab87a9193f27d4b4aa3a544777f8f250, type: 2}
@@ -6371,16 +6523,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 766800764}
+        m_MethodName: SwitchCanvas
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
+          m_IntArgument: 5
           m_FloatArgument: 0
-          m_StringArgument: FireMagic
+          m_StringArgument: FireMagicCanvas
           m_BoolArgument: 0
         m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -6452,6 +6604,14 @@ Prefab:
     - target: {fileID: 473516, guid: 10c59008c52dea94abd36ce0273ad37d, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 173516, guid: 10c59008c52dea94abd36ce0273ad37d, type: 2}
+      propertyPath: m_TagString
+      value: Store
+      objectReference: {fileID: 0}
+    - target: {fileID: 11473516, guid: 10c59008c52dea94abd36ce0273ad37d, type: 2}
+      propertyPath: isStore
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 10c59008c52dea94abd36ce0273ad37d, type: 2}
@@ -6600,16 +6760,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 766800764}
+        m_MethodName: SwitchCanvas
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
-          m_StringArgument: AirProtect
+          m_StringArgument: AirProtectCanvas
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -6656,11 +6816,11 @@ GameObject:
   - 114: {fileID: 714684713}
   m_Layer: 5
   m_Name: WaterBreathCanvas
-  m_TagString: Untagged
+  m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
 --- !u!224 &714684712
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6977,7 +7137,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: .22188583, g: .675724685, b: .79411763, a: 1}
+    m_NormalColor: {r: .389165223, g: .768650711, b: .867647052, a: 1}
     m_HighlightedColor: {r: .389165223, g: .768650711, b: .867647052, a: 1}
     m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_DisabledColor: {r: .784313738, g: .784313738, b: .784313738, a: .501960814}
@@ -7412,7 +7572,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 766800764}
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
@@ -7466,7 +7626,7 @@ GameObject:
   - 114: {fileID: 766800764}
   m_Layer: 0
   m_Name: UIscript
-  m_TagString: Untagged
+  m_TagString: Store
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7572,16 +7732,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 766800764}
+        m_MethodName: SwitchCanvas
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
-          m_StringArgument: FireBreath
+          m_StringArgument: FireBreathCanvas
           m_BoolArgument: 0
         m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -8430,7 +8590,83 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 134556, guid: 3f35950f8d218ab40838f132be427571, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11434620, guid: 3f35950f8d218ab40838f132be427571, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11434620, guid: 3f35950f8d218ab40838f132be427571, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwitchCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11434620, guid: 3f35950f8d218ab40838f132be427571, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: FireMagicCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11434604, guid: 3f35950f8d218ab40838f132be427571, type: 2}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: .389165223
+      objectReference: {fileID: 0}
+    - target: {fileID: 11434604, guid: 3f35950f8d218ab40838f132be427571, type: 2}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: .768650711
+      objectReference: {fileID: 0}
+    - target: {fileID: 11434604, guid: 3f35950f8d218ab40838f132be427571, type: 2}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: .867647052
+      objectReference: {fileID: 0}
+    - target: {fileID: 11434572, guid: 3f35950f8d218ab40838f132be427571, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11434572, guid: 3f35950f8d218ab40838f132be427571, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwitchCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11434572, guid: 3f35950f8d218ab40838f132be427571, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: FireProtectCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 134556, guid: 3f35950f8d218ab40838f132be427571, type: 2}
+      propertyPath: m_TagString
+      value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11434594, guid: 3f35950f8d218ab40838f132be427571, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11434594, guid: 3f35950f8d218ab40838f132be427571, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 11434610, guid: 3f35950f8d218ab40838f132be427571, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11434610, guid: 3f35950f8d218ab40838f132be427571, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 134556, guid: 3f35950f8d218ab40838f132be427571, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 11434620, guid: 3f35950f8d218ab40838f132be427571, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11434620, guid: 3f35950f8d218ab40838f132be427571, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11434572, guid: 3f35950f8d218ab40838f132be427571, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11434572, guid: 3f35950f8d218ab40838f132be427571, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3f35950f8d218ab40838f132be427571, type: 2}
@@ -8519,11 +8755,11 @@ GameObject:
   - 114: {fileID: 901806807}
   m_Layer: 5
   m_Name: AirProtectCanvas
-  m_TagString: Untagged
+  m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
 --- !u!224 &901806806
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8685,16 +8921,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 766800764}
+        m_MethodName: SwitchCanvas
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
-          m_StringArgument: AirMagic
+          m_StringArgument: AirMagicCanvas
           m_BoolArgument: 0
         m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -8947,7 +9183,83 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 169758, guid: 6fcb110944d46e94795ae1ef2f41019f, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11469772, guid: 6fcb110944d46e94795ae1ef2f41019f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11469772, guid: 6fcb110944d46e94795ae1ef2f41019f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwitchCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11469772, guid: 6fcb110944d46e94795ae1ef2f41019f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: AirProtectCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11469764, guid: 6fcb110944d46e94795ae1ef2f41019f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11469764, guid: 6fcb110944d46e94795ae1ef2f41019f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwitchCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11469764, guid: 6fcb110944d46e94795ae1ef2f41019f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: AirMagicCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11469748, guid: 6fcb110944d46e94795ae1ef2f41019f, type: 2}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: .389165223
+      objectReference: {fileID: 0}
+    - target: {fileID: 11469748, guid: 6fcb110944d46e94795ae1ef2f41019f, type: 2}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: .768650711
+      objectReference: {fileID: 0}
+    - target: {fileID: 11469748, guid: 6fcb110944d46e94795ae1ef2f41019f, type: 2}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: .867647052
+      objectReference: {fileID: 0}
+    - target: {fileID: 169758, guid: 6fcb110944d46e94795ae1ef2f41019f, type: 2}
+      propertyPath: m_TagString
+      value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11469798, guid: 6fcb110944d46e94795ae1ef2f41019f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11469798, guid: 6fcb110944d46e94795ae1ef2f41019f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 11469776, guid: 6fcb110944d46e94795ae1ef2f41019f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11469776, guid: 6fcb110944d46e94795ae1ef2f41019f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 169758, guid: 6fcb110944d46e94795ae1ef2f41019f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 11469764, guid: 6fcb110944d46e94795ae1ef2f41019f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11469764, guid: 6fcb110944d46e94795ae1ef2f41019f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11469772, guid: 6fcb110944d46e94795ae1ef2f41019f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11469772, guid: 6fcb110944d46e94795ae1ef2f41019f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6fcb110944d46e94795ae1ef2f41019f, type: 2}
@@ -9100,16 +9412,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 766800764}
+        m_MethodName: SwitchCanvas
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
+          m_IntArgument: 6
           m_FloatArgument: 0
-          m_StringArgument: FireProtect
+          m_StringArgument: FireProtectCanvas
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -9220,7 +9532,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 766800764}
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
@@ -9686,6 +9998,86 @@ Prefab:
     - target: {fileID: 22484058, guid: a29212857b5c3d54b86854eefa33a97f, type: 2}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 184058, guid: a29212857b5c3d54b86854eefa33a97f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11484042, guid: a29212857b5c3d54b86854eefa33a97f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11484042, guid: a29212857b5c3d54b86854eefa33a97f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwitchCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11484042, guid: a29212857b5c3d54b86854eefa33a97f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: WaterMagicCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11484052, guid: a29212857b5c3d54b86854eefa33a97f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11484052, guid: a29212857b5c3d54b86854eefa33a97f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwitchCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11484052, guid: a29212857b5c3d54b86854eefa33a97f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: WaterBreathCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11484036, guid: a29212857b5c3d54b86854eefa33a97f, type: 2}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: .389165223
+      objectReference: {fileID: 0}
+    - target: {fileID: 11484036, guid: a29212857b5c3d54b86854eefa33a97f, type: 2}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: .768650711
+      objectReference: {fileID: 0}
+    - target: {fileID: 11484036, guid: a29212857b5c3d54b86854eefa33a97f, type: 2}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: .867647052
+      objectReference: {fileID: 0}
+    - target: {fileID: 184058, guid: a29212857b5c3d54b86854eefa33a97f, type: 2}
+      propertyPath: m_TagString
+      value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11484068, guid: a29212857b5c3d54b86854eefa33a97f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11484068, guid: a29212857b5c3d54b86854eefa33a97f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 11484060, guid: a29212857b5c3d54b86854eefa33a97f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11484060, guid: a29212857b5c3d54b86854eefa33a97f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 184058, guid: a29212857b5c3d54b86854eefa33a97f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 11484042, guid: a29212857b5c3d54b86854eefa33a97f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11484042, guid: a29212857b5c3d54b86854eefa33a97f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 11484052, guid: a29212857b5c3d54b86854eefa33a97f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11484052, guid: a29212857b5c3d54b86854eefa33a97f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a29212857b5c3d54b86854eefa33a97f, type: 2}
@@ -10537,7 +10929,83 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 119644, guid: 20154e6517b1d134aa82a12910d6393b, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11419586, guid: 20154e6517b1d134aa82a12910d6393b, type: 2}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: .389165223
+      objectReference: {fileID: 0}
+    - target: {fileID: 11419586, guid: 20154e6517b1d134aa82a12910d6393b, type: 2}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: .768650711
+      objectReference: {fileID: 0}
+    - target: {fileID: 11419586, guid: 20154e6517b1d134aa82a12910d6393b, type: 2}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: .867647052
+      objectReference: {fileID: 0}
+    - target: {fileID: 11419608, guid: 20154e6517b1d134aa82a12910d6393b, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11419608, guid: 20154e6517b1d134aa82a12910d6393b, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwitchCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11419608, guid: 20154e6517b1d134aa82a12910d6393b, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: AirBreathCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11419648, guid: 20154e6517b1d134aa82a12910d6393b, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11419648, guid: 20154e6517b1d134aa82a12910d6393b, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwitchCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11419648, guid: 20154e6517b1d134aa82a12910d6393b, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: AirProtectCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 119644, guid: 20154e6517b1d134aa82a12910d6393b, type: 2}
+      propertyPath: m_TagString
+      value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11419612, guid: 20154e6517b1d134aa82a12910d6393b, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11419612, guid: 20154e6517b1d134aa82a12910d6393b, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 11419604, guid: 20154e6517b1d134aa82a12910d6393b, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11419604, guid: 20154e6517b1d134aa82a12910d6393b, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 119644, guid: 20154e6517b1d134aa82a12910d6393b, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 11419608, guid: 20154e6517b1d134aa82a12910d6393b, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11419608, guid: 20154e6517b1d134aa82a12910d6393b, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11419648, guid: 20154e6517b1d134aa82a12910d6393b, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11419648, guid: 20154e6517b1d134aa82a12910d6393b, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 20154e6517b1d134aa82a12910d6393b, type: 2}
@@ -10686,16 +11154,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 766800764}
+        m_MethodName: SwitchCanvas
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
+          m_IntArgument: 7
           m_FloatArgument: 0
-          m_StringArgument: WaterBreath
+          m_StringArgument: WaterBreathCanvas
           m_BoolArgument: 0
         m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -10806,16 +11274,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 766800764}
+        m_MethodName: SwitchCanvas
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
-          m_StringArgument: AirBreath
+          m_StringArgument: AirBreathCanvas
           m_BoolArgument: 0
         m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -11045,7 +11513,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 766800764}
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
@@ -11184,16 +11652,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 766800764}
+        m_MethodName: SwitchCanvas
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
-          m_StringArgument: AirBreath
+          m_StringArgument: AirBreathCanvas
           m_BoolArgument: 0
         m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -11304,7 +11772,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 766800764}
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
@@ -11731,6 +12199,77 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 933685830}
   m_GameObject: {fileID: 1318350839}
+--- !u!1 &1324727504
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 133848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+  m_PrefabInternal: {fileID: 1679470403}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1324727506}
+  - 114: {fileID: 1324727505}
+  m_Layer: 0
+  m_Name: DataController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1324727505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11433848, guid: aa165985a0792454aae29a63b411705c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1679470403}
+  m_GameObject: {fileID: 1324727504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e0c4876cee6f17478943b6f514e2556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 0
+  coins: 0
+  crystals: 0
+  b_fireDamage: 0
+  b_fireRange: 0
+  b_fireHeavnlyFire: 0
+  b_fireThunder: 0
+  p_fireCave: 0
+  p_fireLava: 0
+  m_fireScream: 0
+  m_fireMeteor: 0
+  m_fireEarthquake: 0
+  b_airDamage: 0
+  b_airRange: 0
+  b_airSkyFall: 0
+  b_airCursedBreath: 0
+  p_airCave: 0
+  p_airTornado: 0
+  m_airScream: 0
+  m_airTornado: 0
+  m_airEarthquake: 0
+  b_waterDamage: 0
+  b_waterRange: 0
+  b_waterFrozenSky: 0
+  b_waterCursedBreath: 0
+  p_waterCave: 0
+  p_waterIceWall: 0
+  m_waterScream: 0
+  m_waterMist: 0
+  m_waterEarthquake: 0
+  attackType: 0
+--- !u!4 &1324727506
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+  m_PrefabInternal: {fileID: 1679470403}
+  m_GameObject: {fileID: 1324727504}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 310.249176, y: 172.402832, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
 --- !u!1 &1332825078
 GameObject:
   m_ObjectHideFlags: 0
@@ -11961,7 +12500,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: .22188583, g: .675724685, b: .79411763, a: 1}
+    m_NormalColor: {r: .389165223, g: .768650711, b: .867647052, a: 1}
     m_HighlightedColor: {r: .389165223, g: .768650711, b: .867647052, a: 1}
     m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_DisabledColor: {r: .784313738, g: .784313738, b: .784313738, a: .501960814}
@@ -12759,11 +13298,11 @@ GameObject:
   - 114: {fileID: 1425721962}
   m_Layer: 5
   m_Name: FireMagicCanvas
-  m_TagString: Untagged
+  m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
 --- !u!224 &1425721961
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13174,11 +13713,11 @@ GameObject:
   - 114: {fileID: 1479111827}
   m_Layer: 5
   m_Name: FireProtectCanvas
-  m_TagString: Untagged
+  m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
 --- !u!224 &1479111826
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13724,16 +14263,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 766800764}
+        m_MethodName: SwitchCanvas
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
-          m_StringArgument: AirMagic
+          m_StringArgument: AirMagicCanvas
           m_BoolArgument: 0
         m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -14228,16 +14767,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 766800764}
+        m_MethodName: SwitchCanvas
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
+          m_IntArgument: 5
           m_FloatArgument: 0
-          m_StringArgument: FireMagic
+          m_StringArgument: FireMagicCanvas
           m_BoolArgument: 0
         m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -14484,16 +15023,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 766800764}
+        m_MethodName: SwitchCanvas
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
+          m_IntArgument: 6
           m_FloatArgument: 0
-          m_StringArgument: FireProtect
+          m_StringArgument: FireProtectCanvas
           m_BoolArgument: 0
         m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -14986,7 +15525,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 766800764}
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
@@ -15029,6 +15568,54 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 688076154}
   m_GameObject: {fileID: 1676649056}
+--- !u!1001 &1679470403
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 310.249176
+      objectReference: {fileID: 0}
+    - target: {fileID: 433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 172.402832
+      objectReference: {fileID: 0}
+    - target: {fileID: 433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 133848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: aa165985a0792454aae29a63b411705c, type: 2}
+  m_RootGameObject: {fileID: 1324727504}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1 &1710470708
 GameObject:
   m_ObjectHideFlags: 0
@@ -15327,10 +15914,10 @@ GameObject:
   - 114: {fileID: 1747218458}
   m_Layer: 5
   m_Name: WaterProtectCanvas
-  m_TagString: Untagged
+  m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &1747218457
 RectTransform:
@@ -15739,16 +16326,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 766800764}
+        m_MethodName: SwitchCanvas
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
+          m_IntArgument: 7
           m_FloatArgument: 0
-          m_StringArgument: AirBreath
+          m_StringArgument: AirBreathCanvas
           m_BoolArgument: 0
         m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -16146,16 +16733,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 766800764}
+        m_MethodName: SwitchCanvas
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
+          m_IntArgument: 9
           m_FloatArgument: 0
-          m_StringArgument: WaterProtect
+          m_StringArgument: WaterProtectCanvas
           m_BoolArgument: 0
         m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -16339,7 +16926,83 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 129358, guid: 88ffbd36f7af67c4a845d136f37d7391, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429396, guid: 88ffbd36f7af67c4a845d136f37d7391, type: 2}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: .389165223
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429396, guid: 88ffbd36f7af67c4a845d136f37d7391, type: 2}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: .768650711
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429396, guid: 88ffbd36f7af67c4a845d136f37d7391, type: 2}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: .867647052
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429390, guid: 88ffbd36f7af67c4a845d136f37d7391, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11429390, guid: 88ffbd36f7af67c4a845d136f37d7391, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwitchCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429390, guid: 88ffbd36f7af67c4a845d136f37d7391, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: AirBreathCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429366, guid: 88ffbd36f7af67c4a845d136f37d7391, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11429366, guid: 88ffbd36f7af67c4a845d136f37d7391, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwitchCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429366, guid: 88ffbd36f7af67c4a845d136f37d7391, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: AirProtectCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 129358, guid: 88ffbd36f7af67c4a845d136f37d7391, type: 2}
+      propertyPath: m_TagString
+      value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429380, guid: 88ffbd36f7af67c4a845d136f37d7391, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11429380, guid: 88ffbd36f7af67c4a845d136f37d7391, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429362, guid: 88ffbd36f7af67c4a845d136f37d7391, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11429362, guid: 88ffbd36f7af67c4a845d136f37d7391, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 129358, guid: 88ffbd36f7af67c4a845d136f37d7391, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429390, guid: 88ffbd36f7af67c4a845d136f37d7391, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429390, guid: 88ffbd36f7af67c4a845d136f37d7391, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429366, guid: 88ffbd36f7af67c4a845d136f37d7391, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429366, guid: 88ffbd36f7af67c4a845d136f37d7391, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 88ffbd36f7af67c4a845d136f37d7391, type: 2}
@@ -16531,7 +17194,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 766800764}
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
@@ -16789,7 +17452,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 766800764}
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
@@ -17380,7 +18043,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: .22188583, g: .675724685, b: .79411763, a: 1}
+    m_NormalColor: {r: .389165223, g: .768650711, b: .867647052, a: 1}
     m_HighlightedColor: {r: .389165223, g: .768650711, b: .867647052, a: 1}
     m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_DisabledColor: {r: .784313738, g: .784313738, b: .784313738, a: .501960814}
@@ -17646,16 +18309,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 766800764}
+        m_MethodName: SwitchCanvas
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
+          m_IntArgument: 8
           m_FloatArgument: 0
-          m_StringArgument: WaterMagic
+          m_StringArgument: WaterMagicCanvas
           m_BoolArgument: 0
         m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -17771,11 +18434,11 @@ GameObject:
   - 114: {fileID: 1998136149}
   m_Layer: 5
   m_Name: AirMagicCanvas
-  m_TagString: Untagged
+  m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
 --- !u!224 &1998136148
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18182,7 +18845,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 766800764}
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
@@ -18263,7 +18926,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: .22188583, g: .675724685, b: .79411763, a: 1}
+    m_NormalColor: {r: .389165223, g: .768650711, b: .867647052, a: 1}
     m_HighlightedColor: {r: .389165223, g: .768650711, b: .867647052, a: 1}
     m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_DisabledColor: {r: .784313738, g: .784313738, b: .784313738, a: .501960814}
@@ -18414,7 +19077,83 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 165656, guid: dd75419dcf4029449b288f88a5186ed1, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11465668, guid: dd75419dcf4029449b288f88a5186ed1, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11465668, guid: dd75419dcf4029449b288f88a5186ed1, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwitchCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11465668, guid: dd75419dcf4029449b288f88a5186ed1, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: AirMagicCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11465652, guid: dd75419dcf4029449b288f88a5186ed1, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11465652, guid: dd75419dcf4029449b288f88a5186ed1, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwitchCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11465652, guid: dd75419dcf4029449b288f88a5186ed1, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: AirBreathCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11465672, guid: dd75419dcf4029449b288f88a5186ed1, type: 2}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: .389165223
+      objectReference: {fileID: 0}
+    - target: {fileID: 11465672, guid: dd75419dcf4029449b288f88a5186ed1, type: 2}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: .768650711
+      objectReference: {fileID: 0}
+    - target: {fileID: 11465672, guid: dd75419dcf4029449b288f88a5186ed1, type: 2}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: .867647052
+      objectReference: {fileID: 0}
+    - target: {fileID: 165656, guid: dd75419dcf4029449b288f88a5186ed1, type: 2}
+      propertyPath: m_TagString
+      value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11465688, guid: dd75419dcf4029449b288f88a5186ed1, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11465688, guid: dd75419dcf4029449b288f88a5186ed1, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 11465698, guid: dd75419dcf4029449b288f88a5186ed1, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11465698, guid: dd75419dcf4029449b288f88a5186ed1, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 165656, guid: dd75419dcf4029449b288f88a5186ed1, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 11465668, guid: dd75419dcf4029449b288f88a5186ed1, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11465668, guid: dd75419dcf4029449b288f88a5186ed1, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11465652, guid: dd75419dcf4029449b288f88a5186ed1, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11465652, guid: dd75419dcf4029449b288f88a5186ed1, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd75419dcf4029449b288f88a5186ed1, type: 2}
@@ -18655,7 +19394,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: .22188583, g: .675724685, b: .79411763, a: 1}
+    m_NormalColor: {r: .389165223, g: .768650711, b: .867647052, a: 1}
     m_HighlightedColor: {r: .389165223, g: .768650711, b: .867647052, a: 1}
     m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_DisabledColor: {r: .784313738, g: .784313738, b: .784313738, a: .501960814}
@@ -18787,7 +19526,83 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 178996, guid: 4d95d7115b66cb54d8aa19b9038dc30c, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11479002, guid: 4d95d7115b66cb54d8aa19b9038dc30c, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11479002, guid: 4d95d7115b66cb54d8aa19b9038dc30c, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwitchCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11479002, guid: 4d95d7115b66cb54d8aa19b9038dc30c, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: FireBreathCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11479016, guid: 4d95d7115b66cb54d8aa19b9038dc30c, type: 2}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: .389165223
+      objectReference: {fileID: 0}
+    - target: {fileID: 11479016, guid: 4d95d7115b66cb54d8aa19b9038dc30c, type: 2}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: .768650711
+      objectReference: {fileID: 0}
+    - target: {fileID: 11479016, guid: 4d95d7115b66cb54d8aa19b9038dc30c, type: 2}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: .867647052
+      objectReference: {fileID: 0}
+    - target: {fileID: 11478972, guid: 4d95d7115b66cb54d8aa19b9038dc30c, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11478972, guid: 4d95d7115b66cb54d8aa19b9038dc30c, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwitchCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11478972, guid: 4d95d7115b66cb54d8aa19b9038dc30c, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: FireMagicCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 178996, guid: 4d95d7115b66cb54d8aa19b9038dc30c, type: 2}
+      propertyPath: m_TagString
+      value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11478978, guid: 4d95d7115b66cb54d8aa19b9038dc30c, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11478978, guid: 4d95d7115b66cb54d8aa19b9038dc30c, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 11478994, guid: 4d95d7115b66cb54d8aa19b9038dc30c, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766800764}
+    - target: {fileID: 11478994, guid: 4d95d7115b66cb54d8aa19b9038dc30c, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 178996, guid: 4d95d7115b66cb54d8aa19b9038dc30c, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 11478972, guid: 4d95d7115b66cb54d8aa19b9038dc30c, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11478972, guid: 4d95d7115b66cb54d8aa19b9038dc30c, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11479002, guid: 4d95d7115b66cb54d8aa19b9038dc30c, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11479002, guid: 4d95d7115b66cb54d8aa19b9038dc30c, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d95d7115b66cb54d8aa19b9038dc30c, type: 2}
@@ -18807,11 +19622,11 @@ GameObject:
   - 114: {fileID: 2100748394}
   m_Layer: 5
   m_Name: WaterMagicCanvas
-  m_TagString: Untagged
+  m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
 --- !u!224 &2100748393
 RectTransform:
   m_ObjectHideFlags: 0

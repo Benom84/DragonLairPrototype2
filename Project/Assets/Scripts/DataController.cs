@@ -42,6 +42,8 @@ public class DataController : MonoBehaviour {
     public int m_waterMist;
     public int m_waterEarthquake;
 
+    public DragonAttack.AttackType attackType;
+
 	void Awake () {
         if (dataController == null)
         {
@@ -94,6 +96,8 @@ public class DataController : MonoBehaviour {
         data.m_waterMist = m_waterMist;
         data.m_waterEarthquake = m_waterEarthquake;
 
+        data.attackType = attackType;
+
         binaryFormatter.Serialize(playerDataFile, data);
         playerDataFile.Close();
 
@@ -138,6 +142,8 @@ public class DataController : MonoBehaviour {
             m_waterScream = data.m_waterScream;
             m_waterMist = data.m_waterMist;
             m_waterEarthquake = data.m_waterEarthquake;
+
+            attackType = data.attackType;
         }
     }
 }
@@ -178,4 +184,7 @@ class PlayerData
     public int m_waterScream;
     public int m_waterMist;
     public int m_waterEarthquake;
+
+    public DragonAttack.AttackType attackType;
+
 }
