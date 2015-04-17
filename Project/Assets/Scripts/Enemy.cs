@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
     public float bossThrowBackForce = 4.0f;
 
     private GameController gameController;
+    private Animator animator;
     private bool arrivedAtDestination = false;
     private float lastAttackTime = 0.0f;
     private float health;
@@ -60,6 +61,8 @@ public class Enemy : MonoBehaviour
         healthBar.transform.localScale = new Vector3(healthScale.x * health/maxHealth, 1, 1);
 
 
+        animator = gameObject.GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -70,7 +73,13 @@ public class Enemy : MonoBehaviour
             return;
 
         if ((arrivedAtDestination) && (lastAttackTime + attackDelay <= Time.time))
+        {
+            if (animator != null)
+                animator.SetFloat("speed", 0);
             Attack();
+
+        }
+            
 
         if ((showHealthBar == true) && (Time.time > lastHealthChange + 1.0f))
         {
@@ -87,12 +96,14 @@ public class Enemy : MonoBehaviour
             Vector3 newPos = transform.position;
             newPos.x -= walkingSpeed;
             transform.position = newPos;
+            if (animator != null)
+                animator.SetFloat("speed", walkingSpeed);
 
         }
 
         if (beingThrownBack)
         {
-            Debug.Log("Boss is being thrown back for sure!");
+
             if (rigidbody2D.velocity.x > 0)
             {
                 Vector2 newVelocity = rigidbody2D.velocity;
@@ -199,6 +210,9 @@ public class Enemy : MonoBehaviour
     {
         lastAttackTime = Time.time;
 
+        if (animator != null)
+            animator.SetTrigger("attacking");
+        
         if (enemyType == EnemyType.Healer)
         {
             if (gameController.nonHealerEnemies() != null)

@@ -1,0 +1,169 @@
+fileFormatVersion: 2
+guid: 4e61c0fc076e1a8449a0be982e3b8b4e
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Dragon stand still sprite sheet 390X580 px_0
+    21300002: Dragon stand still sprite sheet 390X580 px_1
+    21300004: Dragon stand still sprite sheet 390X580 px_2
+    21300006: Dragon stand still sprite sheet 390X580 px_3
+    21300008: Dragon stand still sprite sheet 390X580 px_4
+    21300010: Dragon stand still sprite sheet 390X580 px_5
+    21300012: Dragon stand still sprite sheet 390X580 px_6
+    21300014: Dragon stand still sprite sheet 390X580 px_7
+    21300016: Dragon stand still sprite sheet 390X580 px_8
+    21300018: Dragon stand still sprite sheet 390X580 px_9
+    21300020: Dragon stand still sprite sheet 390X580 px_10
+    21300022: Dragon stand still sprite sheet 390X580 px_11
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Dragon stand still sprite sheet 390X580 px_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1161
+        width: 390
+        height: 580
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dragon stand still sprite sheet 390X580 px_1
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 1161
+        width: 390
+        height: 580
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dragon stand still sprite sheet 390X580 px_2
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 1161
+        width: 390
+        height: 580
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dragon stand still sprite sheet 390X580 px_3
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 1161
+        width: 390
+        height: 580
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dragon stand still sprite sheet 390X580 px_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 581
+        width: 390
+        height: 580
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dragon stand still sprite sheet 390X580 px_5
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 581
+        width: 390
+        height: 580
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dragon stand still sprite sheet 390X580 px_6
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 581
+        width: 390
+        height: 580
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dragon stand still sprite sheet 390X580 px_7
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 581
+        width: 390
+        height: 580
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dragon stand still sprite sheet 390X580 px_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 390
+        height: 580
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dragon stand still sprite sheet 390X580 px_9
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 1
+        width: 390
+        height: 580
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dragon stand still sprite sheet 390X580 px_10
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 1
+        width: 390
+        height: 580
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 

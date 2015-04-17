@@ -9,6 +9,7 @@ public class TouchManager : MonoBehaviour
     private Collider2D dragonBody;
     private GameObject gameArea;
     private int attackTouchIndex = -1;
+    private Animator playerAnimator;
 
 
     // Use this for initialization
@@ -16,6 +17,7 @@ public class TouchManager : MonoBehaviour
     {
 
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         gameArea = transform.FindChild("GameArea").gameObject;
 
     }
@@ -37,7 +39,11 @@ public class TouchManager : MonoBehaviour
 
             // Making sure that no matter where the attack touch ended it is initialize
             if ((attackTouchIndex == i) && (Input.GetTouch(i).phase == TouchPhase.Ended))
+            {
                 attackTouchIndex = -1;
+                playerAnimator.SetTrigger("endAttack");
+            }
+               
 
 
             

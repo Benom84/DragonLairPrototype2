@@ -57,8 +57,10 @@ GameObject:
   - 4: {fileID: 487862}
   - 212: {fileID: 21287862}
   - 114: {fileID: 11487862}
-  - 60: {fileID: 6087862}
   - 50: {fileID: 5018094}
+  - 60: {fileID: 6065690}
+  - 95: {fileID: 9565690}
+  - 60: {fileID: 6087862}
   m_Layer: 12
   m_Name: Knight
   m_TagString: Enemy
@@ -132,9 +134,68 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!60 &6087862
+--- !u!60 &6065690
 PolygonCollider2D:
   m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 187862}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Poly:
+    m_Paths:
+    - - {x: .571289062, y: -.799804688}
+      - {x: .430664062, y: -.694335938}
+      - {x: .413085938, y: -.413085938}
+      - {x: .342773438, y: .0087890625}
+      - {x: .764648438, y: -.694335938}
+      - {x: .606445312, y: -.676757812}
+      - {x: .571289062, y: -.782226562}
+      - {x: .711914062, y: -.958007812}
+      - {x: .782226562, y: -.975585938}
+      - {x: 1.04589844, y: -.817382812}
+      - {x: 1.27441406, y: -.870117188}
+      - {x: 1.34472656, y: -.834960938}
+      - {x: 1.34472656, y: -.465820312}
+      - {x: 1.29199219, y: -.325195312}
+      - {x: 1.06347656, y: -.0615234375}
+      - {x: .922851562, y: -.0087890625}
+      - {x: .887695312, y: -.0439453125}
+      - {x: .887695312, y: -.0791015625}
+      - {x: .975585938, y: -.307617188}
+      - {x: .834960938, y: -.465820312}
+      - {x: .711914062, y: -.237304688}
+      - {x: .413085938, y: .307617188}
+      - {x: .272460938, y: .413085938}
+      - {x: -.0087890625, y: .606445312}
+      - {x: -.0615234375, y: .606445312}
+      - {x: -.0966796875, y: .518554688}
+      - {x: .0791015625, y: .254882812}
+      - {x: -.149414062, y: .219726562}
+      - {x: -.202148438, y: -.0087890625}
+      - {x: -.290039062, y: .0439453125}
+      - {x: -.553710938, y: .237304688}
+      - {x: -.606445312, y: .202148438}
+      - {x: -.641601562, y: -.0087890625}
+      - {x: -.641601562, y: -.448242188}
+      - {x: -.588867188, y: -.571289062}
+      - {x: -.553710938, y: -.817382812}
+      - {x: -.413085938, y: -.958007812}
+      - {x: -.290039062, y: -.958007812}
+      - {x: -.184570312, y: -.782226562}
+      - {x: -.166992188, y: -.624023438}
+      - {x: .0439453125, y: -.694335938}
+      - {x: -.0263671875, y: -.887695312}
+      - {x: .114257812, y: -1.18652344}
+      - {x: .237304688, y: -1.18652344}
+      - {x: .360351562, y: -1.06347656}
+      - {x: .553710938, y: -1.18652344}
+      - {x: .659179688, y: -1.18652344}
+      - {x: .711914062, y: -.958007812}
+--- !u!60 &6087862
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187862}
@@ -174,6 +235,21 @@ PolygonCollider2D:
       - {x: .165000007, y: -.649999976}
       - {x: .294999987, y: -.649999976}
       - {x: .354999989, y: -.610000014}
+--- !u!95 &9565690
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 187862}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 190823c0785d5ad4287f797081292841, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11487862
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -263,7 +339,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 533475317
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d17ae5d6ed9a1f545838efc6e0796fef, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7cf39edc5fc48284395b1b20e6bc26e3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
