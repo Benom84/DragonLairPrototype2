@@ -179,16 +179,16 @@ MonoBehaviour:
   manaRefillDelay: 1
   attackSpeed: 10
   attackDelay: .5
-  fireAttackDamage: 1
-  waterAttackDamage: 2
-  airAttackDamage: 3
-  earthquakeAttackDamage: 2
-  screamAttackDamage: 1
-  specialAttackDamage: 1
+  attackDamage: 15
+  earthquakeAttackDamage: 40
+  screamAttackDamage: 40
+  specialAttackDamage: 40
   earthquakeManaCost: 30
   screamManaCost: 30
   specialAttackManaCost: 30
   fireAttack: {fileID: 138204, guid: 73d163995779abc4c884cbee10da36e6, type: 2}
+  waterAttack: {fileID: 158902, guid: f171bf49abd19d843927341c271b7319, type: 2}
+  airAttack: {fileID: 195896, guid: 74934c8ab9da60b42ab652badda61daa, type: 2}
 --- !u!212 &21259260
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -12,7 +12,7 @@ public class TouchManager : MonoBehaviour
     private Animator playerAnimator;
     private float playerMouthX;
     private float playerMouthY;
-    private int lastAttackDirection = -1;
+    private int lastAttackDirection = 1;
 
     // Use this for initialization
     void Start()
@@ -49,7 +49,7 @@ public class TouchManager : MonoBehaviour
             if ((attackTouchIndex == i) && (Input.GetTouch(i).phase == TouchPhase.Ended))
             {
                 attackTouchIndex = -1;
-                lastAttackDirection = -1;
+                //lastAttackDirection = -1;
                 //playerAnimator.SetTrigger("endAttack");
             }
 
@@ -70,14 +70,14 @@ public class TouchManager : MonoBehaviour
             {
                 //playerAnimator.SetTrigger("startAttack");
                 int currentAttackDirection = calculateAngle(touchPos);
-                /* Debug.Log("Current attack direction: " + currentAttackDirection);
+                Debug.Log("Current attack direction: " + currentAttackDirection);
                 if (lastAttackDirection != currentAttackDirection)
                 {
                     lastAttackDirection = currentAttackDirection;
-                    playerAnimator.SetTrigger("attackChanged");
-                    playerAnimator.SetInteger("attackDirection", lastAttackDirection);
+                    //playerAnimator.SetTrigger("attackChanged");
+                   playerAnimator.SetInteger("attackDirection", lastAttackDirection);
 
-                } */
+                }
                 player.StartAttack(touchPos);
             }
                 
@@ -107,17 +107,17 @@ public class TouchManager : MonoBehaviour
                 if (Input.GetTouch(touchIndex).phase == TouchPhase.Began)
                     playerAnimator.SetTrigger("startAttack");
                 else
-                {
+                { */
                     int currentAttackDirection = calculateAngle(touchPos);
                     if (lastAttackDirection != currentAttackDirection)
                     {
                         lastAttackDirection = currentAttackDirection;
-                        playerAnimator.SetTrigger("attackChanged");
+                        //playerAnimator.SetTrigger("attackChanged");
                         playerAnimator.SetInteger("attackDirection", lastAttackDirection);
 
                     }
-                }
-    */
+                //}
+    
                 player.StartAttack(touchPos);
                 attackTouchIndex = touchIndex;
 

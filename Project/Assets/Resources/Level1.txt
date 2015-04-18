@@ -30,5 +30,47 @@
             <Time>30</Time>
             <ChangeChance>0</ChangeChance>
         </Attack>
+        <Attack>
+            <Id>001</Id>
+            <Difficulty>1</Difficulty>
+            <Time>35</Time>
+            <ChangeChance>0</ChangeChance>
+        </Attack>
+        <Attack>
+            <Id>005</Id>
+            <Difficulty>1</Difficulty>
+            <Time>36</Time>
+            <ChangeChance>0</ChangeChance>
+        </Attack>
+        <Attack>
+            <Id>005</Id>
+            <Difficulty>1</Difficulty>
+            <Time>40</Time>
+            <ChangeChance>0.999</ChangeChance>
+        </Attack>
+        <Attack>
+            <Id>005</Id>
+            <Difficulty>1</Difficulty>
+            <Time>45</Time>
+            <ChangeChance>0.999</ChangeChance>
+        </Attack>
+        <Attack>
+            <Id>005</Id>
+            <Difficulty>1</Difficulty>
+            <Time>50</Time>
+            <ChangeChance>0.999</ChangeChance>
+        </Attack>
+        <Attack>
+            <Id>005</Id>
+            <Difficulty>1</Difficulty>
+            <Time>55</Time>
+            <ChangeChance>0.999</ChangeChance>
+        </Attack>
+        <Attack>
+            <Id>005</Id>
+            <Difficulty>1</Difficulty>
+            <Time>60</Time>
+            <ChangeChance>0.999</ChangeChance>
+        </Attack>
     </Attacks>
 </Level>

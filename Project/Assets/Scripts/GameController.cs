@@ -218,11 +218,15 @@ public class GameController : MonoBehaviour {
 
     public void Exit()
     {
-        DataController.dataController.kills = allKillCount;
-        DataController.dataController.won = false;
-        DataController.dataController.coinsFromStage = PointsCalculation(false);
-        DataController.dataController.crystalsFromStage = 2;
-        DataController.dataController.life = player.getCurrentHealth();
+        if (DataController.dataController != null)
+        {
+            DataController.dataController.kills = allKillCount;
+            DataController.dataController.won = false;
+            DataController.dataController.coinsFromStage = PointsCalculation(false);
+            DataController.dataController.crystalsFromStage = 2;
+            DataController.dataController.life = player.getCurrentHealth();
+        }
+        
         Application.LoadLevel("EndGameScreen");
 
     }
@@ -236,21 +240,29 @@ public class GameController : MonoBehaviour {
         GameObject menu;
         string message;
 
-        DataController.dataController.kills = allKillCount;
-        DataController.dataController.won = !gameLost;
-        DataController.dataController.coinsFromStage = points;
-        DataController.dataController.life = player.getCurrentHealth();
+        if (DataController.dataController != null)
+        {
+            DataController.dataController.kills = allKillCount;
+            DataController.dataController.won = !gameLost;
+            DataController.dataController.coinsFromStage = points;
+            DataController.dataController.life = player.getCurrentHealth();
+        }
+        
         
         
         if (!gameLost) {
-            DataController.dataController.crystalsFromStage = 2;
+            
+            if (DataController.dataController != null)
+                DataController.dataController.crystalsFromStage = 2;
             menu = winMenu;
             message = "Level Won!";
         }
 
         else
         {
-            DataController.dataController.crystalsFromStage = 0;
+            if (DataController.dataController != null)
+                DataController.dataController.crystalsFromStage = 0;
+            
             menu = loseMenu;
             message = "Level Lost!";
         }
