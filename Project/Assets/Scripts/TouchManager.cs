@@ -17,7 +17,7 @@ public class TouchManager : MonoBehaviour
     {
 
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+        playerAnimator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         gameArea = transform.FindChild("GameArea").gameObject;
 
     }
