@@ -27,6 +27,7 @@ public class GameController : MonoBehaviour {
     private GameObject pauseMenu;
     private GameObject winMenu;
     private GameObject loseMenu;
+    private GameObject pauseButton;
     private Player player;
     private Text manaCrystalsText;
     private GameObject[] specialAttackButtons;
@@ -53,6 +54,7 @@ public class GameController : MonoBehaviour {
         pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
         winMenu = GameObject.FindGameObjectWithTag("WinMenu");
         loseMenu = GameObject.FindGameObjectWithTag("LoseMenu");
+        pauseButton = GameObject.FindGameObjectWithTag("PauseButton");
         specialAttackButtons = GameObject.FindGameObjectsWithTag("SpecialAttack");
         manaCrystalsText = GameObject.FindGameObjectWithTag("ManaCrystalsText").GetComponent<Text>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
@@ -209,14 +211,26 @@ public class GameController : MonoBehaviour {
 
     }
 
+    public void Continue()
+    {
+        Application.LoadLevel("EndGameScreen");
+    }
+
     public void Exit()
     {
-        Application.Quit();
+        DataController.dataController.kills = allKillCount;
+        DataController.dataController.won = false;
+        DataController.dataController.coinsFromStage = PointsCalculation(false);
+        DataController.dataController.crystalsFromStage = 2;
+        DataController.dataController.life = player.getCurrentHealth();
+        Application.LoadLevel("EndGameScreen");
+
     }
 
     private void LevelEnd()
     {
         gameEnded = true;
+        pauseButton.SetActive(false);
         Time.timeScale = 0;
         int points = PointsCalculation(!gameLost);
         GameObject menu;
@@ -225,18 +239,20 @@ public class GameController : MonoBehaviour {
         DataController.dataController.kills = allKillCount;
         DataController.dataController.won = !gameLost;
         DataController.dataController.coinsFromStage = points;
+        DataController.dataController.life = player.getCurrentHealth();
         
         
         if (!gameLost) {
             DataController.dataController.crystalsFromStage = 2;
             menu = winMenu;
-            message = "Level Won!\nNumber of points is: " + points;
+            message = "Level Won!";
         }
 
         else
         {
+            DataController.dataController.crystalsFromStage = 0;
             menu = loseMenu;
-            message = "Level Lost :(\nNumber of points is: " + points;
+            message = "Level Lost!";
         }
 
 

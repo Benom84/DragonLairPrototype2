@@ -273,4 +273,9 @@ public class Player : MonoBehaviour {
     {
         return currMana;
     }
+
+    public int getCurrentHealth()
+    {
+        return currHealth;
+    }
 }
