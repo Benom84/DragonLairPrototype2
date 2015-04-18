@@ -888,8 +888,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
-  coins: 108
-  crystals: 2
+  coins: 0
+  crystals: 0
   p_cave: 0
   m_scream: 0
   m_earthquake: 0
@@ -1182,11 +1182,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
       propertyPath: coins
-      value: 108
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
       propertyPath: crystals
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aa165985a0792454aae29a63b411705c, type: 2}

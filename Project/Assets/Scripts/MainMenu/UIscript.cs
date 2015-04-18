@@ -62,6 +62,9 @@ public class UIscript : MonoBehaviour
             canvases = new GameObject[9] { AirBreathCanvas, AirMagicCanvas, AirProtectCanvas, 
                 FireBreathCanvas, FireMagicCanvas, FireProtectCanvas, WaterBreathCanvas, WaterMagicCanvas, WaterProtectCanvas };
 
+            totalCoins = GameObject.FindGameObjectsWithTag("TotalCoins");
+            totalCrystals = GameObject.FindGameObjectsWithTag("TotalCrystals");
+
             damage = true;
             range = false;
             firstBreathSpecial = false;
@@ -75,26 +78,12 @@ public class UIscript : MonoBehaviour
             selectUpgraded = new bool[9] { damage, range, firstBreathSpecial, secondBreathSpecial, 
                 scream, magicSpecial, earthquake, cave, protectSpecial };
 
-            for (int i = 0; i < 9; i++)
-            {
-                canvases[i].SetActive(false);
-            } 
-            
-            switch (DataController.dataController.attackType)
-            {
-                case DragonAttack.AttackType.Air:
-                    AirBreathCanvas.SetActive(true);
-                    break;
-                case DragonAttack.AttackType.Fire:
-                    FireBreathCanvas.SetActive(true);
-                    break;
-                case DragonAttack.AttackType.Water:
-                    WaterBreathCanvas.SetActive(true);
-                    break;
-            }
-
             totalCoins = GameObject.FindGameObjectsWithTag("TotalCoins");
             totalCrystals = GameObject.FindGameObjectsWithTag("TotalCrystals");
+
+            totalCoinsText = new Text[9];
+            totalCrystalsText = new Text[9];
+
             for (int i = 0; i < 9; i++)
             {
                 totalCoinsText[i] = totalCoins[i].GetComponent<Text>();
@@ -109,6 +98,24 @@ public class UIscript : MonoBehaviour
             foreach (Text text in totalCrystalsText)
             {
                 text.text = "" + DataController.dataController.crystals;
+            }
+
+            for (int i = 0; i < 9; i++)
+            {
+                canvases[i].SetActive(false);
+            }
+
+            switch (DataController.dataController.attackType)
+            {
+                case DragonAttack.AttackType.Air:
+                    AirBreathCanvas.SetActive(true);
+                    break;
+                case DragonAttack.AttackType.Fire:
+                    FireBreathCanvas.SetActive(true);
+                    break;
+                case DragonAttack.AttackType.Water:
+                    WaterBreathCanvas.SetActive(true);
+                    break;
             }
 
         }

@@ -24,14 +24,16 @@ TagManager:
   - ManaCrystalsText
   - FirstScreen
   - Store
-  - Canvas
+  - 
   - UpgradeButton
   - WinOrLose
   - PauseButton
+  - TotalCrystals
+  - TotalCoins
   - 
   - 
   - 
-  - 
+  - Canvas
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
