@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class UIscript : MonoBehaviour
@@ -26,6 +27,10 @@ public class UIscript : MonoBehaviour
     private bool protectSpecial;
 
     private bool[] selectUpgraded;
+
+    private Text numOfKills;
+    private Text percentageOfLife;
+    private Text coinsBonus;
 
     public void Start()
     {
@@ -79,6 +84,14 @@ public class UIscript : MonoBehaviour
                     WaterBreathCanvas.SetActive(true);
                     break;
             }
+        }
+        else if (gameObject.tag == "WinOrLose")
+        {
+            numOfKills = GameObject.Find("NumOfKills").GetComponent<Text>();
+            percentageOfLife = GameObject.Find("PercentageOfLife").GetComponent<Text>();
+            coinsBonus = GameObject.Find("CoinsBonus").GetComponent<Text>();
+
+
         }
     }
 
@@ -168,16 +181,16 @@ public class UIscript : MonoBehaviour
                     DataController.dataController.b_airCursedBreath++;
                     break;
                 case 5:
-                    DataController.dataController.m_airScream++;
+                    DataController.dataController.m_scream++;
                     break;
                 case 6:
                     DataController.dataController.m_airTornado++;
                     break;
                 case 7:
-                    DataController.dataController.m_airEarthquake++;
+                    DataController.dataController.m_earthquake++;
                     break;
                 case 8:
-                    DataController.dataController.p_airCave++;
+                    DataController.dataController.p_cave++;
                     break;
                 case 9:
                     DataController.dataController.p_airTornado++;
@@ -201,16 +214,16 @@ public class UIscript : MonoBehaviour
                     DataController.dataController.b_fireThunder++;
                     break;
                 case 5:
-                    DataController.dataController.m_fireScream++;
+                    DataController.dataController.m_scream++;
                     break;
                 case 6:
                     DataController.dataController.m_fireMeteor++;
                     break;
                 case 7:
-                    DataController.dataController.m_fireEarthquake++;
+                    DataController.dataController.m_earthquake++;
                     break;
                 case 8:
-                    DataController.dataController.p_fireCave++;
+                    DataController.dataController.p_cave++;
                     break;
                 case 9:
                     DataController.dataController.p_fireLava++;
@@ -234,16 +247,16 @@ public class UIscript : MonoBehaviour
                     DataController.dataController.b_waterCursedBreath++;
                     break;
                 case 5:
-                    DataController.dataController.m_waterScream++;
+                    DataController.dataController.m_scream++;
                     break;
                 case 6:
                     DataController.dataController.m_waterMist++;
                     break;
                 case 7:
-                    DataController.dataController.m_waterEarthquake++;
+                    DataController.dataController.m_earthquake++;
                     break;
                 case 8:
-                    DataController.dataController.p_waterCave++;
+                    DataController.dataController.p_cave++;
                     break;
                 case 9:
                     DataController.dataController.p_waterIceWall++;

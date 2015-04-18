@@ -8,41 +8,48 @@ public class DataController : MonoBehaviour {
 
     public static DataController dataController;
 
+    //general state of player
     public int level;
     public int coins;
     public int crystals;
 
+    //general upgrades
+    public int p_cave;
+    public int m_scream;
+    public int m_earthquake;
+
+    //fire upgrades
     public int b_fireDamage;
     public int b_fireRange;
     public int b_fireHeavnlyFire;
     public int b_fireThunder;
-    public int p_fireCave;
     public int p_fireLava;
-    public int m_fireScream;
     public int m_fireMeteor;
-    public int m_fireEarthquake;
 
+    //air upgrades
     public int b_airDamage;
     public int b_airRange;
     public int b_airSkyFall;
     public int b_airCursedBreath;
-    public int p_airCave;
     public int p_airTornado;
-    public int m_airScream;
     public int m_airTornado;
-    public int m_airEarthquake;
 
+    //water upgrades
     public int b_waterDamage;
     public int b_waterRange;
     public int b_waterFrozenSky;
     public int b_waterCursedBreath;
-    public int p_waterCave;
     public int p_waterIceWall;
-    public int m_waterScream;
     public int m_waterMist;
-    public int m_waterEarthquake;
 
     public DragonAttack.AttackType attackType;
+
+    //info to pass from level to victory/lose scene
+    public int kills;
+    public int life;
+    public int coinsFromStage;
+    public int crystalsFromStage;
+    public bool won;
 
 	void Awake () {
         if (dataController == null)
@@ -66,35 +73,30 @@ public class DataController : MonoBehaviour {
         data.coins = coins;
         data.crystals = crystals;
 
+        data.p_cave = p_cave;
+        data.m_scream = m_scream;
+        data.m_earthquake = m_earthquake;
+
         data.b_fireDamage = b_fireDamage;
         data.b_fireRange = b_fireRange;
         data.b_fireHeavnlyFire = b_fireHeavnlyFire;
         data.b_fireThunder = b_fireThunder;
-        data.p_fireCave = p_fireCave;
         data.p_fireLava = p_fireLava;
-        data.m_fireScream = m_fireScream;
         data.m_fireMeteor = m_fireMeteor;
-        data.m_fireEarthquake = m_fireEarthquake;
 
         data.b_airDamage = b_airDamage;
         data.b_airRange = b_airRange;
         data.b_airSkyFall = b_airSkyFall;
         data.b_airCursedBreath = b_airCursedBreath;
-        data.p_airCave = p_airCave;
         data.p_airTornado = p_airTornado;
-        data.m_airScream = m_airScream;
         data.m_airTornado = m_airTornado;
-        data.m_airEarthquake = m_airEarthquake;
 
         data.b_waterDamage = b_waterDamage;
         data.b_waterRange = b_waterRange;
         data.b_waterFrozenSky = b_waterFrozenSky;
         data.b_waterCursedBreath = b_waterCursedBreath;
-        data.p_waterCave = p_waterCave;
         data.p_waterIceWall = p_waterIceWall;
-        data.m_waterScream = m_waterScream;
         data.m_waterMist = m_waterMist;
-        data.m_waterEarthquake = m_waterEarthquake;
 
         data.attackType = attackType;
 
@@ -113,35 +115,30 @@ public class DataController : MonoBehaviour {
             PlayerData data = (PlayerData) binaryFormatter.Deserialize(playerDataFile);
             playerDataFile.Close();
 
+            p_cave = data.p_cave;
+            m_scream = data.m_scream;
+            m_earthquake = data.m_earthquake;
+
             b_fireDamage = data.b_fireDamage;
             b_fireRange = data.b_fireRange;
             b_fireHeavnlyFire = data.b_fireHeavnlyFire;
             b_fireThunder = data.b_fireThunder;
-            p_fireCave = data.p_fireCave;
             p_fireLava = data.p_fireLava;
-            m_fireScream = data.m_fireScream;
             m_fireMeteor = data.m_fireMeteor;
-            m_fireEarthquake = data.m_fireEarthquake;
 
             b_airDamage = data.b_airDamage;
             b_airRange = data.b_airRange;
             b_airSkyFall = data.b_airSkyFall;
             b_airCursedBreath = data.b_airCursedBreath;
-            p_airCave = data.p_airCave;
             p_airTornado = data.p_airTornado;
-            m_airScream = data.m_airScream;
             m_airTornado = data.m_airTornado;
-            m_airEarthquake = data.m_airEarthquake;
 
             b_waterDamage = data.b_waterDamage;
             b_waterRange = data.b_waterRange;
             b_waterFrozenSky = data.b_waterFrozenSky;
             b_waterCursedBreath = data.b_waterCursedBreath;
-            p_waterCave = data.p_waterCave;
             p_waterIceWall = data.p_waterIceWall;
-            m_waterScream = data.m_waterScream;
             m_waterMist = data.m_waterMist;
-            m_waterEarthquake = data.m_waterEarthquake;
 
             attackType = data.attackType;
         }
@@ -155,35 +152,30 @@ class PlayerData
     public int coins;
     public int crystals;
 
+    public int p_cave;
+    public int m_scream;
+    public int m_earthquake;
+
     public int b_fireDamage;
     public int b_fireRange;
     public int b_fireHeavnlyFire;
     public int b_fireThunder;
-    public int p_fireCave;
     public int p_fireLava;
-    public int m_fireScream;
     public int m_fireMeteor;
-    public int m_fireEarthquake;
 
     public int b_airDamage;
     public int b_airRange;
     public int b_airSkyFall;
     public int b_airCursedBreath;
-    public int p_airCave;
     public int p_airTornado;
-    public int m_airScream;
     public int m_airTornado;
-    public int m_airEarthquake;
 
     public int b_waterDamage;
     public int b_waterRange;
     public int b_waterFrozenSky;
     public int b_waterCursedBreath;
-    public int p_waterCave;
     public int p_waterIceWall;
-    public int m_waterScream;
     public int m_waterMist;
-    public int m_waterEarthquake;
 
     public DragonAttack.AttackType attackType;
 
