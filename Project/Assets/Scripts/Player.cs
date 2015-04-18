@@ -41,8 +41,8 @@ public class Player : MonoBehaviour {
 
 
 
-	// Use this for initialization
-	void Start () {
+	
+	void Awake () {
 
 		// Setting the attacks
         activeAttack = fireAttack;

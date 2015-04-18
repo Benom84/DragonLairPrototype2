@@ -10,7 +10,9 @@ public class TouchManager : MonoBehaviour
     private GameObject gameArea;
     private int attackTouchIndex = -1;
     private Animator playerAnimator;
-
+    private float playerMouthX;
+    private float playerMouthY;
+    private int lastAttackDirection = -1;
 
     // Use this for initialization
     void Start()
@@ -19,6 +21,11 @@ public class TouchManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         playerAnimator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         gameArea = transform.FindChild("GameArea").gameObject;
+
+        // Calculate where the player mouth is
+        Transform playerMouth = GameObject.FindGameObjectWithTag("Player").transform.FindChild("Mouth");
+        playerMouthX = playerMouth.position.x;
+        playerMouthY = playerMouth.position.y;
 
     }
 
@@ -32,6 +39,7 @@ public class TouchManager : MonoBehaviour
             Vector3 wp = Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position);
             Vector2 touchPos = new Vector2(wp.x, wp.y);
 
+
             // If the touch is on the game area
             if (gameArea.collider2D == Physics2D.OverlapPoint(touchPos))
                 gameAreaTouchHandler(touchPos, i);
@@ -41,15 +49,9 @@ public class TouchManager : MonoBehaviour
             if ((attackTouchIndex == i) && (Input.GetTouch(i).phase == TouchPhase.Ended))
             {
                 attackTouchIndex = -1;
-                playerAnimator.SetTrigger("endAttack");
+                lastAttackDirection = -1;
+                //playerAnimator.SetTrigger("endAttack");
             }
-               
-
-
-            
-
-            // If the touch is on another UI - In the future
-
 
 
         }
@@ -61,9 +63,24 @@ public class TouchManager : MonoBehaviour
 
             Vector3 wp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 touchPos = new Vector2(wp.x, wp.y);
+            
+            
 
             if (gameArea.collider2D == Physics2D.OverlapPoint(touchPos))
+            {
+                //playerAnimator.SetTrigger("startAttack");
+                int currentAttackDirection = calculateAngle(touchPos);
+                /* Debug.Log("Current attack direction: " + currentAttackDirection);
+                if (lastAttackDirection != currentAttackDirection)
+                {
+                    lastAttackDirection = currentAttackDirection;
+                    playerAnimator.SetTrigger("attackChanged");
+                    playerAnimator.SetInteger("attackDirection", lastAttackDirection);
+
+                } */
                 player.StartAttack(touchPos);
+            }
+                
 
                 
 
@@ -85,13 +102,56 @@ public class TouchManager : MonoBehaviour
             // If no other touch is currently generating an attack
             if ((attackTouchIndex == -1) || (attackTouchIndex == touchIndex))
             {
-                    player.StartAttack(touchPos);
-                    attackTouchIndex = touchIndex;
+
+                /*
+                if (Input.GetTouch(touchIndex).phase == TouchPhase.Began)
+                    playerAnimator.SetTrigger("startAttack");
+                else
+                {
+                    int currentAttackDirection = calculateAngle(touchPos);
+                    if (lastAttackDirection != currentAttackDirection)
+                    {
+                        lastAttackDirection = currentAttackDirection;
+                        playerAnimator.SetTrigger("attackChanged");
+                        playerAnimator.SetInteger("attackDirection", lastAttackDirection);
+
+                    }
+                }
+    */
+                player.StartAttack(touchPos);
+                attackTouchIndex = touchIndex;
 
 
                 
             }
         }
+    }
+
+    private int calculateAngle(Vector2 touchPos)
+    {
+        float diffX = touchPos.x - playerMouthX;
+        float diffY = touchPos.y - playerMouthY;
+
+        float result = (diffY / diffX);
+       // Debug.Log("Calculate angle is: " + result);
+
+        if (result > 0)
+            result = 0;
+
+        if (result < -0.4f)
+            result = -0.4f;
+
+        int resultInt = -(int)Mathf.Round(result * 10);
+
+        if (resultInt > 4)
+            resultInt = 4;
+
+        if (resultInt < 0)
+            resultInt = 0;
+        //Debug.Log("Calculate angle after round is: " + result);
+       
+
+        return (resultInt + 1);
     }
 
 

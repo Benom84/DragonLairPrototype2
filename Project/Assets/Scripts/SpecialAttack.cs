@@ -14,12 +14,12 @@ public class SpecialAttack : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Special Attack: Someone entered me!!");
+        //Debug.Log("Special Attack: Someone entered me!!");
         
         if (other.gameObject.tag == "Enemy")
         {
             enemiesInDamageArea.Add(other.gameObject);
-            Debug.Log("Added an enemy to attack");
+            //Debug.Log("Added an enemy to attack");
         }
             
     }

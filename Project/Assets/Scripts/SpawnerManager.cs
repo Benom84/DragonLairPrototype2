@@ -23,6 +23,7 @@ public class SpawnerManager : MonoBehaviour {
     private int levelNumber;
     private Attack nextAttack;
     private float startTime;
+    private bool levelHard = false;
 	
     // Use this for initialization
 	void Start () {

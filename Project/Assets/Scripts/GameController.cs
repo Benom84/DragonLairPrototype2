@@ -41,6 +41,8 @@ public class GameController : MonoBehaviour {
     private int cavaliersKillCount = 0;
     private int healersKillCount = 0;
     private int bossKillCount = 0;
+
+    private DataController dataController;
     
 
     
@@ -64,8 +66,17 @@ public class GameController : MonoBehaviour {
         healersOnBoard = new ArrayList();
         bossOnBoard = new ArrayList();
         nonHealersOnBoard = new ArrayList();
+
+        dataController = GameObject.FindGameObjectWithTag("DataController").GetComponent<DataController>();
+        if (dataController != null)
+            readLevelData();
      
 	}
+
+    private void readLevelData()
+    {
+        throw new System.NotImplementedException();
+    }
 
     void FixedUpdate()
     {
