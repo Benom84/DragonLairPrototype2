@@ -188,3 +188,26 @@ class PlayerData
     public DragonAttack.AttackType attackType;
 
 }
+
+
+//class AttackTypeDefinition
+//{
+  //  public enum AttackTypeDefinition { Air, Fire, Water };
+//
+  //  public int damage;
+    //public int range;
+   // public int firstBreathSpecial;
+   // public int secondBreathSpecial;
+
+   // public int cave;
+   // public int protectSpecial;
+
+  //  public int scream;
+    //public int magicSpecial;
+//    public int earthquake;
+
+  //  public AttackTypeDefinition(AttackTypeDefinition type)
+    //{
+
+    //}
+//}
