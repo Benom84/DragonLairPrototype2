@@ -420,9 +420,7 @@ MonoBehaviour:
   manaRefillDelay: 1
   attackSpeed: 10
   attackDelay: .5
-  fireAttackDamage: 20
-  waterAttackDamage: 2
-  airAttackDamage: 3
+  attackDamage: 1
   earthquakeAttackDamage: 40
   screamAttackDamage: 40
   specialAttackDamage: 40
@@ -430,6 +428,8 @@ MonoBehaviour:
   screamManaCost: 30
   specialAttackManaCost: 30
   fireAttack: {fileID: 138204, guid: 73d163995779abc4c884cbee10da36e6, type: 2}
+  waterAttack: {fileID: 158902, guid: f171bf49abd19d843927341c271b7319, type: 2}
+  airAttack: {fileID: 195896, guid: 74934c8ab9da60b42ab652badda61daa, type: 2}
 --- !u!50 &203399550
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -3842,6 +3842,14 @@ Prefab:
       propertyPath: specialAttackDamage
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 11459260, guid: 41ae494f9c49b4f4e8f1910df4edbd41, type: 2}
+      propertyPath: waterAttack
+      value: 
+      objectReference: {fileID: 158902, guid: f171bf49abd19d843927341c271b7319, type: 2}
+    - target: {fileID: 11459260, guid: 41ae494f9c49b4f4e8f1910df4edbd41, type: 2}
+      propertyPath: airAttack
+      value: 
+      objectReference: {fileID: 195896, guid: 74934c8ab9da60b42ab652badda61daa, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 41ae494f9c49b4f4e8f1910df4edbd41, type: 2}
   m_RootGameObject: {fileID: 203399544}

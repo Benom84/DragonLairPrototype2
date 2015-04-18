@@ -11,9 +11,7 @@ public class Player : MonoBehaviour {
     public float manaRefillDelay = 1.0f;
     public float attackSpeed = 5.0f;
     public float attackDelay = 1.0f;
-    public int fireAttackDamage = 1;
-    public int waterAttackDamage = 2;
-    public int airAttackDamage = 3;
+    public int attackDamage = 1;
     public int earthquakeAttackDamage = 2;
     public int screamAttackDamage = 1;
     public int specialAttackDamage = 1;
@@ -21,6 +19,8 @@ public class Player : MonoBehaviour {
     public int screamManaCost = 30;
     public int specialAttackManaCost = 30;
     public GameObject fireAttack;
+    public GameObject waterAttack;
+    public GameObject airAttack;
 
 
 
@@ -54,6 +54,15 @@ public class Player : MonoBehaviour {
         manaBar = GameObject.FindGameObjectWithTag("ManaBar").GetComponent<BarMovement>();
         camShake = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>();
 
+        // set special attack type
+        specialAttackType = DragonAttack.AttackType.Fire;
+
+        if (DataController.dataController != null)
+        {
+            loadFromDataController();
+        }
+        
+        
         // Setting the initial values
         currHealth = maxHealth;
         currMana = maxMana;
@@ -62,13 +71,61 @@ public class Player : MonoBehaviour {
         manaBar.setMaxValue(maxMana);
         manaBar.setValue(currMana);
 
-        // set special attack type
-        specialAttackType = DragonAttack.AttackType.Fire;
+        
+
+        
 
 
 
 	
 	}
+
+    private void loadFromDataController()
+    {
+
+        earthquakeAttackDamage = DataController.dataController.m_earthquake;
+        screamAttackDamage = DataController.dataController.m_scream;
+        maxHealth = DataController.dataController.p_cave;
+
+        
+        if (DataController.dataController.attackType == DragonAttack.AttackType.Fire)
+        {
+            activeAttack = fireAttack;
+            specialAttackType = DragonAttack.AttackType.Fire;
+            attackSpeed = DataController.dataController.b_fireRange * 1.0f;
+            attackDamage = DataController.dataController.b_fireDamage;
+            /*
+                    b_fireHeavnlyFire;
+                    b_fireThunder;
+                    p_fireLava;
+                    m_fireMeteor;
+             */
+            
+        }
+        
+        if (DataController.dataController.attackType == DragonAttack.AttackType.Water)
+        {
+            activeAttack = waterAttack;
+            specialAttackType = DragonAttack.AttackType.Water;
+            attackSpeed = DataController.dataController.b_waterRange * 1.0f;
+            attackDamage = DataController.dataController.b_waterDamage;
+            /*
+                    add special breaths and defend
+             */
+
+        }
+        if (DataController.dataController.attackType == DragonAttack.AttackType.Air)
+        {
+            activeAttack = airAttack;
+            specialAttackType = DragonAttack.AttackType.Air;
+            attackSpeed = DataController.dataController.b_airRange * 1.0f;
+            attackDamage = DataController.dataController.b_airDamage;
+            /*
+                    add special breaths and defend
+             */
+
+        }
+    }
 
     void FixedUpdate()
     {
@@ -113,27 +170,13 @@ public class Player : MonoBehaviour {
         // Now we instantiate the attack at the dragon's mouth, set it's velocity and damage
         GameObject attack = (GameObject) Instantiate(activeAttack, dragonMouth, transform.rotation);
         DragonAttack dragonAttack = attack.GetComponent<DragonAttack>();
-        dragonAttack.attackDamage = getAttackTypeDamage(dragonAttack.attackType);
+        dragonAttack.attackDamage = attackDamage;
         attack.rigidbody2D.velocity = attackDirection;
         lastAttack = Time.time;
         
 	}
 
     
-    private int getAttackTypeDamage(DragonAttack.AttackType attackType) {
-
-        if (attackType == DragonAttack.AttackType.Fire)
-            return fireAttackDamage;
-
-        if (attackType == DragonAttack.AttackType.Water)
-            return waterAttackDamage;
-
-        else
-            return airAttackDamage;
-    
-    }
-
-
     private void Die()
     {
         gameController.gameEnded = true;

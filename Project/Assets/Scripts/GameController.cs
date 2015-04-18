@@ -41,6 +41,7 @@ public class GameController : MonoBehaviour {
     private int cavaliersKillCount = 0;
     private int healersKillCount = 0;
     private int bossKillCount = 0;
+    private int allKillCount = 0;
 
     
 
@@ -57,8 +58,7 @@ public class GameController : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
 
-        manaCrystals = DataController.dataController.crystals;
-        manaCrystalsText.text = "" + manaCrystals;
+        
         pauseMenu.SetActive(false);
         winMenu.SetActive(false);
         loseMenu.SetActive(false);
@@ -70,14 +70,20 @@ public class GameController : MonoBehaviour {
         nonHealersOnBoard = new ArrayList();
 
 
-        currentLevel = DataController.dataController.level;
+        
+        
 
+        if (DataController.dataController != null)
+            readLevelData();
+
+        manaCrystalsText.text = "" + manaCrystals;
      
 	}
 
     private void readLevelData()
     {
-        throw new System.NotImplementedException();
+        currentLevel = DataController.dataController.level;
+        manaCrystals = DataController.dataController.crystals;
     }
 
     void FixedUpdate()
@@ -128,29 +134,34 @@ public class GameController : MonoBehaviour {
             knightsOnBoard.Remove(enemyObject);
             nonHealersOnBoard.Remove(enemyObject);
             knightsKillCount++;
+            allKillCount++;
         }
         if (enemy.enemyType == Enemy.EnemyType.Archer)
         {
             archersOnBoard.Remove(enemyObject);
             nonHealersOnBoard.Remove(enemyObject);
             archersKillCount++;
+            allKillCount++;
         }
         if (enemy.enemyType == Enemy.EnemyType.Cavalier)
         {
             cavaliersOnBoard.Remove(enemyObject);
             nonHealersOnBoard.Remove(enemyObject);
             cavaliersKillCount++;
+            allKillCount++;
         }
         if (enemy.enemyType == Enemy.EnemyType.Boss)
         {
             bossOnBoard.Remove(enemyObject);
             nonHealersOnBoard.Remove(enemyObject);
             bossKillCount++;
+            allKillCount++;
         }
         if (enemy.enemyType == Enemy.EnemyType.Healer)
         {
             healersOnBoard.Remove(enemyObject);
             healersKillCount++;
+            allKillCount++;
         }
 
         GameObject.Destroy(enemyObject);
@@ -210,8 +221,14 @@ public class GameController : MonoBehaviour {
         int points = PointsCalculation(!gameLost);
         GameObject menu;
         string message;
+
+        DataController.dataController.kills = allKillCount;
+        DataController.dataController.won = !gameLost;
+        DataController.dataController.coinsFromStage = points;
+        
         
         if (!gameLost) {
+            DataController.dataController.crystalsFromStage = 2;
             menu = winMenu;
             message = "Level Won!\nNumber of points is: " + points;
         }
