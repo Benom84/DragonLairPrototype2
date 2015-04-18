@@ -16,7 +16,11 @@ public class UIscript : MonoBehaviour
 
     private GameObject[] canvases;
 
-    private Text totalCoins;
+    private GameObject[] totalCoins;
+    private Text[] totalCoinsText;
+
+    private GameObject[] totalCrystals;
+    private Text[] totalCrystalsText;
 
     private bool damage;
     private bool range;
@@ -88,6 +92,25 @@ public class UIscript : MonoBehaviour
                     WaterBreathCanvas.SetActive(true);
                     break;
             }
+
+            totalCoins = GameObject.FindGameObjectsWithTag("TotalCoins");
+            totalCrystals = GameObject.FindGameObjectsWithTag("TotalCrystals");
+            for (int i = 0; i < 9; i++)
+            {
+                totalCoinsText[i] = totalCoins[i].GetComponent<Text>();
+                totalCrystalsText[i] = totalCrystals[i].GetComponent<Text>();
+            }
+
+            foreach (Text text in totalCoinsText)
+            {
+                text.text = "" + DataController.dataController.coins;
+            }
+
+            foreach (Text text in totalCrystalsText)
+            {
+                text.text = "" + DataController.dataController.crystals;
+            }
+
         }
         else if (gameObject.tag == "WinOrLose")
         {

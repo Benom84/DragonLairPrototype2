@@ -4406,34 +4406,33 @@ MonoBehaviour:
   level: 0
   coins: 0
   crystals: 0
+  p_cave: 0
+  m_scream: 0
+  m_earthquake: 0
   b_fireDamage: 0
   b_fireRange: 0
   b_fireHeavnlyFire: 0
   b_fireThunder: 0
-  p_fireCave: 0
   p_fireLava: 0
-  m_fireScream: 0
   m_fireMeteor: 0
-  m_fireEarthquake: 0
   b_airDamage: 0
   b_airRange: 0
   b_airSkyFall: 0
   b_airCursedBreath: 0
-  p_airCave: 0
   p_airTornado: 0
-  m_airScream: 0
   m_airTornado: 0
-  m_airEarthquake: 0
   b_waterDamage: 0
   b_waterRange: 0
   b_waterFrozenSky: 0
   b_waterCursedBreath: 0
-  p_waterCave: 0
   p_waterIceWall: 0
-  m_waterScream: 0
   m_waterMist: 0
-  m_waterEarthquake: 0
   attackType: 0
+  kills: 0
+  life: 0
+  coinsFromStage: 0
+  crystalsFromStage: 0
+  won: 0
 --- !u!4 &470241359
 Transform:
   m_ObjectHideFlags: 0
@@ -6135,7 +6134,7 @@ GameObject:
   - 222: {fileID: 649746732}
   - 114: {fileID: 649746731}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TotalCoins
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
