@@ -16,6 +16,8 @@ public class UIscript : MonoBehaviour
 
     private GameObject[] canvases;
 
+    private Text totalCoins;
+
     private bool damage;
     private bool range;
     private bool firstBreathSpecial;
@@ -28,9 +30,11 @@ public class UIscript : MonoBehaviour
 
     private bool[] selectUpgraded;
 
+    private Text stageStatus;
     private Text numOfKills;
     private Text percentageOfLife;
     private Text coinsBonus;
+    private Text crystalsBonus;
 
     public void Start()
     {
@@ -90,8 +94,27 @@ public class UIscript : MonoBehaviour
             numOfKills = GameObject.Find("NumOfKills").GetComponent<Text>();
             percentageOfLife = GameObject.Find("PercentageOfLife").GetComponent<Text>();
             coinsBonus = GameObject.Find("CoinsBonus").GetComponent<Text>();
+            crystalsBonus = GameObject.Find("CrystalsBonus").GetComponent<Text>();
+            stageStatus = GameObject.Find("StageWonOrLost").GetComponent<Text>();
 
+            numOfKills.text = "" + DataController.dataController.kills;
+            percentageOfLife.text = "" + DataController.dataController.life;
+            coinsBonus.text = "" + DataController.dataController.coinsFromStage;
+            crystalsBonus.text = "" + DataController.dataController.crystalsFromStage;
 
+            if (DataController.dataController.won)
+            {
+                stageStatus.text = "Stage cleared";
+                DataController.dataController.level++;
+            }
+            else
+            {
+                stageStatus.text = "Stage failed";
+            }
+
+            DataController.dataController.coins += DataController.dataController.coinsFromStage;
+            DataController.dataController.crystals += DataController.dataController.crystalsFromStage;
+            DataController.dataController.Save();
         }
     }
 
@@ -263,5 +286,7 @@ public class UIscript : MonoBehaviour
                     break;
             }
         }
+        DataController.dataController.Save();
+
     }
 }
