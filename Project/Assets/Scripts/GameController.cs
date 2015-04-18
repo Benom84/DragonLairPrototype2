@@ -42,7 +42,6 @@ public class GameController : MonoBehaviour {
     private int healersKillCount = 0;
     private int bossKillCount = 0;
 
-    private DataController dataController;
     
 
     
@@ -56,6 +55,9 @@ public class GameController : MonoBehaviour {
         specialAttackButtons = GameObject.FindGameObjectsWithTag("SpecialAttack");
         manaCrystalsText = GameObject.FindGameObjectWithTag("ManaCrystalsText").GetComponent<Text>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+
+
+        manaCrystals = DataController.dataController.crystals;
         manaCrystalsText.text = "" + manaCrystals;
         pauseMenu.SetActive(false);
         winMenu.SetActive(false);
@@ -67,9 +69,9 @@ public class GameController : MonoBehaviour {
         bossOnBoard = new ArrayList();
         nonHealersOnBoard = new ArrayList();
 
-        dataController = GameObject.FindGameObjectWithTag("DataController").GetComponent<DataController>();
-        if (dataController != null)
-            readLevelData();
+
+        currentLevel = DataController.dataController.level;
+
      
 	}
 
