@@ -588,10 +588,10 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1072804285}
+  - {fileID: 1926990197}
   - {fileID: 134237614}
   - {fileID: 474906609}
-  - {fileID: 1926990197}
-  - {fileID: 1072804285}
   m_Father: {fileID: 1466309396}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
@@ -1093,6 +1093,50 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 889142048}
   m_GameObject: {fileID: 98499242}
+--- !u!1001 &109533755
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 310.249176
+      objectReference: {fileID: 0}
+    - target: {fileID: 433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 172.402832
+      objectReference: {fileID: 0}
+    - target: {fileID: 433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: aa165985a0792454aae29a63b411705c, type: 2}
+  m_RootGameObject: {fileID: 470241357}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1 &116876208
 GameObject:
   m_ObjectHideFlags: 0
@@ -1378,7 +1422,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 124338628}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: ChooseToUpgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 9
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &124338628
@@ -1579,11 +1635,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1969496004}
-  m_Father: {fileID: 1809093387}
-  m_RootOrder: 2
+  m_Father: {fileID: 278327065}
+  m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 30.3999996, y: -.200000003}
+  m_AnchoredPosition: {x: -9.30007362, y: -.200000003}
   m_SizeDelta: {x: 117, y: 32}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &128862528
@@ -1625,7 +1681,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 128862529}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: ChooseToUpgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 6
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &128862529
@@ -1714,7 +1782,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 134237612}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: ChooseToUpgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &134237612
@@ -1759,7 +1839,7 @@ RectTransform:
   m_Children:
   - {fileID: 1082866875}
   m_Father: {fileID: 50440930}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -7.80000019, y: 0}
@@ -1942,7 +2022,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 147783044}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: Upgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &147783044
@@ -2334,7 +2426,7 @@ GameObject:
   - 114: {fileID: 182230003}
   m_Layer: 5
   m_Name: bDamage
-  m_TagString: Untagged
+  m_TagString: UpgradeButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2352,7 +2444,7 @@ RectTransform:
   m_Children:
   - {fileID: 290614609}
   m_Father: {fileID: 208819879}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -192.399994, y: 33.3999939}
@@ -2397,7 +2489,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 182230004}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: ChooseToUpgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &182230004
@@ -2459,8 +2563,8 @@ RectTransform:
   m_Children:
   - {fileID: 1520794715}
   - {fileID: 799368682}
-  - {fileID: 722001184}
   - {fileID: 182230002}
+  - {fileID: 722001184}
   m_Father: {fileID: 250579729}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
@@ -2935,7 +3039,10 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1815009658}
+  - {fileID: 128862527}
+  - {fileID: 1746566316}
   m_Father: {fileID: 1809093387}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
@@ -3072,7 +3179,7 @@ RectTransform:
   m_Children:
   - {fileID: 1244358459}
   m_Father: {fileID: 723657076}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 177.800003, y: -.100000001}
@@ -3117,7 +3224,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 280345422}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: ChooseToUpgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &280345422
@@ -4256,6 +4375,77 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 1176759461}
   m_GameObject: {fileID: 466767301}
+--- !u!1 &470241357
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 133848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+  m_PrefabInternal: {fileID: 109533755}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 470241359}
+  - 114: {fileID: 470241358}
+  m_Layer: 0
+  m_Name: DataController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &470241358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11433848, guid: aa165985a0792454aae29a63b411705c,
+    type: 2}
+  m_PrefabInternal: {fileID: 109533755}
+  m_GameObject: {fileID: 470241357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e0c4876cee6f17478943b6f514e2556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 0
+  coins: 0
+  crystals: 0
+  b_fireDamage: 0
+  b_fireRange: 0
+  b_fireHeavnlyFire: 0
+  b_fireThunder: 0
+  p_fireCave: 0
+  p_fireLava: 0
+  m_fireScream: 0
+  m_fireMeteor: 0
+  m_fireEarthquake: 0
+  b_airDamage: 0
+  b_airRange: 0
+  b_airSkyFall: 0
+  b_airCursedBreath: 0
+  p_airCave: 0
+  p_airTornado: 0
+  m_airScream: 0
+  m_airTornado: 0
+  m_airEarthquake: 0
+  b_waterDamage: 0
+  b_waterRange: 0
+  b_waterFrozenSky: 0
+  b_waterCursedBreath: 0
+  p_waterCave: 0
+  p_waterIceWall: 0
+  m_waterScream: 0
+  m_waterMist: 0
+  m_waterEarthquake: 0
+  attackType: 0
+--- !u!4 &470241359
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+  m_PrefabInternal: {fileID: 109533755}
+  m_GameObject: {fileID: 470241357}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 310.249176, y: 172.402832, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
 --- !u!1 &471088115
 GameObject:
   m_ObjectHideFlags: 0
@@ -4425,7 +4615,7 @@ RectTransform:
   m_Children:
   - {fileID: 1026289435}
   m_Father: {fileID: 50440930}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 180.199997, y: 0}
@@ -4470,7 +4660,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 474906611}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: ChooseToUpgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &474906611
@@ -4839,7 +5041,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 510062697}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: ChooseToUpgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 6
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &510062697
@@ -5136,7 +5350,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 537563588}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: ChooseToUpgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &537563588
@@ -6112,7 +6338,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 674114774}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: Upgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &674114774
@@ -6917,7 +7155,7 @@ GameObject:
   - 114: {fileID: 722001185}
   m_Layer: 5
   m_Name: bRange
-  m_TagString: Untagged
+  m_TagString: UpgradeButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6935,7 +7173,7 @@ RectTransform:
   m_Children:
   - {fileID: 1567253491}
   m_Father: {fileID: 208819879}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -192.399994, y: -30.6000061}
@@ -6980,7 +7218,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 722001186}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: ChooseToUpgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &722001186
@@ -7040,10 +7290,10 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 2002189977}
+  - {fileID: 736395043}
   - {fileID: 1864401288}
   - {fileID: 280345420}
-  - {fileID: 736395043}
-  - {fileID: 2002189977}
   m_Father: {fileID: 19283130}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
@@ -7219,7 +7469,7 @@ RectTransform:
   m_Children:
   - {fileID: 557524785}
   m_Father: {fileID: 723657076}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -199.199997, y: -32.0999985}
@@ -7264,7 +7514,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 736395045}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: ChooseToUpgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &736395045
@@ -7853,7 +8115,7 @@ GameObject:
   - 114: {fileID: 799368683}
   m_Layer: 5
   m_Name: bCursedBreath
-  m_TagString: Untagged
+  m_TagString: UpgradeButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7916,7 +8178,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 799368684}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: ChooseToUpgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &799368684
@@ -8162,7 +8436,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 844221419}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: Upgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &844221419
@@ -8477,7 +8763,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 876224284}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: ChooseToUpgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 8
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &876224284
@@ -10393,7 +10691,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1051110816}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: ChooseToUpgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 9
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1051110816
@@ -10501,7 +10811,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1069227024}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: ChooseToUpgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 7
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1069227024
@@ -10564,7 +10886,7 @@ RectTransform:
   m_Children:
   - {fileID: 923733573}
   m_Father: {fileID: 50440930}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -196.800003, y: 32}
@@ -10609,7 +10931,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1072804287}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: ChooseToUpgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1072804287
@@ -12079,7 +12413,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1313692656}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: Upgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1313692656
@@ -12199,77 +12545,6 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 933685830}
   m_GameObject: {fileID: 1318350839}
---- !u!1 &1324727504
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 133848, guid: aa165985a0792454aae29a63b411705c, type: 2}
-  m_PrefabInternal: {fileID: 1679470403}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1324727506}
-  - 114: {fileID: 1324727505}
-  m_Layer: 0
-  m_Name: DataController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1324727505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11433848, guid: aa165985a0792454aae29a63b411705c,
-    type: 2}
-  m_PrefabInternal: {fileID: 1679470403}
-  m_GameObject: {fileID: 1324727504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e0c4876cee6f17478943b6f514e2556, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  level: 0
-  coins: 0
-  crystals: 0
-  b_fireDamage: 0
-  b_fireRange: 0
-  b_fireHeavnlyFire: 0
-  b_fireThunder: 0
-  p_fireCave: 0
-  p_fireLava: 0
-  m_fireScream: 0
-  m_fireMeteor: 0
-  m_fireEarthquake: 0
-  b_airDamage: 0
-  b_airRange: 0
-  b_airSkyFall: 0
-  b_airCursedBreath: 0
-  p_airCave: 0
-  p_airTornado: 0
-  m_airScream: 0
-  m_airTornado: 0
-  m_airEarthquake: 0
-  b_waterDamage: 0
-  b_waterRange: 0
-  b_waterFrozenSky: 0
-  b_waterCursedBreath: 0
-  p_waterCave: 0
-  p_waterIceWall: 0
-  m_waterScream: 0
-  m_waterMist: 0
-  m_waterEarthquake: 0
-  attackType: 0
---- !u!4 &1324727506
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
-  m_PrefabInternal: {fileID: 1679470403}
-  m_GameObject: {fileID: 1324727504}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 310.249176, y: 172.402832, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
 --- !u!1 &1332825078
 GameObject:
   m_ObjectHideFlags: 0
@@ -12346,7 +12621,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1332825081}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: ChooseToUpgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 8
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1332825081
@@ -12627,7 +12914,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1379323587}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: ChooseToUpgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 6
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1379323587
@@ -13007,7 +13306,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1411990503}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: ChooseToUpgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 9
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1411990503
@@ -13253,7 +13564,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1424596421}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: Upgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1424596421
@@ -14091,7 +14414,7 @@ GameObject:
   - 114: {fileID: 1520794716}
   m_Layer: 5
   m_Name: bSkyfall
-  m_TagString: Untagged
+  m_TagString: UpgradeButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14154,7 +14477,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1520794717}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: ChooseToUpgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1520794717
@@ -14658,7 +14993,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1585752789}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: Upgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1585752789
@@ -15280,7 +15627,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1644721388}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: Upgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1644721388
@@ -15568,54 +15927,6 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 688076154}
   m_GameObject: {fileID: 1676649056}
---- !u!1001 &1679470403
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 310.249176
-      objectReference: {fileID: 0}
-    - target: {fileID: 433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 172.402832
-      objectReference: {fileID: 0}
-    - target: {fileID: 433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
-      propertyPath: m_RootOrder
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 133848, guid: aa165985a0792454aae29a63b411705c, type: 2}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: aa165985a0792454aae29a63b411705c, type: 2}
-  m_RootGameObject: {fileID: 1324727504}
-  m_IsPrefabParent: 0
-  m_IsExploded: 1
 --- !u!1 &1710470708
 GameObject:
   m_ObjectHideFlags: 0
@@ -15761,7 +16072,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1742743285}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: ChooseToUpgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 8
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1742743285
@@ -15823,11 +16146,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1818736137}
-  m_Father: {fileID: 1809093387}
-  m_RootOrder: 3
+  m_Father: {fileID: 278327065}
+  m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 218.300003, y: -.200000003}
+  m_AnchoredPosition: {x: 178.59993, y: -.200000003}
   m_SizeDelta: {x: 117, y: 32}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1746566317
@@ -15869,7 +16192,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1746566318}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: ChooseToUpgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 7
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1746566318
@@ -16148,7 +16483,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1772808589}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: Upgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1772808589
@@ -16400,9 +16747,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 278327065}
-  - {fileID: 1815009658}
-  - {fileID: 128862527}
-  - {fileID: 1746566316}
   m_Father: {fileID: 1425721961}
   m_RootOrder: 7
   m_AnchorMin: {x: .5, y: .5}
@@ -16509,11 +16853,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1505084148}
-  m_Father: {fileID: 1809093387}
-  m_RootOrder: 1
+  m_Father: {fileID: 278327065}
+  m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -157.600006, y: -.200000003}
+  m_AnchoredPosition: {x: -197.300079, y: -.200000003}
   m_SizeDelta: {x: 117, y: 32}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1815009659
@@ -16555,7 +16899,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1815009660}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: ChooseToUpgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1815009660
@@ -17040,7 +17396,7 @@ RectTransform:
   m_Children:
   - {fileID: 1945798368}
   m_Father: {fileID: 723657076}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -10.1999998, y: -.100000001}
@@ -17085,7 +17441,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1864401290}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: ChooseToUpgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1864401290
@@ -17702,7 +18070,7 @@ RectTransform:
   m_Children:
   - {fileID: 848850991}
   m_Father: {fileID: 50440930}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -196.800003, y: -32}
@@ -17747,7 +18115,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1926990199}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: ChooseToUpgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1926990199
@@ -18622,7 +19002,7 @@ RectTransform:
   m_Children:
   - {fileID: 525589942}
   m_Father: {fileID: 723657076}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -199.199997, y: 31.8999996}
@@ -18667,7 +19047,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2002189979}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: ChooseToUpgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2002189979
@@ -19236,7 +19628,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2060925408}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: Upgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2060925408
@@ -19855,7 +20259,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2138122655}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: ChooseToUpgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 7
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2138122655
@@ -19963,7 +20379,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2139950315}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 766800764}
+        m_MethodName: ChooseToUpgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2139950315
