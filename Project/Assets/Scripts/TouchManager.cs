@@ -75,8 +75,10 @@ public class TouchManager : MonoBehaviour
                 {
                     lastAttackDirection = currentAttackDirection;
                     //playerAnimator.SetTrigger("attackChanged");
-                   playerAnimator.SetInteger("attackDirection", lastAttackDirection);
-
+                    if (playerAnimator != null)
+                    {
+                        playerAnimator.SetInteger("attackDirection", lastAttackDirection);
+                    }
                 }
                 player.StartAttack(touchPos);
             }

@@ -887,30 +887,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e0c4876cee6f17478943b6f514e2556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 0
-  coins: 2
+  level: 1
+  coins: 0
   crystals: 0
-  p_cave: 0
-  m_scream: 0
-  m_earthquake: 0
-  b_fireDamage: 0
-  b_fireRange: 0
-  b_fireHeavnlyFire: 0
-  b_fireThunder: 0
-  p_fireLava: 0
-  m_fireMeteor: 0
-  b_airDamage: 0
-  b_airRange: 0
-  b_airSkyFall: 0
-  b_airCursedBreath: 0
-  p_airTornado: 0
-  m_airTornado: 0
-  b_waterDamage: 0
-  b_waterRange: 0
-  b_waterFrozenSky: 0
-  b_waterCursedBreath: 0
-  p_waterIceWall: 0
-  m_waterMist: 0
+  p_cave: 100
+  m_scream: 10
+  m_earthquake: 10
+  b_fireDamage: 50
+  b_fireRange: 10
+  b_fireHeavnlyFire: 50
+  b_fireThunder: 50
+  p_fireLava: 50
+  m_fireMeteor: 50
+  b_airDamage: 50
+  b_airRange: 10
+  b_airSkyFall: 50
+  b_airCursedBreath: 50
+  p_airTornado: 50
+  m_airTornado: 50
+  b_waterDamage: 50
+  b_waterRange: 10
+  b_waterFrozenSky: 50
+  b_waterCursedBreath: 50
+  p_waterIceWall: 50
+  m_waterMist: 50
   attackType: 0
   kills: 0
   life: 0
@@ -1182,11 +1182,99 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
       propertyPath: coins
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
       propertyPath: crystals
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: level
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: p_cave
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 11433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: m_scream
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: m_earthquake
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: b_fireDamage
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 11433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: b_fireRange
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: b_fireHeavnlyFire
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 11433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: b_fireThunder
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 11433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: m_fireMeteor
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 11433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: p_fireLava
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 11433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: b_airDamage
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 11433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: b_airRange
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: b_airSkyFall
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 11433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: b_airCursedBreath
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 11433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: p_airTornado
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 11433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: m_airTornado
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 11433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: b_waterDamage
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 11433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: b_waterRange
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: b_waterFrozenSky
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 11433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: b_waterCursedBreath
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 11433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: p_waterIceWall
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 11433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
+      propertyPath: m_waterMist
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aa165985a0792454aae29a63b411705c, type: 2}

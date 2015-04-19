@@ -16,7 +16,6 @@ public class GameController : MonoBehaviour {
     public bool gameEnded = false;
     [HideInInspector]
     public bool gameLost = false;
-    [HideInInspector]
     public int currentLevel = 2;
     [HideInInspector]
     public bool noMoreWaves = false;
@@ -79,7 +78,7 @@ public class GameController : MonoBehaviour {
             readLevelData();
 
         manaCrystalsText.text = "" + manaCrystals;
-        currentLevel = 2;
+ 
      
 	}
 
@@ -214,6 +213,7 @@ public class GameController : MonoBehaviour {
 
     public void Continue()
     {
+        Time.timeScale = 1.0f;
         Application.LoadLevel("EndGameScreen");
     }
 
@@ -227,7 +227,8 @@ public class GameController : MonoBehaviour {
             DataController.dataController.crystalsFromStage = 2;
             DataController.dataController.life = player.getCurrentHealth();
         }
-        
+
+        Time.timeScale = 1.0f;
         Application.LoadLevel("EndGameScreen");
 
     }

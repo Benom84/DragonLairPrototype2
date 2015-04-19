@@ -29,7 +29,7 @@ public class SpawnerManager : MonoBehaviour {
 	void Awake () {
 
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
-        levelNumber = gameController.currentLevel;
+        levelNumber = DataController.dataController.level;
         startTime = Time.time;
         Debug.Log("Level number is: " + levelNumber);
         
