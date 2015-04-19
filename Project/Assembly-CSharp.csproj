@@ -69,6 +69,7 @@
      <Compile Include="Assets\Scripts\XML\Level.cs" />
      <Compile Include="Assets\Scripts\XML\Wave.cs" />
      <Compile Include="Assets\Scripts\XML\Waves.cs" />
+     <None Include="Assets\Resources\Level2.txt" />
      <None Include="Assets\Resources\Waves.txt" />
      <None Include="Assets\Resources\Level1.txt" />
  <Reference Include="UnityEngine.UI">
