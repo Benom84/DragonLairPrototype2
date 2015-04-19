@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour {
     [HideInInspector]
     public bool gameLost = false;
     [HideInInspector]
-    public int currentLevel = 1;
+    public int currentLevel = 2;
     [HideInInspector]
     public bool noMoreWaves = false;
     [HideInInspector]
@@ -75,10 +75,11 @@ public class GameController : MonoBehaviour {
         
         
 
-        if (DataController.dataController != null)
+       if (DataController.dataController != null)
             readLevelData();
 
         manaCrystalsText.text = "" + manaCrystals;
+        currentLevel = 2;
      
 	}
 

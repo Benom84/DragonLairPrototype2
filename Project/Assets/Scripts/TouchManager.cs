@@ -70,7 +70,7 @@ public class TouchManager : MonoBehaviour
             {
                 //playerAnimator.SetTrigger("startAttack");
                 int currentAttackDirection = calculateAngle(touchPos);
-                Debug.Log("Current attack direction: " + currentAttackDirection);
+               // Debug.Log("Current attack direction: " + currentAttackDirection);
                 if (lastAttackDirection != currentAttackDirection)
                 {
                     lastAttackDirection = currentAttackDirection;

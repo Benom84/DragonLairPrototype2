@@ -26,12 +26,12 @@ public class SpawnerManager : MonoBehaviour {
     private bool levelHard = false;
 	
     // Use this for initialization
-	void Start () {
+	void Awake () {
 
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         levelNumber = gameController.currentLevel;
         startTime = Time.time;
-
+        Debug.Log("Level number is: " + levelNumber);
         
 
         // We read all the waves and get only this level waves and transfer to an array
