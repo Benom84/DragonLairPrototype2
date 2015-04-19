@@ -14,6 +14,8 @@ public class UIscript : MonoBehaviour
     private GameObject WaterMagicCanvas;
     private GameObject WaterProtectCanvas;
 
+    private GameObject NotEnoughMoneyCanvas;
+
     private GameObject[] canvases;
 
     private GameObject[] totalCoins;
@@ -58,9 +60,15 @@ public class UIscript : MonoBehaviour
             WaterBreathCanvas = GameObject.Find("WaterBreathCanvas");
             WaterMagicCanvas = GameObject.Find("WaterMagicCanvas");
             WaterProtectCanvas = GameObject.Find("WaterProtectCanvas");
+            NotEnoughMoneyCanvas = GameObject.Find("NotEnoughMoneyCanvas");
 
             canvases = new GameObject[9] { AirBreathCanvas, AirMagicCanvas, AirProtectCanvas, 
                 FireBreathCanvas, FireMagicCanvas, FireProtectCanvas, WaterBreathCanvas, WaterMagicCanvas, WaterProtectCanvas };
+
+            NotEnoughMoneyCanvas.SetActive(false);
+
+            totalCoins = GameObject.FindGameObjectsWithTag("TotalCoins");
+            totalCrystals = GameObject.FindGameObjectsWithTag("TotalCrystals");
 
             damage = true;
             range = false;
@@ -75,26 +83,12 @@ public class UIscript : MonoBehaviour
             selectUpgraded = new bool[9] { damage, range, firstBreathSpecial, secondBreathSpecial, 
                 scream, magicSpecial, earthquake, cave, protectSpecial };
 
-            for (int i = 0; i < 9; i++)
-            {
-                canvases[i].SetActive(false);
-            } 
-            
-            switch (DataController.dataController.attackType)
-            {
-                case DragonAttack.AttackType.Air:
-                    AirBreathCanvas.SetActive(true);
-                    break;
-                case DragonAttack.AttackType.Fire:
-                    FireBreathCanvas.SetActive(true);
-                    break;
-                case DragonAttack.AttackType.Water:
-                    WaterBreathCanvas.SetActive(true);
-                    break;
-            }
-
             totalCoins = GameObject.FindGameObjectsWithTag("TotalCoins");
             totalCrystals = GameObject.FindGameObjectsWithTag("TotalCrystals");
+
+            totalCoinsText = new Text[9];
+            totalCrystalsText = new Text[9];
+
             for (int i = 0; i < 9; i++)
             {
                 totalCoinsText[i] = totalCoins[i].GetComponent<Text>();
@@ -109,6 +103,24 @@ public class UIscript : MonoBehaviour
             foreach (Text text in totalCrystalsText)
             {
                 text.text = "" + DataController.dataController.crystals;
+            }
+
+            for (int i = 0; i < 9; i++)
+            {
+                canvases[i].SetActive(false);
+            }
+
+            switch (DataController.dataController.attackType)
+            {
+                case DragonAttack.AttackType.Air:
+                    AirBreathCanvas.SetActive(true);
+                    break;
+                case DragonAttack.AttackType.Fire:
+                    FireBreathCanvas.SetActive(true);
+                    break;
+                case DragonAttack.AttackType.Water:
+                    WaterBreathCanvas.SetActive(true);
+                    break;
             }
 
         }
@@ -209,107 +221,141 @@ public class UIscript : MonoBehaviour
                 break;
             }
         }
-
-        if (DataController.dataController.attackType == DragonAttack.AttackType.Air)
+        if (EnoughMoney(1))
         {
-            switch (numberToBeUpgraded)
+            if (DataController.dataController.attackType == DragonAttack.AttackType.Air)
             {
-                case 1:
-                    DataController.dataController.b_airDamage++;
-                    break;
-                case 2:
-                    DataController.dataController.b_airRange++;
-                    break;
-                case 3:
-                    DataController.dataController.b_airSkyFall++;
-                    break;
-                case 4:
-                    DataController.dataController.b_airCursedBreath++;
-                    break;
-                case 5:
-                    DataController.dataController.m_scream++;
-                    break;
-                case 6:
-                    DataController.dataController.m_airTornado++;
-                    break;
-                case 7:
-                    DataController.dataController.m_earthquake++;
-                    break;
-                case 8:
-                    DataController.dataController.p_cave++;
-                    break;
-                case 9:
-                    DataController.dataController.p_airTornado++;
-                    break;
+                switch (numberToBeUpgraded)
+                {
+                    case 1:
+                        DataController.dataController.b_airDamage++;
+                        break;
+                    case 2:
+                        DataController.dataController.b_airRange++;
+                        break;
+                    case 3:
+                        DataController.dataController.b_airSkyFall++;
+                        break;
+                    case 4:
+                        DataController.dataController.b_airCursedBreath++;
+                        break;
+                    case 5:
+                        DataController.dataController.m_scream++;
+                        break;
+                    case 6:
+                        DataController.dataController.m_airTornado++;
+                        break;
+                    case 7:
+                        DataController.dataController.m_earthquake++;
+                        break;
+                    case 8:
+                        DataController.dataController.p_cave++;
+                        break;
+                    case 9:
+                        DataController.dataController.p_airTornado++;
+                        break;
+                }
             }
-        } 
-        else if (DataController.dataController.attackType == DragonAttack.AttackType.Fire) 
-        {
-            switch (numberToBeUpgraded)
+            else if (DataController.dataController.attackType == DragonAttack.AttackType.Fire)
             {
-                case 1:
-                    DataController.dataController.b_fireDamage++;
-                    break;
-                case 2:
-                    DataController.dataController.b_fireRange++;
-                    break;
-                case 3:
-                    DataController.dataController.b_fireHeavnlyFire++;
-                    break;
-                case 4:
-                    DataController.dataController.b_fireThunder++;
-                    break;
-                case 5:
-                    DataController.dataController.m_scream++;
-                    break;
-                case 6:
-                    DataController.dataController.m_fireMeteor++;
-                    break;
-                case 7:
-                    DataController.dataController.m_earthquake++;
-                    break;
-                case 8:
-                    DataController.dataController.p_cave++;
-                    break;
-                case 9:
-                    DataController.dataController.p_fireLava++;
-                    break;
+                switch (numberToBeUpgraded)
+                {
+                    case 1:
+                        DataController.dataController.b_fireDamage++;
+                        break;
+                    case 2:
+                        DataController.dataController.b_fireRange++;
+                        break;
+                    case 3:
+                        DataController.dataController.b_fireHeavnlyFire++;
+                        break;
+                    case 4:
+                        DataController.dataController.b_fireThunder++;
+                        break;
+                    case 5:
+                        DataController.dataController.m_scream++;
+                        break;
+                    case 6:
+                        DataController.dataController.m_fireMeteor++;
+                        break;
+                    case 7:
+                        DataController.dataController.m_earthquake++;
+                        break;
+                    case 8:
+                        DataController.dataController.p_cave++;
+                        break;
+                    case 9:
+                        DataController.dataController.p_fireLava++;
+                        break;
+                }
             }
+            else if (DataController.dataController.attackType == DragonAttack.AttackType.Water)
+            {
+                switch (numberToBeUpgraded)
+                {
+                    case 1:
+                        DataController.dataController.b_waterDamage++;
+                        break;
+                    case 2:
+                        DataController.dataController.b_waterRange++;
+                        break;
+                    case 3:
+                        DataController.dataController.b_waterFrozenSky++;
+                        break;
+                    case 4:
+                        DataController.dataController.b_waterCursedBreath++;
+                        break;
+                    case 5:
+                        DataController.dataController.m_scream++;
+                        break;
+                    case 6:
+                        DataController.dataController.m_waterMist++;
+                        break;
+                    case 7:
+                        DataController.dataController.m_earthquake++;
+                        break;
+                    case 8:
+                        DataController.dataController.p_cave++;
+                        break;
+                    case 9:
+                        DataController.dataController.p_waterIceWall++;
+                        break;
+                }
+            }
+            DataController.dataController.coins--;
+            foreach (Text text in totalCoinsText)
+            {
+                text.text = "" + DataController.dataController.coins;
+            }
+            DataController.dataController.Save();
         }
-        else if (DataController.dataController.attackType == DragonAttack.AttackType.Water)
+        else
         {
-            switch (numberToBeUpgraded)
-            {
-                case 1:
-                    DataController.dataController.b_waterDamage++;
-                    break;
-                case 2:
-                    DataController.dataController.b_waterRange++;
-                    break;
-                case 3:
-                    DataController.dataController.b_waterFrozenSky++;
-                    break;
-                case 4:
-                    DataController.dataController.b_waterCursedBreath++;
-                    break;
-                case 5:
-                    DataController.dataController.m_scream++;
-                    break;
-                case 6:
-                    DataController.dataController.m_waterMist++;
-                    break;
-                case 7:
-                    DataController.dataController.m_earthquake++;
-                    break;
-                case 8:
-                    DataController.dataController.p_cave++;
-                    break;
-                case 9:
-                    DataController.dataController.p_waterIceWall++;
-                    break;
-            }
+            NotEnoughMoney();
         }
-        DataController.dataController.Save();
+    }
 
+    private bool EnoughMoney(int priceOFUpgrade)
+    {
+        bool res;
+        if (DataController.dataController.coins >= priceOFUpgrade)
+        {
+            res = true;
+        }
+        else
+        {
+            res = false;
+        }
+        return res;
+    }
+
+    private void NotEnoughMoney()
+    {
+        NotEnoughMoneyCanvas.SetActive(true);
+    }
+
+    public void DisableNotEnoughMoneyCanvas()
+    {
+        NotEnoughMoneyCanvas.SetActive(false);
     }
 }

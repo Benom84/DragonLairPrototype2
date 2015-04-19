@@ -176,7 +176,7 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -291, y: 155}
+  m_AnchoredPosition: {x: -271, y: 132}
   m_SizeDelta: {x: 86, y: 70}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &367973037
@@ -336,7 +336,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -112.5, y: 55.3999939}
+  m_AnchoredPosition: {x: -114, y: 39}
   m_SizeDelta: {x: 77.2000122, y: 58.7000122}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &809145250
@@ -530,7 +530,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 97.2999878, y: 55.3999939}
+  m_AnchoredPosition: {x: 96, y: 39}
   m_SizeDelta: {x: 77.2000122, y: 58.7000122}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1239245614
@@ -761,9 +761,9 @@ Canvas:
   m_GameObject: {fileID: 1279200521}
   m_Enabled: 1
   serializedVersion: 2
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
+  m_RenderMode: 1
+  m_Camera: {fileID: 1730294970}
+  m_PlaneDistance: 1
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -888,8 +888,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
-  coins: 108
-  crystals: 2
+  coins: 2
+  crystals: 0
   p_cave: 0
   m_scream: 0
   m_earthquake: 0
@@ -962,7 +962,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -10.1000061, y: 55.3999939}
+  m_AnchoredPosition: {x: -11, y: 39}
   m_SizeDelta: {x: 77.2000122, y: 58.7000122}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1707748348
@@ -1182,11 +1182,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
       propertyPath: coins
-      value: 108
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11433848, guid: aa165985a0792454aae29a63b411705c, type: 2}
       propertyPath: crystals
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aa165985a0792454aae29a63b411705c, type: 2}
@@ -1304,8 +1304,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2120934122}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.829999983, y: .0599999987, z: 0}
-  m_LocalScale: {x: 2.36820292, y: 2.24455261, z: 1}
+  m_LocalPosition: {x: -.0199999996, y: -.0299999993, z: 0}
+  m_LocalScale: {x: 1.51108754, y: 1.58960891, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
