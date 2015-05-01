@@ -9,6 +9,8 @@ public class Timer : MonoBehaviour {
     private RectTransform barTransform;
     private float cachedY;
 
+
+
     public float numOfSeconds = 65;
 
 	void Start () {
@@ -33,4 +35,6 @@ public class Timer : MonoBehaviour {
             }
         }
 	}
+
+
 }

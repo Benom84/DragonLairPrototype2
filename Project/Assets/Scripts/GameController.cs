@@ -10,7 +10,16 @@ public class GameController : MonoBehaviour {
     public int archerPoints = 3;
     public int healerPoints = 4;
     public int bossPoints = 5;
-    public int maxPointsWhenLosing = 50;
+    public int maxCoinsWhenLosing = 50;
+    public float xpKnight = 1.5f;
+    public float xpCavalier = 4f;
+    public float xpArcher = 40.0f;
+    public float xpHealer = 1.5f;
+    public float xpBoss = 80.0f;
+    public int perKillGoldFirstLevels = 5;
+    public int perKillGold = 7;
+    public int goldBonusPerKill = 4;
+    public int levelToChangeGold = 4; // Including
     
     [HideInInspector]
     public bool gameEnded = false;
@@ -36,6 +45,8 @@ public class GameController : MonoBehaviour {
     private ArrayList healersOnBoard;
     private ArrayList bossOnBoard;
     private ArrayList nonHealersOnBoard;
+    private ArrayList allEnemiesOnBoard;
+    private int enemiesOnBoardCount = 0;
     private int knightsKillCount = 0;
     private int archersKillCount = 0;
     private int cavaliersKillCount = 0;
@@ -69,6 +80,7 @@ public class GameController : MonoBehaviour {
         healersOnBoard = new ArrayList();
         bossOnBoard = new ArrayList();
         nonHealersOnBoard = new ArrayList();
+        allEnemiesOnBoard = new ArrayList();
 
 
         
@@ -78,6 +90,8 @@ public class GameController : MonoBehaviour {
             readLevelData();
 
         manaCrystalsText.text = "" + manaCrystals;
+
+        GameObject.FindGameObjectWithTag("Spawner").GetComponent<SpawnerManager>().InitializeSpawner();
  
      
 	}
@@ -85,6 +99,7 @@ public class GameController : MonoBehaviour {
     private void readLevelData()
     {
         currentLevel = DataController.dataController.level;
+        Debug.Log("Reading level data, current level: " + currentLevel); 
         manaCrystals = DataController.dataController.crystals;
     }
 
@@ -102,29 +117,36 @@ public class GameController : MonoBehaviour {
     {
 
         Enemy enemy = enemyObject.GetComponent<Enemy>();
+        allEnemiesOnBoard.Add(enemyObject);
+        
         if (enemy.enemyType == Enemy.EnemyType.Knight) {
             knightsOnBoard.Add(enemyObject);
             nonHealersOnBoard.Add(enemyObject);
+            enemiesOnBoardCount++;
 
         }
         if (enemy.enemyType == Enemy.EnemyType.Archer)
         {
             archersOnBoard.Add(enemyObject);
             nonHealersOnBoard.Add(enemyObject);
+            enemiesOnBoardCount++;
         }
         if (enemy.enemyType == Enemy.EnemyType.Cavalier)
         {
             cavaliersOnBoard.Add(enemyObject);
             nonHealersOnBoard.Add(enemyObject);
+            enemiesOnBoardCount++;
         }
         if (enemy.enemyType == Enemy.EnemyType.Boss)
         {
             bossOnBoard.Add(enemyObject);
             nonHealersOnBoard.Add(enemyObject);
+            enemiesOnBoardCount++;
         }
         if (enemy.enemyType == Enemy.EnemyType.Healer)
         {
             healersOnBoard.Add(enemyObject);
+            enemiesOnBoardCount++;
         }
     }
 
@@ -132,11 +154,14 @@ public class GameController : MonoBehaviour {
     {
 
         Enemy enemy = enemyObject.GetComponent<Enemy>();
+        allEnemiesOnBoard.Remove(enemyObject);
+        
         if (enemy.enemyType == Enemy.EnemyType.Knight) {
             knightsOnBoard.Remove(enemyObject);
             nonHealersOnBoard.Remove(enemyObject);
             knightsKillCount++;
             allKillCount++;
+            enemiesOnBoardCount--;
         }
         if (enemy.enemyType == Enemy.EnemyType.Archer)
         {
@@ -144,6 +169,7 @@ public class GameController : MonoBehaviour {
             nonHealersOnBoard.Remove(enemyObject);
             archersKillCount++;
             allKillCount++;
+            enemiesOnBoardCount--;
         }
         if (enemy.enemyType == Enemy.EnemyType.Cavalier)
         {
@@ -151,6 +177,7 @@ public class GameController : MonoBehaviour {
             nonHealersOnBoard.Remove(enemyObject);
             cavaliersKillCount++;
             allKillCount++;
+            enemiesOnBoardCount--;
         }
         if (enemy.enemyType == Enemy.EnemyType.Boss)
         {
@@ -158,12 +185,14 @@ public class GameController : MonoBehaviour {
             nonHealersOnBoard.Remove(enemyObject);
             bossKillCount++;
             allKillCount++;
+            enemiesOnBoardCount--;
         }
         if (enemy.enemyType == Enemy.EnemyType.Healer)
         {
             healersOnBoard.Remove(enemyObject);
             healersKillCount++;
             allKillCount++;
+            enemiesOnBoardCount--;
         }
 
         GameObject.Destroy(enemyObject);
@@ -223,7 +252,7 @@ public class GameController : MonoBehaviour {
         {
             DataController.dataController.kills = allKillCount;
             DataController.dataController.won = false;
-            DataController.dataController.coinsFromStage = PointsCalculation(false);
+            DataController.dataController.coinsFromStage = CoinsCalculation(false);
             DataController.dataController.crystalsFromStage = 2;
             DataController.dataController.life = player.getCurrentHealth();
         }
@@ -233,12 +262,23 @@ public class GameController : MonoBehaviour {
 
     }
 
+
+    public ArrayList getAllEnemiesOnBoard()
+    {
+        ArrayList returnedEnemies = new ArrayList();
+        foreach (GameObject enemy in allEnemiesOnBoard)
+        {
+            returnedEnemies.Add(enemy);
+        }
+        return returnedEnemies;
+    }
+    
     private void LevelEnd()
     {
         gameEnded = true;
         pauseButton.SetActive(false);
         Time.timeScale = 0;
-        int points = PointsCalculation(!gameLost);
+        int points = CoinsCalculation(!gameLost);
         GameObject menu;
         string message;
 
@@ -289,15 +329,37 @@ public class GameController : MonoBehaviour {
 
     }
     
-    private int PointsCalculation(bool win)
+    private int CoinsCalculation(bool win)
     {
 
-        int points = (knightsKillCount * knightPoints) + (cavaliersKillCount * cavalierPoints) + (archersKillCount * archerPoints) + (healersKillCount * healerPoints) + (bossKillCount * bossPoints);
+        int coins = allKillCount * ((currentLevel >= levelToChangeGold) ? perKillGold : perKillGoldFirstLevels);
+        return coins;
+    }
 
+    private int CoinsBonusCalculation()
+    {
+
+        return allKillCount * goldBonusPerKill;
+    }
+
+    private float XPCalculation(bool win)
+    {
+
+        float xp = 0.0f;
         if (win)
-            points = Mathf.Min(points, maxPointsWhenLosing);
+        {
+            xp = knightsKillCount * xpKnight + cavaliersKillCount * xpCavalier + archersKillCount * xpArcher + healersKillCount * xpHealer + bossKillCount * xpBoss;
+        }
+        else
+        {
+            xp = allKillCount / 2;
+        }
+        return xp;
+    }
 
-        return points;
+    public int GetEnemiesOnBoardCount()
+    {
+        return enemiesOnBoardCount;
     }
 
    

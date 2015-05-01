@@ -1,82 +1,130 @@
 <Level>
     <Attacks>
         <Attack>
-            <Id>006</Id>
+            <Id>003</Id>
             <Difficulty>1</Difficulty>
-            <Time>1</Time>
-            <ChangeChance>0</ChangeChance>
-        </Attack>
-        <Attack>
-            <Id>014</Id>
-            <Difficulty>1</Difficulty>
-            <Time>5</Time>
-            <ChangeChance>0</ChangeChance>
-        </Attack>
-        <Attack>
-            <Id>008</Id>
-            <Difficulty>1</Difficulty>
-            <Time>10</Time>
-            <ChangeChance>0</ChangeChance>
-        </Attack>
-        <Attack>
-            <Id>004</Id>
-            <Difficulty>1</Difficulty>
-            <Time>15</Time>
-            <ChangeChance>0</ChangeChance>
-        </Attack>
-        <Attack>
-            <Id>005</Id>
-            <Difficulty>1</Difficulty>
-            <Time>16</Time>
+            <Time>0</Time>
             <ChangeChance>0</ChangeChance>
         </Attack>
         <Attack>
             <Id>001</Id>
             <Difficulty>1</Difficulty>
-            <Time>25</Time>
+            <Time>2</Time>
             <ChangeChance>1</ChangeChance>
         </Attack>
         <Attack>
-            <Id>005</Id>
+            <Id>001</Id>
             <Difficulty>1</Difficulty>
-            <Time>27</Time>
+            <Time>5</Time>
+            <ChangeChance>1</ChangeChance>
+        </Attack>
+        <Attack>
+            <Id>001</Id>
+            <Difficulty>1</Difficulty>
+            <Time>7</Time>
+            <ChangeChance>1</ChangeChance>
+        </Attack>
+        <Attack>
+            <Id>001</Id>
+            <Difficulty>1</Difficulty>
+            <Time>9</Time>
+            <ChangeChance>1</ChangeChance>
+        </Attack>
+		<Attack>
+            <Id>001</Id>
+            <Difficulty>1</Difficulty>
+            <Time>10</Time>
+            <ChangeChance>1</ChangeChance>
+        </Attack>
+        <Attack>
+            <Id>001</Id>
+            <Difficulty>1</Difficulty>
+            <Time>12</Time>
+            <ChangeChance>1</ChangeChance>
+        </Attack>
+        <Attack>
+            <Id>001</Id>
+            <Difficulty>1</Difficulty>
+            <Time>15</Time>
             <ChangeChance>0</ChangeChance>
         </Attack>
         <Attack>
-            <Id>005</Id>
+            <Id>001</Id>
             <Difficulty>1</Difficulty>
-            <Time>33</Time>
-            <ChangeChance>0.999</ChangeChance>
+            <Time>18</Time>
+            <ChangeChance>1</ChangeChance>
         </Attack>
         <Attack>
-            <Id>005</Id>
+            <Id>030</Id>
+            <Difficulty>2</Difficulty>
+            <Time>21</Time>
+            <ChangeChance>0.3</ChangeChance>
+        </Attack>
+        <Attack>
+            <Id>001</Id>
+            <Difficulty>1</Difficulty>
+            <Time>23</Time>
+            <ChangeChance>1</ChangeChance>
+        </Attack>
+        <Attack>
+            <Id>031</Id>
+            <Difficulty>2</Difficulty>
+            <Time>26</Time>
+            <ChangeChance>0.3</ChangeChance>
+        </Attack>
+        <Attack>
+            <Id>001</Id>
+            <Difficulty>1</Difficulty>
+            <Time>28</Time>
+            <ChangeChance>1</ChangeChance>
+        </Attack>
+        <Attack>
+            <Id>001</Id>
+            <Difficulty>1</Difficulty>
+            <Time>31</Time>
+            <ChangeChance>1</ChangeChance>
+        </Attack>
+		    <Attack>
+            <Id>091</Id>
+            <Difficulty>3</Difficulty>
+            <Time>35</Time>
+            <ChangeChance>0.1</ChangeChance>
+        </Attack>
+		  <Attack>
+            <Id>001</Id>
             <Difficulty>1</Difficulty>
             <Time>40</Time>
-            <ChangeChance>0.999</ChangeChance>
+            <ChangeChance>1</ChangeChance>
         </Attack>
-        <Attack>
-            <Id>005</Id>
+		  <Attack>
+            <Id>001</Id>
             <Difficulty>1</Difficulty>
+            <Time>42</Time>
+            <ChangeChance>1</ChangeChance>
+        </Attack>
+		  <Attack>
+            <Id>035</Id>
+            <Difficulty>2</Difficulty>
             <Time>45</Time>
-            <ChangeChance>0.999</ChangeChance>
+            <ChangeChance>0.1</ChangeChance>
         </Attack>
-        <Attack>
-            <Id>005</Id>
-            <Difficulty>1</Difficulty>
-            <Time>55</Time>
-            <ChangeChance>0.999</ChangeChance>
+		 <Attack>
+            <Id>091</Id>
+            <Difficulty>3</Difficulty>
+            <Time>48</Time>
+            <ChangeChance>0.3</ChangeChance>
         </Attack>
-        <Attack>
-            <Id>005</Id>
+			  <Attack>
+            <Id>001</Id>
             <Difficulty>1</Difficulty>
-            <Time>56</Time>
-            <ChangeChance>0.999</ChangeChance>
+            <Time>51</Time>
+            <ChangeChance>1</ChangeChance>
         </Attack>
-        <Attack>
-            <Id>005</Id>
-            <Difficulty>1</Difficulty>
-            <Time>60</Time>
-            <ChangeChance>0.999</ChangeChance>
+		 <Attack>
+            <Id>036</Id>
+            <Difficulty>3</Difficulty>
+            <Time>54</Time>
+            <ChangeChance>0.2</ChangeChance>
         </Attack>
     </Attacks>
 </Level>

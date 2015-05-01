@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class BarMovement : MonoBehaviour {
 
@@ -11,7 +12,6 @@ public class BarMovement : MonoBehaviour {
 	private float minXPosValue;
 	private float maxXPosValue;
 
-	// Use this for initialization
 	void Awake () {
 
 
@@ -19,7 +19,7 @@ public class BarMovement : MonoBehaviour {
         cachedY = barTransform.anchoredPosition.y;
 
         maxXPosValue = barTransform.anchoredPosition.x;
-		minXPosValue = maxValue - barTransform.rect.width * 0.85f;
+        minXPosValue = maxXPosValue - barTransform.rect.width;
 
         maxValue = 100;
         currValue = maxValue; 
@@ -49,4 +49,9 @@ public class BarMovement : MonoBehaviour {
 
 	
 	}
+
+    public void addToValue()
+    {
+        setValue(currValue + 1);
+    }
 }

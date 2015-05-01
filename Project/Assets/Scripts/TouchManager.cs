@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class TouchManager : MonoBehaviour
 {
 
-    
+
     private Player player;
     private Collider2D dragonBody;
     private GameObject gameArea;
@@ -41,9 +42,11 @@ public class TouchManager : MonoBehaviour
 
 
             // If the touch is on the game area
-            if (gameArea.collider2D == Physics2D.OverlapPoint(touchPos))
-                gameAreaTouchHandler(touchPos, i);
-
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                if (gameArea.collider2D == Physics2D.OverlapPoint(touchPos, LayerMask.GetMask("TouchArea")))
+                    gameAreaTouchHandler(touchPos, i);
+            }
 
             // Making sure that no matter where the attack touch ended it is initialize
             if ((attackTouchIndex == i) && (Input.GetTouch(i).phase == TouchPhase.Ended))
@@ -63,28 +66,29 @@ public class TouchManager : MonoBehaviour
 
             Vector3 wp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 touchPos = new Vector2(wp.x, wp.y);
-            
-            
 
-            if (gameArea.collider2D == Physics2D.OverlapPoint(touchPos))
+
+            if (!EventSystem.current.IsPointerOverGameObject())
             {
-                //playerAnimator.SetTrigger("startAttack");
-                int currentAttackDirection = calculateAngle(touchPos);
-               // Debug.Log("Current attack direction: " + currentAttackDirection);
-                if (lastAttackDirection != currentAttackDirection)
+                if (gameArea.collider2D == Physics2D.OverlapPoint(touchPos, LayerMask.GetMask("TouchArea")))
                 {
-                    lastAttackDirection = currentAttackDirection;
-                    //playerAnimator.SetTrigger("attackChanged");
-                    if (playerAnimator != null)
+                    //playerAnimator.SetTrigger("startAttack");
+                    int currentAttackDirection = calculateAngle(touchPos);
+                    // Debug.Log("Current attack direction: " + currentAttackDirection);
+                    if (lastAttackDirection != currentAttackDirection)
                     {
-                        playerAnimator.SetInteger("attackDirection", lastAttackDirection);
+                        lastAttackDirection = currentAttackDirection;
+                        //playerAnimator.SetTrigger("attackChanged");
+                        if (playerAnimator != null)
+                        {
+                            playerAnimator.SetInteger("attackDirection", lastAttackDirection);
+                        }
                     }
+                    player.StartAttack(touchPos);
                 }
-                player.StartAttack(touchPos);
             }
-                
 
-                
+
 
         }
 #endif
@@ -100,7 +104,7 @@ public class TouchManager : MonoBehaviour
         if (Input.GetTouch(touchIndex).phase != TouchPhase.Ended)
         {
 
-            
+
             // If no other touch is currently generating an attack
             if ((attackTouchIndex == -1) || (attackTouchIndex == touchIndex))
             {
@@ -110,21 +114,21 @@ public class TouchManager : MonoBehaviour
                     playerAnimator.SetTrigger("startAttack");
                 else
                 { */
-                    int currentAttackDirection = calculateAngle(touchPos);
-                    if (lastAttackDirection != currentAttackDirection)
-                    {
-                        lastAttackDirection = currentAttackDirection;
-                        //playerAnimator.SetTrigger("attackChanged");
-                        playerAnimator.SetInteger("attackDirection", lastAttackDirection);
+                int currentAttackDirection = calculateAngle(touchPos);
+                if (lastAttackDirection != currentAttackDirection)
+                {
+                    lastAttackDirection = currentAttackDirection;
+                    //playerAnimator.SetTrigger("attackChanged");
+                    playerAnimator.SetInteger("attackDirection", lastAttackDirection);
 
-                    }
+                }
                 //}
-    
+
                 player.StartAttack(touchPos);
                 attackTouchIndex = touchIndex;
 
 
-                
+
             }
         }
     }
@@ -135,7 +139,7 @@ public class TouchManager : MonoBehaviour
         float diffY = touchPos.y - playerMouthY;
 
         float result = (diffY / diffX);
-       // Debug.Log("Calculate angle is: " + result);
+        // Debug.Log("Calculate angle is: " + result);
 
         if (result > 0)
             result = 0;
@@ -151,7 +155,7 @@ public class TouchManager : MonoBehaviour
         if (resultInt < 0)
             resultInt = 0;
         //Debug.Log("Calculate angle after round is: " + result);
-       
+
 
         return (resultInt + 1);
     }

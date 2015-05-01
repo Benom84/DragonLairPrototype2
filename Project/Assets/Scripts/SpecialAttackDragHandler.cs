@@ -28,7 +28,7 @@ public class SpecialAttackDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
     public void OnBeginDrag(PointerEventData eventData)
     {
 
-        if (player.getCurrentMana() >= player.specialAttackManaCost)
+        if (player.getCurrentMana() >= player.getCurrentSpecialAttackManaCost())
         {
             draggedDamageArea = Instantiate(damageArea, specialAttackPosition.transform.position, specialAttackPosition.transform.rotation) as GameObject;
             specialAttackBegan = true;
@@ -55,7 +55,7 @@ public class SpecialAttackDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
         if (specialAttackBegan)
         {
             SpecialAttack specialAttack = draggedDamageArea.GetComponent<SpecialAttack>();
-            player.SpecialAttack(specialAttack.enemiesInDamageArea);
+            player.SpecialAttack();
             Destroy(draggedDamageArea);
             specialAttackBegan = false;
         }

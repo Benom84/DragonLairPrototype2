@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using System.IO;
+using UnityEngine.UI;
 
 public class SpawnerManager : MonoBehaviour {
 
@@ -11,6 +12,9 @@ public class SpawnerManager : MonoBehaviour {
     public GameObject Archer;
     public GameObject Healer;
     public GameObject Boss;
+    public double precentageOfLifeToGetHarder = 0.85f;
+    public double precentageOfLevelToGetHarder = 0.6f;
+    public double maxTimeForClearBoard = 3.0f;
 
     public float rowDiff = 1.0f;
     public float colDiff = 1.0f;
@@ -21,36 +25,53 @@ public class SpawnerManager : MonoBehaviour {
     private List<Attack> levelAttackPlan;
     private GameController gameController;
     private int levelNumber;
+    private int maxWaveDifficulty = 1;
     private Attack nextAttack;
     private float startTime;
     private bool levelHard = false;
+    private Waves allWaves;
+    private int totalNumberOfAttacks = 0;
+    private Player player;
+    private double attackTimeAcceleration = 0;
+    private double boaredClearedTime = 0;
+    private TimerBarMovement timer;
+    
 	
     // Use this for initialization
 	void Awake () {
 
+       
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
-        levelNumber = DataController.dataController.level;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        timer = GameObject.FindGameObjectWithTag("Timer").GetComponent<TimerBarMovement>();
+       
+	
+	}
+
+    public void InitializeSpawner()
+    {
+
+        levelNumber = gameController.currentLevel;
         startTime = Time.time;
         Debug.Log("Level number is: " + levelNumber);
+        GameObject.FindGameObjectWithTag("GameLevelText").GetComponent<Text>().text = "Level: " + levelNumber;
         
-
         // We read all the waves and get only this level waves and transfer to an array
-        Waves AllWaves = ReadWaves();
+        allWaves = ReadWaves();
         List<Wave> thisLevelWaves = new List<Wave>();
 
-        int maxDifficulty = 1;
-        foreach (Wave wave in AllWaves.WavesList)
+        maxWaveDifficulty = 1;
+        foreach (Wave wave in allWaves.WavesList)
             if (wave.FromLevel <= levelNumber)
             {
                 thisLevelWaves.Add(wave);
-                if (wave.Difficulty > maxDifficulty)
-                    maxDifficulty = wave.Difficulty;
+                if (wave.Difficulty > maxWaveDifficulty)
+                    maxWaveDifficulty = wave.Difficulty;
             }
 
-        Debug.Log("The max difficulty found is: " + maxDifficulty);
         // We seperate the waves of this level by their difficulty
-        wavesByDifficulty = new List<Wave>[maxDifficulty];
-        for (int i = 0; i < maxDifficulty; i++)
+        wavesByDifficulty = new List<Wave>[maxWaveDifficulty];
+        for (int i = 0; i < maxWaveDifficulty; i++)
         {
             wavesByDifficulty[i] = new List<Wave>();
         }
@@ -61,29 +82,71 @@ public class SpawnerManager : MonoBehaviour {
             int difficulty = wave.Difficulty;
 
             wavesByDifficulty[difficulty - 1].Add(wave);
-            
+
         }
 
-  
+
         // We read the current level attack plan
         Level currentLevel = ReadLevel(levelNumber);
 
         // We create the current level attack plan according to the attacks given
         levelAttackPlan = LevelPlan(currentLevel);
 
+        totalNumberOfAttacks = levelAttackPlan.Count;
+        timer.SetMaxValue(totalNumberOfAttacks);
+
+
         // We set the first wave for the creation
         nextAttack = levelAttackPlan[0];
         levelAttackPlan.Remove(nextAttack);
-	
-	}
-	
-	void FixedUpdate () {
+    }
 
-        // If there are more attacks and it is time for the next and the game has not ended
-        if ((nextAttack != null) && (Time.time > startTime + nextAttack.Time) && !gameController.gameEnded)
+    void FixedUpdate()
+    {
+        if (gameController.gameEnded)
+            return;
+
+
+        if ((gameController.GetEnemiesOnBoardCount() == 0) && (boaredClearedTime == 0))
         {
-            WaveInstantiate(FindWave(nextAttack.Id, nextAttack.Difficulty));
+            boaredClearedTime = Time.time;
+
+        }
             
+        
+        // If there are more attacks and it is time for the next and the game has not ended
+        if ((nextAttack != null) && ((Time.time > startTime + nextAttack.Time) || ((boaredClearedTime != 0) && (Time.time - boaredClearedTime > maxTimeForClearBoard))))
+        {
+
+            boaredClearedTime = 0;
+            bool createStrongerAttack = false;
+            Attack attackReplacement = null;
+
+            // If the wave was created prematurely, increase the time acceleration of the other waves
+            if (Time.time + attackTimeAcceleration < startTime + nextAttack.Time)
+            {
+                attackTimeAcceleration = nextAttack.Time - Time.time;
+            }
+            
+            // If the player has a certain life precentage and we are close to the end of the level
+            createStrongerAttack = ((player.getCurrentHealthPrecentage() >= precentageOfLifeToGetHarder) && 
+                ((levelAttackPlan.Count + 1.0f) / totalNumberOfAttacks) <= (1 - precentageOfLevelToGetHarder));
+
+            // If the conditions for a stronger wave attack exist replace the current attack with a stronger one
+            if (createStrongerAttack)
+            {
+                attackReplacement = getRandomAttack(nextAttack.Difficulty + 1);
+            }
+
+
+            if (attackReplacement != null)
+            {
+                nextAttack = attackReplacement;
+            }
+
+            WaveInstantiate(FindWave(nextAttack.Id, nextAttack.Difficulty));
+            timer.increaseCurrentValue();
+
             // If there are more attacks waiting
             if (levelAttackPlan.Count > 0)
             {
@@ -95,22 +158,17 @@ public class SpawnerManager : MonoBehaviour {
                 nextAttack = null;
                 gameController.noMoreWaves = true;
             }
-                
-                
-        }
-	
-	}
 
+
+        }
+    }
     private Waves ReadWaves()
     {
 
         TextAsset allWavesText = (TextAsset) Resources.Load("Waves", typeof(TextAsset));
         StringReader wavesTextReader = new StringReader(allWavesText.text);
-        //string path = Application.dataPath + Path.DirectorySeparatorChar + "LevelData" + Path.DirectorySeparatorChar + "Waves.xml";
         XmlSerializer serializer = new XmlSerializer(typeof(Waves));
-        //FileStream stream = new FileStream(path, FileMode.Open);
         Waves AllWaves = serializer.Deserialize(wavesTextReader) as Waves;
-        //stream.Close();
         return AllWaves;
     }
 
@@ -122,15 +180,29 @@ public class SpawnerManager : MonoBehaviour {
         TextAsset levelText = (TextAsset)Resources.Load(filename, typeof(TextAsset));
         StringReader levelTextReader = new StringReader(levelText.text);
 
-        //string path = Application.dataPath + Path.DirectorySeparatorChar + "LevelData" + Path.DirectorySeparatorChar + "Level" + level + ".xml";
         XmlSerializer serializer = new XmlSerializer(typeof(Level));
-        //FileStream stream = new FileStream(path, FileMode.Open);
         Level currentLevel = serializer.Deserialize(levelTextReader) as Level;
-        //stream.Close();
         return currentLevel;
     }
 
+    private Attack getRandomAttack(int waveDifficuly)
+    {
 
+        
+        
+        if (waveDifficuly > maxWaveDifficulty)
+            return null;
+
+        Attack attack = new Attack();
+        System.Random random = new System.Random();
+        int newIndex = random.Next(0, wavesByDifficulty[waveDifficuly - 1].Count);
+        attack.Id = wavesByDifficulty[waveDifficuly - 1][newIndex].Id;
+        attack.Difficulty = waveDifficuly;
+
+        return attack;
+
+
+    }
     private List<Attack> LevelPlan(Level currentLevel)
     {
 
@@ -149,7 +221,6 @@ public class SpawnerManager : MonoBehaviour {
             {
                 // Create a random number to get a new wave of equal difficulty
                 int newIndex = random.Next(0, wavesByDifficulty[attack.Difficulty - 1].Count);
-                Debug.Log("The new index is: " + newIndex + " And the count is: " + wavesByDifficulty[attack.Difficulty - 1].Count);
                 attack.Id = wavesByDifficulty[attack.Difficulty - 1][newIndex].Id;
             }
 
@@ -192,6 +263,7 @@ public class SpawnerManager : MonoBehaviour {
             position.y += rowPosition;
 
             GameObject newEnemy = (GameObject) Instantiate(toInstantiate, position, this.transform.rotation);
+            newEnemy.GetComponent<SpriteRenderer>().sortingOrder = gridSize - (attacker.Position % gridSize);
             gameController.AddEnemy(newEnemy);
 
         }

@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     public GameObject projectileAttack;
     public float projectileSpeed = 5.0f;
     public float bossThrowBackForce = 4.0f;
+    public float throwBackForce = 8.0f;
 
     private GameController gameController;
     private Animator animator;
@@ -49,7 +50,7 @@ public class Enemy : MonoBehaviour
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
 
         health = maxHealth;
-        
+
         healthBar = transform.Find("ui_healthDisplay/Enemy_HealthBar").GetComponent<SpriteRenderer>();
         ColorHandler(healthBar, 0.0f);
 
@@ -58,7 +59,7 @@ public class Enemy : MonoBehaviour
 
 
         healthScale = healthBar.transform.localScale;
-        healthBar.transform.localScale = new Vector3(healthScale.x * health/maxHealth, 1, 1);
+        healthBar.transform.localScale = new Vector3(healthScale.x * health / maxHealth, 1, 1);
 
 
         animator = gameObject.GetComponent<Animator>();
@@ -79,7 +80,7 @@ public class Enemy : MonoBehaviour
             Attack();
 
         }
-            
+
 
         if ((showHealthBar == true) && (Time.time > lastHealthChange + 1.0f))
         {
@@ -107,7 +108,10 @@ public class Enemy : MonoBehaviour
             if (rigidbody2D.velocity.x > 0)
             {
                 Vector2 newVelocity = rigidbody2D.velocity;
-                newVelocity.x -= (bossThrowBackForce / 10);
+                if (enemyType == EnemyType.Boss)
+                    newVelocity.x -= (bossThrowBackForce / 50);
+                else
+                    newVelocity.x -= (throwBackForce / 50);
                 rigidbody2D.velocity = newVelocity;
             }
             else
@@ -124,7 +128,7 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        
+
         if (col.gameObject.tag == "Player")
             arrivedAtDestination = true;
 
@@ -133,14 +137,41 @@ public class Enemy : MonoBehaviour
 
         if ((col.gameObject.tag == "HealerStop") && (enemyType == EnemyType.Healer))
             arrivedAtDestination = true;
-        
+
 
     }
 
-    
+
     public void Hit(int damage, DragonAttack.AttackType attackType)
     {
 
+        float resistenceToCurrentAttack = getResistenceToAttack(attackType);
+        health -= (int)(damage * (1 - resistenceToCurrentAttack));
+        lastHealthChange = Time.time;
+        showHealthBar = true;
+        if (health <= 0f)
+        {
+            Death();
+            return;
+        }
+
+        if (attackType == DragonAttack.AttackType.Scream)
+        {
+            beingThrownBack = true;
+            arrivedAtDestination = false;
+            if (enemyType == EnemyType.Boss)
+                rigidbody2D.velocity = new Vector2(bossThrowBackForce, 0);
+            else
+                rigidbody2D.velocity = new Vector2(throwBackForce, 0);
+        }
+
+        UpdateHealthBar();
+
+
+    }
+
+    private float getResistenceToAttack(DragonAttack.AttackType attackType)
+    {
         float resistenceToCurrentAttack = 0f;
         switch (attackType)
         {
@@ -150,9 +181,6 @@ public class Enemy : MonoBehaviour
             case DragonAttack.AttackType.Water:
                 resistenceToCurrentAttack = resistenceToWater;
                 break;
-            case DragonAttack.AttackType.Air:
-                resistenceToCurrentAttack = resistenceToAir;
-                break;
             case DragonAttack.AttackType.Earthquake:
                 resistenceToCurrentAttack = resistenceToEarthquake;
                 break;
@@ -160,18 +188,8 @@ public class Enemy : MonoBehaviour
                 resistenceToCurrentAttack = resistenceToScream;
                 break;
         }
-        health -= (int) (damage * (1 - resistenceToCurrentAttack));
-        lastHealthChange = Time.time;
-        showHealthBar = true;
-        if (health <= 0f)
-        {
-            Death();
-            return;
-        }
-            
-        UpdateHealthBar();
-        
 
+        return resistenceToCurrentAttack;
     }
 
     public void SpecialHit(int damage, DragonAttack.AttackType attackType)
@@ -184,7 +202,7 @@ public class Enemy : MonoBehaviour
             beingThrownBack = true;
             arrivedAtDestination = false;
             rigidbody2D.velocity = new Vector2(bossThrowBackForce, 0);
-            
+
         }
     }
 
@@ -195,7 +213,7 @@ public class Enemy : MonoBehaviour
             return;
 
         lastWallHit = Time.time;
-        
+
         Hit(damage, attackType);
 
     }
@@ -212,7 +230,7 @@ public class Enemy : MonoBehaviour
 
         if (animator != null)
             animator.SetTrigger("attacking");
-        
+
         if (enemyType == EnemyType.Healer)
         {
             if (gameController.nonHealerEnemies() != null)
@@ -223,7 +241,7 @@ public class Enemy : MonoBehaviour
 
         if (enemyType == EnemyType.Archer)
             ProjectileAttack();
-        
+
         if ((enemyType == EnemyType.Knight) || (enemyType == EnemyType.Cavalier))
             player.Hit(attackDamage);
 
@@ -243,7 +261,7 @@ public class Enemy : MonoBehaviour
     {
         if (health == maxHealth)
             return;
-        
+
         health += amount;
         if (health > maxHealth)
             health = maxHealth;
@@ -254,7 +272,7 @@ public class Enemy : MonoBehaviour
 
     private void ProjectileAttack()
     {
-        
+
         // We get the player position and the enemy's
         Vector2 target = player.transform.position;
         Vector2 start = transform.position;
@@ -277,7 +295,7 @@ public class Enemy : MonoBehaviour
 
     public void UpdateHealthBar()
     {
-        
+
         ColorHandler(healthBar, 1.0f);
         ColorHandler(healthOutline, 1.0f);
 

@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\ButtonStamina.cs" />
      <Compile Include="Assets\Scripts\CameraShake.cs" />
      <Compile Include="Assets\Scripts\DataController.cs" />
+     <Compile Include="Assets\Scripts\DestroyExplosion.cs" />
      <Compile Include="Assets\Scripts\DragonAttack.cs" />
      <Compile Include="Assets\Scripts\DragonAttackButton.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
@@ -63,15 +64,22 @@
      <Compile Include="Assets\Scripts\SpecialAttackButton.cs" />
      <Compile Include="Assets\Scripts\SpecialAttackDragHandler.cs" />
      <Compile Include="Assets\Scripts\Timer.cs" />
+     <Compile Include="Assets\Scripts\TimerBarMovement.cs" />
      <Compile Include="Assets\Scripts\TouchManager.cs" />
      <Compile Include="Assets\Scripts\Wall.cs" />
      <Compile Include="Assets\Scripts\XML\Attack.cs" />
      <Compile Include="Assets\Scripts\XML\Level.cs" />
      <Compile Include="Assets\Scripts\XML\Wave.cs" />
      <Compile Include="Assets\Scripts\XML\Waves.cs" />
+     <None Include="Assets\Resources\Level5.txt" />
+     <None Include="Assets\Resources\Level3.txt" />
      <None Include="Assets\Resources\Level2.txt" />
+     <None Include="Assets\Resources\Level2-old.txt" />
+     <None Include="Assets\Resources\Waves-old.txt" />
      <None Include="Assets\Resources\Waves.txt" />
      <None Include="Assets\Resources\Level1.txt" />
+     <None Include="Assets\Resources\Level1-old.txt" />
+     <None Include="Assets\Resources\Level4.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.3/UnityEngine.UI.dll</HintPath>
  </Reference>
