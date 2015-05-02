@@ -33,6 +33,8 @@ public class Player : MonoBehaviour
     public Sprite waterButtonImage;
     public Sprite fireSpecialAttackImage;
     public Sprite waterSpecialAttackImage;
+    public GameObject fireSpecialAttackEffect;
+    public GameObject waterSpecialAttackEffect;
 
 
 
@@ -69,6 +71,11 @@ public class Player : MonoBehaviour
     private int specialAttackChargeFinish = 0;
     private float earthquakeAttackCharge = 0;
     private float screamAttackCharge = 0;
+    private PolygonCollider2D specialAttackAreaCollider;
+    private float specialAreaMinX = float.MaxValue;
+    private float specialAreaMaxX = float.MinValue;
+    private float specialAreaMinY = float.MaxValue;
+    private float specialAreaMaxY = float.MinValue;
 
 
 
@@ -81,7 +88,7 @@ public class Player : MonoBehaviour
     void Awake()
     {
 
-       
+
 
         // Getting the object references
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
@@ -89,13 +96,15 @@ public class Player : MonoBehaviour
         healthBar = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<BarMovement>();
         manaBar = GameObject.FindGameObjectWithTag("ManaBar").GetComponent<BarMovement>();
         camShake = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>();
+        specialAttackAreaCollider = GameObject.FindGameObjectWithTag("SpecialAttackArea").GetComponent<PolygonCollider2D>();
+        getSpecialAttackAreaPoints();
 
         // Load from data file
         if (DataController.dataController != null)
         {
             loadFromDataController();
         }
-        
+
         // Get the Change Attack button and color
         changeAttackButton = GameObject.FindGameObjectWithTag("ChangeAttackButton");
         changeAttackButtonColor = new Color();
@@ -108,23 +117,26 @@ public class Player : MonoBehaviour
         GameObject[] specialAttackButtons = GameObject.FindGameObjectsWithTag("SpecialAttack");
         foreach (GameObject button in specialAttackButtons)
         {
-            if (button.name == "SpecialAttack"){
+            if (button.name == "SpecialAttack")
+            {
                 specialAttackButton = button.transform.FindChild("SpecialAttackButton").gameObject;
                 specialAttackAura = button.transform.FindChild("Aura").gameObject;
             }
-                
 
-            else if (button.name == "Earthquake") {
+
+            else if (button.name == "Earthquake")
+            {
                 earthquakeButton = button.transform.FindChild("EarthquakeButton").gameObject;
                 earthquakeAura = button.transform.FindChild("Aura").gameObject;
             }
-                
 
-            else if (button.name == "Scream") {
+
+            else if (button.name == "Scream")
+            {
                 screamAttackButton = button.transform.FindChild("ScreamButton").gameObject;
                 screamAttackAura = button.transform.FindChild("Aura").gameObject;
             }
-                
+
         }
 
         if (specialAttackButton != null)
@@ -158,6 +170,26 @@ public class Player : MonoBehaviour
         // Setting the attacks - setting as water and switching to fire;
         activeAttackType = DragonAttack.AttackType.Water;
         SwitchAttack();
+
+    }
+
+    private void getSpecialAttackAreaPoints()
+    {
+        foreach (Vector2 point in specialAttackAreaCollider.points)
+        {
+            if (point.x > specialAreaMaxX)
+                specialAreaMaxX = point.x;
+
+            if (point.y > specialAreaMaxY)
+                specialAreaMaxY = point.y;
+
+            if (point.x < specialAreaMinX)
+                specialAreaMinX = point.x;
+
+            if (point.y < specialAreaMinY)
+                specialAreaMinY = point.y;
+        }
+
 
     }
 
@@ -205,7 +237,7 @@ public class Player : MonoBehaviour
                 changeAttackButtonColor.a = 1.0f;
                 changeAttackButton.GetComponent<Image>().color = changeAttackButtonColor;
             }
-            
+
         }
 
         if (!specialAttackEnabled)
@@ -318,7 +350,7 @@ public class Player : MonoBehaviour
 
         if (!earthquakeEnabled)
             return;
-        
+
         currMana -= earthquakeManaCost;
         foreach (GameObject enemy in gameController.getAllEnemiesOnBoard())
         {
@@ -369,15 +401,38 @@ public class Player : MonoBehaviour
         }
 
     }
-    
+
     private void SpecialAttackFire()
     {
+
+        for (int i = 0; i < 20; i++)
+        {
+            float x = Random.Range(specialAreaMinX, specialAreaMaxX);
+            float y = Random.Range(specialAreaMinY, specialAreaMaxY);
+            if (specialAttackAreaCollider == Physics2D.OverlapPoint(new Vector2(x, y), LayerMask.GetMask("SpecialEffects")))
+            {
+                GameObject effect = (GameObject) Instantiate(fireSpecialAttackEffect, new Vector3(x - 1, y + 2, 0), transform.rotation);
+                effect.renderer.sortingLayerName = "Enemy";
+                
+            }
+        }
 
     }
 
     private void SpecialAttackWater()
     {
-
+        for (int i = 0; i < 20; i++)
+        {
+            float x = Random.Range(specialAreaMinX, specialAreaMaxX);
+            float y = Random.Range(specialAreaMinY, specialAreaMaxY);
+            if (specialAttackAreaCollider == Physics2D.OverlapPoint(new Vector2(x, y), LayerMask.GetMask("SpecialEffects")))
+            {
+                GameObject effect = (GameObject) Instantiate(waterSpecialAttackEffect, new Vector3(x, y, 0), transform.rotation);
+                effect.renderer.sortingLayerName = "Enemy";
+            }
+                
+            
+        }
     }
 
     public void AddMana()
@@ -418,7 +473,7 @@ public class Player : MonoBehaviour
         Sprite selectedButtonSprite;
         Sprite selectedSpecialAttackSprite;
         string selectedAttackText;
-        
+
         if (activeAttackType == DragonAttack.AttackType.Fire)
         {
             // Attack parameters
@@ -429,7 +484,7 @@ public class Player : MonoBehaviour
             activeAttackType = DragonAttack.AttackType.Water;
             selectedButtonSprite = fireButtonImage;
             selectedAttackText = "Fire";
-            
+
 
 
             // Special Attack parameters
@@ -440,7 +495,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            
+
             // Attack Parameters
             activeAttack = fireAttack;
             activeAttackDamage = fireAttackDamage;
@@ -458,7 +513,7 @@ public class Player : MonoBehaviour
         }
 
         changeAttackButtonEnabled = false;
-       
+
         // Change the attack button
         changeAttackButtonLastPress = Time.time;
         changeAttackButtonColor.a = 0.5f;
@@ -470,8 +525,8 @@ public class Player : MonoBehaviour
         specialAttackButtonImage.sprite = selectedSpecialAttackSprite;
         specialAttackButton.GetComponentInChildren<Text>().text = "" + activeSpecialAttackManaCost;
 
-        
-        
+
+
 
     }
 }

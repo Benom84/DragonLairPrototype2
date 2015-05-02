@@ -53,7 +53,6 @@ public class SpawnerManager : MonoBehaviour {
 
         levelNumber = gameController.currentLevel;
         startTime = Time.time;
-        Debug.Log("Level number is: " + levelNumber);
         GameObject.FindGameObjectWithTag("GameLevelText").GetComponent<Text>().text = "Level: " + levelNumber;
         
         // We read all the waves and get only this level waves and transfer to an array
