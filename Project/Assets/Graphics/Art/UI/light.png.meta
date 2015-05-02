@@ -1,0 +1,190 @@
+fileFormatVersion: 2
+guid: 43b57ccf6d24efb419c625027b75352a
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: light_0
+    21300002: light_1
+    21300004: light_2
+    21300006: light_3
+    21300008: light_4
+    21300010: light_5
+    21300012: light_6
+    21300014: light_7
+    21300016: light_8
+    21300018: light_9
+    21300020: light_10
+    21300022: light_11
+    21300024: light_12
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: light_0
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 18
+        width: 181
+        height: 181
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: light_1
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 15
+        width: 186
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: light_2
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 15
+        width: 187
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: light_3
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 14
+        width: 190
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: light_4
+      rect:
+        serializedVersion: 2
+        x: 811
+        y: 14
+        width: 189
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: light_5
+      rect:
+        serializedVersion: 2
+        x: 1011
+        y: 13
+        width: 191
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: light_6
+      rect:
+        serializedVersion: 2
+        x: 1213
+        y: 13
+        width: 189
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: light_7
+      rect:
+        serializedVersion: 2
+        x: 1412
+        y: 10
+        width: 193
+        height: 195
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: light_8
+      rect:
+        serializedVersion: 2
+        x: 1609
+        y: 8
+        width: 200
+        height: 199
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: light_9
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 10
+        width: 195
+        height: 195
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: light_10
+      rect:
+        serializedVersion: 2
+        x: 2011
+        y: 8
+        width: 200
+        height: 199
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: light_11
+      rect:
+        serializedVersion: 2
+        x: 2213
+        y: 10
+        width: 195
+        height: 195
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: light_12
+      rect:
+        serializedVersion: 2
+        x: 2411
+        y: 8
+        width: 200
+        height: 199
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 

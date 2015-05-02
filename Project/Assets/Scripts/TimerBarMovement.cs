@@ -74,7 +74,7 @@ public class TimerBarMovement : MonoBehaviour {
         this.maxValue = maxValue;
         if (timerText != null)
         {
-            timerText.text = "0 / " + maxValue;
+            timerText.text = "0/" + maxValue;
         }
             
     }
@@ -94,7 +94,7 @@ public class TimerBarMovement : MonoBehaviour {
 
         if (timerText != null)
         {
-            timerText.text = currValue + " / " + maxValue;
+            timerText.text = currValue + "/" + maxValue;
         }
             
 

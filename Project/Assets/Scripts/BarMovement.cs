@@ -4,30 +4,23 @@ using UnityEngine.UI;
 
 public class BarMovement : MonoBehaviour {
 
-	private int maxValue = 100;
+	
 	public int currValue;
+    private int maxValue = 100;
+    private Text valueText;
 
-	private RectTransform barTransform;
-	private float cachedY;
-	private float minXPosValue;
-	private float maxXPosValue;
+    void Start()
+    {
+        //valueText = GetComponentInChildren<Text>();
+    }
+    
+    void Awake () {
 
-	void Awake () {
-
-
-        barTransform = transform.GetComponent<RectTransform>();
-        cachedY = barTransform.anchoredPosition.y;
-
-        maxXPosValue = barTransform.anchoredPosition.x;
-        minXPosValue = maxXPosValue - barTransform.rect.width;
 
         maxValue = 100;
-        currValue = maxValue; 
+        currValue = maxValue;
+        valueText = GetComponentInChildren<Text>();
 	
-	}
-	
-	void Update () {
-        
 	}
 
 
@@ -41,17 +34,12 @@ public class BarMovement : MonoBehaviour {
 	public void setValue(int amount) {
         
 		currValue = amount;
+        if (valueText == null)
+            valueText = GetComponentInChildren<Text>();    
+        valueText.text = "" + amount;
 		float valuePercent = Mathf.Max(((1.0f * currValue) / (1.0f * maxValue)), 0.0f);
-		float newXPos = valuePercent * (maxXPosValue - minXPosValue) + minXPosValue;
-
-		if (barTransform != null)
-            barTransform.anchoredPosition = new Vector3 (newXPos, cachedY);
-
+        GetComponent<Image>().fillAmount = valuePercent;
 	
 	}
 
-    public void addToValue()
-    {
-        setValue(currValue + 1);
-    }
 }

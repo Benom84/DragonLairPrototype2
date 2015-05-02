@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
     public Sprite waterButtonImage;
     public Sprite fireSpecialAttackImage;
     public Sprite waterSpecialAttackImage;
+    public Sprite lockedAttack;
     public GameObject fireSpecialAttackEffect;
     public GameObject waterSpecialAttackEffect;
 
@@ -76,6 +77,9 @@ public class Player : MonoBehaviour
     private float specialAreaMaxX = float.MinValue;
     private float specialAreaMinY = float.MaxValue;
     private float specialAreaMaxY = float.MinValue;
+    private bool changeAttackButtonAvailable = false;
+    private bool screamAttackButtonAvailable = false;
+    private bool earthquakeButtonAvailable = false;
 
 
 
@@ -128,6 +132,10 @@ public class Player : MonoBehaviour
             {
                 earthquakeButton = button.transform.FindChild("EarthquakeButton").gameObject;
                 earthquakeAura = button.transform.FindChild("Aura").gameObject;
+                if (!earthquakeButtonAvailable)
+                {
+                    earthquakeButton.GetComponent<Image>().sprite = lockedAttack;
+                }
             }
 
 
@@ -135,25 +143,17 @@ public class Player : MonoBehaviour
             {
                 screamAttackButton = button.transform.FindChild("ScreamButton").gameObject;
                 screamAttackAura = button.transform.FindChild("Aura").gameObject;
+                if (!screamAttackButtonAvailable)
+                {
+                    screamAttackButton.GetComponent<Image>().sprite = lockedAttack;
+                }
             }
 
         }
 
-        if (specialAttackButton != null)
-        {
-            specialAttackButton.GetComponent<Image>().sprite = fireSpecialAttackImage;
-            specialAttackButton.GetComponentInChildren<Text>().text = "" + fireSpecialAttackManaCost;
-        }
 
-        if (earthquakeButton != null)
-        {
-            earthquakeButton.GetComponentInChildren<Text>().text = "" + earthquakeManaCost;
-        }
 
-        if (screamAttackButton != null)
-        {
-            screamAttackButton.GetComponentInChildren<Text>().text = "" + screamManaCost;
-        }
+        
 
 
 
@@ -169,7 +169,18 @@ public class Player : MonoBehaviour
 
         // Setting the attacks - setting as water and switching to fire;
         activeAttackType = DragonAttack.AttackType.Water;
-        SwitchAttack();
+        if (!changeAttackButtonAvailable)
+        {
+            changeAttackButtonAvailable = true;
+            SwitchAttack();
+            changeAttackButtonAvailable = false;
+            changeAttackButton.GetComponent<Image>().sprite = lockedAttack;
+        }
+        else
+        {
+            SwitchAttack();
+        }
+        
 
     }
 
@@ -323,7 +334,7 @@ public class Player : MonoBehaviour
         if (currMana < screamManaCost)
             return;
 
-        if (!screamAttackEnabled)
+        if (!screamAttackEnabled || !screamAttackButtonAvailable)
             return;
 
         currMana -= screamManaCost;
@@ -348,7 +359,7 @@ public class Player : MonoBehaviour
         if (currMana < earthquakeManaCost)
             return;
 
-        if (!earthquakeEnabled)
+        if (!earthquakeEnabled || !earthquakeButtonAvailable)
             return;
 
         currMana -= earthquakeManaCost;
@@ -464,7 +475,7 @@ public class Player : MonoBehaviour
 
     public void SwitchAttack()
     {
-        if (!changeAttackButtonEnabled)
+        if (!changeAttackButtonEnabled || !changeAttackButtonAvailable)
             return;
 
 
@@ -472,7 +483,6 @@ public class Player : MonoBehaviour
         Image specialAttackButtonImage = specialAttackButton.GetComponent<Image>();
         Sprite selectedButtonSprite;
         Sprite selectedSpecialAttackSprite;
-        string selectedAttackText;
 
         if (activeAttackType == DragonAttack.AttackType.Fire)
         {
@@ -483,8 +493,6 @@ public class Player : MonoBehaviour
             activeAttackDelay = waterAttackDelay;
             activeAttackType = DragonAttack.AttackType.Water;
             selectedButtonSprite = fireButtonImage;
-            selectedAttackText = "Fire";
-
 
 
             // Special Attack parameters
@@ -503,7 +511,6 @@ public class Player : MonoBehaviour
             activeAttackDelay = fireAttackDelay;
             activeAttackType = DragonAttack.AttackType.Fire;
             selectedButtonSprite = waterButtonImage;
-            selectedAttackText = "Water";
 
 
             // Special Attack parameters
@@ -519,11 +526,9 @@ public class Player : MonoBehaviour
         changeAttackButtonColor.a = 0.5f;
         attackButtonImage.sprite = selectedButtonSprite;
         attackButtonImage.color = changeAttackButtonColor;
-        changeAttackButton.GetComponentInChildren<Text>().text = selectedAttackText;
 
         // Change the special attack button
         specialAttackButtonImage.sprite = selectedSpecialAttackSprite;
-        specialAttackButton.GetComponentInChildren<Text>().text = "" + activeSpecialAttackManaCost;
 
 
 
