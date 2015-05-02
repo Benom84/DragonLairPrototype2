@@ -57,10 +57,13 @@ public class Player : MonoBehaviour
     private double changeAttackButtonLastPress;
     private Color changeAttackButtonColor;
     private GameObject specialAttackButton;
+    private GameObject specialAttackAura;
     private bool specialAttackEnabled = true;
     private GameObject earthquakeButton;
+    private GameObject earthquakeAura;
     private bool earthquakeEnabled = true;
     private GameObject screamAttackButton;
+    private GameObject screamAttackAura;
     private bool screamAttackEnabled = true;
     private float specialAttackCharge = 0;
     private int specialAttackChargeFinish = 0;
@@ -105,14 +108,23 @@ public class Player : MonoBehaviour
         GameObject[] specialAttackButtons = GameObject.FindGameObjectsWithTag("SpecialAttack");
         foreach (GameObject button in specialAttackButtons)
         {
-            if (button.name == "SpecialAttackButton")
-                specialAttackButton = button;
+            if (button.name == "SpecialAttack"){
+                specialAttackButton = button.transform.FindChild("SpecialAttackButton").gameObject;
+                specialAttackAura = button.transform.FindChild("Aura").gameObject;
+            }
+                
 
-            else if (button.name == "EarthquakeButton")
-                earthquakeButton = button;
+            else if (button.name == "Earthquake") {
+                earthquakeButton = button.transform.FindChild("EarthquakeButton").gameObject;
+                earthquakeAura = button.transform.FindChild("Aura").gameObject;
+            }
+                
 
-            else if (button.name == "ScreamButton")
-                screamAttackButton = button;
+            else if (button.name == "Scream") {
+                screamAttackButton = button.transform.FindChild("ScreamButton").gameObject;
+                screamAttackAura = button.transform.FindChild("Aura").gameObject;
+            }
+                
         }
 
         if (specialAttackButton != null)
@@ -143,13 +155,9 @@ public class Player : MonoBehaviour
         manaBar.setValue(currMana);
 
 
-        // Setting the attacks
-        activeAttack = fireAttack;
-        activeAttackDamage = fireAttackDamage;
-        activeAttackDelay = fireAttackDelay;
-        activeAttackType = DragonAttack.AttackType.Fire;
-        activeSpecialAttackDamage = fireSpecialAttackDamage;
-        activeSpecialAttackManaCost = fireSpecialAttackManaCost;
+        // Setting the attacks - setting as water and switching to fire;
+        activeAttackType = DragonAttack.AttackType.Water;
+        SwitchAttack();
 
     }
 
@@ -204,7 +212,7 @@ public class Player : MonoBehaviour
         {
             specialAttackCharge += 1.0f / specialAttackChargeTime;
             float chargeAmount = Mathf.Min(specialAttackCharge / specialAttackChargeFinish, 1.0f);
-            specialAttackButton.GetComponent<Image>().fillAmount = chargeAmount;
+            specialAttackAura.GetComponent<Image>().fillAmount = chargeAmount;
             if (chargeAmount >= 1.0f)
                 specialAttackEnabled = true;
         }
@@ -213,7 +221,7 @@ public class Player : MonoBehaviour
         {
             earthquakeAttackCharge += 1.0f / specialAttackChargeTime;
             float chargeAmount = Mathf.Min(earthquakeAttackCharge / earthquakeManaCost, 1.0f);
-            earthquakeButton.GetComponent<Image>().fillAmount = chargeAmount;
+            earthquakeAura.GetComponent<Image>().fillAmount = chargeAmount;
             if (chargeAmount >= 1.0f)
                 earthquakeEnabled = true;
         }
@@ -222,7 +230,7 @@ public class Player : MonoBehaviour
         {
             screamAttackCharge += 1.0f / specialAttackChargeTime;
             float chargeAmount = Mathf.Min(screamAttackCharge / screamManaCost, 1.0f);
-            screamAttackButton.GetComponent<Image>().fillAmount = chargeAmount;
+            screamAttackAura.GetComponent<Image>().fillAmount = chargeAmount;
             if (chargeAmount >= 1.0f)
                 screamAttackEnabled = true;
         }
@@ -419,8 +427,9 @@ public class Player : MonoBehaviour
             activeAttackSpeed = waterAttackSpeed;
             activeAttackDelay = waterAttackDelay;
             activeAttackType = DragonAttack.AttackType.Water;
-            selectedButtonSprite = waterButtonImage;
-            selectedAttackText = "Water";
+            selectedButtonSprite = fireButtonImage;
+            selectedAttackText = "Fire";
+            
 
 
             // Special Attack parameters
@@ -438,9 +447,9 @@ public class Player : MonoBehaviour
             activeAttackSpeed = fireAttackSpeed;
             activeAttackDelay = fireAttackDelay;
             activeAttackType = DragonAttack.AttackType.Fire;
-            selectedButtonSprite = fireButtonImage;
-            selectedSpecialAttackSprite = fireSpecialAttackImage;
-            selectedAttackText = "Fire";
+            selectedButtonSprite = waterButtonImage;
+            selectedAttackText = "Water";
+
 
             // Special Attack parameters
             selectedSpecialAttackSprite = fireSpecialAttackImage;

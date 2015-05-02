@@ -55,11 +55,13 @@ public class Enemy : MonoBehaviour
         ColorHandler(healthBar, 0.0f);
 
         healthOutline = transform.Find("ui_healthDisplay/Enemy_HealthOutline").GetComponent<SpriteRenderer>();
+        healthOutline.sortingOrder = GetComponent<SpriteRenderer>().sortingOrder;
         ColorHandler(healthOutline, 0.0f);
 
 
         healthScale = healthBar.transform.localScale;
         healthBar.transform.localScale = new Vector3(healthScale.x * health / maxHealth, 1, 1);
+        healthBar.sortingOrder = GetComponent<SpriteRenderer>().sortingOrder;
 
 
         animator = gameObject.GetComponent<Animator>();

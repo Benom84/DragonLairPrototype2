@@ -21,8 +21,11 @@ public class DragonAttack : MonoBehaviour {
         if (collider.gameObject.tag == "Enemy")
         {
 
+            GameObject explosionEffect = (GameObject)Instantiate(explosion, new Vector3(transform.position.x, transform.position.y, -1), transform.rotation);
+            explosionEffect.renderer.sortingLayerName = "Enemy";
+            explosionEffect.renderer.sortingOrder = collider.gameObject.renderer.sortingOrder;
+            
             collider.gameObject.GetComponent<Enemy>().Hit(attackDamage, attackType);
-            Instantiate(explosion, new Vector3(transform.position.x, transform.position.y, -1), transform.rotation);
             GameObject.Destroy(gameObject);
         }
 
