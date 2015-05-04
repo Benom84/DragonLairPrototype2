@@ -14,42 +14,47 @@ public class DataController : MonoBehaviour {
     public int crystals = 3;
 
     //general upgrades
-    public int p_cave = 100;
-    public int m_scream = 12;
-    public int m_earthquake = 50;
+    public int m_screamData = 12;
+    public int m_earthquakeData = 50; //earthquake or tail?
+    public int p_caveData = 50;
+    public int b_damageData = 50;
+    public int b_agilityData = 50;
+    public int b_heavenlyFireData = 50;
+    public int b_frozenSkyData = 50;
+    public int b_thunderData = 50;
+    public int b_cursedBreathData = 50;
+    public int m_meteorData = 50;
+    public int m_iceData = 50;
 
-    //fire upgrades
-    public int b_fireDamage = 50;
-    public int b_fireRange = 10;
-    public int b_fireHeavnlyFire = 50;
-    public int b_fireThunder = 50;
-    public int p_fireLava = 50;
-    public int m_fireMeteor = 50;
+    public int m_screamLevel = 0;
+    public int m_earthquakeLevel = 0; //earthquake or tail?
+    public int p_caveLevel = 0;
+    public int b_damageLevel = 1;
+    public int b_agilityLevel = 1;
+    public int b_heavenlyFireLevel = 0;
+    public int b_frozenSkyLevel = 0;
+    public int b_thunderLevel = 0;
+    public int b_cursedBreathLevel = 0;
+    public int m_meteorLevel = 0;
+    public int m_iceLevel = 0;
 
-    //air upgrades
-    public int b_airDamage = 50;
-    public int b_airRange = 10;
-    public int b_airSkyFall = 50;
-    public int b_airCursedBreath = 50;
-    public int p_airTornado = 50;
-    public int m_airTornado = 50;
+    public int[] upgradesLevel;
+    public int[] upgradesData;
 
-    //water upgrades
-    public int b_waterDamage = 50;
-    public int b_waterRange = 10;
-    public int b_waterFrozenSky = 50;
-    public int b_waterCursedBreath = 50;
-    public int p_waterIceWall = 50;
-    public int m_waterMist = 50;
-
-    public DragonAttack.AttackType attackType;
 
     //info to pass from level to victory/lose scene
     public int kills = 0;
     public int life = 0;
     public int coinsFromStage = 0;
+    public int bonusCoinsFromStage = 0;
     public int crystalsFromStage = 0;
     public bool won = false;
+
+    public int delayBetweenDragonBreath = 100;
+    public int screamManaValue = 20;
+    public int meteorManaValue = 20;
+    public int iceManaValue = 20;
+    public int earthquakeManaValue = 20;
 
 	void Awake () {
         if (dataController == null)
@@ -61,44 +66,56 @@ public class DataController : MonoBehaviour {
         {
             Destroy(gameObject);
         }
+
+        upgradesLevel = new int[] { b_damageLevel, b_agilityLevel, b_heavenlyFireLevel, b_frozenSkyLevel, b_thunderLevel, b_cursedBreathLevel,
+            p_caveLevel, m_screamLevel, m_meteorLevel, m_iceLevel, m_earthquakeLevel };
+
+        upgradesLevel = new int[] { b_damageData, b_agilityData, b_heavenlyFireData, b_frozenSkyData, b_thunderData, b_cursedBreathData,
+            p_caveData, m_screamData, m_meteorData, m_iceData, m_earthquakeData };
 	}
 
     public void Save()
     {
         BinaryFormatter binaryFormatter = new BinaryFormatter();
-        FileStream playerDataFile = File.Create(Application.persistentDataPath + "/playerInfo.dat");
+        FileStream playerDataFile;
+        if (!File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
+        {
+            playerDataFile = File.Create(Application.persistentDataPath + "/playerInfo.dat");
+        }
+        else
+        {
+            playerDataFile = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
+        }
+        
 
         PlayerData data = new PlayerData();
         data.level = level;
         data.coins = coins;
         data.crystals = crystals;
 
-        data.p_cave = p_cave;
-        data.m_scream = m_scream;
-        data.m_earthquake = m_earthquake;
-
-        data.b_fireDamage = b_fireDamage;
-        data.b_fireRange = b_fireRange;
-        data.b_fireHeavnlyFire = b_fireHeavnlyFire;
-        data.b_fireThunder = b_fireThunder;
-        data.p_fireLava = p_fireLava;
-        data.m_fireMeteor = m_fireMeteor;
-
-        data.b_airDamage = b_airDamage;
-        data.b_airRange = b_airRange;
-        data.b_airSkyFall = b_airSkyFall;
-        data.b_airCursedBreath = b_airCursedBreath;
-        data.p_airTornado = p_airTornado;
-        data.m_airTornado = m_airTornado;
-
-        data.b_waterDamage = b_waterDamage;
-        data.b_waterRange = b_waterRange;
-        data.b_waterFrozenSky = b_waterFrozenSky;
-        data.b_waterCursedBreath = b_waterCursedBreath;
-        data.p_waterIceWall = p_waterIceWall;
-        data.m_waterMist = m_waterMist;
-
-        data.attackType = attackType;
+        data.b_damageLevel = b_damageLevel;
+        data.b_agilityLevel = b_agilityLevel;
+        data.b_heavenlyFireLevel = b_heavenlyFireLevel;
+        data.b_frozenSkyLevel = b_frozenSkyLevel;
+        data.b_thunderLevel = b_thunderLevel;
+        data.b_cursedBreathLevel = b_cursedBreathLevel;
+        data.p_caveLevel = p_caveLevel;
+        data.m_screamLevel = m_screamLevel;
+        data.m_meteorLevel = m_meteorLevel;
+        data.m_iceLevel = m_iceLevel;
+        data.m_earthquakeLevel = m_earthquakeLevel;
+        
+        data.b_damageData = b_damageData;
+        data.b_agilityData = b_agilityData;
+        data.b_heavenlyFireData = b_heavenlyFireData;
+        data.b_frozenSkyData = b_frozenSkyData;
+        data.b_thunderData = b_thunderData;
+        data.b_cursedBreathData = b_cursedBreathData;
+        data.p_caveData = p_caveData;
+        data.m_screamData = m_screamData;
+        data.m_meteorData = m_meteorData;
+        data.m_iceData = m_iceData;
+        data.m_earthquakeData = m_earthquakeData;
 
         binaryFormatter.Serialize(playerDataFile, data);
         playerDataFile.Close();
@@ -115,32 +132,34 @@ public class DataController : MonoBehaviour {
             PlayerData data = (PlayerData) binaryFormatter.Deserialize(playerDataFile);
             playerDataFile.Close();
 
-            p_cave = data.p_cave;
-            m_scream = data.m_scream;
-            m_earthquake = data.m_earthquake;
+            level = data.level;
+            coins = data.coins;
+            crystals = data.crystals;
 
-            b_fireDamage = data.b_fireDamage;
-            b_fireRange = data.b_fireRange;
-            b_fireHeavnlyFire = data.b_fireHeavnlyFire;
-            b_fireThunder = data.b_fireThunder;
-            p_fireLava = data.p_fireLava;
-            m_fireMeteor = data.m_fireMeteor;
+            b_damageLevel = data.b_damageLevel;
+            b_agilityLevel = data.b_agilityLevel;
+            b_heavenlyFireLevel = data.b_heavenlyFireLevel;
+            b_frozenSkyLevel = data.b_frozenSkyLevel;
+            b_thunderLevel = data.b_thunderLevel;
+            b_cursedBreathLevel = data.b_cursedBreathLevel;
+            p_caveLevel = data.p_caveLevel;
+            m_screamLevel = data.m_screamLevel;
+            m_meteorLevel = data.m_meteorLevel;
+            m_iceLevel = data.m_iceLevel;
+            m_earthquakeLevel = data.m_earthquakeLevel;
 
-            b_airDamage = data.b_airDamage;
-            b_airRange = data.b_airRange;
-            b_airSkyFall = data.b_airSkyFall;
-            b_airCursedBreath = data.b_airCursedBreath;
-            p_airTornado = data.p_airTornado;
-            m_airTornado = data.m_airTornado;
+            b_damageData = data.b_damageData;
+            b_agilityData = data.b_agilityData;
+            b_heavenlyFireData = data.b_heavenlyFireData;
+            b_frozenSkyData = data.b_frozenSkyData;
+            b_thunderData = data.b_thunderData;
+            b_cursedBreathData = data.b_cursedBreathData;
+            p_caveData = data.p_caveData;
+            m_screamData = data.m_screamData;
+            m_meteorData = data.m_meteorData;
+            m_iceData = data.m_iceData;
+            m_earthquakeData = data.m_earthquakeData;
 
-            b_waterDamage = data.b_waterDamage;
-            b_waterRange = data.b_waterRange;
-            b_waterFrozenSky = data.b_waterFrozenSky;
-            b_waterCursedBreath = data.b_waterCursedBreath;
-            p_waterIceWall = data.p_waterIceWall;
-            m_waterMist = data.m_waterMist;
-
-            attackType = data.attackType;
         }
     }
 }
@@ -152,54 +171,27 @@ class PlayerData
     public int coins;
     public int crystals;
 
-    public int p_cave;
-    public int m_scream;
-    public int m_earthquake;
+    public int m_screamData;
+    public int m_earthquakeData; //earthquake or tail?
+    public int p_caveData;
+    public int b_damageData;
+    public int b_agilityData;
+    public int b_heavenlyFireData;
+    public int b_frozenSkyData;
+    public int b_thunderData;
+    public int b_cursedBreathData;
+    public int m_meteorData;
+    public int m_iceData;
 
-    public int b_fireDamage;
-    public int b_fireRange;
-    public int b_fireHeavnlyFire;
-    public int b_fireThunder;
-    public int p_fireLava;
-    public int m_fireMeteor;
-
-    public int b_airDamage;
-    public int b_airRange;
-    public int b_airSkyFall;
-    public int b_airCursedBreath;
-    public int p_airTornado;
-    public int m_airTornado;
-
-    public int b_waterDamage;
-    public int b_waterRange;
-    public int b_waterFrozenSky;
-    public int b_waterCursedBreath;
-    public int p_waterIceWall;
-    public int m_waterMist;
-
-    public DragonAttack.AttackType attackType;
-
+    public int m_screamLevel;
+    public int m_earthquakeLevel; //earthquake or tail?
+    public int p_caveLevel;
+    public int b_damageLevel;
+    public int b_agilityLevel;
+    public int b_heavenlyFireLevel;
+    public int b_frozenSkyLevel;
+    public int b_thunderLevel;
+    public int b_cursedBreathLevel;
+    public int m_meteorLevel;
+    public int m_iceLevel;
 }
-
-
-//class AttackTypeDefinition
-//{
-  //  public enum AttackTypeDefinition { Air, Fire, Water };
-//
-  //  public int damage;
-    //public int range;
-   // public int firstBreathSpecial;
-   // public int secondBreathSpecial;
-
-   // public int cave;
-   // public int protectSpecial;
-
-  //  public int scream;
-    //public int magicSpecial;
-//    public int earthquake;
-
-  //  public AttackTypeDefinition(AttackTypeDefinition type)
-    //{
-
-    //}
-//}

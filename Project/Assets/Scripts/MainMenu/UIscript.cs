@@ -3,16 +3,34 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class UIscript : MonoBehaviour
-{   
-    private GameObject AirBreathCanvas;
-    private GameObject AirMagicCanvas;
-    private GameObject AirProtectCanvas;
-    private GameObject FireBreathCanvas;
-    private GameObject FireMagicCanvas;
-    private GameObject FireProtectCanvas;
-    private GameObject WaterBreathCanvas;
-    private GameObject WaterMagicCanvas;
-    private GameObject WaterProtectCanvas;
+{
+    private const int amountOfCanvases = 3;
+    
+    //store stuff
+    private GameObject WaterBreathCanvas; //old
+    private GameObject WaterMagicCanvas;//old
+    private GameObject WaterProtectCanvas;//old
+    private GameObject FireBreathCanvas;//old
+    private GameObject FireMagicCanvas;//old
+    private GameObject FireProtectCanvas;//old
+
+    private GameObject BreathCanvas;
+    private GameObject LifeCanvas;
+    private GameObject MagicCanvas;
+
+    private GameObject Damage;
+    private GameObject Agility;
+    private GameObject HeavenlyFire;
+    private GameObject Thunder;
+    private GameObject FrozenSky;
+    private GameObject CursedBreath;
+    private GameObject Cave;
+    private GameObject Scream;
+    private GameObject Meteor;
+    private GameObject Ice;
+    private GameObject Earthquake;
+
+    private GameObject[] buttons;
 
     private GameObject NotEnoughMoneyCanvas;
 
@@ -25,22 +43,34 @@ public class UIscript : MonoBehaviour
     private Text[] totalCrystalsText;
 
     private bool damage;
-    private bool range;
-    private bool firstBreathSpecial;
-    private bool secondBreathSpecial;
-    private bool scream;
-    private bool magicSpecial;
-    private bool earthquake;
+    private bool agility;
+    private bool heavenlyFire;
+    private bool frozenSky;
+    private bool thunder;
+    private bool cursedBreath;
     private bool cave;
-    private bool protectSpecial;
+    private bool scream;
+    private bool meteor;
+    private bool ice;
+    private bool earthquake;
 
-    private bool[] selectUpgraded;
+    private bool[] selectUpgradeToUpgrade;
 
+    private bool[] isUnlocked;
+
+    public Sprite lockedUpgrade;
+    public Sprite selectedUpgrade;
+    public Sprite regurlarUpgrade;
+
+
+    //win/lose stuff
     private Text stageStatus;
     private Text numOfKills;
     private Text percentageOfLife;
     private Text coinsBonus;
     private Text crystalsBonus;
+
+    
 
     public void Start()
     {
@@ -50,46 +80,46 @@ public class UIscript : MonoBehaviour
         }
         else if (gameObject.tag == "Store")
         {
+            //canvases
+            WaterBreathCanvas = GameObject.Find("WaterBreathCanvas");//old
+            WaterMagicCanvas = GameObject.Find("WaterMagicCanvas");//old
+            WaterProtectCanvas = GameObject.Find("WaterProtectCanvas");//old
+            FireBreathCanvas = GameObject.Find("FireBreathCanvas");//old
+            FireMagicCanvas = GameObject.Find("FireMagicCanvas");//old
+            FireProtectCanvas = GameObject.Find("FireProtectCanvas");//old
+            NotEnoughMoneyCanvas = GameObject.Find("NotEnoughMoneyCanvas");//old
 
-            AirBreathCanvas = GameObject.Find("AirBreathCanvas");
-            AirMagicCanvas = GameObject.Find("AirMagicCanvas");
-            AirProtectCanvas = GameObject.Find("AirProtectCanvas");
-            FireBreathCanvas = GameObject.Find("FireBreathCanvas");
-            FireMagicCanvas = GameObject.Find("FireMagicCanvas");
-            FireProtectCanvas = GameObject.Find("FireProtectCanvas");
-            WaterBreathCanvas = GameObject.Find("WaterBreathCanvas");
-            WaterMagicCanvas = GameObject.Find("WaterMagicCanvas");
-            WaterProtectCanvas = GameObject.Find("WaterProtectCanvas");
-            NotEnoughMoneyCanvas = GameObject.Find("NotEnoughMoneyCanvas");
-
-            canvases = new GameObject[9] { AirBreathCanvas, AirMagicCanvas, AirProtectCanvas, 
-                FireBreathCanvas, FireMagicCanvas, FireProtectCanvas, WaterBreathCanvas, WaterMagicCanvas, WaterProtectCanvas };
+            BreathCanvas = GameObject.Find("BreathCanvas");
+            LifeCanvas = GameObject.Find("LifeCanvas");
+            MagicCanvas = GameObject.Find("MagicCanvas");
+            
+            canvases = new GameObject[] { BreathCanvas, LifeCanvas, MagicCanvas };
 
             NotEnoughMoneyCanvas.SetActive(false);
 
-            totalCoins = GameObject.FindGameObjectsWithTag("TotalCoins");
-            totalCrystals = GameObject.FindGameObjectsWithTag("TotalCrystals");
-
+            //select upgrade to upgrade
             damage = true;
-            range = false;
-            firstBreathSpecial = false;
-            secondBreathSpecial = false;
-            scream = false;
-            magicSpecial = false;
-            earthquake = false;
+            agility = false;
+            heavenlyFire = false;
+            frozenSky = false;
+            thunder = false;
+            cursedBreath = false;
             cave = false;
-            protectSpecial = false;
+            scream = false;
+            ice = false;
+            earthquake = false;
 
-            selectUpgraded = new bool[9] { damage, range, firstBreathSpecial, secondBreathSpecial, 
-                scream, magicSpecial, earthquake, cave, protectSpecial };
-
+            selectUpgradeToUpgrade = new bool[] { damage, agility, heavenlyFire, frozenSky, 
+                thunder, cursedBreath, cave, scream, ice, earthquake };
+            
+            //coins and crystals
             totalCoins = GameObject.FindGameObjectsWithTag("TotalCoins");
             totalCrystals = GameObject.FindGameObjectsWithTag("TotalCrystals");
 
-            totalCoinsText = new Text[9];
-            totalCrystalsText = new Text[9];
+            totalCoinsText = new Text[amountOfCanvases];
+            totalCrystalsText = new Text[amountOfCanvases];
 
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < amountOfCanvases; i++)
             {
                 totalCoinsText[i] = totalCoins[i].GetComponent<Text>();
                 totalCrystalsText[i] = totalCrystals[i].GetComponent<Text>();
@@ -105,24 +135,59 @@ public class UIscript : MonoBehaviour
                 text.text = "" + DataController.dataController.crystals;
             }
 
-            for (int i = 0; i < 9; i++)
+            Damage = GameObject.Find("Damage");
+            Agility = GameObject.Find("Agility");
+            HeavenlyFire = GameObject.Find("HeavenlyFire");
+            Thunder = GameObject.Find("Thunder");
+            FrozenSky = GameObject.Find("FrozenSky");
+            CursedBreath = GameObject.Find("CursedBreath");
+            Cave = GameObject.Find("Cave");
+            Scream = GameObject.Find("Scream");
+            Meteor = GameObject.Find("Meteor");
+            Ice = GameObject.Find("Ice");
+            Earthquake = GameObject.Find("Earthquake");
+
+            buttons = new GameObject[] { Damage, Agility, HeavenlyFire, FrozenSky, Thunder,
+                CursedBreath, Cave, Scream, Meteor, Ice, Earthquake};
+
+            isUnlocked = new bool[11];
+
+            for (int i = 0; i < isUnlocked.Length; i++)
             {
-                canvases[i].SetActive(false);
+                isUnlocked[i] = true;
             }
 
-            switch (DataController.dataController.attackType)
+            //if conditions to unlock the upgrades
+            if (DataController.dataController.level < 5)
             {
-                case DragonAttack.AttackType.Air:
-                    AirBreathCanvas.SetActive(true);
-                    break;
-                case DragonAttack.AttackType.Fire:
-                    FireBreathCanvas.SetActive(true);
-                    break;
-                case DragonAttack.AttackType.Water:
-                    WaterBreathCanvas.SetActive(true);
-                    break;
+                isUnlocked[2] = false;
+                isUnlocked[3] = false;
+                isUnlocked[4] = false;
+                isUnlocked[5] = false;
             }
 
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                if (isUnlocked[i] && DataController.dataController.upgradesLevel[i] != 0)
+                {
+                    buttons[i].GetComponent<Image>().sprite = regurlarUpgrade;
+                    buttons[i].transform.FindChild("LevelNumber").GetComponent<Text>().text = DataController.dataController.upgradesLevel[i].ToString();
+                }
+                else
+                {
+                    buttons[i].GetComponent<Image>().sprite = lockedUpgrade;
+                    buttons[i].transform.FindChild("Name").GetComponent<Text>().font.material.color = Color.gray;
+                    buttons[i].transform.FindChild("LevelNumber").GetComponent<Text>().text = "";
+                }
+            }
+
+                for (int i = 0; i < amountOfCanvases; i++)
+                {
+                    canvases[i].SetActive(false);
+                }
+
+            BreathCanvas.SetActive(true);
+            
         }
         else if (gameObject.tag == "WinOrLose")
         {
@@ -155,8 +220,13 @@ public class UIscript : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
-        Application.LoadLevel(sceneName);
         DataController.dataController.Save();
+        Application.LoadLevel(sceneName);
+    }
+
+    public void QuitApplication()
+    {
+        Application.Quit();
     }
 
     public void SwitchCanvas(int canvasNumber)
@@ -165,169 +235,80 @@ public class UIscript : MonoBehaviour
         {
             canvas.SetActive(false);
         }
-        canvases[canvasNumber - 1].SetActive(true);
-        for (int i = 0; i < 9; i++)
-        {
-            selectUpgraded[i] = false;
-        }
-        if (canvasNumber == 1 || canvasNumber == 4 || canvasNumber == 7)
-        {
-            selectUpgraded[0] = true;
-        }
-        else if (canvasNumber % 3 == 0)
-        {
-            selectUpgraded[7] = true;
-        }
-        else
-        {
-            selectUpgraded[5] = true;
-        }
-    }
 
-    public void LoadAttack(string attackName)
-    {
-        switch (attackName)
+        canvases[canvasNumber - 1].SetActive(true);
+        for (int i = 0; i < selectUpgradeToUpgrade.Length; i++)
         {
-            case "Air":
-                DataController.dataController.attackType = DragonAttack.AttackType.Air;
-                break;
-            case "Fire":
-                DataController.dataController.attackType = DragonAttack.AttackType.Fire;
-                break;
-            case "Water":
-                DataController.dataController.attackType = DragonAttack.AttackType.Water;
-                break;
+            selectUpgradeToUpgrade[i] = false;
         }
+
+        //if (canvasNumber == 1 || canvasNumber == 4)
+        //{
+            //selectUpgradeToUpgrade[0] = true;
+        //}
+        //else if (canvasNumber % 3 == 0)
+        //{
+          //  selectUpgradeToUpgrade[7] = true;
+       // }
+        //else
+       // {
+         //   selectUpgraded[5] = true;
+        //}
     }
 
     public void ChooseToUpgrade(int numberOfUpgraded)
     {
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < selectUpgradeToUpgrade.Length; i++)
         {
-            selectUpgraded[i] = false;
+            selectUpgradeToUpgrade[i] = false;
+            if (isUnlocked[i])
+            {
+                buttons[i].GetComponent<Image>().sprite = regurlarUpgrade;
+            } 
         }
-        selectUpgraded[numberOfUpgraded - 1] = true;
+        if (isUnlocked[numberOfUpgraded - 1])
+        {
+            selectUpgradeToUpgrade[numberOfUpgraded - 1] = true;
+            buttons[numberOfUpgraded - 1].GetComponent<Image>().sprite = selectedUpgrade;
+        }
+        
+
     }
 
     public void Upgrade()
     {
+        GameObject buttonToUpgrade = null;
+
+
+
+
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            if (selectUpgradeToUpgrade[i])
+            {
+                buttonToUpgrade = buttons[i];
+                break;
+            }
+        }
+        
+        //here comes enough money/enough crystals check
+        
+
+
         int numberToBeUpgraded = 0;
 
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < 6; i++)
         {
-            if (selectUpgraded[i])
+            if (selectUpgradeToUpgrade[i])
             {
                 numberToBeUpgraded = i + 1;
                 break;
             }
         }
-        if (EnoughMoney(1))
+
+        if (EnoughMoney(0))
         {
-            if (DataController.dataController.attackType == DragonAttack.AttackType.Air)
-            {
-                switch (numberToBeUpgraded)
-                {
-                    case 1:
-                        DataController.dataController.b_airDamage++;
-                        break;
-                    case 2:
-                        DataController.dataController.b_airRange++;
-                        break;
-                    case 3:
-                        DataController.dataController.b_airSkyFall++;
-                        break;
-                    case 4:
-                        DataController.dataController.b_airCursedBreath++;
-                        break;
-                    case 5:
-                        DataController.dataController.m_scream++;
-                        break;
-                    case 6:
-                        DataController.dataController.m_airTornado++;
-                        break;
-                    case 7:
-                        DataController.dataController.m_earthquake++;
-                        break;
-                    case 8:
-                        DataController.dataController.p_cave++;
-                        break;
-                    case 9:
-                        DataController.dataController.p_airTornado++;
-                        break;
-                }
-            }
-            else if (DataController.dataController.attackType == DragonAttack.AttackType.Fire)
-            {
-                switch (numberToBeUpgraded)
-                {
-                    case 1:
-                        DataController.dataController.b_fireDamage++;
-                        break;
-                    case 2:
-                        DataController.dataController.b_fireRange++;
-                        break;
-                    case 3:
-                        DataController.dataController.b_fireHeavnlyFire++;
-                        break;
-                    case 4:
-                        DataController.dataController.b_fireThunder++;
-                        break;
-                    case 5:
-                        DataController.dataController.m_scream++;
-                        break;
-                    case 6:
-                        DataController.dataController.m_fireMeteor++;
-                        break;
-                    case 7:
-                        DataController.dataController.m_earthquake++;
-                        break;
-                    case 8:
-                        DataController.dataController.p_cave++;
-                        break;
-                    case 9:
-                        DataController.dataController.p_fireLava++;
-                        break;
-                }
-            }
-            else if (DataController.dataController.attackType == DragonAttack.AttackType.Water)
-            {
-                switch (numberToBeUpgraded)
-                {
-                    case 1:
-                        DataController.dataController.b_waterDamage++;
-                        break;
-                    case 2:
-                        DataController.dataController.b_waterRange++;
-                        break;
-                    case 3:
-                        DataController.dataController.b_waterFrozenSky++;
-                        break;
-                    case 4:
-                        DataController.dataController.b_waterCursedBreath++;
-                        break;
-                    case 5:
-                        DataController.dataController.m_scream++;
-                        break;
-                    case 6:
-                        DataController.dataController.m_waterMist++;
-                        break;
-                    case 7:
-                        DataController.dataController.m_earthquake++;
-                        break;
-                    case 8:
-                        DataController.dataController.p_cave++;
-                        break;
-                    case 9:
-                        DataController.dataController.p_waterIceWall++;
-                        break;
-                }
-            }
-            DataController.dataController.coins--;
-            foreach (Text text in totalCoinsText)
-            {
-                text.text = "" + DataController.dataController.coins;
-            }
-            DataController.dataController.Save();
+            
         }
         else
         {

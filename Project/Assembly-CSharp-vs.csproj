@@ -83,7 +83,7 @@
      <None Include="Assets\Resources\Level1-old.txt" />
      <None Include="Assets\Resources\Level4.txt" />
  <Reference Include="Assembly-UnityScript-firstpass">
- <HintPath>C:/Data/GitHub/DragonLairPrototype2/Project/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
+ <HintPath>C:/Users/Thalia/Desktop/CS/Second Year/Ingame/Game 4/DragonLairPrototype2/Project/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.3/UnityEngine.UI.dll</HintPath>

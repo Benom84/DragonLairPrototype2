@@ -216,14 +216,14 @@ public class Player : MonoBehaviour
         fireAttackSpeed = DataController.dataController.b_fireRange * 1.0f;
         fireAttackDamage = DataController.dataController.b_fireDamage;
         fireAttackDelay = activeAttackDelay;
-        fireSpecialAttackDamage = DataController.dataController.b_airSkyFall;
+        fireSpecialAttackDamage = DataController.dataController.m_fireMeteor;
         fireSpecialAttackManaCost = activeSpecialAttackManaCost;
 
         // Load Water Input
         waterAttackSpeed = DataController.dataController.b_waterRange * 1.0f;
         waterAttackDamage = DataController.dataController.b_waterDamage;
         waterAttackDelay = activeAttackDelay;
-        waterSpecialAttackDamage = DataController.dataController.b_airCursedBreath;
+        waterSpecialAttackDamage = DataController.dataController.m_waterIce;
         waterSpecialAttackManaCost = activeSpecialAttackManaCost;
 
     }
