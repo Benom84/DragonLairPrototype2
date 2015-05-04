@@ -27,6 +27,7 @@ public class DataController : MonoBehaviour {
     public int b_cursedBreathData = 50;
     public int m_meteorData = 50;
     public int m_iceData = 50;
+    public int m_specialAttackData = 100;
 
     public int m_screamLevel = 0;
     public int m_earthquakeLevel = 0; //earthquake or tail?
@@ -41,8 +42,10 @@ public class DataController : MonoBehaviour {
     public int b_cursedBreathLevel = 0;
     public int m_meteorLevel = 0;
     public int m_iceLevel = 0;
+    public int m_specialAttackLevel = 0;
 
     public int[] upgradesLevel;
+    public float[] upgradesData;
 
     public bool isWaterUnlocked;
 
@@ -72,7 +75,10 @@ public class DataController : MonoBehaviour {
         }
 
         upgradesLevel = new int[] { b_fireDamageLevel, b_fireAgilityLevel, b_waterDamageLevel, b_waterAgilityLevel, b_frozenSkyLevel, b_thunderLevel, b_cursedBreathLevel,
-            p_caveLevel, m_screamLevel, m_meteorLevel, m_iceLevel, m_earthquakeLevel };
+            p_caveLevel, m_screamLevel, m_meteorLevel, m_iceLevel, m_earthquakeLevel, m_specialAttackLevel };
+
+        upgradesData = new float[] { b_fireDamageData, b_fireAgilityData, b_waterDamageData, b_waterAgilityData, b_frozenSkyData, b_thunderData, b_cursedBreathData, 
+            p_caveData, m_screamData, m_meteorData, m_iceData, m_earthquakeData, m_specialAttackData };
 
         if (level > 4)
         {
@@ -116,6 +122,7 @@ public class DataController : MonoBehaviour {
         data.m_meteorLevel = m_meteorLevel;
         data.m_iceLevel = m_iceLevel;
         data.m_earthquakeLevel = m_earthquakeLevel;
+        data.m_specialAttackLevel = m_specialAttackLevel;
 
         data.b_fireDamageData = b_fireDamageData;
         data.b_fireAgilityData = b_fireAgilityData;
@@ -130,6 +137,8 @@ public class DataController : MonoBehaviour {
         data.m_meteorData = m_meteorData;
         data.m_iceData = m_iceData;
         data.m_earthquakeData = m_earthquakeData;
+        data.m_specialAttackData = m_specialAttackData;
+
 
         binaryFormatter.Serialize(playerDataFile, data);
         playerDataFile.Close();
@@ -163,6 +172,7 @@ public class DataController : MonoBehaviour {
             m_meteorLevel = data.m_meteorLevel;
             m_iceLevel = data.m_iceLevel;
             m_earthquakeLevel = data.m_earthquakeLevel;
+            m_specialAttackLevel = data.m_specialAttackLevel;
 
             b_fireDamageData = data.b_fireDamageData;
             b_fireAgilityData = data.b_fireAgilityData;
@@ -177,6 +187,7 @@ public class DataController : MonoBehaviour {
             m_meteorData = data.m_meteorData;
             m_iceData = data.m_iceData;
             m_earthquakeData = data.m_earthquakeData;
+            m_specialAttackData = data.m_specialAttackData;
 
         }
     }
@@ -202,6 +213,7 @@ class PlayerData
     public int b_cursedBreathData;
     public int m_meteorData;
     public int m_iceData;
+    public int m_specialAttackData;
 
     public int m_screamLevel;
     public int m_earthquakeLevel; //earthquake or tail?
@@ -216,4 +228,5 @@ class PlayerData
     public int b_cursedBreathLevel;
     public int m_meteorLevel;
     public int m_iceLevel;
+    public int m_specialAttackLevel;
 }
