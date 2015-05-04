@@ -88,14 +88,14 @@ public class DataController : MonoBehaviour {
     {
         BinaryFormatter binaryFormatter = new BinaryFormatter();
         FileStream playerDataFile;
-        if (!File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
-        {
+//        if (!File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
+  //      {
             playerDataFile = File.Create(Application.persistentDataPath + "/playerInfo.dat");
-        }
-        else
-        {
-            playerDataFile = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
-        }
+    //    }
+      //  else
+        ///{
+           // playerDataFile = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
+       // }
         
 
         PlayerData data = new PlayerData();

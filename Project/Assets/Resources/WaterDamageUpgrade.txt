@@ -1,0 +1,29 @@
+<Upgrade>
+	<Upgrade_Levels>
+		<Upgrade_Level>
+			<ID>001</ID>
+			<Cost>500</Cost>
+			<Data>52</Data>
+		</Upgrade_Level>
+		<Upgrade_Level>
+			<ID>002</ID>
+			<Cost>700</Cost>
+			<Data>54</Data>
+		</Upgrade_Level>
+		<Upgrade_Level>
+			<ID>003</ID>
+			<Cost>900</Cost>
+			<Data>56</Data>
+		</Upgrade_Level>
+		<Upgrade_Level>
+			<ID>004</ID>
+			<Cost>1100</Cost>
+			<Data>58</Data>
+		</Upgrade_Level>
+		<Upgrade_Level>
+			<ID>005</ID>
+			<Cost>1300</Cost>
+			<Data>60</Data>
+		</Upgrade_Level>
+	</Upgrade_Levels>
+<Upgrade>

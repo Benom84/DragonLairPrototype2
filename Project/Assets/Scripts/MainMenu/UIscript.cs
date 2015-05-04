@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
+using System.Xml.Serialization;
+using System.IO;
+using UnityEngine.UI;
 
 public class UIscript : MonoBehaviour
 {
@@ -63,6 +66,21 @@ public class UIscript : MonoBehaviour
     private GameObject[] upgradeDescriptions;
     private Text[] upgradeDescriptionsText;
 
+    private UpgradeLevel[] fireDamageLevels;
+    private UpgradeLevel[] fireAgilityLevels;
+    private UpgradeLevel[] waterDamageLevels;
+    private UpgradeLevel[] waterAgilityLevels;
+    private UpgradeLevel[] heavenlyFireLevels;
+    private UpgradeLevel[] frozenSkyLevels;
+    private UpgradeLevel[] thunderLevels;
+    private UpgradeLevel[] cursedBreathLevels;
+    private UpgradeLevel[] caveLevels;
+    private UpgradeLevel[] screamLevels;
+    private UpgradeLevel[] meteorLevels;
+    private UpgradeLevel[] iceLevels;
+    private UpgradeLevel[] earthquakeLevels;
+    private UpgradeLevel[] specialAttackLevels;
+
     //win/lose stuff
     private Text stageStatus;
     private Text numOfKills;
@@ -74,15 +92,17 @@ public class UIscript : MonoBehaviour
     {
         if (gameObject.tag == "FirstScreen")
         {
-            DataController.dataController.Load();
+       //     DataController.dataController.Load();
         }
         else if (gameObject.tag == "Store")
         {
             BreathCanvas = GameObject.Find("BreathCanvas");
             LifeCanvas = GameObject.Find("LifeCanvas");
             MagicCanvas = GameObject.Find("MagicCanvas");
-            
+
             canvases = new GameObject[] { BreathCanvas, LifeCanvas, MagicCanvas };
+
+            NotEnoughMoneyCanvas = GameObject.Find("NotEnoughMoneyCanvas");
 
             NotEnoughMoneyCanvas.SetActive(false);
 
@@ -94,7 +114,7 @@ public class UIscript : MonoBehaviour
                 selectUpgradeToUpgrade[i] = false;
             }
 
-                //coins and crystals
+            //coins and crystals
             totalCoins = GameObject.FindGameObjectsWithTag("TotalCoins");
             totalCrystals = GameObject.FindGameObjectsWithTag("TotalCrystals");
 
@@ -166,7 +186,7 @@ public class UIscript : MonoBehaviour
 
             if (DataController.dataController.level < 5)
             {
-                
+
                 isUnlocked[4] = false;
                 isUnlocked[6] = false;
                 isUnlocked[5] = false;
@@ -188,13 +208,23 @@ public class UIscript : MonoBehaviour
                 }
             }
 
-                for (int i = 0; i < amountOfCanvases; i++)
-                {
-                    canvases[i].SetActive(false);
-                }
+            for (int i = 0; i < amountOfCanvases; i++)
+            {
+                canvases[i].SetActive(false);
+            }
+
+            fireDamageLevels = ReadUpgradeLevels("FireDamageUpgrade");
+            fireAgilityLevels = ReadUpgradeLevels("FireAgilityUpgrade");
+            waterDamageLevels = ReadUpgradeLevels("WaterDamageUpgrade");
+            waterAgilityLevels = ReadUpgradeLevels("WaterAgilityUpgrade");
+            caveLevels = ReadUpgradeLevels("CaveUpgrade");
+            screamLevels = ReadUpgradeLevels("ScreamUpgrade");
+            meteorLevels = ReadUpgradeLevels("MeteorUpgrade");
+            iceLevels = ReadUpgradeLevels("IceUpgrade");
+            earthquakeLevels = ReadUpgradeLevels("EarthquakeUpgrade");
+            specialAttackLevels = ReadUpgradeLevels("SpecialAttackUpgrade");
 
             BreathCanvas.SetActive(true);
-            
         }
         else if (gameObject.tag == "WinOrLose")
         {
@@ -223,6 +253,11 @@ public class UIscript : MonoBehaviour
             DataController.dataController.crystals += DataController.dataController.crystalsFromStage;
             DataController.dataController.Save();
         }
+    }
+
+    private void StoreInit()
+    {
+        
     }
 
     public void LoadScene(string sceneName)
@@ -345,5 +380,30 @@ public class UIscript : MonoBehaviour
     public void DisableNotEnoughMoneyCanvas()
     {
         NotEnoughMoneyCanvas.SetActive(false);
+    }
+
+    public UpgradeLevel[] ReadUpgradeLevels(string nameOfUpgrade)
+    {
+        TextAsset upgradeText = (TextAsset)Resources.Load(nameOfUpgrade, typeof(TextAsset));
+        StringReader upgradeTextReader = new StringReader(upgradeText.text);
+        XmlSerializer serializer = new XmlSerializer(typeof(UpgradeLevel));
+        Upgrade upgradeLevels = serializer.Deserialize(upgradeTextReader) as Upgrade;
+        int numOfLevels = 0;
+
+        foreach (UpgradeLevel upgradelevel in upgradeLevels.upgradeLevels)
+        {
+            numOfLevels++;
+        }
+
+        UpgradeLevel[] allUpgradeLevel = new UpgradeLevel[numOfLevels];
+        int i = 0;
+        
+        foreach (UpgradeLevel upgradeLevel in upgradeLevels.upgradeLevels)
+        {
+            allUpgradeLevel[i] = upgradeLevel;
+            i++;
+        }
+
+        return allUpgradeLevel;
     }
 }
