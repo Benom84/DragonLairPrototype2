@@ -7,19 +7,15 @@ public class UIscript : MonoBehaviour
     private const int amountOfCanvases = 3;
     
     //store stuff
-    private GameObject WaterBreathCanvas; //old
-    private GameObject WaterMagicCanvas;//old
-    private GameObject WaterProtectCanvas;//old
-    private GameObject FireBreathCanvas;//old
-    private GameObject FireMagicCanvas;//old
-    private GameObject FireProtectCanvas;//old
 
     private GameObject BreathCanvas;
     private GameObject LifeCanvas;
     private GameObject MagicCanvas;
 
-    private GameObject Damage;
-    private GameObject Agility;
+    private GameObject FireDamage;
+    private GameObject FireAgility;
+    private GameObject WaterDamage;
+    private GameObject WaterAgility;
     private GameObject HeavenlyFire;
     private GameObject Thunder;
     private GameObject FrozenSky;
@@ -42,8 +38,10 @@ public class UIscript : MonoBehaviour
     private GameObject[] totalCrystals;
     private Text[] totalCrystalsText;
 
-    private bool damage;
-    private bool agility;
+    private bool fireDamage;
+    private bool fireAgility;
+    private bool waterDamage;
+    private bool waterAgility; 
     private bool heavenlyFire;
     private bool frozenSky;
     private bool thunder;
@@ -62,6 +60,8 @@ public class UIscript : MonoBehaviour
     public Sprite selectedUpgrade;
     public Sprite regurlarUpgrade;
 
+    private GameObject[] upgradeDescriptions;
+    private Text[] upgradeDescriptionsText;
 
     //win/lose stuff
     private Text stageStatus;
@@ -69,8 +69,6 @@ public class UIscript : MonoBehaviour
     private Text percentageOfLife;
     private Text coinsBonus;
     private Text crystalsBonus;
-
-    
 
     public void Start()
     {
@@ -80,15 +78,6 @@ public class UIscript : MonoBehaviour
         }
         else if (gameObject.tag == "Store")
         {
-            //canvases
-            WaterBreathCanvas = GameObject.Find("WaterBreathCanvas");//old
-            WaterMagicCanvas = GameObject.Find("WaterMagicCanvas");//old
-            WaterProtectCanvas = GameObject.Find("WaterProtectCanvas");//old
-            FireBreathCanvas = GameObject.Find("FireBreathCanvas");//old
-            FireMagicCanvas = GameObject.Find("FireMagicCanvas");//old
-            FireProtectCanvas = GameObject.Find("FireProtectCanvas");//old
-            NotEnoughMoneyCanvas = GameObject.Find("NotEnoughMoneyCanvas");//old
-
             BreathCanvas = GameObject.Find("BreathCanvas");
             LifeCanvas = GameObject.Find("LifeCanvas");
             MagicCanvas = GameObject.Find("MagicCanvas");
@@ -97,22 +86,15 @@ public class UIscript : MonoBehaviour
 
             NotEnoughMoneyCanvas.SetActive(false);
 
-            //select upgrade to upgrade
-            damage = true;
-            agility = false;
-            heavenlyFire = false;
-            frozenSky = false;
-            thunder = false;
-            cursedBreath = false;
-            cave = false;
-            scream = false;
-            ice = false;
-            earthquake = false;
-
-            selectUpgradeToUpgrade = new bool[] { damage, agility, heavenlyFire, frozenSky, 
+            selectUpgradeToUpgrade = new bool[] { fireDamage, fireAgility, waterDamage, waterAgility, heavenlyFire, frozenSky, 
                 thunder, cursedBreath, cave, scream, ice, earthquake };
-            
-            //coins and crystals
+
+            for (int i = 0; i < selectUpgradeToUpgrade.Length; i++)
+            {
+                selectUpgradeToUpgrade[i] = false;
+            }
+
+                //coins and crystals
             totalCoins = GameObject.FindGameObjectsWithTag("TotalCoins");
             totalCrystals = GameObject.FindGameObjectsWithTag("TotalCrystals");
 
@@ -135,8 +117,10 @@ public class UIscript : MonoBehaviour
                 text.text = "" + DataController.dataController.crystals;
             }
 
-            Damage = GameObject.Find("Damage");
-            Agility = GameObject.Find("Agility");
+            FireDamage = GameObject.Find("FireDamage");
+            FireAgility = GameObject.Find("FireAgility");
+            WaterDamage = GameObject.Find("WaterDamage");
+            WaterAgility = GameObject.Find("WaterAgility");
             HeavenlyFire = GameObject.Find("HeavenlyFire");
             Thunder = GameObject.Find("Thunder");
             FrozenSky = GameObject.Find("FrozenSky");
@@ -147,8 +131,21 @@ public class UIscript : MonoBehaviour
             Ice = GameObject.Find("Ice");
             Earthquake = GameObject.Find("Earthquake");
 
-            buttons = new GameObject[] { Damage, Agility, HeavenlyFire, FrozenSky, Thunder,
+            buttons = new GameObject[] { FireDamage, FireAgility, WaterDamage, WaterAgility, HeavenlyFire, FrozenSky, Thunder,
                 CursedBreath, Cave, Scream, Meteor, Ice, Earthquake};
+
+            upgradeDescriptions = GameObject.FindGameObjectsWithTag("upgradeDescriptions");
+            upgradeDescriptionsText = new Text[upgradeDescriptions.Length];
+
+            for (int i = 0; i < upgradeDescriptions.Length; i++)
+            {
+                upgradeDescriptionsText[i] = upgradeDescriptions[i].GetComponent<Text>();
+            }
+
+            foreach (Text text in upgradeDescriptionsText)
+            {
+                text.text = "";
+            }
 
             isUnlocked = new bool[11];
 
@@ -158,12 +155,22 @@ public class UIscript : MonoBehaviour
             }
 
             //if conditions to unlock the upgrades
-            if (DataController.dataController.level < 5)
+            if (DataController.dataController.level < 4)
             {
                 isUnlocked[2] = false;
                 isUnlocked[3] = false;
-                isUnlocked[4] = false;
                 isUnlocked[5] = false;
+                isUnlocked[7] = false;
+                isUnlocked[10] = false;
+            }
+
+            if (DataController.dataController.level < 5)
+            {
+                
+                isUnlocked[4] = false;
+                isUnlocked[6] = false;
+                isUnlocked[5] = false;
+                isUnlocked[7] = false;
             }
 
             for (int i = 0; i < buttons.Length; i++)
