@@ -207,24 +207,32 @@ public class Player : MonoBehaviour
     private void loadFromDataController()
     {
 
-        earthquakeAttackDamage = DataController.dataController.m_earthquake;
-        screamAttackDamage = DataController.dataController.m_scream;
-        maxHealth = DataController.dataController.p_cave;
+        earthquakeAttackDamage = DataController.dataController.m_earthquakeData;
+        earthquakeManaCost = DataController.dataController.earthquakeManaValue;
+        screamAttackDamage = DataController.dataController.m_screamData;
+        screamManaCost = DataController.dataController.screamManaValue;
+        maxHealth = DataController.dataController.p_caveData;
 
 
         // Load Fire Input
-        fireAttackSpeed = DataController.dataController.b_fireRange * 1.0f;
-        fireAttackDamage = DataController.dataController.b_fireDamage;
-        fireAttackDelay = activeAttackDelay;
-        fireSpecialAttackDamage = DataController.dataController.m_fireMeteor;
-        fireSpecialAttackManaCost = activeSpecialAttackManaCost;
+        //fireAttackSpeed = 
+        fireAttackDamage = DataController.dataController.b_fireDamageData;
+        fireAttackDelay = DataController.dataController.b_fireAgilityData * 1.0f;
+        fireSpecialAttackDamage = DataController.dataController.m_meteorData;
+        fireSpecialAttackManaCost = DataController.dataController.meteorManaValue;
 
         // Load Water Input
-        waterAttackSpeed = DataController.dataController.b_waterRange * 1.0f;
-        waterAttackDamage = DataController.dataController.b_waterDamage;
-        waterAttackDelay = activeAttackDelay;
-        waterSpecialAttackDamage = DataController.dataController.m_waterIce;
-        waterSpecialAttackManaCost = activeSpecialAttackManaCost;
+        //waterAttackSpeed = ;
+        waterAttackDamage = DataController.dataController.b_waterDamageData;
+        waterAttackDelay = DataController.dataController.b_waterAgilityData * 1.0f;
+        waterSpecialAttackDamage = DataController.dataController.m_iceData;
+        waterSpecialAttackManaCost = DataController.dataController.iceManaValue;
+
+
+        // Disable UnavailableAttacks
+        earthquakeButtonAvailable = (DataController.dataController.m_earthquakeLevel > 0);
+        screamAttackButtonAvailable = (DataController.dataController.m_screamLevel > 0);
+        changeAttackButtonAvailable = (DataController.dataController.isWaterUnlocked);
 
     }
 
