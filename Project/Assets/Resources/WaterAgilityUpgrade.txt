@@ -26,4 +26,4 @@
 			<Data>0.3</Data>
 		</Upgrade_Level>
 	</Upgrade_Levels>
-<Upgrade>
+</Upgrade>
