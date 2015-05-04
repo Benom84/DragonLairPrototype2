@@ -44,6 +44,8 @@ public class DataController : MonoBehaviour {
 
     public int[] upgradesLevel;
 
+    public bool isWaterUnlocked;
+
     //info to pass from level to victory/lose scene
     public int kills = 0;
     public int life = 0;
@@ -71,6 +73,15 @@ public class DataController : MonoBehaviour {
 
         upgradesLevel = new int[] { b_fireDamageLevel, b_fireAgilityLevel, b_waterDamageLevel, b_waterAgilityLevel, b_frozenSkyLevel, b_thunderLevel, b_cursedBreathLevel,
             p_caveLevel, m_screamLevel, m_meteorLevel, m_iceLevel, m_earthquakeLevel };
+
+        if (level > 4)
+        {
+            isWaterUnlocked = true;
+        }
+        else
+        {
+            isWaterUnlocked = false;
+        }
 	}
 
     public void Save()
