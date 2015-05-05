@@ -66,6 +66,9 @@ public class UIscript : MonoBehaviour
     private GameObject[] upgradeDescriptions;
     private Text[] upgradeDescriptionsText;
 
+    private GameObject[] upgradeButtons;
+    private Text[] upgradeButtonCostText;
+
     private UpgradeLevel[] fireDamageLevels;
     private UpgradeLevel[] fireAgilityLevels;
     private UpgradeLevel[] waterDamageLevels;
@@ -98,22 +101,78 @@ public class UIscript : MonoBehaviour
         }
         else if (gameObject.tag == "Store")
         {
-            FindAllObjectsInStore();
+            BreathCanvas = GameObject.Find("BreathCanvas");
+            LifeCanvas = GameObject.Find("LifeCanvas");
+            MagicCanvas = GameObject.Find("MagicCanvas");
+
+            NotEnoughMoneyCanvas = GameObject.Find("NotEnoughMoneyCanvas");
+
+            totalCoins = GameObject.FindGameObjectsWithTag("TotalCoins");
+            totalCrystals = GameObject.FindGameObjectsWithTag("TotalCrystals");
+
+            upgradeButtons = GameObject.FindGameObjectsWithTag("upgradeButtonCost");
+
+            FireDamage = GameObject.Find("FireDamage");
+            FireAgility = GameObject.Find("FireAgility");
+            WaterDamage = GameObject.Find("WaterDamage");
+            WaterAgility = GameObject.Find("WaterAgility");
+            HeavenlyFire = GameObject.Find("HeavenlyFire");
+            Thunder = GameObject.Find("Thunder");
+            FrozenSky = GameObject.Find("FrozenSky");
+            CursedBreath = GameObject.Find("CursedBreath");
+            Cave = GameObject.Find("Cave");
+            Scream = GameObject.Find("Scream");
+            Meteor = GameObject.Find("Meteor");
+            Ice = GameObject.Find("Ice");
+            Earthquake = GameObject.Find("Earthquake");
+
+            upgradeDescriptions = GameObject.FindGameObjectsWithTag("upgradeDescriptions");
+
+            fireDamageLevels = ReadUpgradeLevels("FireDamageUpgrade");
+            fireAgilityLevels = ReadUpgradeLevels("FireAgilityUpgrade");
+            waterDamageLevels = ReadUpgradeLevels("WaterDamageUpgrade");
+            waterAgilityLevels = ReadUpgradeLevels("WaterAgilityUpgrade");
+            heavenlyFireLevels = null; //change this
+            frozenSkyLevels = null; //change this
+            thunderLevels = null;
+            cursedBreathLevels = null;
+            caveLevels = ReadUpgradeLevels("CaveUpgrade");
+            screamLevels = ReadUpgradeLevels("ScreamUpgrade");
+            meteorLevels = ReadUpgradeLevels("MeteorUpgrade");
+            iceLevels = ReadUpgradeLevels("IceUpgrade");
+            earthquakeLevels = ReadUpgradeLevels("EarthquakeUpgrade");
+            specialAttackLevels = ReadUpgradeLevels("SpecialAttackUpgrade");
 
             canvases = new GameObject[] { BreathCanvas, LifeCanvas, MagicCanvas };
 
             NotEnoughMoneyCanvas.SetActive(false);
 
             selectUpgradeToUpgrade = new bool[] { fireDamage, fireAgility, waterDamage, waterAgility, heavenlyFire, frozenSky, 
-                thunder, cursedBreath, cave, scream, ice, earthquake };
+                thunder, cursedBreath, cave, scream, meteor, ice, earthquake };
 
             for (int i = 0; i < selectUpgradeToUpgrade.Length; i++)
             {
                 selectUpgradeToUpgrade[i] = false;
             }
 
-            InitCoinsAndCrystals();
+            totalCoinsText = new Text[amountOfCanvases];
+            totalCrystalsText = new Text[amountOfCanvases];
 
+            for (int i = 0; i < amountOfCanvases; i++)
+            {
+                totalCoinsText[i] = totalCoins[i].GetComponent<Text>();
+                totalCrystalsText[i] = totalCrystals[i].GetComponent<Text>();
+            }
+
+            foreach (Text text in totalCoinsText)
+            {
+                text.text = "" + DataController.dataController.coins;
+            }
+
+            foreach (Text text in totalCrystalsText)
+            {
+                text.text = "" + DataController.dataController.crystals;
+            }
             buttons = new GameObject[] { FireDamage, FireAgility, WaterDamage, WaterAgility, HeavenlyFire, FrozenSky, Thunder,
                 CursedBreath, Cave, Scream, Meteor, Ice, Earthquake};
 
@@ -129,7 +188,19 @@ public class UIscript : MonoBehaviour
                 text.text = "";
             }
 
-            isUnlocked = new bool[11];
+            upgradeButtonCostText = new Text[upgradeButtons.Length];
+            Debug.Log(upgradeButtons.Length);
+            for(int i = 0; i < upgradeButtons.Length; i++) {
+                Debug.Log(i);
+                upgradeButtonCostText[i] = upgradeButtons[i].GetComponent<Text>();
+            }
+
+            foreach (Text text in upgradeButtonCostText)
+            {
+                text.text = "";
+            }
+
+            isUnlocked = new bool[13];
 
             for (int i = 0; i < isUnlocked.Length; i++)
             {
@@ -155,7 +226,7 @@ public class UIscript : MonoBehaviour
                 isUnlocked[7] = false;
             }
 
-            for (int i = 0; i < buttons.Length; i++)
+            for (int i = 4; i < buttons.Length; i++)
             {
                 if (isUnlocked[i])
                 {
@@ -168,10 +239,11 @@ public class UIscript : MonoBehaviour
                 else
                 {
                     buttons[i].GetComponent<Image>().sprite = lockedUpgrade;
-                 //   buttons[i].transform.FindChild("Name").GetComponent<Text>().font.material.color = Color.gray;
+                    //buttons[i].transform.FindChild("Name").GetComponent<Text>().font.material.color = Color.gray;
                     buttons[i].transform.FindChild("LevelNumber").GetComponent<Text>().text = "";
                 }
             }
+            
 
             allUpgrades = new UpgradeLevel[][] {fireDamageLevels, fireAgilityLevels, waterDamageLevels, waterAgilityLevels, heavenlyFireLevels, 
                 frozenSkyLevels, thunderLevels, cursedBreathLevels, caveLevels, screamLevels, meteorLevels, iceLevels, earthquakeLevels, specialAttackLevels};
@@ -186,71 +258,6 @@ public class UIscript : MonoBehaviour
         else if (gameObject.tag == "WinOrLose")
         {
             WinOrLose();
-        }
-    }
-
-    private void FindAllObjectsInStore()
-    {
-        BreathCanvas = GameObject.Find("BreathCanvas");
-        LifeCanvas = GameObject.Find("LifeCanvas");
-        MagicCanvas = GameObject.Find("MagicCanvas");
-
-        NotEnoughMoneyCanvas = GameObject.Find("NotEnoughMoneyCanvas");
-
-        totalCoins = GameObject.FindGameObjectsWithTag("TotalCoins");
-        totalCrystals = GameObject.FindGameObjectsWithTag("TotalCrystals");
-
-        FireDamage = GameObject.Find("FireDamage");
-        FireAgility = GameObject.Find("FireAgility");
-        WaterDamage = GameObject.Find("WaterDamage");
-        WaterAgility = GameObject.Find("WaterAgility");
-        HeavenlyFire = GameObject.Find("HeavenlyFire");
-        Thunder = GameObject.Find("Thunder");
-        FrozenSky = GameObject.Find("FrozenSky");
-        CursedBreath = GameObject.Find("CursedBreath");
-        Cave = GameObject.Find("Cave");
-        Scream = GameObject.Find("Scream");
-        Meteor = GameObject.Find("Meteor");
-        Ice = GameObject.Find("Ice");
-        Earthquake = GameObject.Find("Earthquake");
-
-        upgradeDescriptions = GameObject.FindGameObjectsWithTag("upgradeDescriptions");
-
-        fireDamageLevels = ReadUpgradeLevels("FireDamageUpgrade");
-        fireAgilityLevels = ReadUpgradeLevels("FireAgilityUpgrade");
-        waterDamageLevels = ReadUpgradeLevels("WaterDamageUpgrade");
-        waterAgilityLevels = ReadUpgradeLevels("WaterAgilityUpgrade");
-        heavenlyFireLevels = null; //change this
-        frozenSkyLevels = null; //change this
-        thunderLevels = null;
-        cursedBreathLevels = null;
-        caveLevels = ReadUpgradeLevels("CaveUpgrade");
-        screamLevels = ReadUpgradeLevels("ScreamUpgrade");
-        meteorLevels = ReadUpgradeLevels("MeteorUpgrade");
-        iceLevels = ReadUpgradeLevels("IceUpgrade");
-        earthquakeLevels = ReadUpgradeLevels("EarthquakeUpgrade");
-        specialAttackLevels = ReadUpgradeLevels("SpecialAttackUpgrade");
-    }
-
-    private void InitCoinsAndCrystals()
-    {
-        totalCoinsText = new Text[amountOfCanvases];
-        totalCrystalsText = new Text[amountOfCanvases];
-
-        for (int i = 0; i < amountOfCanvases; i++)
-        {
-            totalCoinsText[i] = totalCoins[i].GetComponent<Text>();
-            totalCrystalsText[i] = totalCrystals[i].GetComponent<Text>();
-        }
-
-        foreach (Text text in totalCoinsText)
-        {
-            text.text = "" + DataController.dataController.coins;
-        }
-
-        foreach (Text text in totalCrystalsText)
-        {
-            text.text = "" + DataController.dataController.crystals;
         }
     }
 
@@ -312,7 +319,7 @@ public class UIscript : MonoBehaviour
         for (int i = 0; i < selectUpgradeToUpgrade.Length; i++)
         {
             selectUpgradeToUpgrade[i] = false;
-            if (isUnlocked[i])
+            if (isUnlocked[i] && i > 3)
             {
                 buttons[i].GetComponent<Image>().sprite = regularUpgrade;
             } 
@@ -372,6 +379,12 @@ public class UIscript : MonoBehaviour
         foreach (Text text in upgradeDescriptionsText)
         {
             text.text = strToDisplayInDescription;
+        }
+
+        foreach (Text text in upgradeButtonCostText)
+        {
+            text.text = allUpgrades[numberOfUpgraded - 1][DataController.dataController.upgradesLevel[numberOfUpgraded - 1]].Cost.ToString();
+            text.text = "1";
         }
     }
 
@@ -461,7 +474,7 @@ public class UIscript : MonoBehaviour
     {
         TextAsset upgradeText = (TextAsset)Resources.Load(nameOfUpgrade, typeof(TextAsset));
         StringReader upgradeTextReader = new StringReader(upgradeText.text);
-        XmlSerializer serializer = new XmlSerializer(typeof(UpgradeLevel));
+        XmlSerializer serializer = new XmlSerializer(typeof(Upgrade));
         Upgrade upgradeLevels = serializer.Deserialize(upgradeTextReader) as Upgrade;
         int numOfLevels = 0;
 
