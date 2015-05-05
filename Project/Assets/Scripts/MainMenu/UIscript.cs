@@ -62,6 +62,12 @@ public class UIscript : MonoBehaviour
     public Sprite lockedUpgrade;
     public Sprite selectedUpgrade;
     public Sprite regularUpgrade;
+    public Sprite damageRegularUpgrade;
+    public Sprite damageSelectedUpgrade;
+    public Sprite damageLockedUpgrade;
+    public Sprite agilityRegularUpgrade;
+    public Sprite agilitySelectedUpgrade;
+    public Sprite agilityLockedUpgrade;
 
     private GameObject[] upgradeDescriptions;
     private Text[] upgradeDescriptionsText;
@@ -110,7 +116,7 @@ public class UIscript : MonoBehaviour
             totalCoins = GameObject.FindGameObjectsWithTag("TotalCoins");
             totalCrystals = GameObject.FindGameObjectsWithTag("TotalCrystals");
 
-            upgradeButtons = GameObject.FindGameObjectsWithTag("upgradeButtonCost");
+            upgradeButtons = GameObject.FindGameObjectsWithTag("upgradeButton");
 
             FireDamage = GameObject.Find("FireDamage");
             FireAgility = GameObject.Find("FireAgility");
@@ -166,12 +172,12 @@ public class UIscript : MonoBehaviour
 
             foreach (Text text in totalCoinsText)
             {
-                text.text = "" + DataController.dataController.coins;
+                text.text = "" + DataController.dataController.coins + " coins";
             }
 
             foreach (Text text in totalCrystalsText)
             {
-                text.text = "" + DataController.dataController.crystals;
+                text.text = "" + DataController.dataController.crystals + " crystals";
             }
             buttons = new GameObject[] { FireDamage, FireAgility, WaterDamage, WaterAgility, HeavenlyFire, FrozenSky, Thunder,
                 CursedBreath, Cave, Scream, Meteor, Ice, Earthquake};
@@ -215,6 +221,7 @@ public class UIscript : MonoBehaviour
                 isUnlocked[5] = false;
                 isUnlocked[7] = false;
                 isUnlocked[11] = false;
+                isUnlocked[12] = false;
             }
 
             if (DataController.dataController.level < 5)
@@ -226,23 +233,47 @@ public class UIscript : MonoBehaviour
                 isUnlocked[7] = false;
             }
 
-            for (int i = 4; i < buttons.Length; i++)
+            for (int i = 0; i < 4; i++)
             {
-                if (isUnlocked[i])
+                if (isUnlocked[i] && i % 2 == 0)
                 {
-                    buttons[i].GetComponent<Image>().sprite = regularUpgrade;
-                    if (DataController.dataController.upgradesLevel[i] != 0)
-                    {
-                        buttons[i].transform.FindChild("LevelNumber").GetComponent<Text>().text = DataController.dataController.upgradesLevel[i].ToString();
-                    } 
+                    buttons[i].GetComponent<Image>().sprite = damageRegularUpgrade;
+                    
+                }
+                else if (isUnlocked[i] && i % 2 != 0)
+                {
+                    buttons[i].GetComponent<Image>().sprite = agilityRegularUpgrade;
+                    
+                }
+                else if (!isUnlocked[i] && i % 2 == 0)
+                {
+                    buttons[i].GetComponent<Image>().sprite = damageLockedUpgrade;
+                    
                 }
                 else
                 {
-                    buttons[i].GetComponent<Image>().sprite = lockedUpgrade;
-                    //buttons[i].transform.FindChild("Name").GetComponent<Text>().font.material.color = Color.gray;
-                    buttons[i].transform.FindChild("LevelNumber").GetComponent<Text>().text = "";
+                    buttons[i].GetComponent<Image>().sprite = agilityLockedUpgrade;
+                    
                 }
             }
+
+                for (int i = 4; i < buttons.Length; i++)
+                {
+                    if (isUnlocked[i])
+                    {
+                        buttons[i].GetComponent<Image>().sprite = regularUpgrade;
+                        if (DataController.dataController.upgradesLevel[i] != 0)
+                        {
+                            buttons[i].transform.FindChild("LevelNumber").GetComponent<Text>().text = DataController.dataController.upgradesLevel[i].ToString();
+                        }
+                    }
+                    else
+                    {
+                        buttons[i].GetComponent<Image>().sprite = lockedUpgrade;
+                        //buttons[i].transform.FindChild("Name").GetComponent<Text>().font.material.color = Color.gray;
+                        buttons[i].transform.FindChild("LevelNumber").GetComponent<Text>().text = "";
+                    }
+                }
             
 
             allUpgrades = new UpgradeLevel[][] {fireDamageLevels, fireAgilityLevels, waterDamageLevels, waterAgilityLevels, heavenlyFireLevels, 
@@ -324,55 +355,189 @@ public class UIscript : MonoBehaviour
                 buttons[i].GetComponent<Image>().sprite = regularUpgrade;
             } 
         }
-        
-        if (isUnlocked[numberOfUpgraded - 1])
+
+        for (int i = 0; i < 4; i++)
+        {
+            if (isUnlocked[i] && i % 2 == 0)
+            {
+                buttons[i].GetComponent<Image>().sprite = damageRegularUpgrade;
+            }
+            else if (isUnlocked[i] && i % 2 != 0)
+            {
+                buttons[i].GetComponent<Image>().sprite = agilityRegularUpgrade;
+            }
+            else if (!isUnlocked[i] && i % 2 == 0)
+            {
+                buttons[i].GetComponent<Image>().sprite = damageLockedUpgrade;
+            }
+            else
+            {
+                buttons[i].GetComponent<Image>().sprite = agilityLockedUpgrade;
+            }
+        }
+
+        if (isUnlocked[numberOfUpgraded - 1] && numberOfUpgraded > 3)
         {
             selectUpgradeToUpgrade[numberOfUpgraded - 1] = true;
             buttons[numberOfUpgraded - 1].GetComponent<Image>().sprite = selectedUpgrade;
         }
+        else if (isUnlocked[numberOfUpgraded - 1])
+        {
+            if (numberOfUpgraded - 1 % 2 == 0)
+            {
+                selectUpgradeToUpgrade[numberOfUpgraded - 1] = true;
+                buttons[numberOfUpgraded - 1].GetComponent<Image>().sprite = damageSelectedUpgrade;
+            }
+            else
+            {
+                selectUpgradeToUpgrade[numberOfUpgraded - 1] = true;
+                buttons[numberOfUpgraded - 1].GetComponent<Image>().sprite = agilitySelectedUpgrade;
+            }
+        }
 
         string strToDisplayInDescription = "";
+        string strToDisplayInUpgrade = "";
 
         switch (numberOfUpgraded)
         {
             case 1:
                 strToDisplayInDescription = "Increases the damage your fire creates";
+                if (DataController.dataController.b_fireDamageLevel == 1) 
+                {
+                    strToDisplayInUpgrade = "500 coins";
+                } 
+                else if (DataController.dataController.b_fireDamageLevel == 2)
+                {
+                    strToDisplayInUpgrade = "700 coins";
+                }else if (DataController.dataController.b_fireDamageLevel == 3)
+                {
+                    strToDisplayInUpgrade = "900 coins";
+                }else if (DataController.dataController.b_fireDamageLevel == 4)
+                {
+                    strToDisplayInUpgrade = "1100 coins";
+                }
                 break;
             case 2:
                 strToDisplayInDescription = "Decreases the delay between your fire balls";
+                if (DataController.dataController.b_fireAgilityLevel == 1) 
+                {
+                    strToDisplayInUpgrade = "500 coins";
+                }
+                else if (DataController.dataController.b_fireAgilityLevel == 2)
+                {
+                    strToDisplayInUpgrade = "700 coins";
+                }
+                else if (DataController.dataController.b_fireAgilityLevel == 3)
+                {
+                    strToDisplayInUpgrade = "900 coins";
+                }
+                else if (DataController.dataController.b_fireAgilityLevel == 4)
+                {
+                    strToDisplayInUpgrade = "1100 coins";
+                }
                 break;
             case 3:
                 strToDisplayInDescription = "Increases the damage your water creates";
+                if (DataController.dataController.b_waterDamageLevel == 0)
+                {
+                    strToDisplayInUpgrade = "500 coins";
+                }
+                else if (DataController.dataController.b_waterDamageLevel == 1)
+                {
+                    strToDisplayInUpgrade = "700 coins";
+                }
+                else if (DataController.dataController.b_waterDamageLevel == 2)
+                {
+                    strToDisplayInUpgrade = "900 coins";
+                }
+                else if (DataController.dataController.b_waterDamageLevel == 3)
+                {
+                    strToDisplayInUpgrade = "1100 coins";
+                }
                 break;
             case 4:
                 strToDisplayInDescription = "Decreases the delay between your water balls";
+                if (DataController.dataController.b_waterAgilityLevel == 0)
+                {
+                    strToDisplayInUpgrade = "500 coins";
+                }
+                else if (DataController.dataController.b_waterAgilityLevel == 1)
+                {
+                    strToDisplayInUpgrade = "700 coins";
+                }
+                else if (DataController.dataController.b_waterAgilityLevel == 2)
+                {
+                    strToDisplayInUpgrade = "900 coins";
+                }
+                else if (DataController.dataController.b_waterAgilityLevel == 3)
+                {
+                    strToDisplayInUpgrade = "1100 coins";
+                }
                 break;
             case 5:
                 strToDisplayInDescription = "After being hit continue to lower the heroes life bar";
+                strToDisplayInUpgrade = "900 coins";
                 break;
             case 6:
                 strToDisplayInDescription = "After being hit stops the heroes for little time";
+                strToDisplayInUpgrade = "900 coins";
                 break;
             case 7:
                 strToDisplayInDescription = "After being hit continue to lower the heroes life bar and slower them down";
+                strToDisplayInUpgrade = "900 coins";
                 break;
             case 8:
                 strToDisplayInDescription = "After being hit it stops the heroes and continue to lower the heroes life bar";
+                strToDisplayInUpgrade = "900 coins";
                 break;
             case 9:
                 strToDisplayInDescription = "Increase the life bar";
+                if (DataController.dataController.p_caveLevel == 0)
+                {
+                    strToDisplayInUpgrade = "1500 coins";
+                }
+                else if (DataController.dataController.p_caveLevel == 1)
+                {
+                    strToDisplayInUpgrade = "2000 coins";
+                }
                 break;
             case 10:
                 strToDisplayInDescription = "Pushes the heroes back";
+                if (DataController.dataController.m_screamLevel == 0)
+                {
+                    strToDisplayInUpgrade = "5 crystals";
+                }
+                else if (DataController.dataController.m_screamLevel == 1)
+                {
+                    strToDisplayInUpgrade = "7 crystals";
+                }
+                else if (DataController.dataController.m_screamLevel == 2)
+                {
+                    strToDisplayInUpgrade = "9 crystals";
+                }
                 break;
             case 11:
                 strToDisplayInDescription = "Lowers the life bar of all the heroes and continue to lower them for a while";
+                if (DataController.dataController.m_meteorLevel == 0)
+                {
+                    strToDisplayInUpgrade = "5 crystals";
+                }
+                else if (DataController.dataController.m_meteorLevel == 1)
+                {
+                    strToDisplayInUpgrade = "7 crystals";
+                }
+                else if (DataController.dataController.m_meteorLevel == 2)
+                {
+                    strToDisplayInUpgrade = "9 crystals";
+                }
                 break;
             case 12:
                 strToDisplayInDescription = "Stops all the heroes for a while";
+                strToDisplayInUpgrade = "9 crystals";
                 break;
             case 13:
                 strToDisplayInDescription = "Lowers the life bar of all the heroes and stop them for a while";
+                strToDisplayInUpgrade = "9 crystals";
                 break;
         }
 
@@ -383,8 +548,7 @@ public class UIscript : MonoBehaviour
 
         foreach (Text text in upgradeButtonCostText)
         {
-            text.text = allUpgrades[numberOfUpgraded - 1][DataController.dataController.upgradesLevel[numberOfUpgraded - 1]].Cost.ToString();
-            text.text = "1";
+            text.text = strToDisplayInUpgrade;
         }
     }
 
@@ -482,7 +646,7 @@ public class UIscript : MonoBehaviour
         {
             numOfLevels++;
         }
-
+        Debug.Log("Im here");
         UpgradeLevel[] allUpgradeLevel = new UpgradeLevel[numOfLevels];
         int i = 0;
         
@@ -494,4 +658,229 @@ public class UIscript : MonoBehaviour
 
         return allUpgradeLevel;
     }
+
+    public void FixedUpgrade()
+    {
+        int numberToUpgrade = 0;
+        
+        for (int i = 0; i < selectUpgradeToUpgrade.Length; i++)
+        {
+            if (selectUpgradeToUpgrade[i])
+            {
+                numberToUpgrade = i;
+            }
+        }
+
+        if (isUnlocked[numberToUpgrade])
+        {
+            switch (numberToUpgrade)
+            {
+                case 0:
+                    if (DataController.dataController.b_fireDamageLevel == 1 && DataController.dataController.coins >= 500) { 
+                        DataController.dataController.coins -= 500;
+                        DataController.dataController.b_fireDamageData += 2;
+                        DataController.dataController.b_fireDamageLevel++;
+                    }
+                    else if (DataController.dataController.b_fireDamageLevel == 2 && DataController.dataController.coins >= 700)
+                    {
+                        DataController.dataController.coins -= 700;
+                        DataController.dataController.b_fireDamageData += 2;
+                        DataController.dataController.b_fireDamageLevel++;
+                    }
+                    else if (DataController.dataController.b_fireDamageLevel == 3 && DataController.dataController.coins >= 900)
+                    {
+                        DataController.dataController.coins -= 900;
+                        DataController.dataController.b_fireDamageData += 2;
+                        DataController.dataController.b_fireDamageLevel++;
+                    }  
+                    else if (DataController.dataController.b_fireDamageLevel == 4 && DataController.dataController.coins >= 1100)
+                    {
+                        DataController.dataController.coins -= 1100;
+                        DataController.dataController.b_fireDamageData += 2;
+                        DataController.dataController.b_fireDamageLevel++;
+                    }  
+                    else
+                    {
+                        NotEnoughMoney();
+                    }
+                    break;
+                case 1:
+                    if (DataController.dataController.b_waterDamageLevel == 1 && DataController.dataController.coins >= 500)
+                    {
+                        DataController.dataController.coins -= 500;
+                        DataController.dataController.b_waterDamageData += 2;
+                        DataController.dataController.b_waterDamageLevel++;
+                    }
+                    else if (DataController.dataController.b_waterDamageLevel == 2 && DataController.dataController.coins >= 700)
+                    {
+                        DataController.dataController.coins -= 700;
+                        DataController.dataController.b_waterDamageData += 2;
+                        DataController.dataController.b_waterDamageLevel++;
+                    }
+                    else if (DataController.dataController.b_waterDamageLevel == 3 && DataController.dataController.coins >= 900)
+                    {
+                        DataController.dataController.coins -= 900;
+                        DataController.dataController.b_waterDamageData += 2;
+                        DataController.dataController.b_waterDamageLevel++;
+                    }
+                    else if (DataController.dataController.b_waterDamageLevel == 4 && DataController.dataController.coins >= 1100)
+                    {
+                        DataController.dataController.coins -= 1100;
+                        DataController.dataController.b_waterDamageData += 2;
+                        DataController.dataController.b_waterDamageLevel++;
+                    }
+                    else
+                    {
+                        NotEnoughMoney();
+                    }
+                    break;
+                case 2:
+                    if (DataController.dataController.b_fireAgilityLevel == 0 && DataController.dataController.coins >= 500)
+                    {
+                        DataController.dataController.coins -= 500;
+                        DataController.dataController.b_fireAgilityData -= 0.1f;
+                        DataController.dataController.b_fireAgilityLevel++;
+                    }
+                    else if (DataController.dataController.b_fireAgilityLevel == 1 && DataController.dataController.coins >= 700)
+                    {
+                        DataController.dataController.coins -= 700;
+                        DataController.dataController.b_fireAgilityData -= 0.1f;
+                        DataController.dataController.b_fireAgilityLevel++;
+                    }
+                    else if (DataController.dataController.b_fireAgilityLevel == 2 && DataController.dataController.coins >= 900)
+                    {
+                        DataController.dataController.coins -= 900;
+                        DataController.dataController.b_fireAgilityData -= 0.1f;
+                        DataController.dataController.b_fireAgilityLevel++;
+                    }
+                    else if (DataController.dataController.b_fireAgilityLevel == 3 && DataController.dataController.coins >= 1100)
+                    {
+                        DataController.dataController.coins -= 1100;
+                        DataController.dataController.b_fireAgilityData -= 0.1f;
+                        DataController.dataController.b_fireAgilityLevel++;
+                    }
+                    else
+                    {
+                        NotEnoughMoney();
+                    }
+                    break;
+                case 3:
+                    if (DataController.dataController.b_waterAgilityLevel == 0 && DataController.dataController.coins >= 500)
+                    {
+                        DataController.dataController.coins -= 500;
+                        DataController.dataController.b_waterAgilityData -= 0.1f;
+                        DataController.dataController.b_waterAgilityLevel++;
+                    }
+                    else if (DataController.dataController.b_waterAgilityLevel == 1 && DataController.dataController.coins >= 700)
+                    {
+                        DataController.dataController.coins -= 700;
+                        DataController.dataController.b_waterAgilityData -= 0.1f;
+                        DataController.dataController.b_waterAgilityLevel++;
+                    }
+                    else if (DataController.dataController.b_waterAgilityLevel == 2 && DataController.dataController.coins >= 900)
+                    {
+                        DataController.dataController.coins -= 900;
+                        DataController.dataController.b_waterAgilityData -= 0.1f;
+                        DataController.dataController.b_waterAgilityLevel++;
+                    }
+                    else if (DataController.dataController.b_waterAgilityLevel == 3 && DataController.dataController.coins >= 1100)
+                    {
+                        DataController.dataController.coins -= 1100;
+                        DataController.dataController.b_waterAgilityData -= 0.1f;
+                        DataController.dataController.b_waterAgilityLevel++;
+                    }
+                    else
+                    {
+                        NotEnoughMoney();
+                    }
+                    break;
+                case 8:
+                    if (DataController.dataController.p_caveLevel == 0 && DataController.dataController.coins >= 1500)
+                    {
+                        DataController.dataController.coins -= 1500;
+                        DataController.dataController.p_caveData += 10;
+                        DataController.dataController.p_caveLevel++;
+                    }
+                    else if (DataController.dataController.p_caveLevel == 1 && DataController.dataController.coins >= 2000)
+                    {
+                        DataController.dataController.coins -= 2000;
+                        DataController.dataController.p_caveData += 10;
+                        DataController.dataController.p_caveLevel++;
+                    }
+                    else
+                    {
+                        NotEnoughMoney();
+                    }
+                    break;
+                case 9:
+                    if (DataController.dataController.m_screamLevel == 0 && DataController.dataController.crystals >= 5)
+                    {
+                        DataController.dataController.crystals -= 5;
+                        DataController.dataController.m_screamData += 5;
+                        DataController.dataController.m_screamLevel++;
+                    }
+                    else if (DataController.dataController.m_screamLevel == 1 && DataController.dataController.crystals >= 7)
+                    {
+                        DataController.dataController.crystals -= 7;
+                        DataController.dataController.m_screamData += 5;
+                        DataController.dataController.m_screamLevel++;
+                    }
+                    else if (DataController.dataController.m_screamLevel == 1 && DataController.dataController.crystals >= 9)
+                    {
+                        DataController.dataController.crystals -= 9;
+                        DataController.dataController.m_screamData += 5;
+                        DataController.dataController.m_screamLevel++;
+                    }
+                    else
+                    {
+                        NotEnoughMoney();
+                    }
+                    break;
+                case 10:
+                    if (DataController.dataController.m_meteorLevel == 0 && DataController.dataController.crystals >= 5)
+                    {
+                        DataController.dataController.crystals -= 5;
+                        DataController.dataController.m_meteorData += 5;
+                        DataController.dataController.m_meteorLevel++;
+                    }
+                    else if (DataController.dataController.m_meteorLevel == 1 && DataController.dataController.crystals >= 7)
+                    {
+                        DataController.dataController.crystals -= 7;
+                        DataController.dataController.m_meteorData += 5;
+                        DataController.dataController.m_meteorLevel++;
+                    }
+                    else if (DataController.dataController.m_meteorLevel == 1 && DataController.dataController.crystals >= 9)
+                    {
+                        DataController.dataController.crystals -= 9;
+                        DataController.dataController.m_meteorData += 5;
+                        DataController.dataController.m_meteorLevel++;
+                    }
+                    else
+                    {
+                        NotEnoughMoney();
+                    }
+                    break;
+            }
+        }
+
+
+    }
+
+    public void FixedUpdate()
+    {
+
+        if (gameObject.tag == "Store")
+        {
+            foreach (Text text in totalCoinsText)
+            {
+                text.text = "" + DataController.dataController.coins + " coins";
+            }
+
+            foreach (Text text in totalCrystalsText)
+            {
+                text.text = "" + DataController.dataController.crystals + " crystals";
+            }
+        }
+    }
+
 }
