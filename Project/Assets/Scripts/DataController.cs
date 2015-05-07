@@ -15,7 +15,7 @@ public class DataController : MonoBehaviour {
 
     //general upgrades
     public int m_screamData = 12;
-    public int m_earthquakeData = 50; //earthquake or tail?
+    public int m_tailData = 50; //earthquake or tail?
     public int p_caveData = 50;
     public int b_fireDamageData = 50;
     public float b_fireAgilityData = 0.5f;
@@ -27,10 +27,10 @@ public class DataController : MonoBehaviour {
     public int b_cursedBreathData = 50;
     public int m_meteorData = 50;
     public int m_iceData = 50;
-    public int m_specialAttackData = 100;
+    public int m_manaData = 100;
 
     public int m_screamLevel = 0;
-    public int m_earthquakeLevel = 0; //earthquake or tail?
+    public int m_tailLevel = 0; //earthquake or tail?
     public int p_caveLevel = 0;
     public int b_fireDamageLevel = 1;
     public int b_fireAgilityLevel = 1;
@@ -42,7 +42,7 @@ public class DataController : MonoBehaviour {
     public int b_cursedBreathLevel = 0;
     public int m_meteorLevel = 0;
     public int m_iceLevel = 0;
-    public int m_specialAttackLevel = 0;
+    public int m_manaLevel = 0;
 
     public int[] upgradesLevel;
     public float[] upgradesData;
@@ -74,11 +74,11 @@ public class DataController : MonoBehaviour {
             Destroy(gameObject);
         }
 
-        upgradesLevel = new int[] { b_fireDamageLevel, b_fireAgilityLevel, b_waterDamageLevel, b_waterAgilityLevel, b_frozenSkyLevel, b_thunderLevel, b_cursedBreathLevel,
-            p_caveLevel, m_screamLevel, m_meteorLevel, m_iceLevel, m_earthquakeLevel, m_specialAttackLevel };
+        upgradesLevel = new int[] { b_fireDamageLevel, b_fireAgilityLevel, b_waterDamageLevel, b_waterAgilityLevel, b_heavenlyFireLevel, b_frozenSkyLevel, b_thunderLevel, b_cursedBreathLevel,
+            p_caveLevel, m_screamLevel, m_meteorLevel, m_iceLevel, m_tailLevel, m_manaLevel };
 
-        upgradesData = new float[] { b_fireDamageData, b_fireAgilityData, b_waterDamageData, b_waterAgilityData, b_frozenSkyData, b_thunderData, b_cursedBreathData, 
-            p_caveData, m_screamData, m_meteorData, m_iceData, m_earthquakeData, m_specialAttackData };
+        upgradesData = new float[] { b_fireDamageData, b_fireAgilityData, b_waterDamageData, b_waterAgilityData, b_heavenlyFireData, b_frozenSkyData, b_thunderData, b_cursedBreathData, 
+            p_caveData, m_screamData, m_meteorData, m_iceData, m_tailData, m_manaData };
 
         if (level > 4)
         {
@@ -121,8 +121,8 @@ public class DataController : MonoBehaviour {
         data.m_screamLevel = m_screamLevel;
         data.m_meteorLevel = m_meteorLevel;
         data.m_iceLevel = m_iceLevel;
-        data.m_earthquakeLevel = m_earthquakeLevel;
-        data.m_specialAttackLevel = m_specialAttackLevel;
+        data.m_tailLevel = m_tailLevel;
+        data.m_manaLevel = m_manaLevel;
 
         data.b_fireDamageData = b_fireDamageData;
         data.b_fireAgilityData = b_fireAgilityData;
@@ -136,8 +136,8 @@ public class DataController : MonoBehaviour {
         data.m_screamData = m_screamData;
         data.m_meteorData = m_meteorData;
         data.m_iceData = m_iceData;
-        data.m_earthquakeData = m_earthquakeData;
-        data.m_specialAttackData = m_specialAttackData;
+        data.m_tailData = m_tailData;
+        data.m_manaData = m_manaData;
 
 
         binaryFormatter.Serialize(playerDataFile, data);
@@ -171,8 +171,8 @@ public class DataController : MonoBehaviour {
             m_screamLevel = data.m_screamLevel;
             m_meteorLevel = data.m_meteorLevel;
             m_iceLevel = data.m_iceLevel;
-            m_earthquakeLevel = data.m_earthquakeLevel;
-            m_specialAttackLevel = data.m_specialAttackLevel;
+            m_tailLevel = data.m_tailLevel;
+            m_manaLevel = data.m_manaLevel;
 
             b_fireDamageData = data.b_fireDamageData;
             b_fireAgilityData = data.b_fireAgilityData;
@@ -186,8 +186,8 @@ public class DataController : MonoBehaviour {
             m_screamData = data.m_screamData;
             m_meteorData = data.m_meteorData;
             m_iceData = data.m_iceData;
-            m_earthquakeData = data.m_earthquakeData;
-            m_specialAttackData = data.m_specialAttackData;
+            m_tailData = data.m_tailData;
+            m_manaData = data.m_manaData;
 
         }
     }
@@ -201,7 +201,7 @@ class PlayerData
     public int crystals;
 
     public int m_screamData;
-    public int m_earthquakeData; //earthquake or tail?
+    public int m_tailData; //earthquake or tail?
     public int p_caveData;
     public int b_fireDamageData;
     public float b_fireAgilityData;
@@ -213,10 +213,10 @@ class PlayerData
     public int b_cursedBreathData;
     public int m_meteorData;
     public int m_iceData;
-    public int m_specialAttackData;
+    public int m_manaData;
 
     public int m_screamLevel;
-    public int m_earthquakeLevel; //earthquake or tail?
+    public int m_tailLevel; //earthquake or tail?
     public int p_caveLevel;
     public int b_fireDamageLevel;
     public int b_fireAgilityLevel;
@@ -228,5 +228,5 @@ class PlayerData
     public int b_cursedBreathLevel;
     public int m_meteorLevel;
     public int m_iceLevel;
-    public int m_specialAttackLevel;
+    public int m_manaLevel;
 }

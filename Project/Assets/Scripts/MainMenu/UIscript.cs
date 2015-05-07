@@ -27,7 +27,8 @@ public class UIscript : MonoBehaviour
     private GameObject Scream;
     private GameObject Meteor;
     private GameObject Ice;
-    private GameObject Earthquake;
+    private GameObject Tail;
+    private GameObject Mana;
 
     private GameObject[] buttons;
 
@@ -53,7 +54,8 @@ public class UIscript : MonoBehaviour
     private bool scream;
     private bool meteor;
     private bool ice;
-    private bool earthquake;
+    private bool tail;
+    private bool mana;
 
     private bool[] selectUpgradeToUpgrade;
 
@@ -87,8 +89,8 @@ public class UIscript : MonoBehaviour
     private UpgradeLevel[] screamLevels;
     private UpgradeLevel[] meteorLevels;
     private UpgradeLevel[] iceLevels;
-    private UpgradeLevel[] earthquakeLevels;
-    private UpgradeLevel[] specialAttackLevels;
+    private UpgradeLevel[] tailLevels;
+    private UpgradeLevel[] manaLevels;
 
     private UpgradeLevel[][] allUpgrades;
 
@@ -130,7 +132,8 @@ public class UIscript : MonoBehaviour
             Scream = GameObject.Find("Scream");
             Meteor = GameObject.Find("Meteor");
             Ice = GameObject.Find("Ice");
-            Earthquake = GameObject.Find("Earthquake");
+            Tail = GameObject.Find("Tail");
+            Mana = GameObject.Find("Mana");
 
             upgradeDescriptions = GameObject.FindGameObjectsWithTag("upgradeDescriptions");
 
@@ -146,15 +149,15 @@ public class UIscript : MonoBehaviour
             screamLevels = ReadUpgradeLevels("ScreamUpgrade");
             meteorLevels = ReadUpgradeLevels("MeteorUpgrade");
             iceLevels = ReadUpgradeLevels("IceUpgrade");
-            earthquakeLevels = ReadUpgradeLevels("EarthquakeUpgrade");
-            specialAttackLevels = ReadUpgradeLevels("SpecialAttackUpgrade");
+            tailLevels = ReadUpgradeLevels("EarthquakeUpgrade");
+            manaLevels = ReadUpgradeLevels("SpecialAttackUpgrade");
 
             canvases = new GameObject[] { BreathCanvas, LifeCanvas, MagicCanvas };
 
             NotEnoughMoneyCanvas.SetActive(false);
 
             selectUpgradeToUpgrade = new bool[] { fireDamage, fireAgility, waterDamage, waterAgility, heavenlyFire, frozenSky, 
-                thunder, cursedBreath, cave, scream, meteor, ice, earthquake };
+                thunder, cursedBreath, cave, scream, meteor, ice, tail, mana };
 
             for (int i = 0; i < selectUpgradeToUpgrade.Length; i++)
             {
@@ -179,8 +182,10 @@ public class UIscript : MonoBehaviour
             {
                 text.text = "" + DataController.dataController.crystals + " crystals";
             }
+
             buttons = new GameObject[] { FireDamage, FireAgility, WaterDamage, WaterAgility, HeavenlyFire, FrozenSky, Thunder,
-                CursedBreath, Cave, Scream, Meteor, Ice, Earthquake};
+                CursedBreath, Cave, Scream, Meteor, Ice, Tail, Mana};
+            Debug.Log("buttons length " + buttons.Length);
 
             upgradeDescriptionsText = new Text[upgradeDescriptions.Length];
 
@@ -195,9 +200,7 @@ public class UIscript : MonoBehaviour
             }
 
             upgradeButtonCostText = new Text[upgradeButtons.Length];
-            Debug.Log(upgradeButtons.Length);
             for(int i = 0; i < upgradeButtons.Length; i++) {
-                Debug.Log(i);
                 upgradeButtonCostText[i] = upgradeButtons[i].GetComponent<Text>();
             }
 
@@ -206,7 +209,7 @@ public class UIscript : MonoBehaviour
                 text.text = "";
             }
 
-            isUnlocked = new bool[13];
+            isUnlocked = new bool[14];
 
             for (int i = 0; i < isUnlocked.Length; i++)
             {
@@ -259,25 +262,27 @@ public class UIscript : MonoBehaviour
 
                 for (int i = 4; i < buttons.Length; i++)
                 {
+                    Debug.Log("i is " + i);
+
                     if (isUnlocked[i])
                     {
                         buttons[i].GetComponent<Image>().sprite = regularUpgrade;
                         if (DataController.dataController.upgradesLevel[i] != 0)
                         {
-                            buttons[i].transform.FindChild("LevelNumber").GetComponent<Text>().text = DataController.dataController.upgradesLevel[i].ToString();
+                            //buttons[i].transform.FindChild("LevelNumber").GetComponent<Text>().text = DataController.dataController.upgradesLevel[i].ToString();
                         }
                     }
                     else
                     {
                         buttons[i].GetComponent<Image>().sprite = lockedUpgrade;
                         //buttons[i].transform.FindChild("Name").GetComponent<Text>().font.material.color = Color.gray;
-                        buttons[i].transform.FindChild("LevelNumber").GetComponent<Text>().text = "";
+                        //buttons[i].transform.FindChild("LevelNumber").GetComponent<Text>().text = "";
                     }
                 }
             
 
             allUpgrades = new UpgradeLevel[][] {fireDamageLevels, fireAgilityLevels, waterDamageLevels, waterAgilityLevels, heavenlyFireLevels, 
-                frozenSkyLevels, thunderLevels, cursedBreathLevels, caveLevels, screamLevels, meteorLevels, iceLevels, earthquakeLevels, specialAttackLevels};
+                frozenSkyLevels, thunderLevels, cursedBreathLevels, caveLevels, screamLevels, meteorLevels, iceLevels, tailLevels, manaLevels};
 
             for (int i = 0; i < amountOfCanvases; i++)
             {
@@ -342,6 +347,11 @@ public class UIscript : MonoBehaviour
         for (int i = 0; i < selectUpgradeToUpgrade.Length; i++)
         {
             selectUpgradeToUpgrade[i] = false;
+        }
+
+        foreach (Text text in upgradeButtonCostText)
+        {
+            text.text = "";
         }
     }
 
@@ -539,6 +549,10 @@ public class UIscript : MonoBehaviour
                 strToDisplayInDescription = "Lowers the life bar of all the heroes and stop them for a while";
                 strToDisplayInUpgrade = "9 crystals";
                 break;
+            case 14:
+                strToDisplayInDescription = "Increase the mana bar";
+                strToDisplayInUpgrade = "10 crystals";
+                break;
         }
 
         foreach (Text text in upgradeDescriptionsText)
@@ -646,7 +660,7 @@ public class UIscript : MonoBehaviour
         {
             numOfLevels++;
         }
-        Debug.Log("Im here");
+
         UpgradeLevel[] allUpgradeLevel = new UpgradeLevel[numOfLevels];
         int i = 0;
         
@@ -849,11 +863,23 @@ public class UIscript : MonoBehaviour
                         DataController.dataController.m_meteorData += 5;
                         DataController.dataController.m_meteorLevel++;
                     }
-                    else if (DataController.dataController.m_meteorLevel == 1 && DataController.dataController.crystals >= 9)
+                    else if (DataController.dataController.m_meteorLevel == 2 && DataController.dataController.crystals >= 9)
                     {
                         DataController.dataController.crystals -= 9;
                         DataController.dataController.m_meteorData += 5;
                         DataController.dataController.m_meteorLevel++;
+                    }
+                    else 
+                    {
+                        NotEnoughMoney();
+                    }
+                    break;
+                case 13:
+                    if (DataController.dataController.m_manaLevel == 0 && DataController.dataController.crystals >= 10)
+                    {
+                        DataController.dataController.crystals -= 10;
+                        DataController.dataController.m_manaData += 10;
+                        DataController.dataController.m_manaLevel++;
                     }
                     else
                     {
