@@ -10,9 +10,17 @@ public class Player : MonoBehaviour
     public float fireAttackSpeed = 5.0f;
     public float fireAttackDelay = 1.0f;
     public int fireAttackDamage = 1;
+    public int fireContinuousDamage = 0;
+    public float fireContinuousDamageTime = 0;
+    public float fireSlowFactor = 0;
+    public float fireSlowTime = 0;
     public float waterAttackSpeed = 5.0f;
     public float waterAttackDelay = 1.0f;
     public int waterAttackDamage = 1;
+    public int waterContinuousDamage = 0;
+    public float waterContinuousDamageTime = 0;
+    public float waterSlowFactor = 0;
+    public float waterSlowTime = 0;
     public int crystalToManaRatio = 20;
     public int manaRefillAmount = 1;
     public float manaRefillDelay = 1.0f;
@@ -52,6 +60,10 @@ public class Player : MonoBehaviour
     private float activeAttackSpeed = 5.0f;
     private float activeAttackDelay = .4f;
     private int activeAttackDamage = 1;
+    private int activeContinuousDamage = 0;
+    private float activeContinuousDamageTime = 0;
+    private float activeSlowFactor = 0;
+    private float activeSlowTime = 0;
     private int activeSpecialAttackDamage = 1;
     private int activeSpecialAttackManaCost = 30;
     private DragonAttack.AttackType activeAttackType;
@@ -320,6 +332,10 @@ public class Player : MonoBehaviour
         GameObject attack = (GameObject)Instantiate(activeAttack, dragonMouth, transform.rotation);
         DragonAttack dragonAttack = attack.GetComponent<DragonAttack>();
         dragonAttack.attackDamage = activeAttackDamage;
+        dragonAttack.continuousDamage = activeContinuousDamage;
+        dragonAttack.continuosDamageTime = activeContinuousDamageTime;
+        dragonAttack.slowFactor = activeSlowFactor;
+        dragonAttack.slowTime = activeSlowTime;
         attack.rigidbody2D.velocity = attackDirection;
         lastAttack = Time.time;
 
@@ -508,6 +524,12 @@ public class Player : MonoBehaviour
             activeSpecialAttackDamage = waterSpecialAttackDamage;
             activeSpecialAttackManaCost = waterSpecialAttackManaCost;
 
+            // Cotinuous attack and slowing down parameters
+            activeContinuousDamage = waterContinuousDamage;
+            activeContinuousDamageTime = waterContinuousDamageTime;
+            activeSlowFactor = waterSlowFactor;
+            activeSlowTime = waterSlowTime;
+
         }
         else
         {
@@ -525,6 +547,12 @@ public class Player : MonoBehaviour
             selectedSpecialAttackSprite = fireSpecialAttackImage;
             activeSpecialAttackDamage = fireSpecialAttackDamage;
             activeSpecialAttackManaCost = fireSpecialAttackManaCost;
+
+            // Cotinuous attack and slowing down parameters
+            activeContinuousDamage = fireContinuousDamage;
+            activeContinuousDamageTime = fireContinuousDamageTime;
+            activeSlowFactor = fireSlowFactor;
+            activeSlowTime = fireSlowTime;
         }
 
         changeAttackButtonEnabled = false;

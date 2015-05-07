@@ -12,9 +12,9 @@ public class SpawnerManager : MonoBehaviour {
     public GameObject Archer;
     public GameObject Healer;
     public GameObject Boss;
-    public double precentageOfLifeToGetHarder = 0.85f;
-    public double precentageOfLevelToGetHarder = 0.6f;
-    public double maxTimeForClearBoard = 3.0f;
+    public float percentageOfLifeToGetHarder = 0.85f;
+    public float percentageOfLevelToGetHarder = 0.6f;
+    public float maxTimeForClearBoard = 3.0f;
 
     public float rowDiff = 1.0f;
     public float colDiff = 1.0f;
@@ -88,6 +88,9 @@ public class SpawnerManager : MonoBehaviour {
         // We read the current level attack plan
         Level currentLevel = ReadLevel(levelNumber);
 
+        // Set the health percentile to make this level harder
+        percentageOfLifeToGetHarder = currentLevel.LifeToMakeItHarder;
+        
         // We create the current level attack plan according to the attacks given
         levelAttackPlan = LevelPlan(currentLevel);
 
@@ -128,8 +131,8 @@ public class SpawnerManager : MonoBehaviour {
             }
             
             // If the player has a certain life precentage and we are close to the end of the level
-            createStrongerAttack = ((player.getCurrentHealthPrecentage() >= precentageOfLifeToGetHarder) && 
-                ((levelAttackPlan.Count + 1.0f) / totalNumberOfAttacks) <= (1 - precentageOfLevelToGetHarder));
+            createStrongerAttack = ((player.getCurrentHealthPrecentage() >= percentageOfLifeToGetHarder) && 
+                ((levelAttackPlan.Count + 1.0f) / totalNumberOfAttacks) <= (1 - percentageOfLevelToGetHarder));
 
             // If the conditions for a stronger wave attack exist replace the current attack with a stronger one
             if (createStrongerAttack)

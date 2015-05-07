@@ -14,7 +14,6 @@ public class Enemy : MonoBehaviour
     public float healingPower = 10f;
     public float resistenceToFire = 0.0f;
     public float resistenceToWater = 0.0f;
-    public float resistenceToAir = 0.0f;
     public float resistenceToEarthquake = 0.0f;
     public float resistenceToScream = 0.0f;
     public EnemyType enemyType;
@@ -37,10 +36,15 @@ public class Enemy : MonoBehaviour
 
     private bool showHealthBar = false;
     private float lastHealthChange = 0f;
-    private float lastWallHit = 0f;
     private bool beingThrownBack = false;
+    private float slowFactor = 0;
+    private float slowTimeEnd = 0;
+    private int continuousDamage = 0;
+    private float lastContinuousDamage = 0;
+    private float continuousDamageEnd = 0;
+    private DragonAttack.AttackType continuousDamageType;
 
-    // Use this for initialization
+
     void Start()
     {
 
@@ -94,10 +98,20 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (gameController.gameEnded)
+            return;
+        
+        // If the cotinuous attack is still in affect and a second passed since the last one
+        if ((Time.time < continuousDamageEnd) && (Time.time > lastContinuousDamage + 1.0f))
+        {
+            Hit(continuousDamage, continuousDamageType);
+            lastContinuousDamage = Time.time;
+        }
+        
         if ((!arrivedAtDestination) && (!beingThrownBack))
         {
             Vector3 newPos = transform.position;
-            newPos.x -= walkingSpeed;
+            newPos.x -= (Time.time > slowTimeEnd) ? walkingSpeed : walkingSpeed * (1 - slowFactor);
             transform.position = newPos;
             if (animator != null)
                 animator.SetFloat("speed", walkingSpeed);
@@ -208,16 +222,23 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void WallHit(int damage, DragonAttack.AttackType attackType, float timeDelay)
+    public void slowEnemy(float slowFactor, float slowTime)
     {
-
-        if (Time.time < lastWallHit + timeDelay)
+        if ((slowFactor == 0) || (slowTime == 0))
             return;
 
-        lastWallHit = Time.time;
+        this.slowFactor = slowFactor;
+        this.slowTimeEnd = Time.time + slowTime;
 
-        Hit(damage, attackType);
+    }
 
+    public void continuousDamageHit(int damage, float damageTime, DragonAttack.AttackType attackType)
+    {
+        this.continuousDamage = damage;
+        this.continuousDamageEnd = Time.time + damageTime;
+        this.lastContinuousDamage = Time.time;
+        this.continuousDamageType = attackType;
+        Hit(continuousDamage, continuousDamageType);
     }
 
     private void Death()
@@ -244,7 +265,7 @@ public class Enemy : MonoBehaviour
         if (enemyType == EnemyType.Archer)
             ProjectileAttack();
 
-        if ((enemyType == EnemyType.Knight) || (enemyType == EnemyType.Cavalier))
+        if ((enemyType == EnemyType.Knight) || (enemyType == EnemyType.Cavalier) || (enemyType == EnemyType.Boss))
             player.Hit(attackDamage);
 
     }

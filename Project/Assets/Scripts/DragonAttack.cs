@@ -9,6 +9,10 @@ public class DragonAttack : MonoBehaviour {
     public AttackType attackType;
     [HideInInspector]
     public int attackDamage = 1;
+    public int continuousDamage = 0;
+    public float continuosDamageTime = 0;
+    public float slowFactor = 0;
+    public float slowTime = 0;
 
 
 
@@ -24,8 +28,14 @@ public class DragonAttack : MonoBehaviour {
             GameObject explosionEffect = (GameObject)Instantiate(explosion, new Vector3(transform.position.x, transform.position.y, -1), transform.rotation);
             explosionEffect.renderer.sortingLayerName = "Enemy";
             explosionEffect.renderer.sortingOrder = collider.gameObject.renderer.sortingOrder;
+
+            Enemy enemyScript = collider.gameObject.GetComponent<Enemy>();
+            if (enemyScript != null) {
+                enemyScript.Hit(attackDamage, attackType);
+                enemyScript.slowEnemy(slowFactor, slowTime);
+                enemyScript.continuousDamageHit(continuousDamage, continuosDamageTime, attackType);
+            }
             
-            collider.gameObject.GetComponent<Enemy>().Hit(attackDamage, attackType);
             GameObject.Destroy(gameObject);
         }
 
