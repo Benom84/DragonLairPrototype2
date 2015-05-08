@@ -4,26 +4,36 @@
 			<ID>001</ID>
 			<Cost>10</Cost>
 			<Data>20</Data>
+			<Name>Mana</Name>
+			<Description>Increase the mana bar</Description>
 		</Upgrade_Level>
 		<Upgrade_Level>
 			<ID>002</ID>
 			<Cost>15</Cost>
 			<Data>20</Data>
+			<Name>Mana</Name>
+			<Description>Increase the mana bar</Description>
 		</Upgrade_Level>
 		<Upgrade_Level>
 			<ID>003</ID>
 			<Cost>20</Cost>
 			<Data>20</Data>
+			<Name>Mana</Name>
+			<Description>Increase the mana bar</Description>
 		</Upgrade_Level>
 		<Upgrade_Level>
 			<ID>004</ID>
 			<Cost>25</Cost>
 			<Data>20</Data>
+			<Name>Mana</Name>
+			<Description>Increase the mana bar</Description>
 		</Upgrade_Level>
 		<Upgrade_Level>
 			<ID>005</ID>
 			<Cost>30</Cost>
 			<Data>20</Data>
+			<Name>Mana</Name>
+			<Description>Increase the mana bar</Description>
 		</Upgrade_Level>
 	</Upgrade_Levels>
 </Upgrade>

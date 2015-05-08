@@ -3,27 +3,37 @@
 		<Upgrade_Level>
 			<ID>001</ID>
 			<Cost>500</Cost>
-			<Data>0.7</Data>
+			<Data>0.1</Data>
+			<Name>Water Agility</Name>
+			<Description>Decreases the delay between your water balls</Description>
 		</Upgrade_Level>
 		<Upgrade_Level>
 			<ID>002</ID>
 			<Cost>700</Cost>
-			<Data>0.6</Data>
+			<Data>0.1</Data>
+			<Name>Water Agility</Name>
+			<Description>Decreases the delay between your water balls</Description>
 		</Upgrade_Level>
 		<Upgrade_Level>
 			<ID>003</ID>
 			<Cost>900</Cost>
-			<Data>0.5</Data>
+			<Data>0.1</Data>
+			<Name>Water Agility</Name>
+			<Description>Decreases the delay between your water balls</Description>
 		</Upgrade_Level>
 		<Upgrade_Level>
 			<ID>004</ID>
 			<Cost>1100</Cost>
-			<Data>0.4</Data>
+			<Data>0.1</Data>
+			<Name>Water Agility</Name>
+			<Description>Decreases the delay between your water balls</Description>
 		</Upgrade_Level>
 		<Upgrade_Level>
 			<ID>005</ID>
 			<Cost>1300</Cost>
-			<Data>0.3</Data>
+			<Data>0.1</Data>
+			<Name>Water Agility</Name>
+			<Description>Decreases the delay between your water balls</Description>
 		</Upgrade_Level>
 	</Upgrade_Levels>
 </Upgrade>

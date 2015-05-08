@@ -4,26 +4,36 @@
 			<ID>001</ID>
 			<Cost>1500</Cost>
 			<Data>10</Data>
+			<Name>Cave</Name>
+			<Description>Increase the life bar</Description>
 		</Upgrade_Level>
 		<Upgrade_Level>
 			<ID>002</ID>
 			<Cost>2000</Cost>
 			<Data>10</Data>
+			<Name>Cave</Name>
+			<Description>Increase the life bar</Description>
 		</Upgrade_Level>
 		<Upgrade_Level>
 			<ID>003</ID>
 			<Cost>2000</Cost>
 			<Data>10</Data>
+			<Name>Cave</Name>
+			<Description>Increase the life bar</Description>
 		</Upgrade_Level>
 		<Upgrade_Level>
 			<ID>004</ID>
 			<Cost>2000</Cost>
 			<Data>10</Data>
+			<Name>Cave</Name>
+			<Description>Increase the life bar</Description>
 		</Upgrade_Level>
 		<Upgrade_Level>
 			<ID>005</ID>
 			<Cost>2000</Cost>
 			<Data>10</Data>
+			<Name>Cave</Name>
+			<Description>Increase the life bar</Description>
 		</Upgrade_Level>
 	</Upgrade_Levels>
 </Upgrade>

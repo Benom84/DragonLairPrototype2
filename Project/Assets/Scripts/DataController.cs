@@ -32,8 +32,8 @@ public class DataController : MonoBehaviour {
     public int m_screamLevel = 0;
     public int m_tailLevel = 0; //earthquake or tail?
     public int p_caveLevel = 0;
-    public int b_fireDamageLevel = 1;
-    public int b_fireAgilityLevel = 1;
+    public int b_fireDamageLevel = 0;
+    public int b_fireAgilityLevel = 0;
     public int b_waterDamageLevel = 0;
     public int b_waterAgilityLevel = 0;
     public int b_heavenlyFireLevel = 0;

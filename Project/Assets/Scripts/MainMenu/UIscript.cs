@@ -42,21 +42,6 @@ public class UIscript : MonoBehaviour
     private GameObject[] totalCrystals;
     private Text[] totalCrystalsText;
 
-    private bool fireDamage;
-    private bool fireAgility;
-    private bool waterDamage;
-    private bool waterAgility; 
-    private bool heavenlyFire;
-    private bool frozenSky;
-    private bool thunder;
-    private bool cursedBreath;
-    private bool cave;
-    private bool scream;
-    private bool meteor;
-    private bool ice;
-    private bool tail;
-    private bool mana;
-
     private bool[] selectUpgradeToUpgrade;
 
     private bool[] isUnlocked;
@@ -76,6 +61,9 @@ public class UIscript : MonoBehaviour
 
     private GameObject[] upgradeButtons;
     private Text[] upgradeButtonCostText;
+
+    private GameObject[] nameOfUpgradeInDescription;
+    private Text[] nameOfUpgradeInDescriptionText;
 
     private UpgradeLevel[] fireDamageLevels;
     private UpgradeLevel[] fireAgilityLevels;
@@ -113,56 +101,20 @@ public class UIscript : MonoBehaviour
             LifeCanvas = GameObject.Find("LifeCanvas");
             MagicCanvas = GameObject.Find("MagicCanvas");
 
-            NotEnoughMoneyCanvas = GameObject.Find("NotEnoughMoneyCanvas");
-
-            totalCoins = GameObject.FindGameObjectsWithTag("TotalCoins");
-            totalCrystals = GameObject.FindGameObjectsWithTag("TotalCrystals");
-
-            upgradeButtons = GameObject.FindGameObjectsWithTag("upgradeButton");
-
-            FireDamage = GameObject.Find("FireDamage");
-            FireAgility = GameObject.Find("FireAgility");
-            WaterDamage = GameObject.Find("WaterDamage");
-            WaterAgility = GameObject.Find("WaterAgility");
-            HeavenlyFire = GameObject.Find("HeavenlyFire");
-            Thunder = GameObject.Find("Thunder");
-            FrozenSky = GameObject.Find("FrozenSky");
-            CursedBreath = GameObject.Find("CursedBreath");
-            Cave = GameObject.Find("Cave");
-            Scream = GameObject.Find("Scream");
-            Meteor = GameObject.Find("Meteor");
-            Ice = GameObject.Find("Ice");
-            Tail = GameObject.Find("Tail");
-            Mana = GameObject.Find("Mana");
-
-            upgradeDescriptions = GameObject.FindGameObjectsWithTag("upgradeDescriptions");
-
-            fireDamageLevels = ReadUpgradeLevels("FireDamageUpgrade");
-            fireAgilityLevels = ReadUpgradeLevels("FireAgilityUpgrade");
-            waterDamageLevels = ReadUpgradeLevels("WaterDamageUpgrade");
-            waterAgilityLevels = ReadUpgradeLevels("WaterAgilityUpgrade");
-            heavenlyFireLevels = null; //change this
-            frozenSkyLevels = null; //change this
-            thunderLevels = null;
-            cursedBreathLevels = null;
-            caveLevels = ReadUpgradeLevels("CaveUpgrade");
-            screamLevels = ReadUpgradeLevels("ScreamUpgrade");
-            meteorLevels = ReadUpgradeLevels("MeteorUpgrade");
-            iceLevels = ReadUpgradeLevels("IceUpgrade");
-            tailLevels = ReadUpgradeLevels("EarthquakeUpgrade");
-            manaLevels = ReadUpgradeLevels("SpecialAttackUpgrade");
-
             canvases = new GameObject[] { BreathCanvas, LifeCanvas, MagicCanvas };
 
+            NotEnoughMoneyCanvas = GameObject.Find("NotEnoughMoneyCanvas");
             NotEnoughMoneyCanvas.SetActive(false);
 
-            selectUpgradeToUpgrade = new bool[] { fireDamage, fireAgility, waterDamage, waterAgility, heavenlyFire, frozenSky, 
-                thunder, cursedBreath, cave, scream, meteor, ice, tail, mana };
+            selectUpgradeToUpgrade = new bool[14];
 
             for (int i = 0; i < selectUpgradeToUpgrade.Length; i++)
             {
                 selectUpgradeToUpgrade[i] = false;
             }
+
+            totalCoins = GameObject.FindGameObjectsWithTag("TotalCoins");
+            totalCrystals = GameObject.FindGameObjectsWithTag("TotalCrystals");
 
             totalCoinsText = new Text[amountOfCanvases];
             totalCrystalsText = new Text[amountOfCanvases];
@@ -183,15 +135,37 @@ public class UIscript : MonoBehaviour
                 text.text = "" + DataController.dataController.crystals + " crystals";
             }
 
+            FireDamage = GameObject.Find("FireDamage");
+            FireAgility = GameObject.Find("FireAgility");
+            WaterDamage = GameObject.Find("WaterDamage");
+            WaterAgility = GameObject.Find("WaterAgility");
+            HeavenlyFire = GameObject.Find("HeavenlyFire");
+            Thunder = GameObject.Find("Thunder");
+            FrozenSky = GameObject.Find("FrozenSky");
+            CursedBreath = GameObject.Find("CursedBreath");
+            Cave = GameObject.Find("Cave");
+            Scream = GameObject.Find("Scream");
+            Meteor = GameObject.Find("Meteor");
+            Ice = GameObject.Find("Ice");
+            Tail = GameObject.Find("Tail");
+            Mana = GameObject.Find("Mana");
+
             buttons = new GameObject[] { FireDamage, FireAgility, WaterDamage, WaterAgility, HeavenlyFire, FrozenSky, Thunder,
                 CursedBreath, Cave, Scream, Meteor, Ice, Tail, Mana};
-            Debug.Log("buttons length " + buttons.Length);
+
+            upgradeButtons = GameObject.FindGameObjectsWithTag("upgradeButton");
+            upgradeDescriptions = GameObject.FindGameObjectsWithTag("upgradeDescriptions");
+            nameOfUpgradeInDescription = GameObject.FindGameObjectsWithTag("nameOfUpgradeInDescription");
 
             upgradeDescriptionsText = new Text[upgradeDescriptions.Length];
+            upgradeButtonCostText = new Text[upgradeButtons.Length];
+            nameOfUpgradeInDescriptionText = new Text[nameOfUpgradeInDescription.Length];
 
             for (int i = 0; i < upgradeDescriptions.Length; i++)
             {
                 upgradeDescriptionsText[i] = upgradeDescriptions[i].GetComponent<Text>();
+                upgradeButtonCostText[i] = upgradeButtons[i].GetComponent<Text>();
+                nameOfUpgradeInDescriptionText[i] = nameOfUpgradeInDescription[i].GetComponent<Text>();
             }
 
             foreach (Text text in upgradeDescriptionsText)
@@ -199,12 +173,12 @@ public class UIscript : MonoBehaviour
                 text.text = "";
             }
 
-            upgradeButtonCostText = new Text[upgradeButtons.Length];
-            for(int i = 0; i < upgradeButtons.Length; i++) {
-                upgradeButtonCostText[i] = upgradeButtons[i].GetComponent<Text>();
+            foreach (Text text in upgradeButtonCostText)
+            {
+                text.text = "";
             }
 
-            foreach (Text text in upgradeButtonCostText)
+            foreach (Text text in nameOfUpgradeInDescriptionText)
             {
                 text.text = "";
             }
@@ -260,26 +234,38 @@ public class UIscript : MonoBehaviour
                 }
             }
 
-                for (int i = 4; i < buttons.Length; i++)
+            for (int i = 4; i < buttons.Length; i++)
+            {
+                if (isUnlocked[i])
                 {
-                    Debug.Log("i is " + i);
-
-                    if (isUnlocked[i])
+                    buttons[i].GetComponent<Image>().sprite = regularUpgrade;
+                    if (DataController.dataController.upgradesLevel[i] != 0)
                     {
-                        buttons[i].GetComponent<Image>().sprite = regularUpgrade;
-                        if (DataController.dataController.upgradesLevel[i] != 0)
-                        {
-                            //buttons[i].transform.FindChild("LevelNumber").GetComponent<Text>().text = DataController.dataController.upgradesLevel[i].ToString();
-                        }
-                    }
-                    else
-                    {
-                        buttons[i].GetComponent<Image>().sprite = lockedUpgrade;
-                        //buttons[i].transform.FindChild("Name").GetComponent<Text>().font.material.color = Color.gray;
-                        //buttons[i].transform.FindChild("LevelNumber").GetComponent<Text>().text = "";
+                        //buttons[i].transform.FindChild("LevelNumber").GetComponent<Text>().text = DataController.dataController.upgradesLevel[i].ToString();
                     }
                 }
-            
+                else
+                {
+                    buttons[i].GetComponent<Image>().sprite = lockedUpgrade;
+                    //buttons[i].transform.FindChild("Name").GetComponent<Text>().font.material.color = Color.gray;
+                    //buttons[i].transform.FindChild("LevelNumber").GetComponent<Text>().text = "";
+                }
+            }
+
+            fireDamageLevels = ReadUpgradeLevels("FireDamageUpgrade");
+            fireAgilityLevels = ReadUpgradeLevels("FireAgilityUpgrade");
+            waterDamageLevels = ReadUpgradeLevels("WaterDamageUpgrade");
+            waterAgilityLevels = ReadUpgradeLevels("WaterAgilityUpgrade");
+            heavenlyFireLevels = null; //change this
+            frozenSkyLevels = null; //change this
+            thunderLevels = null;
+            cursedBreathLevels = null;
+            caveLevels = ReadUpgradeLevels("CaveUpgrade");
+            screamLevels = ReadUpgradeLevels("ScreamUpgrade");
+            meteorLevels = ReadUpgradeLevels("MeteorUpgrade");
+            iceLevels = ReadUpgradeLevels("IceUpgrade");
+            tailLevels = ReadUpgradeLevels("EarthquakeUpgrade");
+            manaLevels = ReadUpgradeLevels("SpecialAttackUpgrade");
 
             allUpgrades = new UpgradeLevel[][] {fireDamageLevels, fireAgilityLevels, waterDamageLevels, waterAgilityLevels, heavenlyFireLevels, 
                 frozenSkyLevels, thunderLevels, cursedBreathLevels, caveLevels, screamLevels, meteorLevels, iceLevels, tailLevels, manaLevels};
@@ -405,155 +391,9 @@ public class UIscript : MonoBehaviour
             }
         }
 
-        string strToDisplayInDescription = "";
-        string strToDisplayInUpgrade = "";
-
-        switch (numberOfUpgraded)
-        {
-            case 1:
-                strToDisplayInDescription = "Increases the damage your fire creates";
-                if (DataController.dataController.b_fireDamageLevel == 1) 
-                {
-                    strToDisplayInUpgrade = "500 coins";
-                } 
-                else if (DataController.dataController.b_fireDamageLevel == 2)
-                {
-                    strToDisplayInUpgrade = "700 coins";
-                }else if (DataController.dataController.b_fireDamageLevel == 3)
-                {
-                    strToDisplayInUpgrade = "900 coins";
-                }else if (DataController.dataController.b_fireDamageLevel == 4)
-                {
-                    strToDisplayInUpgrade = "1100 coins";
-                }
-                break;
-            case 2:
-                strToDisplayInDescription = "Decreases the delay between your fire balls";
-                if (DataController.dataController.b_fireAgilityLevel == 1) 
-                {
-                    strToDisplayInUpgrade = "500 coins";
-                }
-                else if (DataController.dataController.b_fireAgilityLevel == 2)
-                {
-                    strToDisplayInUpgrade = "700 coins";
-                }
-                else if (DataController.dataController.b_fireAgilityLevel == 3)
-                {
-                    strToDisplayInUpgrade = "900 coins";
-                }
-                else if (DataController.dataController.b_fireAgilityLevel == 4)
-                {
-                    strToDisplayInUpgrade = "1100 coins";
-                }
-                break;
-            case 3:
-                strToDisplayInDescription = "Increases the damage your water creates";
-                if (DataController.dataController.b_waterDamageLevel == 0)
-                {
-                    strToDisplayInUpgrade = "500 coins";
-                }
-                else if (DataController.dataController.b_waterDamageLevel == 1)
-                {
-                    strToDisplayInUpgrade = "700 coins";
-                }
-                else if (DataController.dataController.b_waterDamageLevel == 2)
-                {
-                    strToDisplayInUpgrade = "900 coins";
-                }
-                else if (DataController.dataController.b_waterDamageLevel == 3)
-                {
-                    strToDisplayInUpgrade = "1100 coins";
-                }
-                break;
-            case 4:
-                strToDisplayInDescription = "Decreases the delay between your water balls";
-                if (DataController.dataController.b_waterAgilityLevel == 0)
-                {
-                    strToDisplayInUpgrade = "500 coins";
-                }
-                else if (DataController.dataController.b_waterAgilityLevel == 1)
-                {
-                    strToDisplayInUpgrade = "700 coins";
-                }
-                else if (DataController.dataController.b_waterAgilityLevel == 2)
-                {
-                    strToDisplayInUpgrade = "900 coins";
-                }
-                else if (DataController.dataController.b_waterAgilityLevel == 3)
-                {
-                    strToDisplayInUpgrade = "1100 coins";
-                }
-                break;
-            case 5:
-                strToDisplayInDescription = "After being hit continue to lower the heroes life bar";
-                strToDisplayInUpgrade = "900 coins";
-                break;
-            case 6:
-                strToDisplayInDescription = "After being hit stops the heroes for little time";
-                strToDisplayInUpgrade = "900 coins";
-                break;
-            case 7:
-                strToDisplayInDescription = "After being hit continue to lower the heroes life bar and slower them down";
-                strToDisplayInUpgrade = "900 coins";
-                break;
-            case 8:
-                strToDisplayInDescription = "After being hit it stops the heroes and continue to lower the heroes life bar";
-                strToDisplayInUpgrade = "900 coins";
-                break;
-            case 9:
-                strToDisplayInDescription = "Increase the life bar";
-                if (DataController.dataController.p_caveLevel == 0)
-                {
-                    strToDisplayInUpgrade = "1500 coins";
-                }
-                else if (DataController.dataController.p_caveLevel == 1)
-                {
-                    strToDisplayInUpgrade = "2000 coins";
-                }
-                break;
-            case 10:
-                strToDisplayInDescription = "Pushes the heroes back";
-                if (DataController.dataController.m_screamLevel == 0)
-                {
-                    strToDisplayInUpgrade = "5 crystals";
-                }
-                else if (DataController.dataController.m_screamLevel == 1)
-                {
-                    strToDisplayInUpgrade = "7 crystals";
-                }
-                else if (DataController.dataController.m_screamLevel == 2)
-                {
-                    strToDisplayInUpgrade = "9 crystals";
-                }
-                break;
-            case 11:
-                strToDisplayInDescription = "Lowers the life bar of all the heroes and continue to lower them for a while";
-                if (DataController.dataController.m_meteorLevel == 0)
-                {
-                    strToDisplayInUpgrade = "5 crystals";
-                }
-                else if (DataController.dataController.m_meteorLevel == 1)
-                {
-                    strToDisplayInUpgrade = "7 crystals";
-                }
-                else if (DataController.dataController.m_meteorLevel == 2)
-                {
-                    strToDisplayInUpgrade = "9 crystals";
-                }
-                break;
-            case 12:
-                strToDisplayInDescription = "Stops all the heroes for a while";
-                strToDisplayInUpgrade = "9 crystals";
-                break;
-            case 13:
-                strToDisplayInDescription = "Lowers the life bar of all the heroes and stop them for a while";
-                strToDisplayInUpgrade = "9 crystals";
-                break;
-            case 14:
-                strToDisplayInDescription = "Increase the mana bar";
-                strToDisplayInUpgrade = "10 crystals";
-                break;
-        }
+        string strToDisplayInDescription = allUpgrades[numberOfUpgraded - 1][DataController.dataController.upgradesLevel[numberOfUpgraded - 1]].Description;
+        string strToDisplayInUpgrade = allUpgrades[numberOfUpgraded - 1][DataController.dataController.upgradesLevel[numberOfUpgraded - 1]].Cost.ToString();
+        string strToDisplayInDescriptionName = allUpgrades[numberOfUpgraded - 1][DataController.dataController.upgradesLevel[numberOfUpgraded - 1]].Name;
 
         foreach (Text text in upgradeDescriptionsText)
         {
@@ -563,6 +403,11 @@ public class UIscript : MonoBehaviour
         foreach (Text text in upgradeButtonCostText)
         {
             text.text = strToDisplayInUpgrade;
+        }
+
+        foreach (Text text in nameOfUpgradeInDescriptionText)
+        {
+            text.text = strToDisplayInDescriptionName;
         }
     }
 
@@ -586,7 +431,7 @@ public class UIscript : MonoBehaviour
             {
                 DataController.dataController.coins -= costOfUpgrade;
                 if (numberOfUpgrade != 2 && numberOfUpgrade != 4) {
-                    DataController.dataController.upgradesData[numberOfUpgrade] += (int)allUpgrades[numberOfUpgrade][DataController.dataController.upgradesLevel[numberOfUpgrade]].Data;
+                    DataController.dataController.upgradesData[numberOfUpgrade] += allUpgrades[numberOfUpgrade][DataController.dataController.upgradesLevel[numberOfUpgrade]].Data;
                 }
                 else
                 {
@@ -654,21 +499,9 @@ public class UIscript : MonoBehaviour
         StringReader upgradeTextReader = new StringReader(upgradeText.text);
         XmlSerializer serializer = new XmlSerializer(typeof(Upgrade));
         Upgrade upgradeLevels = serializer.Deserialize(upgradeTextReader) as Upgrade;
-        int numOfLevels = 0;
 
-        foreach (UpgradeLevel upgradelevel in upgradeLevels.upgradeLevels)
-        {
-            numOfLevels++;
-        }
-
-        UpgradeLevel[] allUpgradeLevel = new UpgradeLevel[numOfLevels];
-        int i = 0;
-        
-        foreach (UpgradeLevel upgradeLevel in upgradeLevels.upgradeLevels)
-        {
-            allUpgradeLevel[i] = upgradeLevel;
-            i++;
-        }
+        UpgradeLevel[] allUpgradeLevel = new UpgradeLevel[upgradeLevels.upgradeLevels.Capacity];
+        upgradeLevels.upgradeLevels.CopyTo(allUpgradeLevel);
 
         return allUpgradeLevel;
     }
@@ -910,3 +743,153 @@ public class UIscript : MonoBehaviour
     }
 
 }
+
+//string strToDisplayInDescription = "";
+//string strToDisplayInUpgrade = "";
+
+//switch (numberOfUpgraded)
+//{
+//    case 1:
+//        strToDisplayInDescription = "Increases the damage your fire creates";
+//        if (DataController.dataController.b_fireDamageLevel == 1) 
+//        {
+//            strToDisplayInUpgrade = "500 coins";
+//        } 
+//        else if (DataController.dataController.b_fireDamageLevel == 2)
+//        {
+//            strToDisplayInUpgrade = "700 coins";
+//        }else if (DataController.dataController.b_fireDamageLevel == 3)
+//        {
+//            strToDisplayInUpgrade = "900 coins";
+//        }else if (DataController.dataController.b_fireDamageLevel == 4)
+//        {
+//            strToDisplayInUpgrade = "1100 coins";
+//        }
+//        break;
+//    case 2:
+//        strToDisplayInDescription = "Decreases the delay between your fire balls";
+//        if (DataController.dataController.b_fireAgilityLevel == 1) 
+//        {
+//            strToDisplayInUpgrade = "500 coins";
+//        }
+//        else if (DataController.dataController.b_fireAgilityLevel == 2)
+//        {
+//            strToDisplayInUpgrade = "700 coins";
+//        }
+//        else if (DataController.dataController.b_fireAgilityLevel == 3)
+//        {
+//            strToDisplayInUpgrade = "900 coins";
+//        }
+//        else if (DataController.dataController.b_fireAgilityLevel == 4)
+//        {
+//            strToDisplayInUpgrade = "1100 coins";
+//        }
+//        break;
+//    case 3:
+//        strToDisplayInDescription = "Increases the damage your water creates";
+//        if (DataController.dataController.b_waterDamageLevel == 0)
+//        {
+//            strToDisplayInUpgrade = "500 coins";
+//        }
+//        else if (DataController.dataController.b_waterDamageLevel == 1)
+//        {
+//            strToDisplayInUpgrade = "700 coins";
+//        }
+//        else if (DataController.dataController.b_waterDamageLevel == 2)
+//        {
+//            strToDisplayInUpgrade = "900 coins";
+//        }
+//        else if (DataController.dataController.b_waterDamageLevel == 3)
+//        {
+//            strToDisplayInUpgrade = "1100 coins";
+//        }
+//        break;
+//    case 4:
+//        strToDisplayInDescription = "Decreases the delay between your water balls";
+//        if (DataController.dataController.b_waterAgilityLevel == 0)
+//        {
+//            strToDisplayInUpgrade = "500 coins";
+//        }
+//        else if (DataController.dataController.b_waterAgilityLevel == 1)
+//        {
+//            strToDisplayInUpgrade = "700 coins";
+//        }
+//        else if (DataController.dataController.b_waterAgilityLevel == 2)
+//        {
+//            strToDisplayInUpgrade = "900 coins";
+//        }
+//        else if (DataController.dataController.b_waterAgilityLevel == 3)
+//        {
+//            strToDisplayInUpgrade = "1100 coins";
+//        }
+//        break;
+//    case 5:
+//        strToDisplayInDescription = "After being hit continue to lower the heroes life bar";
+//        strToDisplayInUpgrade = "900 coins";
+//        break;
+//    case 6:
+//        strToDisplayInDescription = "After being hit stops the heroes for little time";
+//        strToDisplayInUpgrade = "900 coins";
+//        break;
+//    case 7:
+//        strToDisplayInDescription = "After being hit continue to lower the heroes life bar and slower them down";
+//        strToDisplayInUpgrade = "900 coins";
+//        break;
+//    case 8:
+//        strToDisplayInDescription = "After being hit it stops the heroes and continue to lower the heroes life bar";
+//        strToDisplayInUpgrade = "900 coins";
+//        break;
+//    case 9:
+//        strToDisplayInDescription = "Increase the life bar";
+//        if (DataController.dataController.p_caveLevel == 0)
+//        {
+//            strToDisplayInUpgrade = "1500 coins";
+//        }
+//        else if (DataController.dataController.p_caveLevel == 1)
+//        {
+//            strToDisplayInUpgrade = "2000 coins";
+//        }
+//        break;
+//    case 10:
+//        strToDisplayInDescription = "Pushes the heroes back";
+//        if (DataController.dataController.m_screamLevel == 0)
+//        {
+//            strToDisplayInUpgrade = "5 crystals";
+//        }
+//        else if (DataController.dataController.m_screamLevel == 1)
+//        {
+//            strToDisplayInUpgrade = "7 crystals";
+//        }
+//        else if (DataController.dataController.m_screamLevel == 2)
+//        {
+//            strToDisplayInUpgrade = "9 crystals";
+//        }
+//        break;
+//    case 11:
+//        strToDisplayInDescription = "Lowers the life bar of all the heroes and continue to lower them for a while";
+//        if (DataController.dataController.m_meteorLevel == 0)
+//        {
+//            strToDisplayInUpgrade = "5 crystals";
+//        }
+//        else if (DataController.dataController.m_meteorLevel == 1)
+//        {
+//            strToDisplayInUpgrade = "7 crystals";
+//        }
+//        else if (DataController.dataController.m_meteorLevel == 2)
+//        {
+//            strToDisplayInUpgrade = "9 crystals";
+//        }
+//        break;
+//    case 12:
+//        strToDisplayInDescription = "Stops all the heroes for a while";
+//        strToDisplayInUpgrade = "9 crystals";
+//        break;
+//    case 13:
+//        strToDisplayInDescription = "Lowers the life bar of all the heroes and stop them for a while";
+//        strToDisplayInUpgrade = "9 crystals";
+//        break;
+//    case 14:
+//        strToDisplayInDescription = "Increase the mana bar";
+//        strToDisplayInUpgrade = "10 crystals";
+//        break;
+//}
