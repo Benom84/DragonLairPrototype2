@@ -220,7 +220,7 @@ public class Player : MonoBehaviour
     private void loadFromDataController()
     {
 
-        earthquakeAttackDamage = DataController.dataController.m_earthquakeData;
+        earthquakeAttackDamage = DataController.dataController.m_tailData;
         earthquakeManaCost = DataController.dataController.earthquakeManaValue;
         screamAttackDamage = DataController.dataController.m_screamData;
         screamManaCost = DataController.dataController.screamManaValue;
@@ -243,7 +243,7 @@ public class Player : MonoBehaviour
 
 
         // Disable UnavailableAttacks
-        earthquakeButtonAvailable = (DataController.dataController.m_earthquakeLevel > 0);
+        earthquakeButtonAvailable = (DataController.dataController.m_tailLevel > 0);
         screamAttackButtonAvailable = (DataController.dataController.m_screamLevel > 0);
         changeAttackButtonAvailable = (DataController.dataController.isWaterUnlocked);
 
