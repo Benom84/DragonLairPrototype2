@@ -1,0 +1,212 @@
+fileFormatVersion: 2
+guid: 9748a83e4ab5433428bcf7cb8f8c0a62
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: archer running 170X180 BackAndForth_0
+    21300002: archer running 170X180 BackAndForth_1
+    21300004: archer running 170X180 BackAndForth_2
+    21300006: archer running 170X180 BackAndForth_3
+    21300008: archer running 170X180 BackAndForth_4
+    21300010: archer running 170X180 BackAndForth_5
+    21300012: archer running 170X180 BackAndForth_6
+    21300014: archer running 170X180 BackAndForth_7
+    21300016: archer running 170X180 BackAndForth_8
+    21300018: archer running 170X180 BackAndForth_9
+    21300020: archer running 170X180 BackAndForth_10
+    21300022: archer running 170X180 BackAndForth_11
+    21300024: archer running 170X180 BackAndForth_12
+    21300026: archer running 170X180 BackAndForth_13
+    21300028: archer running 170X180 BackAndForth_14
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: archer running 170X180 BackAndForth_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 180
+        width: 170
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: archer running 170X180 BackAndForth_1
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 180
+        width: 170
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: archer running 170X180 BackAndForth_2
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 180
+        width: 170
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: archer running 170X180 BackAndForth_3
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 180
+        width: 170
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: archer running 170X180 BackAndForth_4
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 180
+        width: 170
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: archer running 170X180 BackAndForth_5
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 180
+        width: 170
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: archer running 170X180 BackAndForth_6
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 180
+        width: 170
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: archer running 170X180 BackAndForth_7
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 180
+        width: 170
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: archer running 170X180 BackAndForth_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 170
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: archer running 170X180 BackAndForth_9
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 0
+        width: 170
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: archer running 170X180 BackAndForth_10
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 0
+        width: 170
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: archer running 170X180 BackAndForth_11
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 0
+        width: 170
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: archer running 170X180 BackAndForth_12
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 0
+        width: 170
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: archer running 170X180 BackAndForth_13
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 0
+        width: 170
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: archer running 170X180 BackAndForth_14
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 0
+        width: 170
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 

@@ -59,6 +59,7 @@
      <None Include="Assets\Resources\Level2.txt" />
      <None Include="Assets\Resources\Level2-old.txt" />
      <None Include="Assets\Resources\ScreamUpgrade.txt" />
+     <None Include="Assets\Graphics\Art\Archer Animation\הוראות.txt" />
      <None Include="Assets\Resources\MeteorUpgrade.txt" />
      <None Include="Assets\Resources\SpecialAttackUpgrade.txt" />
      <None Include="Assets\Resources\Waves-old.txt" />

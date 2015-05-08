@@ -1,0 +1,256 @@
+fileFormatVersion: 2
+guid: dfb81888fa60e8d43a76bdd56b6b4ff4
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: archer shooting 170X180 Loop_0
+    21300002: archer shooting 170X180 Loop_1
+    21300004: archer shooting 170X180 Loop_2
+    21300006: archer shooting 170X180 Loop_3
+    21300008: archer shooting 170X180 Loop_4
+    21300010: archer shooting 170X180 Loop_5
+    21300012: archer shooting 170X180 Loop_6
+    21300014: archer shooting 170X180 Loop_7
+    21300016: archer shooting 170X180 Loop_8
+    21300018: archer shooting 170X180 Loop_9
+    21300020: archer shooting 170X180 Loop_10
+    21300022: archer shooting 170X180 Loop_11
+    21300024: archer shooting 170X180 Loop_12
+    21300026: archer shooting 170X180 Loop_13
+    21300028: archer shooting 170X180 Loop_14
+    21300030: archer shooting 170X180 Loop_15
+    21300032: archer shooting 170X180 Loop_16
+    21300034: archer shooting 170X180 Loop_17
+    21300036: archer shooting 170X180 Loop_18
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: archer shooting 170X180 Loop_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 180
+        width: 170
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: archer shooting 170X180 Loop_1
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 180
+        width: 170
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: archer shooting 170X180 Loop_2
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 180
+        width: 170
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: archer shooting 170X180 Loop_3
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 180
+        width: 170
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: archer shooting 170X180 Loop_4
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 180
+        width: 170
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: archer shooting 170X180 Loop_5
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 180
+        width: 170
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: archer shooting 170X180 Loop_6
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 180
+        width: 170
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: archer shooting 170X180 Loop_7
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 180
+        width: 170
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: archer shooting 170X180 Loop_8
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 180
+        width: 170
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: archer shooting 170X180 Loop_9
+      rect:
+        serializedVersion: 2
+        x: 1530
+        y: 180
+        width: 170
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: archer shooting 170X180 Loop_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 170
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: archer shooting 170X180 Loop_11
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 0
+        width: 170
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: archer shooting 170X180 Loop_12
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 0
+        width: 170
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: archer shooting 170X180 Loop_13
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 0
+        width: 170
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: archer shooting 170X180 Loop_14
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 0
+        width: 170
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: archer shooting 170X180 Loop_15
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 0
+        width: 170
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: archer shooting 170X180 Loop_16
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 0
+        width: 170
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: archer shooting 170X180 Loop_17
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 0
+        width: 170
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: archer shooting 170X180 Loop_18
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 0
+        width: 170
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 

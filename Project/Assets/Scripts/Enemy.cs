@@ -251,19 +251,9 @@ public class Enemy : MonoBehaviour
     {
         lastAttackTime = Time.time;
 
+        // For projectile and heal the attack is called from inside the animation
         if (animator != null)
             animator.SetTrigger("attacking");
-
-        if (enemyType == EnemyType.Healer)
-        {
-            if (gameController.nonHealerEnemies() != null)
-                Heal();
-            else
-                ProjectileAttack();
-        }
-
-        if (enemyType == EnemyType.Archer)
-            ProjectileAttack();
 
         if ((enemyType == EnemyType.Knight) || (enemyType == EnemyType.Cavalier) || (enemyType == EnemyType.Boss))
             player.Hit(attackDamage);
@@ -272,6 +262,13 @@ public class Enemy : MonoBehaviour
 
     private void Heal()
     {
+        if (gameController.nonHealerEnemies() == null)
+        {
+            ProjectileAttack();
+            return;
+        }
+            
+        
         ArrayList nonHealerEnemies = gameController.nonHealerEnemies();
         foreach (GameObject enemy in nonHealerEnemies)
         {
@@ -293,7 +290,7 @@ public class Enemy : MonoBehaviour
         UpdateHealthBar();
     }
 
-    private void ProjectileAttack()
+    public void ProjectileAttack()
     {
 
         // We get the player position and the enemy's
