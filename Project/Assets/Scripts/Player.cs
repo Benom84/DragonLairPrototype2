@@ -93,6 +93,7 @@ public class Player : MonoBehaviour
     private bool screamAttackButtonAvailable = false;
     private bool earthquakeButtonAvailable = false;
     private GameObject activeSpecialAttack;
+    private Animator dragonAnimator;
 
 
 
@@ -114,6 +115,7 @@ public class Player : MonoBehaviour
         manaBar = GameObject.FindGameObjectWithTag("ManaBar").GetComponent<BarMovement>();
         camShake = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>();
         specialAttackAreaCollider = GameObject.FindGameObjectWithTag("SpecialAttackArea").GetComponent<PolygonCollider2D>();
+        dragonAnimator = GetComponent<Animator>();
         getSpecialAttackAreaPoints();
 
         // Load from data file
@@ -330,6 +332,10 @@ public class Player : MonoBehaviour
         attackDirection = attackDirection.normalized * activeAttackSpeed;
 
         // Now we instantiate the attack at the dragon's mouth, set it's velocity and damage
+        if (dragonAnimator != null)
+        {
+            dragonAnimator.SetTrigger("fire");
+        }
         GameObject attack = (GameObject)Instantiate(activeAttack, dragonMouth, transform.rotation);
         DragonAttack dragonAttack = attack.GetComponent<DragonAttack>();
         dragonAttack.attackDamage = activeAttackDamage;
