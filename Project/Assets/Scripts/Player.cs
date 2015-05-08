@@ -42,8 +42,8 @@ public class Player : MonoBehaviour
     public Sprite fireSpecialAttackImage;
     public Sprite waterSpecialAttackImage;
     public Sprite lockedAttack;
-    public GameObject fireSpecialAttackEffect;
-    public GameObject waterSpecialAttackEffect;
+    public GameObject fireSpecialAttack;
+    public GameObject waterSpecialAttack;
 
 
 
@@ -89,9 +89,10 @@ public class Player : MonoBehaviour
     private float specialAreaMaxX = float.MinValue;
     private float specialAreaMinY = float.MaxValue;
     private float specialAreaMaxY = float.MinValue;
-    private bool changeAttackButtonAvailable = false;
+    private bool changeAttackButtonAvailable = true;
     private bool screamAttackButtonAvailable = false;
     private bool earthquakeButtonAvailable = false;
+    private GameObject activeSpecialAttack;
 
 
 
@@ -416,59 +417,28 @@ public class Player : MonoBehaviour
 
         currMana -= activeSpecialAttackManaCost;
 
-        if (activeAttackType == DragonAttack.AttackType.Fire)
-            SpecialAttackFire();
-
-        if (activeAttackType == DragonAttack.AttackType.Water)
-            SpecialAttackWater();
-
+        GameObject specialAttackObj = (GameObject)Instantiate(activeSpecialAttack, transform.position, transform.rotation);
+        SpecialAttack specialAttackScript = specialAttackObj.GetComponent<SpecialAttack>();
+        if (specialAttackScript != null)
+        {
+            specialAttackScript.damage = activeSpecialAttackDamage;
+            specialAttackScript.attackType = activeAttackType;
+            specialAttackScript.specialAreaMaxX = specialAreaMaxX;
+            specialAttackScript.specialAreaMinX = specialAreaMinX;
+            specialAttackScript.specialAreaMaxY = specialAreaMaxY;
+            specialAttackScript.specialAreaMinY = specialAreaMinY;
+            specialAttackScript.specialAttackAreaCollider = specialAttackAreaCollider;
+            specialAttackScript.StartAttack();
+        }
+        
 
         specialAttackEnabled = false;
         specialAttackCharge = 0;
         specialAttackChargeFinish = activeSpecialAttackManaCost;
-        //specialAttackButton.GetComponent<Image>().fillAmount = 0;
-
-        foreach (GameObject enemy in gameController.getAllEnemiesOnBoard())
-        {
-            Enemy enemyScript = enemy.GetComponent<Enemy>();
-            if (enemyScript != null)
-                enemyScript.SpecialHit(activeSpecialAttackDamage, activeAttackType);
-        }
 
     }
 
-    private void SpecialAttackFire()
-    {
 
-        for (int i = 0; i < 20; i++)
-        {
-            float x = Random.Range(specialAreaMinX, specialAreaMaxX);
-            float y = Random.Range(specialAreaMinY, specialAreaMaxY);
-            if (specialAttackAreaCollider == Physics2D.OverlapPoint(new Vector2(x, y), LayerMask.GetMask("SpecialEffects")))
-            {
-                GameObject effect = (GameObject) Instantiate(fireSpecialAttackEffect, new Vector3(x - 1, y + 2, 0), transform.rotation);
-                effect.renderer.sortingLayerName = "Enemy";
-                
-            }
-        }
-
-    }
-
-    private void SpecialAttackWater()
-    {
-        for (int i = 0; i < 20; i++)
-        {
-            float x = Random.Range(specialAreaMinX, specialAreaMaxX);
-            float y = Random.Range(specialAreaMinY, specialAreaMaxY);
-            if (specialAttackAreaCollider == Physics2D.OverlapPoint(new Vector2(x, y), LayerMask.GetMask("SpecialEffects")))
-            {
-                GameObject effect = (GameObject) Instantiate(waterSpecialAttackEffect, new Vector3(x, y, 0), transform.rotation);
-                effect.renderer.sortingLayerName = "Enemy";
-            }
-                
-            
-        }
-    }
 
     public void AddMana()
     {
@@ -523,6 +493,7 @@ public class Player : MonoBehaviour
             selectedSpecialAttackSprite = waterSpecialAttackImage;
             activeSpecialAttackDamage = waterSpecialAttackDamage;
             activeSpecialAttackManaCost = waterSpecialAttackManaCost;
+            activeSpecialAttack = waterSpecialAttack;
 
             // Cotinuous attack and slowing down parameters
             activeContinuousDamage = waterContinuousDamage;
@@ -547,6 +518,7 @@ public class Player : MonoBehaviour
             selectedSpecialAttackSprite = fireSpecialAttackImage;
             activeSpecialAttackDamage = fireSpecialAttackDamage;
             activeSpecialAttackManaCost = fireSpecialAttackManaCost;
+            activeSpecialAttack = fireSpecialAttack;
 
             // Cotinuous attack and slowing down parameters
             activeContinuousDamage = fireContinuousDamage;

@@ -3,36 +3,61 @@ using System.Collections;
 
 public class SpecialAttack : MonoBehaviour {
 
-    public ArrayList enemiesInDamageArea;
+    public int damage = 0;
+    public DragonAttack.AttackType attackType;
+    public GameObject effect;
+    [HideInInspector]
+    public float specialAreaMinX;
+    [HideInInspector]
+    public float specialAreaMaxX;
+    [HideInInspector]
+    public float specialAreaMinY;
+    [HideInInspector]
+    public float specialAreaMaxY;
+    [HideInInspector]
+    public PolygonCollider2D specialAttackAreaCollider;
+    [HideInInspector]
+    public ArrayList allChildrenFX;
+    
+    
+    private bool attacked = false;
+    private bool created = false;
+    private GameController gameController;
 
-    void Awake()
+    public void StartAttack()
     {
-
-        enemiesInDamageArea = new ArrayList();
-
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        //Debug.Log("Special Attack: Someone entered me!!");
-        
-        if (other.gameObject.tag == "Enemy")
+        allChildrenFX = new ArrayList();
+        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        for (int i = 0; i < 20; i++)
         {
-            enemiesInDamageArea.Add(other.gameObject);
-            //Debug.Log("Added an enemy to attack");
-        }
-            
-    }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Enemy")
-            if (enemiesInDamageArea.Contains(other.gameObject))
+            float x = Random.Range(specialAreaMinX, specialAreaMaxX);
+            float y = Random.Range(specialAreaMinY, specialAreaMaxY);
+            if (specialAttackAreaCollider == Physics2D.OverlapPoint(new Vector2(x, y), LayerMask.GetMask("SpecialEffects")))
             {
-                Debug.Log("Removod an enemy to attack");
-                enemiesInDamageArea.Remove(other.gameObject);
-            }
-                
+                GameObject fx = (GameObject)Instantiate(effect, new Vector3(x - 1, y + 2, 0), transform.rotation);
+                fx.renderer.sortingLayerName = "Enemy";
+                fx.GetComponent<DestroyExplosion>().specialAttackChild = true;
+                fx.GetComponent<DestroyExplosion>().parent = this;
+                allChildrenFX.Add(fx);
 
+            }
+        }
+
+        created = true;
+    }
+    
+    void FixedUpdate()
+    {
+        if ((created) && (allChildrenFX.Count == 0) && (!attacked))
+        {
+            foreach (GameObject enemy in gameController.getAllEnemiesOnBoard())
+            {
+                Enemy enemyScript = enemy.GetComponent<Enemy>();
+                if (enemyScript != null)
+                    enemyScript.SpecialHit(damage, attackType);
+            }
+            attacked = true;
+            Destroy(gameObject);
+        }
     }
 }

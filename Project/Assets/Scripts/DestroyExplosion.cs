@@ -3,9 +3,16 @@ using System.Collections;
 
 public class DestroyExplosion : MonoBehaviour {
 
+ 
     public bool meteor = false;
     public GameObject meteorExplosion;
-	// Update is called once per frame
+
+    [HideInInspector]
+    public SpecialAttack parent;
+    [HideInInspector]
+    public bool specialAttackChild;
+
+    // Update is called once per frame
 	void Update () {
         if (!particleSystem.IsAlive())
         {
@@ -14,7 +21,9 @@ public class DestroyExplosion : MonoBehaviour {
                 GameObject explosion = (GameObject)Instantiate(meteorExplosion, transform.position, transform.rotation);
                 explosion.renderer.sortingLayerName = "Enemy";
             }
-            
+            if (specialAttackChild)
+                parent.allChildrenFX.Remove(gameObject);
+
             Destroy(gameObject);
 
         }
