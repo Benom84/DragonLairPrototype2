@@ -74,8 +74,8 @@ public class DataController : MonoBehaviour {
             Destroy(gameObject);
         }
 
-        upgradesLevel = new int[] { b_fireDamageLevel, b_fireAgilityLevel, b_waterDamageLevel, b_waterAgilityLevel, b_heavenlyFireLevel, b_frozenSkyLevel, b_thunderLevel, b_cursedBreathLevel,
-            p_caveLevel, m_screamLevel, m_meteorLevel, m_iceLevel, m_tailLevel, m_manaLevel };
+        upgradesLevel = new int[] { b_fireDamageLevel, b_fireAgilityLevel, b_waterDamageLevel, b_waterAgilityLevel, b_heavenlyFireLevel, b_frozenSkyLevel, 
+            b_thunderLevel, b_cursedBreathLevel, p_caveLevel, m_screamLevel, m_meteorLevel, m_iceLevel, m_tailLevel, m_manaLevel };
 
         upgradesData = new float[] { b_fireDamageData, b_fireAgilityData, b_waterDamageData, b_waterAgilityData, b_heavenlyFireData, b_frozenSkyData, b_thunderData, b_cursedBreathData, 
             p_caveData, m_screamData, m_meteorData, m_iceData, m_tailData, m_manaData };
@@ -89,6 +89,40 @@ public class DataController : MonoBehaviour {
             isWaterUnlocked = false;
         }
 	}
+
+    public void FixedUpdate()
+    {
+        b_fireDamageLevel = upgradesLevel[0];
+        b_fireAgilityLevel = upgradesLevel[1];
+        b_waterDamageLevel = upgradesLevel[2];
+        b_waterAgilityLevel = upgradesLevel[3];
+        b_heavenlyFireLevel = upgradesLevel[4];
+        b_frozenSkyLevel = upgradesLevel[5];
+        b_thunderLevel = upgradesLevel[6];
+        b_cursedBreathLevel = upgradesLevel[7];
+        p_caveLevel = upgradesLevel[8];
+        m_screamLevel = upgradesLevel[9];
+        m_meteorLevel = upgradesLevel[10];
+        m_iceLevel = upgradesLevel[11];
+        m_tailLevel = upgradesLevel[12];
+        m_manaLevel = upgradesLevel[13];
+
+        b_fireDamageData = (int)upgradesData[0];
+        b_fireAgilityData = upgradesData[1];
+        b_waterDamageData = (int)upgradesData[2];
+        b_waterAgilityData = upgradesData[3];
+        b_heavenlyFireData = (int)upgradesData[4];
+        b_frozenSkyData = (int)upgradesData[5];
+        b_thunderData = (int)upgradesData[6];
+        b_cursedBreathData = (int)upgradesData[7];
+        p_caveData = (int)upgradesData[8];
+        m_screamData = (int)upgradesData[9];
+        m_meteorData = (int)upgradesData[10];
+        m_iceData = (int)upgradesData[11];
+        m_tailData = (int)upgradesData[12];
+        m_manaData = (int)upgradesData[13];
+
+    }
 
     public void Save()
     {

@@ -339,6 +339,45 @@ public class UIscript : MonoBehaviour
         {
             text.text = "";
         }
+
+        foreach (Text text in nameOfUpgradeInDescriptionText)
+        {
+            text.text = "";
+        }
+
+        foreach (Text text in upgradeDescriptionsText)
+        {
+            text.text = "";
+        }
+
+        for (int i = 0; i < selectUpgradeToUpgrade.Length; i++)
+        {
+            selectUpgradeToUpgrade[i] = false;
+            if (isUnlocked[i] && i > 3)
+            {
+                buttons[i].GetComponent<Image>().sprite = regularUpgrade;
+            }
+        }
+
+        for (int i = 0; i < 4; i++)
+        {
+            if (isUnlocked[i] && i % 2 == 0)
+            {
+                buttons[i].GetComponent<Image>().sprite = damageRegularUpgrade;
+            }
+            else if (isUnlocked[i] && i % 2 != 0)
+            {
+                buttons[i].GetComponent<Image>().sprite = agilityRegularUpgrade;
+            }
+            else if (!isUnlocked[i] && i % 2 == 0)
+            {
+                buttons[i].GetComponent<Image>().sprite = damageLockedUpgrade;
+            }
+            else
+            {
+                buttons[i].GetComponent<Image>().sprite = agilityLockedUpgrade;
+            }
+        }
     }
 
     public void ChooseToUpgrade(int numberOfUpgraded)
@@ -415,42 +454,49 @@ public class UIscript : MonoBehaviour
     {
 
         int numberOfUpgrade = 0;
+        bool wasSelected = false;
         for (int i = 0; i < buttons.Length; i++)
         {
             if (selectUpgradeToUpgrade[i])
             {
                 numberOfUpgrade = i;
+                wasSelected = true;
                 break;
             }
         }
 
         int costOfUpgrade = allUpgrades[numberOfUpgrade][DataController.dataController.upgradesLevel[numberOfUpgrade]].Cost;
-        if (costOfUpgrade > 100)
+
+        if (wasSelected && isUnlocked[numberOfUpgrade])
         {
-            if (EnoughMoney(costOfUpgrade))
+            if (costOfUpgrade > 100)
             {
-                DataController.dataController.coins -= costOfUpgrade;
-                if (numberOfUpgrade != 2 && numberOfUpgrade != 4) {
-                    DataController.dataController.upgradesData[numberOfUpgrade] += allUpgrades[numberOfUpgrade][DataController.dataController.upgradesLevel[numberOfUpgrade]].Data;
+                if (EnoughMoney(costOfUpgrade))
+                {
+                    DataController.dataController.coins -= costOfUpgrade;
+                    if (numberOfUpgrade != 2 && numberOfUpgrade != 4)
+                    {
+                        DataController.dataController.upgradesData[numberOfUpgrade] += allUpgrades[numberOfUpgrade][DataController.dataController.upgradesLevel[numberOfUpgrade]].Data;
+                    }
+                    else
+                    {
+                        DataController.dataController.upgradesData[numberOfUpgrade] -= allUpgrades[numberOfUpgrade][DataController.dataController.upgradesLevel[numberOfUpgrade]].Data;
+                    }
+                    DataController.dataController.upgradesLevel[numberOfUpgrade]++;
                 }
                 else
                 {
-                    DataController.dataController.upgradesData[numberOfUpgrade] -= allUpgrades[numberOfUpgrade][DataController.dataController.upgradesLevel[numberOfUpgrade]].Data;
+                    NotEnoughMoney();
                 }
-                DataController.dataController.upgradesLevel[numberOfUpgrade]++;
             }
             else
             {
-                NotEnoughMoney();
-            }
-        }
-        else
-        {
-            if (EnoughCrystals(costOfUpgrade))
-            {
-                DataController.dataController.crystals -= costOfUpgrade;
-                DataController.dataController.upgradesData[numberOfUpgrade] += (int)allUpgrades[numberOfUpgrade][DataController.dataController.upgradesLevel[numberOfUpgrade]].Data;
-                DataController.dataController.upgradesLevel[numberOfUpgrade]++;
+                if (EnoughCrystals(costOfUpgrade))
+                {
+                    DataController.dataController.crystals -= costOfUpgrade;
+                    DataController.dataController.upgradesData[numberOfUpgrade] += (int)allUpgrades[numberOfUpgrade][DataController.dataController.upgradesLevel[numberOfUpgrade]].Data;
+                    DataController.dataController.upgradesLevel[numberOfUpgrade]++;
+                }
             }
         }
     }
@@ -506,225 +552,6 @@ public class UIscript : MonoBehaviour
         return allUpgradeLevel;
     }
 
-    public void FixedUpgrade()
-    {
-        int numberToUpgrade = 0;
-        
-        for (int i = 0; i < selectUpgradeToUpgrade.Length; i++)
-        {
-            if (selectUpgradeToUpgrade[i])
-            {
-                numberToUpgrade = i;
-            }
-        }
-
-        if (isUnlocked[numberToUpgrade])
-        {
-            switch (numberToUpgrade)
-            {
-                case 0:
-                    if (DataController.dataController.b_fireDamageLevel == 1 && DataController.dataController.coins >= 500) { 
-                        DataController.dataController.coins -= 500;
-                        DataController.dataController.b_fireDamageData += 2;
-                        DataController.dataController.b_fireDamageLevel++;
-                    }
-                    else if (DataController.dataController.b_fireDamageLevel == 2 && DataController.dataController.coins >= 700)
-                    {
-                        DataController.dataController.coins -= 700;
-                        DataController.dataController.b_fireDamageData += 2;
-                        DataController.dataController.b_fireDamageLevel++;
-                    }
-                    else if (DataController.dataController.b_fireDamageLevel == 3 && DataController.dataController.coins >= 900)
-                    {
-                        DataController.dataController.coins -= 900;
-                        DataController.dataController.b_fireDamageData += 2;
-                        DataController.dataController.b_fireDamageLevel++;
-                    }  
-                    else if (DataController.dataController.b_fireDamageLevel == 4 && DataController.dataController.coins >= 1100)
-                    {
-                        DataController.dataController.coins -= 1100;
-                        DataController.dataController.b_fireDamageData += 2;
-                        DataController.dataController.b_fireDamageLevel++;
-                    }  
-                    else
-                    {
-                        NotEnoughMoney();
-                    }
-                    break;
-                case 1:
-                    if (DataController.dataController.b_waterDamageLevel == 1 && DataController.dataController.coins >= 500)
-                    {
-                        DataController.dataController.coins -= 500;
-                        DataController.dataController.b_waterDamageData += 2;
-                        DataController.dataController.b_waterDamageLevel++;
-                    }
-                    else if (DataController.dataController.b_waterDamageLevel == 2 && DataController.dataController.coins >= 700)
-                    {
-                        DataController.dataController.coins -= 700;
-                        DataController.dataController.b_waterDamageData += 2;
-                        DataController.dataController.b_waterDamageLevel++;
-                    }
-                    else if (DataController.dataController.b_waterDamageLevel == 3 && DataController.dataController.coins >= 900)
-                    {
-                        DataController.dataController.coins -= 900;
-                        DataController.dataController.b_waterDamageData += 2;
-                        DataController.dataController.b_waterDamageLevel++;
-                    }
-                    else if (DataController.dataController.b_waterDamageLevel == 4 && DataController.dataController.coins >= 1100)
-                    {
-                        DataController.dataController.coins -= 1100;
-                        DataController.dataController.b_waterDamageData += 2;
-                        DataController.dataController.b_waterDamageLevel++;
-                    }
-                    else
-                    {
-                        NotEnoughMoney();
-                    }
-                    break;
-                case 2:
-                    if (DataController.dataController.b_fireAgilityLevel == 0 && DataController.dataController.coins >= 500)
-                    {
-                        DataController.dataController.coins -= 500;
-                        DataController.dataController.b_fireAgilityData -= 0.1f;
-                        DataController.dataController.b_fireAgilityLevel++;
-                    }
-                    else if (DataController.dataController.b_fireAgilityLevel == 1 && DataController.dataController.coins >= 700)
-                    {
-                        DataController.dataController.coins -= 700;
-                        DataController.dataController.b_fireAgilityData -= 0.1f;
-                        DataController.dataController.b_fireAgilityLevel++;
-                    }
-                    else if (DataController.dataController.b_fireAgilityLevel == 2 && DataController.dataController.coins >= 900)
-                    {
-                        DataController.dataController.coins -= 900;
-                        DataController.dataController.b_fireAgilityData -= 0.1f;
-                        DataController.dataController.b_fireAgilityLevel++;
-                    }
-                    else if (DataController.dataController.b_fireAgilityLevel == 3 && DataController.dataController.coins >= 1100)
-                    {
-                        DataController.dataController.coins -= 1100;
-                        DataController.dataController.b_fireAgilityData -= 0.1f;
-                        DataController.dataController.b_fireAgilityLevel++;
-                    }
-                    else
-                    {
-                        NotEnoughMoney();
-                    }
-                    break;
-                case 3:
-                    if (DataController.dataController.b_waterAgilityLevel == 0 && DataController.dataController.coins >= 500)
-                    {
-                        DataController.dataController.coins -= 500;
-                        DataController.dataController.b_waterAgilityData -= 0.1f;
-                        DataController.dataController.b_waterAgilityLevel++;
-                    }
-                    else if (DataController.dataController.b_waterAgilityLevel == 1 && DataController.dataController.coins >= 700)
-                    {
-                        DataController.dataController.coins -= 700;
-                        DataController.dataController.b_waterAgilityData -= 0.1f;
-                        DataController.dataController.b_waterAgilityLevel++;
-                    }
-                    else if (DataController.dataController.b_waterAgilityLevel == 2 && DataController.dataController.coins >= 900)
-                    {
-                        DataController.dataController.coins -= 900;
-                        DataController.dataController.b_waterAgilityData -= 0.1f;
-                        DataController.dataController.b_waterAgilityLevel++;
-                    }
-                    else if (DataController.dataController.b_waterAgilityLevel == 3 && DataController.dataController.coins >= 1100)
-                    {
-                        DataController.dataController.coins -= 1100;
-                        DataController.dataController.b_waterAgilityData -= 0.1f;
-                        DataController.dataController.b_waterAgilityLevel++;
-                    }
-                    else
-                    {
-                        NotEnoughMoney();
-                    }
-                    break;
-                case 8:
-                    if (DataController.dataController.p_caveLevel == 0 && DataController.dataController.coins >= 1500)
-                    {
-                        DataController.dataController.coins -= 1500;
-                        DataController.dataController.p_caveData += 10;
-                        DataController.dataController.p_caveLevel++;
-                    }
-                    else if (DataController.dataController.p_caveLevel == 1 && DataController.dataController.coins >= 2000)
-                    {
-                        DataController.dataController.coins -= 2000;
-                        DataController.dataController.p_caveData += 10;
-                        DataController.dataController.p_caveLevel++;
-                    }
-                    else
-                    {
-                        NotEnoughMoney();
-                    }
-                    break;
-                case 9:
-                    if (DataController.dataController.m_screamLevel == 0 && DataController.dataController.crystals >= 5)
-                    {
-                        DataController.dataController.crystals -= 5;
-                        DataController.dataController.m_screamData += 5;
-                        DataController.dataController.m_screamLevel++;
-                    }
-                    else if (DataController.dataController.m_screamLevel == 1 && DataController.dataController.crystals >= 7)
-                    {
-                        DataController.dataController.crystals -= 7;
-                        DataController.dataController.m_screamData += 5;
-                        DataController.dataController.m_screamLevel++;
-                    }
-                    else if (DataController.dataController.m_screamLevel == 1 && DataController.dataController.crystals >= 9)
-                    {
-                        DataController.dataController.crystals -= 9;
-                        DataController.dataController.m_screamData += 5;
-                        DataController.dataController.m_screamLevel++;
-                    }
-                    else
-                    {
-                        NotEnoughMoney();
-                    }
-                    break;
-                case 10:
-                    if (DataController.dataController.m_meteorLevel == 0 && DataController.dataController.crystals >= 5)
-                    {
-                        DataController.dataController.crystals -= 5;
-                        DataController.dataController.m_meteorData += 5;
-                        DataController.dataController.m_meteorLevel++;
-                    }
-                    else if (DataController.dataController.m_meteorLevel == 1 && DataController.dataController.crystals >= 7)
-                    {
-                        DataController.dataController.crystals -= 7;
-                        DataController.dataController.m_meteorData += 5;
-                        DataController.dataController.m_meteorLevel++;
-                    }
-                    else if (DataController.dataController.m_meteorLevel == 2 && DataController.dataController.crystals >= 9)
-                    {
-                        DataController.dataController.crystals -= 9;
-                        DataController.dataController.m_meteorData += 5;
-                        DataController.dataController.m_meteorLevel++;
-                    }
-                    else 
-                    {
-                        NotEnoughMoney();
-                    }
-                    break;
-                case 13:
-                    if (DataController.dataController.m_manaLevel == 0 && DataController.dataController.crystals >= 10)
-                    {
-                        DataController.dataController.crystals -= 10;
-                        DataController.dataController.m_manaData += 10;
-                        DataController.dataController.m_manaLevel++;
-                    }
-                    else
-                    {
-                        NotEnoughMoney();
-                    }
-                    break;
-            }
-        }
-
-
-    }
-
     public void FixedUpdate()
     {
 
@@ -741,155 +568,4 @@ public class UIscript : MonoBehaviour
             }
         }
     }
-
 }
-
-//string strToDisplayInDescription = "";
-//string strToDisplayInUpgrade = "";
-
-//switch (numberOfUpgraded)
-//{
-//    case 1:
-//        strToDisplayInDescription = "Increases the damage your fire creates";
-//        if (DataController.dataController.b_fireDamageLevel == 1) 
-//        {
-//            strToDisplayInUpgrade = "500 coins";
-//        } 
-//        else if (DataController.dataController.b_fireDamageLevel == 2)
-//        {
-//            strToDisplayInUpgrade = "700 coins";
-//        }else if (DataController.dataController.b_fireDamageLevel == 3)
-//        {
-//            strToDisplayInUpgrade = "900 coins";
-//        }else if (DataController.dataController.b_fireDamageLevel == 4)
-//        {
-//            strToDisplayInUpgrade = "1100 coins";
-//        }
-//        break;
-//    case 2:
-//        strToDisplayInDescription = "Decreases the delay between your fire balls";
-//        if (DataController.dataController.b_fireAgilityLevel == 1) 
-//        {
-//            strToDisplayInUpgrade = "500 coins";
-//        }
-//        else if (DataController.dataController.b_fireAgilityLevel == 2)
-//        {
-//            strToDisplayInUpgrade = "700 coins";
-//        }
-//        else if (DataController.dataController.b_fireAgilityLevel == 3)
-//        {
-//            strToDisplayInUpgrade = "900 coins";
-//        }
-//        else if (DataController.dataController.b_fireAgilityLevel == 4)
-//        {
-//            strToDisplayInUpgrade = "1100 coins";
-//        }
-//        break;
-//    case 3:
-//        strToDisplayInDescription = "Increases the damage your water creates";
-//        if (DataController.dataController.b_waterDamageLevel == 0)
-//        {
-//            strToDisplayInUpgrade = "500 coins";
-//        }
-//        else if (DataController.dataController.b_waterDamageLevel == 1)
-//        {
-//            strToDisplayInUpgrade = "700 coins";
-//        }
-//        else if (DataController.dataController.b_waterDamageLevel == 2)
-//        {
-//            strToDisplayInUpgrade = "900 coins";
-//        }
-//        else if (DataController.dataController.b_waterDamageLevel == 3)
-//        {
-//            strToDisplayInUpgrade = "1100 coins";
-//        }
-//        break;
-//    case 4:
-//        strToDisplayInDescription = "Decreases the delay between your water balls";
-//        if (DataController.dataController.b_waterAgilityLevel == 0)
-//        {
-//            strToDisplayInUpgrade = "500 coins";
-//        }
-//        else if (DataController.dataController.b_waterAgilityLevel == 1)
-//        {
-//            strToDisplayInUpgrade = "700 coins";
-//        }
-//        else if (DataController.dataController.b_waterAgilityLevel == 2)
-//        {
-//            strToDisplayInUpgrade = "900 coins";
-//        }
-//        else if (DataController.dataController.b_waterAgilityLevel == 3)
-//        {
-//            strToDisplayInUpgrade = "1100 coins";
-//        }
-//        break;
-//    case 5:
-//        strToDisplayInDescription = "After being hit continue to lower the heroes life bar";
-//        strToDisplayInUpgrade = "900 coins";
-//        break;
-//    case 6:
-//        strToDisplayInDescription = "After being hit stops the heroes for little time";
-//        strToDisplayInUpgrade = "900 coins";
-//        break;
-//    case 7:
-//        strToDisplayInDescription = "After being hit continue to lower the heroes life bar and slower them down";
-//        strToDisplayInUpgrade = "900 coins";
-//        break;
-//    case 8:
-//        strToDisplayInDescription = "After being hit it stops the heroes and continue to lower the heroes life bar";
-//        strToDisplayInUpgrade = "900 coins";
-//        break;
-//    case 9:
-//        strToDisplayInDescription = "Increase the life bar";
-//        if (DataController.dataController.p_caveLevel == 0)
-//        {
-//            strToDisplayInUpgrade = "1500 coins";
-//        }
-//        else if (DataController.dataController.p_caveLevel == 1)
-//        {
-//            strToDisplayInUpgrade = "2000 coins";
-//        }
-//        break;
-//    case 10:
-//        strToDisplayInDescription = "Pushes the heroes back";
-//        if (DataController.dataController.m_screamLevel == 0)
-//        {
-//            strToDisplayInUpgrade = "5 crystals";
-//        }
-//        else if (DataController.dataController.m_screamLevel == 1)
-//        {
-//            strToDisplayInUpgrade = "7 crystals";
-//        }
-//        else if (DataController.dataController.m_screamLevel == 2)
-//        {
-//            strToDisplayInUpgrade = "9 crystals";
-//        }
-//        break;
-//    case 11:
-//        strToDisplayInDescription = "Lowers the life bar of all the heroes and continue to lower them for a while";
-//        if (DataController.dataController.m_meteorLevel == 0)
-//        {
-//            strToDisplayInUpgrade = "5 crystals";
-//        }
-//        else if (DataController.dataController.m_meteorLevel == 1)
-//        {
-//            strToDisplayInUpgrade = "7 crystals";
-//        }
-//        else if (DataController.dataController.m_meteorLevel == 2)
-//        {
-//            strToDisplayInUpgrade = "9 crystals";
-//        }
-//        break;
-//    case 12:
-//        strToDisplayInDescription = "Stops all the heroes for a while";
-//        strToDisplayInUpgrade = "9 crystals";
-//        break;
-//    case 13:
-//        strToDisplayInDescription = "Lowers the life bar of all the heroes and stop them for a while";
-//        strToDisplayInUpgrade = "9 crystals";
-//        break;
-//    case 14:
-//        strToDisplayInDescription = "Increase the mana bar";
-//        strToDisplayInUpgrade = "10 crystals";
-//        break;
-//}
