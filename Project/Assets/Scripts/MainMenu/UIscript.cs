@@ -62,6 +62,9 @@ public class UIscript : MonoBehaviour
     private GameObject[] upgradeButtons;
     private Text[] upgradeButtonCostText;
 
+    private GameObject[] upgradeButtonsImage;
+    private Image[] upgradeButtonCostImage;
+
     private GameObject[] nameOfUpgradeInDescription;
     private Text[] nameOfUpgradeInDescriptionText;
 
@@ -88,6 +91,9 @@ public class UIscript : MonoBehaviour
     private Text percentageOfLife;
     private Text coinsBonus;
     private Text crystalsBonus;
+
+    public Sprite coin;
+    public Sprite crystal;
 
     public void Start()
     {
@@ -154,17 +160,20 @@ public class UIscript : MonoBehaviour
                 CursedBreath, Cave, Scream, Meteor, Ice, Tail, Mana};
 
             upgradeButtons = GameObject.FindGameObjectsWithTag("upgradeButton");
+            upgradeButtonsImage = GameObject.FindGameObjectsWithTag("upgradeImage");
             upgradeDescriptions = GameObject.FindGameObjectsWithTag("upgradeDescriptions");
             nameOfUpgradeInDescription = GameObject.FindGameObjectsWithTag("nameOfUpgradeInDescription");
 
             upgradeDescriptionsText = new Text[upgradeDescriptions.Length];
             upgradeButtonCostText = new Text[upgradeButtons.Length];
+            upgradeButtonCostImage = new Image[upgradeButtonsImage.Length];
             nameOfUpgradeInDescriptionText = new Text[nameOfUpgradeInDescription.Length];
 
             for (int i = 0; i < upgradeDescriptions.Length; i++)
             {
                 upgradeDescriptionsText[i] = upgradeDescriptions[i].GetComponent<Text>();
                 upgradeButtonCostText[i] = upgradeButtons[i].GetComponent<Text>();
+                upgradeButtonCostImage[i] = upgradeButtonsImage[i].GetComponent<Image>();
                 nameOfUpgradeInDescriptionText[i] = nameOfUpgradeInDescription[i].GetComponent<Text>();
             }
 
@@ -176,6 +185,11 @@ public class UIscript : MonoBehaviour
             foreach (Text text in upgradeButtonCostText)
             {
                 text.text = "";
+            }
+
+            foreach (Image image in upgradeButtonCostImage)
+            {
+                image.sprite = null;
             }
 
             foreach (Text text in nameOfUpgradeInDescriptionText)
@@ -358,6 +372,11 @@ public class UIscript : MonoBehaviour
             text.text = "";
         }
 
+        foreach (Image image in upgradeButtonCostImage)
+        {
+            image.sprite = null;
+        }
+
         for (int i = 0; i < selectUpgradeToUpgrade.Length; i++)
         {
             selectUpgradeToUpgrade[i] = false;
@@ -456,6 +475,21 @@ public class UIscript : MonoBehaviour
         {
             text.text = strToDisplayInDescriptionName;
         }
+
+        if (numberOfUpgraded < 10)
+        {
+            foreach (Image image in upgradeButtonCostImage)
+            {
+                image.sprite = coin;
+            }
+        }
+        else
+        {
+            foreach (Image image in upgradeButtonCostImage)
+            {
+                image.sprite = crystal;
+            }
+        }
     }
 
     public void Upgrade()
@@ -499,7 +533,7 @@ public class UIscript : MonoBehaviour
 
                     foreach (Text text in totalCoinsText)
                     {
-                        text.text = "" + DataController.dataController.coins + " coins";
+                        text.text = "" + DataController.dataController.coins;
                     }
                 }
                 else
@@ -517,7 +551,7 @@ public class UIscript : MonoBehaviour
 
                     foreach (Text text in totalCrystalsText)
                     {
-                        text.text = "" + DataController.dataController.crystals + " crystals";
+                        text.text = "" + DataController.dataController.crystals;
                     }
                 }
                 else

@@ -3,35 +3,35 @@
 		<Upgrade_Level>
 			<ID>001</ID>
 			<Cost>5</Cost>
-			<Data>10</Data>
+			<Data>5</Data>
 			<Name>Meteor</Name>
 			<Description>Lowers the life bar of all the heroes and continue to lower them for a while</Description>
 		</Upgrade_Level>
 		<Upgrade_Level>
 			<ID>002</ID>
 			<Cost>7</Cost>
-			<Data>10</Data>
+			<Data>5</Data>
 			<Name>Meteor</Name>
 			<Description>Lowers the life bar of all the heroes and continue to lower them for a while</Description>
 		</Upgrade_Level>
 		<Upgrade_Level>
 			<ID>003</ID>
 			<Cost>9</Cost>
-			<Data>10</Data>
+			<Data>5</Data>
 			<Name>Meteor</Name>
 			<Description>Lowers the life bar of all the heroes and continue to lower them for a while</Description>
 		</Upgrade_Level>
 		<Upgrade_Level>
 			<ID>004</ID>
 			<Cost>11</Cost>
-			<Data>10</Data>
+			<Data>5</Data>
 			<Name>Meteor</Name>
 			<Description>Lowers the life bar of all the heroes and continue to lower them for a while</Description>
 		</Upgrade_Level>
 		<Upgrade_Level>
 			<ID>005</ID>
 			<Cost>13</Cost>
-			<Data>10</Data>
+			<Data>5</Data>
 			<Name>Meteor</Name>
 			<Description>Lowers the life bar of all the heroes and continue to lower them for a while</Description>
 		</Upgrade_Level>
