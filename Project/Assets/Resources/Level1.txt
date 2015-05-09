@@ -1,5 +1,4 @@
 <Level>
-	<LifeToMakeItHarder>1.02</LifeToMakeItHarder>
     <Attacks>
         <Attack>
             <Id>003</Id>

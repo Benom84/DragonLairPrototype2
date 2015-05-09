@@ -236,6 +236,10 @@ public class Player : MonoBehaviour
         fireAttackDelay = DataController.dataController.b_fireAgilityData * 1.0f;
         fireSpecialAttackDamage = DataController.dataController.m_meteorData;
         fireSpecialAttackManaCost = DataController.dataController.meteorManaValue;
+        fireContinuousDamageTime = DataController.dataController.b_heavenlyFireData;
+        fireContinuousDamage = (int) (fireAttackDamage * 0.1f);
+        fireSlowTime = DataController.dataController.b_thunderData;
+        fireSlowFactor = 0.5f;
 
         // Load Water Input
         //waterAttackSpeed = ;
@@ -243,6 +247,10 @@ public class Player : MonoBehaviour
         waterAttackDelay = DataController.dataController.b_waterAgilityData * 1.0f;
         waterSpecialAttackDamage = DataController.dataController.m_iceData;
         waterSpecialAttackManaCost = DataController.dataController.iceManaValue;
+        waterContinuousDamageTime = DataController.dataController.b_cursedBreathData;
+        waterContinuousDamage = (int) (waterAttackDamage * 0.1f);
+        waterSlowTime = DataController.dataController.b_frozenSkyData;
+        waterSlowFactor = 0.5f;
 
 
         // Disable UnavailableAttacks
