@@ -95,6 +95,7 @@ public class UIscript : MonoBehaviour
     public Sprite coin;
     public Sprite crystal;
 
+
     public void Start()
     {
         if (gameObject.tag == "FirstScreen")
@@ -190,6 +191,10 @@ public class UIscript : MonoBehaviour
             foreach (Image image in upgradeButtonCostImage)
             {
                 image.sprite = null;
+
+                Color buttonColor = image.color;
+                buttonColor.a = 0;
+                image.color = buttonColor;
             }
 
             foreach (Text text in nameOfUpgradeInDescriptionText)
@@ -375,6 +380,9 @@ public class UIscript : MonoBehaviour
         foreach (Image image in upgradeButtonCostImage)
         {
             image.sprite = null;
+            Color buttonColor = image.color;
+            buttonColor.a = 0;
+            image.color = buttonColor;
         }
 
         for (int i = 0; i < selectUpgradeToUpgrade.Length; i++)
@@ -481,6 +489,9 @@ public class UIscript : MonoBehaviour
             foreach (Image image in upgradeButtonCostImage)
             {
                 image.sprite = coin;
+                Color buttonColor = image.color;
+                buttonColor.a = 255;
+                image.color = buttonColor;
             }
         }
         else
@@ -488,6 +499,9 @@ public class UIscript : MonoBehaviour
             foreach (Image image in upgradeButtonCostImage)
             {
                 image.sprite = crystal;
+                Color buttonColor = image.color;
+                buttonColor.a = 255;
+                image.color = buttonColor;
             }
         }
     }
