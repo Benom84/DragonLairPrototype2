@@ -485,7 +485,7 @@ public class UIscript : MonoBehaviour
                 if (EnoughMoney(costOfUpgrade))
                 {
                     DataController.dataController.coins -= costOfUpgrade;
-                    if (numberOfUpgrade != 2 && numberOfUpgrade != 4)
+                    if (numberOfUpgrade != 1 && numberOfUpgrade != 3)
                     {
                         DataController.dataController.upgradesData[numberOfUpgrade] += allUpgrades[numberOfUpgrade][DataController.dataController.upgradesLevel[numberOfUpgrade]].Data;
                     }
