@@ -14,17 +14,17 @@ public class DataController : MonoBehaviour {
     public int crystals = 3;
 
     //general upgrades
-    public int m_screamData = 12;
-    public int m_tailData = 50; //earthquake or tail?
-    public int p_caveData = 50;
     public int b_fireDamageData = 50;
-    public float b_fireAgilityData = 0.5f;
+    public float b_fireAgilityData = 0.8f;
     public int b_waterDamageData = 50;
-    public float b_waterAgilityData = 0.5f;
+    public float b_waterAgilityData = 0.8f;
     public int b_heavenlyFireData = 0;
     public int b_frozenSkyData = 0;
     public int b_thunderData = 0;
     public int b_cursedBreathData = 0;
+    public int p_caveData = 100;
+    public int m_screamData = 12;
+    public int m_tailData = 50; //earthquake or tail?
     public int m_meteorData = 50;
     public int m_iceData = 50;
     public int m_manaData = 100;
