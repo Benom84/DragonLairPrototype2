@@ -94,6 +94,7 @@ public class Player : MonoBehaviour
     private bool earthquakeButtonAvailable = false;
     private GameObject activeSpecialAttack;
     private Animator dragonAnimator;
+    private float earthquakeShakeFactor = 0.8f;
 
 
 
@@ -404,7 +405,7 @@ public class Player : MonoBehaviour
         Handheld.Vibrate();
         earthquakeEnabled = false;
         earthquakeAttackCharge = 0;
-        camShake.shake = 1.0f;
+        camShake.shake = earthquakeShakeFactor;
 
 
 
