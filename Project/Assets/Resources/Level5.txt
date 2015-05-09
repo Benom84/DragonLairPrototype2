@@ -1,4 +1,5 @@
 <Level>
+<LifeToMakeItHarder>1.02</LifeToMakeItHarder>
     <Attacks>
         <Attack>
             <Id>078</Id>
@@ -62,7 +63,7 @@
         </Attack>
 		<Attack>
             <Id>101</Id>
-            <Difficulty>5</Difficulty>
+            <Difficulty>6</Difficulty>
             <Time>28</Time>
             <ChangeChance>1</ChangeChance>
         </Attack>
