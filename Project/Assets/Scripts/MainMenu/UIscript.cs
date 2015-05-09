@@ -218,11 +218,18 @@ public class UIscript : MonoBehaviour
                 if (isUnlocked[i] && i % 2 == 0)
                 {
                     buttons[i].GetComponent<Image>().sprite = damageRegularUpgrade;
-                    
+                    if (DataController.dataController.upgradesLevel[i] != 0)
+                    {
+                        buttons[i].transform.FindChild("LevelNumber").GetComponent<Text>().text = DataController.dataController.upgradesLevel[i].ToString();
+                    }
                 }
                 else if (isUnlocked[i] && i % 2 != 0)
                 {
                     buttons[i].GetComponent<Image>().sprite = agilityRegularUpgrade;
+                    if (DataController.dataController.upgradesLevel[i] != 0)
+                    {
+                        buttons[i].transform.FindChild("LevelNumber").GetComponent<Text>().text = DataController.dataController.upgradesLevel[i].ToString();
+                    }
                     
                 }
                 else if (!isUnlocked[i] && i % 2 == 0)
@@ -244,14 +251,12 @@ public class UIscript : MonoBehaviour
                     buttons[i].GetComponent<Image>().sprite = regularUpgrade;
                     if (DataController.dataController.upgradesLevel[i] != 0)
                     {
-                        //buttons[i].transform.FindChild("LevelNumber").GetComponent<Text>().text = DataController.dataController.upgradesLevel[i].ToString();
+                        buttons[i].transform.FindChild("LevelNumber").GetComponent<Text>().text = DataController.dataController.upgradesLevel[i].ToString();
                     }
                 }
                 else
                 {
                     buttons[i].GetComponent<Image>().sprite = lockedUpgrade;
-                    //buttons[i].transform.FindChild("Name").GetComponent<Text>().font.material.color = Color.gray;
-                    //buttons[i].transform.FindChild("LevelNumber").GetComponent<Text>().text = "";
                 }
             }
 
@@ -489,6 +494,8 @@ public class UIscript : MonoBehaviour
                         DataController.dataController.upgradesData[numberOfUpgrade] -= allUpgrades[numberOfUpgrade][DataController.dataController.upgradesLevel[numberOfUpgrade]].Data;
                     }
                     DataController.dataController.upgradesLevel[numberOfUpgrade]++;
+
+                    buttons[numberOfUpgrade].transform.FindChild("LevelNumber").GetComponent<Text>().text = DataController.dataController.upgradesLevel[numberOfUpgrade].ToString();
 
                     foreach (Text text in totalCoinsText)
                     {
