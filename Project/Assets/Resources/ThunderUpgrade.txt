@@ -1,0 +1,39 @@
+<Upgrade>
+	<Upgrade_Levels>
+		<Upgrade_Level>
+			<ID>001</ID>
+			<Cost>1000</Cost>
+			<Data>1</Data>
+			<Name>Thunder</Name>
+			<Description>After being hit continue to lower the heroes life bar and slows them down</Description>
+		</Upgrade_Level>
+		<Upgrade_Level>
+			<ID>002</ID>
+			<Cost>1000</Cost>
+			<Data>1</Data>
+			<Name>Thunder</Name>
+			<Description>After being hit continue to lower the heroes life bar and slows them down</Description>
+		</Upgrade_Level>
+		<Upgrade_Level>
+			<ID>003</ID>
+			<Cost>1000</Cost>
+			<Data>1</Data>
+			<Name>Thunder</Name>
+			<Description>After being hit continue to lower the heroes life bar and slows them down</Description>
+		</Upgrade_Level>
+		<Upgrade_Level>
+			<ID>004</ID>
+			<Cost>1000</Cost>
+			<Data>1</Data>
+			<Name>Thunder</Name>
+			<Description>After being hit continue to lower the heroes life bar and slows them down</Description>
+		</Upgrade_Level>
+		<Upgrade_Level>
+			<ID>005</ID>
+			<Cost>1000</Cost>
+			<Data>1</Data>
+			<Name>Thunder</Name>
+			<Description>After being hit continue to lower the heroes life bar and slows them down</Description>
+		</Upgrade_Level>
+	</Upgrade_Levels>
+</Upgrade>

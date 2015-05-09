@@ -195,8 +195,6 @@ public class UIscript : MonoBehaviour
             {
                 isUnlocked[2] = false;
                 isUnlocked[3] = false;
-                isUnlocked[5] = false;
-                isUnlocked[7] = false;
                 isUnlocked[11] = false;
                 isUnlocked[12] = false;
             }
@@ -208,6 +206,11 @@ public class UIscript : MonoBehaviour
                 isUnlocked[6] = false;
                 isUnlocked[5] = false;
                 isUnlocked[7] = false;
+            }
+
+            if (DataController.dataController.level < 7)
+            {
+                isUnlocked[9] = false;
             }
 
             for (int i = 0; i < 4; i++)
@@ -256,10 +259,10 @@ public class UIscript : MonoBehaviour
             fireAgilityLevels = ReadUpgradeLevels("FireAgilityUpgrade");
             waterDamageLevels = ReadUpgradeLevels("WaterDamageUpgrade");
             waterAgilityLevels = ReadUpgradeLevels("WaterAgilityUpgrade");
-            heavenlyFireLevels = null; //change this
-            frozenSkyLevels = null; //change this
-            thunderLevels = null;
-            cursedBreathLevels = null;
+            heavenlyFireLevels = ReadUpgradeLevels("HeavenlyFireUpgrade");
+            frozenSkyLevels = ReadUpgradeLevels("FrozenSkyUpgrade");
+            thunderLevels = ReadUpgradeLevels("ThunderUpgrade");
+            cursedBreathLevels = ReadUpgradeLevels("CursedBreathUpgrade");
             caveLevels = ReadUpgradeLevels("CaveUpgrade");
             screamLevels = ReadUpgradeLevels("ScreamUpgrade");
             meteorLevels = ReadUpgradeLevels("MeteorUpgrade");
@@ -465,8 +468,11 @@ public class UIscript : MonoBehaviour
             }
         }
 
-        int costOfUpgrade = allUpgrades[numberOfUpgrade][DataController.dataController.upgradesLevel[numberOfUpgrade]].Cost;
+        Debug.Log("was selected " + wasSelected.ToString());
+        Debug.Log("isUnlocked[numberOfUpgrade] " + isUnlocked[numberOfUpgrade]);
 
+
+        int costOfUpgrade = allUpgrades[numberOfUpgrade][DataController.dataController.upgradesLevel[numberOfUpgrade]].Cost;
         if (wasSelected && isUnlocked[numberOfUpgrade])
         {
             if (costOfUpgrade > 100)
@@ -483,6 +489,11 @@ public class UIscript : MonoBehaviour
                         DataController.dataController.upgradesData[numberOfUpgrade] -= allUpgrades[numberOfUpgrade][DataController.dataController.upgradesLevel[numberOfUpgrade]].Data;
                     }
                     DataController.dataController.upgradesLevel[numberOfUpgrade]++;
+
+                    foreach (Text text in totalCoinsText)
+                    {
+                        text.text = "" + DataController.dataController.coins + " coins";
+                    }
                 }
                 else
                 {
@@ -496,6 +507,15 @@ public class UIscript : MonoBehaviour
                     DataController.dataController.crystals -= costOfUpgrade;
                     DataController.dataController.upgradesData[numberOfUpgrade] += (int)allUpgrades[numberOfUpgrade][DataController.dataController.upgradesLevel[numberOfUpgrade]].Data;
                     DataController.dataController.upgradesLevel[numberOfUpgrade]++;
+
+                    foreach (Text text in totalCrystalsText)
+                    {
+                        text.text = "" + DataController.dataController.crystals + " crystals";
+                    }
+                }
+                else
+                {
+                    NotEnoughMoney();
                 }
             }
         }
@@ -552,20 +572,4 @@ public class UIscript : MonoBehaviour
         return allUpgradeLevel;
     }
 
-    public void FixedUpdate()
-    {
-
-        if (gameObject.tag == "Store")
-        {
-            foreach (Text text in totalCoinsText)
-            {
-                text.text = "" + DataController.dataController.coins + " coins";
-            }
-
-            foreach (Text text in totalCrystalsText)
-            {
-                text.text = "" + DataController.dataController.crystals + " crystals";
-            }
-        }
-    }
 }
