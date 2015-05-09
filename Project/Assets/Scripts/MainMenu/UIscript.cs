@@ -95,6 +95,15 @@ public class UIscript : MonoBehaviour
     public Sprite coin;
     public Sprite crystal;
 
+    public Sprite waterLocked;
+    public Sprite waterUnlocked;
+    public Sprite screamLocked;
+    public Sprite screamUnlocked;
+    public Sprite iceLocked;
+    public Sprite iceUnlocked;
+    public Sprite tailLocked;
+    public Sprite tailUnlocked;
+
 
     public void Start()
     {
@@ -216,6 +225,16 @@ public class UIscript : MonoBehaviour
                 isUnlocked[3] = false;
                 isUnlocked[11] = false;
                 isUnlocked[12] = false;
+
+                GameObject.Find("Water").GetComponent<Image>().sprite = waterLocked;
+                GameObject.Find("IceImage").GetComponent<Image>().sprite = iceLocked;
+                GameObject.Find("TailImage").GetComponent<Image>().sprite = tailLocked;
+            }
+            else
+            {
+                GameObject.Find("Water").GetComponent<Image>().sprite = waterUnlocked;
+                GameObject.Find("IceImage").GetComponent<Image>().sprite = iceUnlocked;
+                GameObject.Find("TailImage").GetComponent<Image>().sprite = tailUnlocked;
             }
 
             if (DataController.dataController.level < 5)
@@ -230,6 +249,11 @@ public class UIscript : MonoBehaviour
             if (DataController.dataController.level < 7)
             {
                 isUnlocked[9] = false;
+                GameObject.Find("ScreamImage").GetComponent<Image>().sprite = screamLocked;
+            }
+            else
+            {
+                GameObject.Find("ScreamImage").GetComponent<Image>().sprite = screamUnlocked;            
             }
 
             for (int i = 0; i < 4; i++)
