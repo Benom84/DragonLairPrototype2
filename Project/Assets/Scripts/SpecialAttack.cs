@@ -24,6 +24,7 @@ public class SpecialAttack : MonoBehaviour {
     private bool created = false;
     private GameController gameController;
 
+
     public void StartAttack()
     {
         allChildrenFX = new ArrayList();
@@ -54,7 +55,15 @@ public class SpecialAttack : MonoBehaviour {
             {
                 Enemy enemyScript = enemy.GetComponent<Enemy>();
                 if (enemyScript != null)
+                {
                     enemyScript.SpecialHit(damage, attackType);
+                    if (attackType == DragonAttack.AttackType.Fire)
+                        enemyScript.continuousDamageHit(2, 2.0f, attackType);
+                    else
+                        enemyScript.slowEnemy(1.0f, 1.0f);
+                }
+                    
+
             }
             attacked = true;
             Destroy(gameObject);

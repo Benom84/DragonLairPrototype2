@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour
     private float slowTimeEnd = 0;
     private int continuousDamage = 0;
     private float lastContinuousDamage = 0;
-    private float continuousDamageEnd = 0;
+    private int continuousDamageCount = 0;
     private DragonAttack.AttackType continuousDamageType;
 
 
@@ -101,20 +101,26 @@ public class Enemy : MonoBehaviour
         if (gameController.gameEnded)
             return;
         
+        
         // If the cotinuous attack is still in affect and a second passed since the last one
-        if ((Time.time < continuousDamageEnd) && (Time.time > lastContinuousDamage + 1.0f))
+        if ((continuousDamageCount > 0) && (Time.time >= lastContinuousDamage + 1.0f))
         {
             Hit(continuousDamage, continuousDamageType);
+            continuousDamageCount--;
             lastContinuousDamage = Time.time;
         }
         
         if ((!arrivedAtDestination) && (!beingThrownBack))
         {
             Vector3 newPos = transform.position;
-            newPos.x -= (Time.time > slowTimeEnd) ? walkingSpeed : walkingSpeed * (1 - slowFactor);
+            float currentChange = (Time.time > slowTimeEnd) ? walkingSpeed : walkingSpeed * (1.0f - slowFactor);
+            newPos.x -= currentChange;
             transform.position = newPos;
             if (animator != null)
-                animator.SetFloat("speed", walkingSpeed);
+            {
+                animator.SetFloat("speed", currentChange);
+            }
+                
 
         }
 
@@ -235,10 +241,10 @@ public class Enemy : MonoBehaviour
     public void continuousDamageHit(int damage, float damageTime, DragonAttack.AttackType attackType)
     {
         this.continuousDamage = damage;
-        this.continuousDamageEnd = Time.time + damageTime;
+        this.continuousDamageCount = (int) damageTime;
         this.lastContinuousDamage = Time.time;
         this.continuousDamageType = attackType;
-        Hit(continuousDamage, continuousDamageType);
+        
     }
 
     private void Death()
@@ -262,7 +268,8 @@ public class Enemy : MonoBehaviour
 
     public void CloseAttackDamage()
     {
-        player.Hit(attackDamage);
+        if (player != null)
+            player.Hit(attackDamage);
     }
 
     private void Heal()
