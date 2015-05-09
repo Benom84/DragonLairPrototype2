@@ -21,10 +21,10 @@ public class Enemy : MonoBehaviour
     public float projectileSpeed = 5.0f;
     public float bossThrowBackForce = 4.0f;
     public float throwBackForce = 8.0f;
+    public bool arrivedAtDestination = false;
 
     private GameController gameController;
     private Animator animator;
-    private bool arrivedAtDestination = false;
     private float lastAttackTime = 0.0f;
     private float health;
     private Player player;
@@ -255,9 +255,14 @@ public class Enemy : MonoBehaviour
         if (animator != null)
             animator.SetTrigger("attacking");
 
-        if ((enemyType == EnemyType.Knight) || (enemyType == EnemyType.Cavalier) || (enemyType == EnemyType.Boss))
-            player.Hit(attackDamage);
+        //if ((enemyType == EnemyType.Knight) || (enemyType == EnemyType.Cavalier) || (enemyType == EnemyType.Boss))
+            
 
+    }
+
+    public void CloseAttackDamage()
+    {
+        player.Hit(attackDamage);
     }
 
     private void Heal()

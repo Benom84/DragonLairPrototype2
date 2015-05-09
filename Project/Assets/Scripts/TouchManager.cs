@@ -72,18 +72,7 @@ public class TouchManager : MonoBehaviour
             {
                 if (gameArea.collider2D == Physics2D.OverlapPoint(touchPos, LayerMask.GetMask("TouchArea")))
                 {
-                    //playerAnimator.SetTrigger("startAttack");
-                    int currentAttackDirection = calculateAngle(touchPos);
-                    // Debug.Log("Current attack direction: " + currentAttackDirection);
-                    if (lastAttackDirection != currentAttackDirection)
-                    {
-                        lastAttackDirection = currentAttackDirection;
-                        //playerAnimator.SetTrigger("attackChanged");
-                        if (playerAnimator != null)
-                        {
-                            playerAnimator.SetInteger("attackDirection", lastAttackDirection);
-                        }
-                    }
+
                     player.StartAttack(touchPos);
                 }
             }

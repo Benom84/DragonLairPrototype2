@@ -932,7 +932,7 @@
 	<Wave>
         <Id>050</Id>
         <Difficulty>3</Difficulty>
-        <FromLevel>3</FromLevel>
+        <FromLevel>4</FromLevel>
         <Attackers>
             <Attacker>
                 <Type>Knight</Type>
@@ -951,7 +951,7 @@
 		<Wave>
         <Id>051</Id>
         <Difficulty>3</Difficulty>
-        <FromLevel>3</FromLevel>
+        <FromLevel>4</FromLevel>
         <Attackers>
             <Attacker>
                 <Type>Knight</Type>
@@ -970,7 +970,7 @@
 		<Wave>
         <Id>052</Id>
         <Difficulty>3</Difficulty>
-        <FromLevel>3</FromLevel>
+        <FromLevel>4</FromLevel>
         <Attackers>
             <Attacker>
                 <Type>Knight</Type>
@@ -989,7 +989,7 @@
 		<Wave>
         <Id>053</Id>
         <Difficulty>3</Difficulty>
-        <FromLevel>3</FromLevel>
+        <FromLevel>4</FromLevel>
         <Attackers>
             <Attacker>
                 <Type>Knight</Type>
@@ -1008,7 +1008,7 @@
 		<Wave>
         <Id>054</Id>
         <Difficulty>3</Difficulty>
-        <FromLevel>3</FromLevel>
+        <FromLevel>4</FromLevel>
         <Attackers>
             <Attacker>
                 <Type>Knight</Type>
@@ -1027,7 +1027,7 @@
 		<Wave>
         <Id>055</Id>
         <Difficulty>3</Difficulty>
-        <FromLevel>3</FromLevel>
+        <FromLevel>4</FromLevel>
         <Attackers>
             <Attacker>
                 <Type>Knight</Type>
