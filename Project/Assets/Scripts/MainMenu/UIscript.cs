@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class UIscript : MonoBehaviour
 {
     private const int amountOfCanvases = 3;
-    
+
     //store stuff
 
     private GameObject BreathCanvas;
@@ -364,8 +364,18 @@ public class UIscript : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
-        DataController.dataController.Save();
-        Application.LoadLevel(sceneName);
+        if (gameObject.tag == "FirstScreen" && DataController.dataController.level == 1)
+        {
+            Application.LoadLevel("GameLevel");
+            DataController.dataController.Save();
+        }
+        else
+        {
+            DataController.dataController.Save();
+            Application.LoadLevel(sceneName);
+        }
+        
+        
     }
 
     public void QuitApplication()

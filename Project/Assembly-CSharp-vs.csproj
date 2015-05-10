@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\EnemyAttack.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
+     <Compile Include="Assets\Scripts\GameLevelText.cs" />
      <Compile Include="Assets\Scripts\GameMenuButtons.cs" />
      <Compile Include="Assets\Scripts\MainMenu\UIscript.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
