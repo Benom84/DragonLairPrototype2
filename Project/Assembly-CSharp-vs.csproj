@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\GameLevelText.cs" />
      <Compile Include="Assets\Scripts\BarMovement.cs" />
      <Compile Include="Assets\Scripts\ButtonStamina.cs" />
      <Compile Include="Assets\Scripts\CameraAspectController.cs" />
