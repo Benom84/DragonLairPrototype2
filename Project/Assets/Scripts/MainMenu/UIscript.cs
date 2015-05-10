@@ -573,6 +573,11 @@ public class UIscript : MonoBehaviour
                     {
                         text.text = "" + DataController.dataController.coins;
                     }
+
+                    foreach (Text text in upgradeButtonCostText)
+                    {
+                        text.text = allUpgrades[numberOfUpgrade][DataController.dataController.upgradesLevel[numberOfUpgrade]].Cost.ToString();
+                    }
                 }
                 else
                 {
@@ -590,6 +595,11 @@ public class UIscript : MonoBehaviour
                     foreach (Text text in totalCrystalsText)
                     {
                         text.text = "" + DataController.dataController.crystals;
+                    }
+
+                    foreach (Text text in upgradeButtonCostText)
+                    {
+                        text.text = allUpgrades[numberOfUpgrade][DataController.dataController.upgradesLevel[numberOfUpgrade]].Cost.ToString();
                     }
                 }
                 else
