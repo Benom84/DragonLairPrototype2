@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
     private int currMana;
     private BarMovement healthBar;
     private BarMovement manaBar;
-    private Vector3 dragonMouth;
+    private Vector3 dragonMouthPosition;
     private GameObject activeAttack;
     private GameController gameController;
     private CameraShake camShake;
@@ -115,7 +115,7 @@ public class Player : MonoBehaviour
 
         // Getting the object references
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
-        dragonMouth = transform.FindChild("Head/Mouth").position;
+        dragonMouthPosition = transform.FindChild("Head/Mouth").position;
         headTransform = transform.FindChild("Head");
         healthBar = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<BarMovement>();
         manaBar = GameObject.FindGameObjectWithTag("ManaBar").GetComponent<BarMovement>();
@@ -336,7 +336,7 @@ public class Player : MonoBehaviour
 
 
         // We will calculate the direction vector the attack is supposed to go
-        Vector2 attackDirection = new Vector2(attackPosition.x - dragonMouth.x, attackPosition.y - dragonMouth.y);
+        Vector2 attackDirection = new Vector2(attackPosition.x - dragonMouthPosition.x, attackPosition.y - dragonMouthPosition.y);
         //Vector2 attackDirection = new Vector2(attackPosition.x - headTransform.position.x, attackPosition.y - headTransform.position.y);
         attackDirection = headTransform.right;
 
@@ -344,7 +344,7 @@ public class Player : MonoBehaviour
         attackDirection = attackDirection.normalized * activeAttackSpeed;
 
         // Now we instantiate the attack at the dragon's mouth, set it's velocity and damage
-        GameObject attack = (GameObject)Instantiate(activeAttack, dragonMouth, attackRotation);
+        GameObject attack = (GameObject)Instantiate(activeAttack, dragonMouthPosition, attackRotation);
         DragonAttack dragonAttack = attack.GetComponent<DragonAttack>();
         dragonAttack.attackDamage = activeAttackDamage;
         dragonAttack.continuousDamage = activeContinuousDamage;
@@ -436,6 +436,69 @@ public class Player : MonoBehaviour
         camShake.isSpecialAttackShake = true;
     }
 
+    public void MeteorAttack()
+    {
+        if (gameController.gameEnded)
+            return;
+
+        if (currMana < activeSpecialAttackManaCost)
+            return;
+
+        if (!specialAttackEnabled)
+            return;
+
+        currMana -= activeSpecialAttackManaCost;
+
+        if (dragonAnimator != null)
+        {
+            dragonAnimator.SetTrigger("fireSpecialAttack");
+        }
+    }
+
+    public void MeteorAttackShoot()
+    {
+        
+        //float lifeTime = 2.0f;
+        //float changeAngleFactor = 1f;
+        //// We will calculate the direction vector the attack is supposed to go
+        //Vector2 attackDirection = new Vector2(headTransform.right.x, headTransform.right.y);
+        ////Vector2 attackDirection = new Vector2(attackPosition.x - headTransform.position.x, attackPosition.y - headTransform.position.y);
+        //attackDirection = headTransform.right;
+
+        //// Now we normalize it and multiply by the attack speed
+        //attackDirection = attackDirection.normalized * activeAttackSpeed;
+
+        //// Generate a random direction for the attack
+        //for (int i = 0; i < 20; i++)
+        //{
+        //    float rand = Mathf.PerlinNoise(transform.position.x * changeAngleFactor, transform.position.y * changeAngleFactor);
+        //    float rand_angle = Mathf.Lerp(rand, -30, 30);
+        //    attackRotation = transform.rotation * Quaternion.AngleAxis(rand_angle, transform.right);
+
+
+        //    // Now we instantiate the attack at the dragon's mouth, set it's velocity and damage
+        //    GameObject attack = (GameObject)Instantiate(fireSpecialAttack, dragonMouth, attackRotation);
+        //    DragonAttack dragonAttack = attack.GetComponent<DragonAttack>();
+        //    dragonAttack.attackDamage = activeAttackDamage;
+        //    attack.rigidbody2D.velocity = attackDirection;
+        //}
+
+
+        GameObject attack = (GameObject)Instantiate(fireSpecialAttack, dragonMouthPosition, attackRotation);
+        SpecialFireAttackHandler specialFireAttackHandler = attack.GetComponent<SpecialFireAttackHandler>();
+        if (specialFireAttackHandler != null)
+        {
+            specialFireAttackHandler.headTransform = headTransform;
+            specialFireAttackHandler.mouthPoisiton = dragonMouthPosition;
+            specialFireAttackHandler.damage = fireSpecialAttackDamage;
+        }
+        specialAttackEnabled = false;
+        specialAttackCharge = 0;
+        specialAttackChargeFinish = activeSpecialAttackManaCost;
+        
+        
+    }
+    
     public void SpecialAttack()
     {
         if (gameController.gameEnded)

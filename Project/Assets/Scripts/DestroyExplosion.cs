@@ -29,11 +29,7 @@ public class DestroyExplosion : MonoBehaviour {
                 {
                     parent.allChildrenFX.Remove(gameObject);
                 }
-                else
-                {
-                    meteorParent.allChildrenFX.Remove(gameObject);
-                }
-            }
+                         }
                 
 
             Destroy(gameObject);

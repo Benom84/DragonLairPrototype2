@@ -114,7 +114,7 @@ public class TouchManager : MonoBehaviour
 
                 }
                 //}
-
+                rotateTowards.destinationPosition = touchPos;
                 player.StartAttack(touchPos);
                 attackTouchIndex = touchIndex;
 
