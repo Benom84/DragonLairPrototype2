@@ -15,16 +15,16 @@ public class DataController : MonoBehaviour {
 
     //general upgrades
     public int b_fireDamageData = 50;
-    public float b_fireAgilityData = 0.8f;
+    public float b_fireAgilityData = 0.6f;
     public int b_waterDamageData = 50;
-    public float b_waterAgilityData = 0.8f;
+    public float b_waterAgilityData = 0.6f;
     public int b_heavenlyFireData = 0;
     public int b_frozenSkyData = 0;
     public int b_thunderData = 0;
     public int b_cursedBreathData = 0;
     public int p_caveData = 0;
     public int m_screamData = 0;
-    public int m_tailData = 0; //earthquake or tail?
+    public int m_tailData = 0; 
     public int m_meteorData = 10;
     public int m_iceData = 0;
     public int m_manaData = 100;
@@ -74,10 +74,10 @@ public class DataController : MonoBehaviour {
             Destroy(gameObject);
         }
 
-        upgradesLevel = new int[] { b_fireDamageLevel, b_fireAgilityLevel, b_waterDamageLevel, b_waterAgilityLevel, b_heavenlyFireLevel, b_frozenSkyLevel, 
+        upgradesLevel = new int[14] { b_fireDamageLevel, b_fireAgilityLevel, b_waterDamageLevel, b_waterAgilityLevel, b_heavenlyFireLevel, b_frozenSkyLevel, 
             b_thunderLevel, b_cursedBreathLevel, p_caveLevel, m_screamLevel, m_meteorLevel, m_iceLevel, m_tailLevel, m_manaLevel };
 
-        upgradesData = new float[] { b_fireDamageData, b_fireAgilityData, b_waterDamageData, b_waterAgilityData, b_heavenlyFireData, b_frozenSkyData, b_thunderData, b_cursedBreathData, 
+        upgradesData = new float[14] { b_fireDamageData, b_fireAgilityData, b_waterDamageData, b_waterAgilityData, b_heavenlyFireData, b_frozenSkyData, b_thunderData, b_cursedBreathData, 
             p_caveData, m_screamData, m_meteorData, m_iceData, m_tailData, m_manaData };
 
         if (level > 4)
@@ -90,7 +90,7 @@ public class DataController : MonoBehaviour {
         }
 	}
 
-    public void FixedUpdate()
+    public void SetLevels()
     {
         b_fireDamageLevel = upgradesLevel[0];
         b_fireAgilityLevel = upgradesLevel[1];
@@ -127,36 +127,27 @@ public class DataController : MonoBehaviour {
     public void Save()
     {
         BinaryFormatter binaryFormatter = new BinaryFormatter();
-        FileStream playerDataFile;
-//        if (!File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
-  //      {
-            playerDataFile = File.Create(Application.persistentDataPath + "/playerInfo.dat");
-    //    }
-      //  else
-        ///{
-           // playerDataFile = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
-       // }
+        FileStream playerDataFile = File.Create(Application.persistentDataPath + "/playerInfo.gd");
         
-
         PlayerData data = new PlayerData();
         data.level = level;
         data.coins = coins;
         data.crystals = crystals;
 
-        data.b_fireDamageLevel = b_fireDamageLevel;
-        data.b_fireAgilityLevel = b_fireAgilityLevel;
-        data.b_waterDamageLevel = b_waterDamageLevel;
-        data.b_waterAgilityLevel = b_waterAgilityLevel;
-        data.b_heavenlyFireLevel = b_heavenlyFireLevel;
-        data.b_frozenSkyLevel = b_frozenSkyLevel;
-        data.b_thunderLevel = b_thunderLevel;
-        data.b_cursedBreathLevel = b_cursedBreathLevel;
-        data.p_caveLevel = p_caveLevel;
-        data.m_screamLevel = m_screamLevel;
-        data.m_meteorLevel = m_meteorLevel;
-        data.m_iceLevel = m_iceLevel;
-        data.m_tailLevel = m_tailLevel;
-        data.m_manaLevel = m_manaLevel;
+        data.b_fireDamageLevel = upgradesLevel[0];
+        data.b_fireAgilityLevel = upgradesLevel[1];
+        data.b_waterDamageLevel = upgradesLevel[2];
+        data.b_waterAgilityLevel = upgradesLevel[3];
+        data.b_heavenlyFireLevel = upgradesLevel[4];
+        data.b_frozenSkyLevel = upgradesLevel[5];
+        data.b_thunderLevel = upgradesLevel[6];
+        data.b_cursedBreathLevel = upgradesLevel[7];
+        data.p_caveLevel = upgradesLevel[8];
+        data.m_screamLevel = upgradesLevel[9];
+        data.m_meteorLevel = upgradesLevel[10];
+        data.m_iceLevel = upgradesLevel[11];
+        data.m_tailLevel = upgradesLevel[12];
+        data.m_manaLevel = upgradesLevel[13];
 
         data.b_fireDamageData = b_fireDamageData;
         data.b_fireAgilityData = b_fireAgilityData;
@@ -173,7 +164,6 @@ public class DataController : MonoBehaviour {
         data.m_tailData = m_tailData;
         data.m_manaData = m_manaData;
 
-
         binaryFormatter.Serialize(playerDataFile, data);
         playerDataFile.Close();
 
@@ -181,10 +171,10 @@ public class DataController : MonoBehaviour {
 
     public void Load()
     {
-        if (File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
+        if (File.Exists(Application.persistentDataPath + "/playerInfo.gd"))
         {
             BinaryFormatter binaryFormatter = new BinaryFormatter();
-            FileStream playerDataFile = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
+            FileStream playerDataFile = File.Open(Application.persistentDataPath + "/playerInfo.gd", FileMode.Open);
 
             PlayerData data = (PlayerData) binaryFormatter.Deserialize(playerDataFile);
             playerDataFile.Close();
@@ -223,19 +213,21 @@ public class DataController : MonoBehaviour {
             m_tailData = data.m_tailData;
             m_manaData = data.m_manaData;
 
+            upgradesLevel = new int[] { b_fireDamageLevel, b_fireAgilityLevel, b_waterDamageLevel, b_waterAgilityLevel, b_heavenlyFireLevel, b_frozenSkyLevel, 
+            b_thunderLevel, b_cursedBreathLevel, p_caveLevel, m_screamLevel, m_meteorLevel, m_iceLevel, m_tailLevel, m_manaLevel };
         }
     }
 }
 
 [Serializable]
-class PlayerData
+public class PlayerData
 {
     public int level;
     public int coins;
     public int crystals;
 
     public int m_screamData;
-    public int m_tailData; //earthquake or tail?
+    public int m_tailData; 
     public int p_caveData;
     public int b_fireDamageData;
     public float b_fireAgilityData;
@@ -250,7 +242,7 @@ class PlayerData
     public int m_manaData;
 
     public int m_screamLevel;
-    public int m_tailLevel; //earthquake or tail?
+    public int m_tailLevel; 
     public int p_caveLevel;
     public int b_fireDamageLevel;
     public int b_fireAgilityLevel;
