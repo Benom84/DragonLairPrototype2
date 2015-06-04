@@ -44,6 +44,8 @@ public class Player : MonoBehaviour
     public Sprite lockedAttack;
     public GameObject fireSpecialAttack;
     public GameObject waterSpecialAttack;
+    [HideInInspector]
+    public Quaternion attackRotation;
 
 
 
@@ -68,7 +70,7 @@ public class Player : MonoBehaviour
     private int activeSpecialAttackManaCost = 30;
     private DragonAttack.AttackType activeAttackType;
     private GameObject changeAttackButton;
-    private bool changeAttackButtonEnabled = true;
+    private bool changeAttackButtonEnabled = false;
     private double changeAttackButtonLastPress;
     private Color changeAttackButtonColor;
     private GameObject specialAttackButton;
@@ -94,7 +96,9 @@ public class Player : MonoBehaviour
     private bool earthquakeButtonAvailable = true;
     private GameObject activeSpecialAttack;
     private Animator dragonAnimator;
-    private float earthquakeShakeFactor = 0.8f;
+    private float earthquakeShakeFactor = 0.5f;
+    private Transform headTransform;
+    
 
 
 
@@ -111,7 +115,8 @@ public class Player : MonoBehaviour
 
         // Getting the object references
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
-        dragonMouth = transform.FindChild("Mouth").position;
+        dragonMouth = transform.FindChild("Head/Mouth").position;
+        headTransform = transform.FindChild("Head");
         healthBar = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<BarMovement>();
         manaBar = GameObject.FindGameObjectWithTag("ManaBar").GetComponent<BarMovement>();
         camShake = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>();
@@ -126,11 +131,11 @@ public class Player : MonoBehaviour
         }
 
         // Get the Change Attack button and color
-        changeAttackButton = GameObject.FindGameObjectWithTag("ChangeAttackButton");
-        changeAttackButtonColor = new Color();
-        changeAttackButtonColor.r = changeAttackButton.GetComponent<Image>().color.r;
-        changeAttackButtonColor.g = changeAttackButton.GetComponent<Image>().color.g;
-        changeAttackButtonColor.b = changeAttackButton.GetComponent<Image>().color.b;
+        //changeAttackButton = GameObject.FindGameObjectWithTag("ChangeAttackButton");
+        //changeAttackButtonColor = new Color();
+        //changeAttackButtonColor.r = changeAttackButton.GetComponent<Image>().color.r;
+        //changeAttackButtonColor.g = changeAttackButton.GetComponent<Image>().color.g;
+        //changeAttackButtonColor.b = changeAttackButton.GetComponent<Image>().color.b;
         changeAttackButtonLastPress = Time.time;
 
         // Get the special attacks buttons
@@ -168,12 +173,6 @@ public class Player : MonoBehaviour
         }
 
 
-
-        
-
-
-
-
         // Setting the initial values
         currHealth = maxHealth;
         currMana = maxMana;
@@ -184,18 +183,20 @@ public class Player : MonoBehaviour
 
 
         // Setting the attacks - setting as water and switching to fire;
-        activeAttackType = DragonAttack.AttackType.Water;
-        if (!changeAttackButtonAvailable)
-        {
-            changeAttackButtonAvailable = true;
-            SwitchAttack();
-            changeAttackButtonAvailable = false;
-            changeAttackButton.GetComponent<Image>().sprite = lockedAttack;
-        }
-        else
-        {
-            SwitchAttack();
-        }
+        //activeAttackType = DragonAttack.AttackType.Water;
+        //if (!changeAttackButtonAvailable)
+        //{
+        //    changeAttackButtonAvailable = true;
+        //    SwitchAttack();
+        //    changeAttackButtonAvailable = false;
+        //    //changeAttackButton.GetComponent<Image>().sprite = lockedAttack;
+        //}
+        //else
+        //{
+        //    SwitchAttack();
+        //}
+
+        setFireAttack();
         
 
     }
@@ -276,9 +277,9 @@ public class Player : MonoBehaviour
         {
             if (Time.time > changeAttackButtonLastPress + changeAttackDelay)
             {
-                changeAttackButtonEnabled = true;
-                changeAttackButtonColor.a = 1.0f;
-                changeAttackButton.GetComponent<Image>().color = changeAttackButtonColor;
+                //changeAttackButtonEnabled = true;
+                //changeAttackButtonColor.a = 1.0f;
+                //changeAttackButton.GetComponent<Image>().color = changeAttackButtonColor;
             }
 
         }
@@ -336,16 +337,14 @@ public class Player : MonoBehaviour
 
         // We will calculate the direction vector the attack is supposed to go
         Vector2 attackDirection = new Vector2(attackPosition.x - dragonMouth.x, attackPosition.y - dragonMouth.y);
+        //Vector2 attackDirection = new Vector2(attackPosition.x - headTransform.position.x, attackPosition.y - headTransform.position.y);
+        attackDirection = headTransform.right;
 
         // Now we normalize it and multiply by the attack speed
         attackDirection = attackDirection.normalized * activeAttackSpeed;
 
         // Now we instantiate the attack at the dragon's mouth, set it's velocity and damage
-        if (dragonAnimator != null)
-        {
-            dragonAnimator.SetTrigger("fire");
-        }
-        GameObject attack = (GameObject)Instantiate(activeAttack, dragonMouth, transform.rotation);
+        GameObject attack = (GameObject)Instantiate(activeAttack, dragonMouth, attackRotation);
         DragonAttack dragonAttack = attack.GetComponent<DragonAttack>();
         dragonAttack.attackDamage = activeAttackDamage;
         dragonAttack.continuousDamage = activeContinuousDamage;
@@ -383,7 +382,7 @@ public class Player : MonoBehaviour
         {
             Enemy enemyScript = enemy.GetComponent<Enemy>();
             if (enemyScript != null)
-                enemyScript.Hit(screamAttackDamage, DragonAttack.AttackType.Scream);
+                enemyScript.Hit(screamAttackDamage, DragonAttack.AttackType.Scream, false);
         }
 
         screamAttackEnabled = false;
@@ -402,25 +401,39 @@ public class Player : MonoBehaviour
         if (!earthquakeEnabled || !earthquakeButtonAvailable)
             return;
 
+        if (dragonAnimator != null)
+        {
+            dragonAnimator.SetTrigger("tailAttack");
+        }
         currMana -= earthquakeManaCost;
+        
+
+
+
+    }
+
+    public void EarthquakeStartAttack()
+    {
+
+        if (gameController.gameEnded)
+            return;
+
         foreach (GameObject enemy in gameController.getAllEnemiesOnBoard())
         {
             Enemy enemyScript = enemy.GetComponent<Enemy>();
             if (enemyScript != null)
             {
-                enemyScript.Hit(earthquakeAttackDamage, DragonAttack.AttackType.Earthquake);
+                enemyScript.Hit(earthquakeAttackDamage, DragonAttack.AttackType.Earthquake, false);
                 enemyScript.slowEnemy(1.0f, 1.0f);
             }
-                
+
         }
 
         Handheld.Vibrate();
         earthquakeEnabled = false;
         earthquakeAttackCharge = 0;
         camShake.shake = earthquakeShakeFactor;
-
-
-
+        camShake.isSpecialAttackShake = true;
     }
 
     public void SpecialAttack()
@@ -440,6 +453,10 @@ public class Player : MonoBehaviour
         SpecialAttack specialAttackScript = specialAttackObj.GetComponent<SpecialAttack>();
         if (specialAttackScript != null)
         {
+            if (dragonAnimator != null)
+            {
+                dragonAnimator.SetTrigger("fireSpecialAttack");
+            }
             specialAttackScript.damage = activeSpecialAttackDamage;
             specialAttackScript.attackType = activeAttackType;
             specialAttackScript.specialAreaMaxX = specialAreaMaxX;
@@ -447,6 +464,7 @@ public class Player : MonoBehaviour
             specialAttackScript.specialAreaMaxY = specialAreaMaxY;
             specialAttackScript.specialAreaMinY = specialAreaMinY;
             specialAttackScript.specialAttackAreaCollider = specialAttackAreaCollider;
+            
             specialAttackScript.StartAttack();
         }
         
@@ -492,7 +510,7 @@ public class Player : MonoBehaviour
             return;
 
 
-        Image attackButtonImage = changeAttackButton.GetComponent<Image>();
+        //Image attackButtonImage = changeAttackButton.GetComponent<Image>();
         Image specialAttackButtonImage = specialAttackButton.GetComponent<Image>();
         Sprite selectedButtonSprite;
         Sprite selectedSpecialAttackSprite;
@@ -550,9 +568,9 @@ public class Player : MonoBehaviour
 
         // Change the attack button
         changeAttackButtonLastPress = Time.time;
-        changeAttackButtonColor.a = 0.5f;
-        attackButtonImage.sprite = selectedButtonSprite;
-        attackButtonImage.color = changeAttackButtonColor;
+        //changeAttackButtonColor.a = 0.5f;
+        //attackButtonImage.sprite = selectedButtonSprite;
+        //attackButtonImage.color = changeAttackButtonColor;
 
         // Change the special attack button
         specialAttackButtonImage.sprite = selectedSpecialAttackSprite;
@@ -560,5 +578,43 @@ public class Player : MonoBehaviour
 
 
 
+    }
+
+    private void setFireAttack()
+    {
+        //Image attackButtonImage = changeAttackButton.GetComponent<Image>();
+        Image specialAttackButtonImage = specialAttackButton.GetComponent<Image>();
+        Sprite selectedButtonSprite;
+        Sprite selectedSpecialAttackSprite;
+        
+        // Attack Parameters
+        activeAttack = fireAttack;
+        activeAttackDamage = fireAttackDamage;
+        activeAttackSpeed = fireAttackSpeed;
+        activeAttackDelay = fireAttackDelay;
+        activeAttackType = DragonAttack.AttackType.Fire;
+        selectedButtonSprite = waterButtonImage;
+
+
+        // Special Attack parameters
+        selectedSpecialAttackSprite = fireSpecialAttackImage;
+        activeSpecialAttackDamage = fireSpecialAttackDamage;
+        activeSpecialAttackManaCost = fireSpecialAttackManaCost;
+        activeSpecialAttack = fireSpecialAttack;
+
+        // Cotinuous attack and slowing down parameters
+        activeContinuousDamage = fireContinuousDamage;
+        activeContinuousDamageTime = fireContinuousDamageTime;
+        activeSlowFactor = fireSlowFactor;
+        activeSlowTime = fireSlowTime;
+
+        // Change the attack button
+        changeAttackButtonLastPress = Time.time;
+        //changeAttackButtonColor.a = 0.5f;
+        //attackButtonImage.sprite = selectedButtonSprite;
+        //attackButtonImage.color = changeAttackButtonColor;
+
+        // Change the special attack button
+        specialAttackButtonImage.sprite = selectedSpecialAttackSprite;
     }
 }

@@ -21,7 +21,9 @@ public class Enemy : MonoBehaviour
     public float projectileSpeed = 5.0f;
     public float bossThrowBackForce = 4.0f;
     public float throwBackForce = 8.0f;
+    public float enemyThrowBackFromRegularAttack = 2.0f;
     public bool arrivedAtDestination = false;
+    private float shakeFromDragonAttack = 0.2f;
 
     private GameController gameController;
     private Animator animator;
@@ -43,6 +45,10 @@ public class Enemy : MonoBehaviour
     private float lastContinuousDamage = 0;
     private int continuousDamageCount = 0;
     private DragonAttack.AttackType continuousDamageType;
+    private CameraShake camShake;
+
+    private bool v_isFromContinuousDamage = true;
+    
 
 
     void Start()
@@ -52,6 +58,7 @@ public class Enemy : MonoBehaviour
         playerObject = GameObject.FindGameObjectWithTag("Player");
         player = playerObject.GetComponent<Player>();
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        camShake = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>();
 
         health = maxHealth;
 
@@ -105,7 +112,7 @@ public class Enemy : MonoBehaviour
         // If the cotinuous attack is still in affect and a second passed since the last one
         if ((continuousDamageCount > 0) && (Time.time >= lastContinuousDamage + 1.0f))
         {
-            Hit(continuousDamage, continuousDamageType);
+            Hit(continuousDamage, continuousDamageType, v_isFromContinuousDamage);
             continuousDamageCount--;
             lastContinuousDamage = Time.time;
         }
@@ -129,6 +136,11 @@ public class Enemy : MonoBehaviour
 
             if (rigidbody2D.velocity.x > 0)
             {
+                if (animator != null)
+                {
+                    animator.SetFloat("speed", -1);
+                }
+                
                 Vector2 newVelocity = rigidbody2D.velocity;
                 if (enemyType == EnemyType.Boss)
                     newVelocity.x -= (bossThrowBackForce / 50);
@@ -164,13 +176,25 @@ public class Enemy : MonoBehaviour
     }
 
 
-    public void Hit(int damage, DragonAttack.AttackType attackType)
+    public void Hit(int damage, DragonAttack.AttackType attackType, bool isFromContinuosDamage)
     {
 
         float resistenceToCurrentAttack = getResistenceToAttack(attackType);
         health -= (int)(damage * (1 - resistenceToCurrentAttack));
         lastHealthChange = Time.time;
         showHealthBar = true;
+
+        if (!isFromContinuosDamage && (attackType == DragonAttack.AttackType.Fire || attackType == DragonAttack.AttackType.Water))
+        {
+            if (camShake != null)
+                camShake.shakeForDragonAttack = shakeFromDragonAttack;
+
+            beingThrownBack = true;
+            arrivedAtDestination = false;
+            rigidbody2D.velocity = new Vector2(enemyThrowBackFromRegularAttack, 0);
+        }
+        
+        
         if (health <= 0f)
         {
             Death();
@@ -217,7 +241,7 @@ public class Enemy : MonoBehaviour
     public void SpecialHit(int damage, DragonAttack.AttackType attackType)
     {
 
-        Hit(damage, attackType);
+        Hit(damage, attackType, false);
 
         if (enemyType == EnemyType.Boss)
         {

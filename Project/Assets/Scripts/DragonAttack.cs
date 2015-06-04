@@ -31,7 +31,7 @@ public class DragonAttack : MonoBehaviour {
 
             Enemy enemyScript = collider.gameObject.GetComponent<Enemy>();
             if (enemyScript != null) {
-                enemyScript.Hit(attackDamage, attackType);
+                enemyScript.Hit(attackDamage, attackType, false);
                 enemyScript.slowEnemy(slowFactor, slowTime);
                 enemyScript.continuousDamageHit(continuousDamage, continuosDamageTime, attackType);
             }

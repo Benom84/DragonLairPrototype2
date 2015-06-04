@@ -14,6 +14,7 @@ public class TouchManager : MonoBehaviour
     private float playerMouthX;
     private float playerMouthY;
     private int lastAttackDirection = 1;
+    private RotateTowards rotateTowards;
 
     // Use this for initialization
     void Start()
@@ -22,9 +23,10 @@ public class TouchManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         playerAnimator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         gameArea = transform.FindChild("GameArea").gameObject;
+        rotateTowards = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<RotateTowards>();
 
         // Calculate where the player mouth is
-        Transform playerMouth = GameObject.FindGameObjectWithTag("Player").transform.FindChild("Mouth");
+        Transform playerMouth = GameObject.FindGameObjectWithTag("Player").transform.FindChild("Head").transform.FindChild("Mouth");
         playerMouthX = playerMouth.position.x;
         playerMouthY = playerMouth.position.y;
 
@@ -72,7 +74,7 @@ public class TouchManager : MonoBehaviour
             {
                 if (gameArea.collider2D == Physics2D.OverlapPoint(touchPos, LayerMask.GetMask("TouchArea")))
                 {
-
+                    rotateTowards.destinationPosition = wp;
                     player.StartAttack(touchPos);
                 }
             }

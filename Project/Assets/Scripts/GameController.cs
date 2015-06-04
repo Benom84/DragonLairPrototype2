@@ -3,7 +3,8 @@ using UnityEngine.UI;
 using System.Collections;
 
 
-public class GameController : MonoBehaviour {
+public class GameController : MonoBehaviour
+{
 
     public int knightPoints = 1;
     public int cavalierPoints = 2;
@@ -20,7 +21,7 @@ public class GameController : MonoBehaviour {
     public int perKillGold = 7;
     public int goldBonusPerKill = 4;
     public int levelToChangeGold = 4; // Including
-    
+
     [HideInInspector]
     public bool gameEnded = false;
     [HideInInspector]
@@ -30,7 +31,7 @@ public class GameController : MonoBehaviour {
     public bool noMoreWaves = false;
     [HideInInspector]
     public int manaCrystals = 5;
-    
+
     private GameObject touchManager;
     private GameObject pauseMenu;
     private GameObject winMenu;
@@ -53,12 +54,17 @@ public class GameController : MonoBehaviour {
     private int healersKillCount = 0;
     private int bossKillCount = 0;
     private int allKillCount = 0;
+    private bool startEndTimeScaleEffect = false;
+    private float endTimeScaleEffectStartTime = 0;
+    private float delayInEndMenuDisplay = 3.0f;
+    private bool calledLevelEnd = false;
 
-    
 
-    
 
-	void Start () {
+
+
+    void Start()
+    {
 
         touchManager = GameObject.FindGameObjectWithTag("TouchManager");
         pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
@@ -70,7 +76,7 @@ public class GameController : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
 
-        
+
         pauseMenu.SetActive(false);
         winMenu.SetActive(false);
         loseMenu.SetActive(false);
@@ -83,34 +89,62 @@ public class GameController : MonoBehaviour {
         allEnemiesOnBoard = new ArrayList();
 
 
-        
-        
 
-       if (DataController.dataController != null)
+
+
+        if (DataController.dataController != null)
             readLevelData();
 
         manaCrystalsText.text = "" + manaCrystals;
 
         GameObject.FindGameObjectWithTag("Spawner").GetComponent<SpawnerManager>().InitializeSpawner();
- 
-     
-	}
+
+
+    }
 
     private void readLevelData()
     {
         currentLevel = DataController.dataController.level;
-        Debug.Log("Reading level data, current level: " + currentLevel); 
+        Debug.Log("Reading level data, current level: " + currentLevel);
         manaCrystals = DataController.dataController.crystals;
     }
 
     void FixedUpdate()
     {
 
-        
+
         // If there are no more waves and the board was emptied or if the game was lost
         if ((noMoreWaves && ((nonHealersOnBoard.Count + healersOnBoard.Count) == 0)) || gameLost)
-            LevelEnd();
+        {
+            if (!calledLevelEnd)
+            {
+                LevelEnd();
+                calledLevelEnd = true;
+            }
+            
+        }
+            
 
+
+
+    }
+
+    void Update()
+    {
+        if (startEndTimeScaleEffect)
+        {
+            if (Time.realtimeSinceStartup - endTimeScaleEffectStartTime > delayInEndMenuDisplay)
+            {
+                startEndTimeScaleEffect = false;
+                displayEndMenu();
+            }
+            else
+            {
+                float newTimeScale = Time.timeScale;
+                newTimeScale -= 0.05f * (Time.realtimeSinceStartup - endTimeScaleEffectStartTime);
+                Time.timeScale = Mathf.Max(newTimeScale, 0.2f);
+            }
+        }
     }
 
     public void AddEnemy(GameObject enemyObject)
@@ -118,8 +152,9 @@ public class GameController : MonoBehaviour {
 
         Enemy enemy = enemyObject.GetComponent<Enemy>();
         allEnemiesOnBoard.Add(enemyObject);
-        
-        if (enemy.enemyType == Enemy.EnemyType.Knight) {
+
+        if (enemy.enemyType == Enemy.EnemyType.Knight)
+        {
             knightsOnBoard.Add(enemyObject);
             nonHealersOnBoard.Add(enemyObject);
             enemiesOnBoardCount++;
@@ -155,8 +190,9 @@ public class GameController : MonoBehaviour {
 
         Enemy enemy = enemyObject.GetComponent<Enemy>();
         allEnemiesOnBoard.Remove(enemyObject);
-        
-        if (enemy.enemyType == Enemy.EnemyType.Knight) {
+
+        if (enemy.enemyType == Enemy.EnemyType.Knight)
+        {
             knightsOnBoard.Remove(enemyObject);
             nonHealersOnBoard.Remove(enemyObject);
             knightsKillCount++;
@@ -272,15 +308,12 @@ public class GameController : MonoBehaviour {
         }
         return returnedEnemies;
     }
-    
+
     private void LevelEnd()
     {
         gameEnded = true;
         pauseButton.SetActive(false);
-        Time.timeScale = 0;
         int points = CoinsCalculation(!gameLost);
-        GameObject menu;
-        string message;
 
         if (DataController.dataController != null)
         {
@@ -289,11 +322,20 @@ public class GameController : MonoBehaviour {
             DataController.dataController.coinsFromStage = points;
             DataController.dataController.life = player.getCurrentHealth();
         }
-        
-        
-        
-        if (!gameLost) {
-            
+
+        endTimeScaleEffectStartTime = Time.realtimeSinceStartup;
+        startEndTimeScaleEffect = true;
+    }
+
+    private void displayEndMenu()
+    {
+        GameObject menu;
+        string message;
+
+        Time.timeScale = 0;
+        if (!gameLost)
+        {
+
             if (DataController.dataController != null)
                 DataController.dataController.crystalsFromStage = 2;
             menu = winMenu;
@@ -304,7 +346,7 @@ public class GameController : MonoBehaviour {
         {
             if (DataController.dataController != null)
                 DataController.dataController.crystalsFromStage = 0;
-            
+
             menu = loseMenu;
             message = "Level Lost!";
         }
@@ -313,7 +355,6 @@ public class GameController : MonoBehaviour {
 
         menu.transform.FindChild("Message").GetComponent<Text>().text = message;
         menu.SetActive(true);
-        
     }
 
     public void UseManaCrystals()
@@ -328,7 +369,7 @@ public class GameController : MonoBehaviour {
 
 
     }
-    
+
     private int CoinsCalculation(bool win)
     {
 
@@ -362,6 +403,6 @@ public class GameController : MonoBehaviour {
         return enemiesOnBoardCount;
     }
 
-   
+
 }
 

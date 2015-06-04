@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\MeteorAttack.cs" />
      <Compile Include="Assets\Scripts\BarMovement.cs" />
      <Compile Include="Assets\Scripts\ButtonStamina.cs" />
      <Compile Include="Assets\Scripts\CameraAspectController.cs" />
@@ -61,6 +62,7 @@
      <Compile Include="Assets\Scripts\GameMenuButtons.cs" />
      <Compile Include="Assets\Scripts\MainMenu\UIscript.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
+     <Compile Include="Assets\Scripts\RotateTowards.cs" />
      <Compile Include="Assets\Scripts\SpawnerManager.cs" />
      <Compile Include="Assets\Scripts\SpecialAttack.cs" />
      <Compile Include="Assets\Scripts\SpecialAttackButton.cs" />

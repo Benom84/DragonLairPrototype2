@@ -37,8 +37,8 @@ public class SpecialAttack : MonoBehaviour {
             {
                 GameObject fx = (GameObject)Instantiate(effect, new Vector3(x - 1, y + 2, 0), transform.rotation);
                 fx.renderer.sortingLayerName = "Enemy";
-                fx.GetComponent<DestroyExplosion>().specialAttackChild = true;
-                fx.GetComponent<DestroyExplosion>().parent = this;
+                //fx.GetComponent<DestroyExplosion>().specialAttackChild = true;
+                //fx.GetComponent<DestroyExplosion>().parent = this;
                 allChildrenFX.Add(fx);
 
             }

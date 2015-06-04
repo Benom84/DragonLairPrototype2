@@ -10,6 +10,8 @@ public class DestroyExplosion : MonoBehaviour {
     [HideInInspector]
     public SpecialAttack parent;
     [HideInInspector]
+    public MeteorAttack meteorParent;
+    [HideInInspector]
     public bool specialAttackChild;
 
     // Update is called once per frame
@@ -22,7 +24,17 @@ public class DestroyExplosion : MonoBehaviour {
                 explosion.renderer.sortingLayerName = "Enemy";
             }
             if (specialAttackChild)
-                parent.allChildrenFX.Remove(gameObject);
+            {
+                if (parent != null)
+                {
+                    parent.allChildrenFX.Remove(gameObject);
+                }
+                else
+                {
+                    meteorParent.allChildrenFX.Remove(gameObject);
+                }
+            }
+                
 
             Destroy(gameObject);
 

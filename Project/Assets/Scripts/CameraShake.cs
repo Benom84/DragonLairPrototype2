@@ -9,6 +9,8 @@ public class CameraShake : MonoBehaviour {
 
     // How long the object should shake for.
     public float shake = 0f;
+    public float shakeForDragonAttack;
+    public bool isSpecialAttackShake = false;
 
     // Amplitude of the shake. A larger value shakes the camera harder.
     public float shakeAmount = 0.7f;
@@ -17,6 +19,7 @@ public class CameraShake : MonoBehaviour {
     Vector3 originalPos;
     private GameController gameController;
     private Transform camTransform;
+
 
     void Start()
     {
@@ -38,15 +41,38 @@ public class CameraShake : MonoBehaviour {
 
     void Update()
     {
-        if ((shake > 0) && (!gameController.gameEnded))
+        if (isSpecialAttackShake)
         {
-            camTransform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
-            shake -= Time.deltaTime * decreaseFactor;
+            if ((shake > 0) && (!gameController.gameEnded))
+            {
+                camTransform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
+                shake -= Time.deltaTime * decreaseFactor;
+            }
+            else
+            {
+                shake = 0f;
+                shakeForDragonAttack = 0f;
+                isSpecialAttackShake = false;
+                camTransform.localPosition = originalPos;
+            }
         }
         else
         {
-            shake = 0f;
-            camTransform.localPosition = originalPos;
+            if ((shakeForDragonAttack > 0) && (!gameController.gameEnded))
+            {
+                Vector3 newPos = camTransform.localPosition;
+                newPos.x = originalPos.x + Random.insideUnitSphere.x * shakeForDragonAttack;
+                camTransform.localPosition = newPos;
+                shakeForDragonAttack -= Time.deltaTime * decreaseFactor;
+            }
+            else
+            {
+                shakeForDragonAttack = 0f;
+                camTransform.localPosition = originalPos;
+            }
         }
+        
+
+        
     }
 }
