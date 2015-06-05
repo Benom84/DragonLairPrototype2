@@ -320,14 +320,16 @@ public class UIscript : MonoBehaviour
         //{
         //   Application.LoadLevelAdditive(sceneName);
         DataController.dataController.Save();
-        if ((Application.loadedLevelName == "Store" && sceneName == "PlayerProgression") || (Application.loadedLevelName == "PlayerProgression" && sceneName == "MainMenu"))
-        {
-            Swipper.swipper.loadScene(Application.loadedLevelName, sceneName, eDirectionOfSwipe.right);
-        }
-        else
-        {
-            Swipper.swipper.loadScene(Application.loadedLevelName, sceneName, eDirectionOfSwipe.left);
-        }
+        Application.LoadLevel(sceneName);
+
+        //if ((Application.loadedLevelName == "Store" && sceneName == "PlayerProgression") || (Application.loadedLevelName == "PlayerProgression" && sceneName == "MainMenu"))
+        //{
+        //    Swipper.swipper.loadScene(Application.loadedLevelName, sceneName, eDirectionOfSwipe.right);
+        //}
+        //else
+        //{
+        //    Swipper.swipper.loadScene(Application.loadedLevelName, sceneName, eDirectionOfSwipe.left);
+        //}
         
        // Application.LoadLevel(sceneName);
     }

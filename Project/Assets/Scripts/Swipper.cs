@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Swipper : MonoBehaviour {
+public class Swipper : MonoBehaviour
+{
 
     public static Swipper swipper;
 
@@ -10,92 +11,159 @@ public class Swipper : MonoBehaviour {
     public float scrollSpeed;
     public float tileSizeX;
 
+    private bool startedLoading;
+    private bool finishedLoading;
+
+    private string nameOfNewRoot;
+    private string nameOfOldRoot;
+    private eDirectionOfSwipe swipeDirection;
+
+    GameObject newRoot;
+    GameObject oldRoot;
+
+    Vector3 startPositionNewRoot;
+    Vector3 startPositionOldRoot;
+
     void Awake()
     {
-        swipper = this;
+        if (swipper == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            swipper = this;
+        }
+        else if (swipper != this)
+        {
+            Destroy(gameObject);
+        }
+        startedLoading = false;
+        finishedLoading = false;
     }
 
     public void loadScene(string oldSceneName, string newSceneName, eDirectionOfSwipe directionToSwipe)
     {
         Application.LoadLevelAdditive(newSceneName);
+        startedLoading = true;
 
+        nameOfNewRoot = "root" + newSceneName;
+        nameOfOldRoot = "root" + oldSceneName;
 
-        while (Application.isLoadingLevel)
-        {
-            Debug.Log("loading");
-        } 
-
-        string nameOfNewRoot = "root" + newSceneName;
-        string nameOfOldRoot = "root" + oldSceneName;
-
-        GameObject newRoot = GameObject.Find(nameOfNewRoot);
-        Vector3 startPositionNewRoot = newRoot.transform.position;
-
-        GameObject oldRoot = GameObject.Find(nameOfOldRoot);
-        Vector3 startPositionOldRoot = oldRoot.transform.position;
-
-        if (directionToSwipe == eDirectionOfSwipe.right)
-        {
-            newRoot.transform.position = new Vector3(newRoot.transform.position.x - 20, newRoot.transform.position.y);
-
-            moveScenesRight(startPositionOldRoot, startPositionNewRoot, oldRoot, newRoot);
-        }
-        else
-        {
-            newRoot.transform.position = new Vector3(newRoot.transform.position.x + 20, newRoot.transform.position.y);
-
-            moveScenesLeft(startPositionOldRoot, startPositionNewRoot, oldRoot, newRoot);
-        }
-
-        GameObject.Destroy(oldRoot);
+        swipeDirection = directionToSwipe;
     }
 
-    private void moveScenesLeft(Vector3 firstRootPosition, Vector3 secondRootPosition, GameObject firstRoot, GameObject secondRoot)
+    //private void moveScenesLeft()
+    //{
+    //    GameObject newRoot = GameObject.Find(nameOfNewRoot);
+    //    Vector3 startPositionNewRoot = newRoot.transform.position;
+
+    //    GameObject oldRoot = GameObject.Find(nameOfOldRoot);
+    //    Vector3 startPositionOldRoot = oldRoot.transform.position;
+
+    //    newRoot.transform.position = new Vector3(newRoot.transform.position.x + 20, newRoot.transform.position.y);
+
+    //    while (true)
+    //    {
+    //        if (newRoot.transform.position == new Vector3(0, 0, 0))
+    //        {
+    //            break;
+    //        }
+
+    //        float newPosition = Mathf.Repeat(Time.time * scrollSpeed, tileSizeX);
+    //        oldRoot.transform.position = startPositionOldRoot + Vector3.left * newPosition;
+
+    //        newRoot.transform.position = startPositionNewRoot + Vector3.left * newPosition;
+    //    }
+
+    //    GameObject.Destroy(oldRoot);
+    //}
+
+    //private void moveScenesRight()
+    //{
+    //    GameObject newRoot = GameObject.Find(nameOfNewRoot);
+    //    Vector3 startPositionNewRoot = newRoot.transform.position;
+
+    //    GameObject oldRoot = GameObject.Find(nameOfOldRoot);
+    //    Vector3 startPositionOldRoot = oldRoot.transform.position;
+
+    //    newRoot.transform.position = new Vector3(newRoot.transform.position.x - 20, newRoot.transform.position.y);
+
+    //    while (true)
+    //    {
+    //        if (newRoot.transform.position == new Vector3(0, 0, 0))
+    //        {
+    //            break;
+    //        }
+
+    //        float newPosition = Mathf.Repeat(Time.time * scrollSpeed, tileSizeX);
+    //        oldRoot.transform.position = startPositionOldRoot + Vector3.right * newPosition;
+
+    //        newRoot.transform.position = startPositionNewRoot + Vector3.right * newPosition;
+    //    }
+
+    //    GameObject.Destroy(oldRoot);
+    //}
+
+    void Update()
     {
-        //while(Time.timeSinceLevelLoad < 60) {
-        //    if (secondRoot.transform.position.x != 0)
-        //    {
-        //        firstRoot.transform.position = new Vector3(firstRoot.transform.position.x - 1 / 3, firstRoot.transform.position.y - 1 / 3);
-        //        secondRoot.transform.position = new Vector3(secondRoot.transform.position.x - 1 / 3, secondRoot.transform.position.y - 1 / 3);
-        //    }
-        //}
-
-        while (true)
+        if (finishedLoading && !(newRoot.transform.position == new Vector3(0, 0)))
         {
-            if (secondRoot.transform.position == new Vector3(0, 0, 0))
-            {
-                break;
-            }
-
-            float newPosition = Mathf.Repeat(Time.time * scrollSpeed, tileSizeX);
-            firstRoot.transform.position = firstRootPosition + Vector3.left * newPosition;
-
-            secondRoot.transform.position = secondRootPosition + Vector3.left * newPosition;
+            //float newPosition = Mathf.Repeat(Time.time * scrollSpeed, tileSizeX);
+            //Debug.Log("trying to move");
+            //switch (swipeDirection)
+            //{
+            //    case eDirectionOfSwipe.right:
+            //        oldRoot.transform.position = startPositionOldRoot + Vector3.right * newPosition;
+            //        newRoot.transform.position = startPositionNewRoot + Vector3.right * newPosition;
+            //        break;
+            //    case eDirectionOfSwipe.left:
+            //        oldRoot.transform.position = startPositionOldRoot + Vector3.left * newPosition;
+            //        newRoot.transform.position = startPositionNewRoot + Vector3.left * newPosition;
+            //        break;
+            //}
         }
-
+        else if (newRoot != null)
+        {
+            if (newRoot.transform.position == new Vector3(0, 0, 0))
+            {
+                Debug.Log("trying to destroy");
+                
+                GameObject.Destroy(oldRoot);
+            }
+        }
     }
 
-    private void moveScenesRight(Vector3 firstRootPosition, Vector3 secondRootPosition, GameObject firstRoot, GameObject secondRoot)
+    void FixedUpdate()
     {
-        //while (Time.timeSinceLevelLoad < 60)
-        //{
-        //    if (secondRoot.transform.position.x != 0)
-        //    {
-        //        firstRoot.transform.position = new Vector3(firstRoot.transform.position.x + 1 / 3, firstRoot.transform.position.y + 1 / 3);
-        //        secondRoot.transform.position = new Vector3(secondRoot.transform.position.x + 1 / 3, secondRoot.transform.position.y + 1 / 3);
-        //    }
-        //}
-        while (true)
+        if (startedLoading)
         {
-            if (secondRoot.transform.position == new Vector3(0, 0, 0))
+            if (GameObject.Find(nameOfNewRoot))
             {
-                break;
+                initialzeValues();
+                Debug.Log("Found new root");
+                startedLoading = false;
             }
-            
-            float newPosition = Mathf.Repeat(Time.time * scrollSpeed, tileSizeX);
-            firstRoot.transform.position = firstRootPosition + Vector3.right * newPosition;
-
-            secondRoot.transform.position = secondRootPosition + Vector3.right * newPosition;
         }
+    }
+
+    void initialzeValues()
+    {
+        newRoot = GameObject.Find(nameOfNewRoot);
+        startPositionNewRoot = newRoot.transform.position;
+
+        oldRoot = GameObject.Find(nameOfOldRoot);
+        startPositionOldRoot = oldRoot.transform.position;
+
+        Debug.Log("initalizing values");
+
+        switch (swipeDirection)
+        {
+            case eDirectionOfSwipe.left:
+                newRoot.transform.position = new Vector3(newRoot.transform.position.x + 1000, newRoot.transform.position.y);
+                break;
+            case eDirectionOfSwipe.right:
+                newRoot.transform.position = new Vector3(newRoot.transform.position.x - 1000, newRoot.transform.position.y);
+                break;
+        }
+
+        finishedLoading = true;
     }
 }
