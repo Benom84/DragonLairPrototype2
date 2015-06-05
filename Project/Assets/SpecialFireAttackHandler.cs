@@ -19,12 +19,14 @@ public class SpecialFireAttackHandler : MonoBehaviour {
     private float lastMeteorCreationTime = 0;
     private int numberOfMeteorsCreated = 0;
     private float creationTime = 0;
-    private float timeToLive = 5f;
+    private float timeToLive = 3f;
+    private GameController gameController;
     
     // Use this for initialization
 	void Start () {
 
         creationTime = Time.time;
+        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
 	}
 	
 	// Update is called once per frame
@@ -41,19 +43,17 @@ public class SpecialFireAttackHandler : MonoBehaviour {
                 GameObject attack = (GameObject)Instantiate(meteor, mouthPoisiton, transform.rotation);
                 MeteorAttack dragonAttack = attack.GetComponent<MeteorAttack>();
 
-                float rand_angle = Random.Range(40f, 60f);
+                float rand_angle = Random.Range(40f, 70f);
                 rand_angle = rand_angle * Mathf.Deg2Rad;
                 Vector2 dir = new Vector2((float)Mathf.Cos(rand_angle), (float)Mathf.Sin(rand_angle));
 
+                float thisAttackSpeed = Random.Range(speed - 3, speed + 5);
                 float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
                 attack.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
                 attack.rigidbody2D.AddForce(dir.normalized * speed * 100);
 
-                Debug.Log("Meteor velocity: " + (transform.forward * speed));
-
-
                 
-                dragonAttack.speed = speed;
+                //dragonAttack.speed = thisAttackSpeed;
                 numberOfMeteorsCreated++;
                 lastMeteorCreationTime = Time.time;
             }
@@ -61,6 +61,18 @@ public class SpecialFireAttackHandler : MonoBehaviour {
 
         if (Time.time > timeToLive + creationTime)
         {
+            foreach (GameObject enemy in gameController.getAllEnemiesOnBoard())
+            {
+                Enemy enemyScript = enemy.GetComponent<Enemy>();
+                if (enemyScript != null)
+                {
+                    enemyScript.SpecialHit(damage, DragonAttack.AttackType.Fire);
+                    enemyScript.continuousDamageHit(2, 2.0f, DragonAttack.AttackType.Fire);
+
+                }
+
+
+            }
             GameObject.Destroy(gameObject);
         }
         

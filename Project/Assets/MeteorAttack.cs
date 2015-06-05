@@ -34,7 +34,6 @@ public class MeteorAttack : MonoBehaviour {
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
 
-        Debug.Log("Meteor velocity: " + (transform.forward * speed));
  
 	
 	}
