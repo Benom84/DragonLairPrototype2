@@ -12,7 +12,7 @@ public class RotateTowards : MonoBehaviour {
     
     // Use this for initialization
 	void Start () {
-        destinationPosition = this.transform.position;
+        //destinationPosition = this.transform.position;
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         mouthTransform = transform.FindChild("Mouth");
 	}

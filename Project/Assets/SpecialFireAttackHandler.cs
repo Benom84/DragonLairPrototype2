@@ -19,7 +19,7 @@ public class SpecialFireAttackHandler : MonoBehaviour {
     private float lastMeteorCreationTime = 0;
     private int numberOfMeteorsCreated = 0;
     private float creationTime = 0;
-    private float timeToLive = 3f;
+    private float timeToLive = 2f;
     private GameController gameController;
     
     // Use this for initialization
