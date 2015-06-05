@@ -594,6 +594,21 @@ public class UIscript : MonoBehaviour
         return allUpgradeLevel;
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (gameObject.tag == "FirstScreen")
+            {
+                Application.Quit();
+            }
+            else if (gameObject.tag == "Store")
+            {
+                LoadScene("MainMenu");
+            }
+        }
+    }
+
 }
 
 public enum eDirectionOfSwipe
