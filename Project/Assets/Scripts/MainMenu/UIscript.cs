@@ -102,7 +102,7 @@ public class UIscript : MonoBehaviour
         }
         else if (gameObject.tag == "Store")
         {
-           // DataController.dataController.SetLevels();
+            // DataController.dataController.SetLevels();
             BreathCanvas = GameObject.Find("BreathCanvas");
             LifeCanvas = GameObject.Find("LifeCanvas");
             MagicCanvas = GameObject.Find("MagicCanvas");
@@ -318,9 +318,18 @@ public class UIscript : MonoBehaviour
         //}
         //else
         //{
-            DataController.dataController.Save();
-            Application.LoadLevel(sceneName);
-        //}
+        //   Application.LoadLevelAdditive(sceneName);
+        DataController.dataController.Save();
+        if ((Application.loadedLevelName == "Store" && sceneName == "PlayerProgression") || (Application.loadedLevelName == "PlayerProgression" && sceneName == "MainMenu"))
+        {
+            Swipper.swipper.loadScene(Application.loadedLevelName, sceneName, eDirectionOfSwipe.right);
+        }
+        else
+        {
+            Swipper.swipper.loadScene(Application.loadedLevelName, sceneName, eDirectionOfSwipe.left);
+        }
+        
+       // Application.LoadLevel(sceneName);
     }
 
     public void QuitApplication()
@@ -583,4 +592,10 @@ public class UIscript : MonoBehaviour
         return allUpgradeLevel;
     }
 
+}
+
+public enum eDirectionOfSwipe
+{
+    right,
+    left
 }
