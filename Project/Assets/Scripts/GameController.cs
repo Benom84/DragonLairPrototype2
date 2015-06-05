@@ -121,9 +121,9 @@ public class GameController : MonoBehaviour
                 LevelEnd();
                 calledLevelEnd = true;
             }
-            
+
         }
-            
+
 
 
 
@@ -144,6 +144,11 @@ public class GameController : MonoBehaviour
                 newTimeScale -= 0.05f * (Time.realtimeSinceStartup - endTimeScaleEffectStartTime);
                 Time.timeScale = Mathf.Max(newTimeScale, 0.2f);
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseGame();
         }
     }
 
