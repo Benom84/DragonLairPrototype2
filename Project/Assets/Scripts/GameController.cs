@@ -137,6 +137,7 @@ public class GameController : MonoBehaviour
                 newTimeScale -= 0.05f * (Time.realtimeSinceStartup - endTimeScaleEffectStartTime);
                 setImageVisibilty(blackBackground, 1 - Time.timeScale);
                 Time.timeScale = Mathf.Max(newTimeScale, 0.2f);
+                GetComponent<AudioSource>().volume = newTimeScale;
             }
         }
 
@@ -230,7 +231,7 @@ public class GameController : MonoBehaviour
             enemiesOnBoardCount--;
         }
 
-        GameObject.Destroy(enemyObject);
+        //GameObject.Destroy(enemyObject);
     }
 
     public ArrayList nonHealerEnemies()
@@ -244,6 +245,7 @@ public class GameController : MonoBehaviour
     {
 
         Time.timeScale = 0;
+        GetComponent<AudioSource>().Pause();
         touchManager.SetActive(false);
         pauseMenu.SetActive(true);
         foreach (GameObject button in specialAttackButtons)
@@ -259,6 +261,7 @@ public class GameController : MonoBehaviour
     {
 
         Time.timeScale = 1;
+        GetComponent<AudioSource>().Play();
         touchManager.SetActive(true);
         pauseMenu.SetActive(false);
         foreach (GameObject button in specialAttackButtons)

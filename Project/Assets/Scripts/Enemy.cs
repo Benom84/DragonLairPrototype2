@@ -48,6 +48,11 @@ public class Enemy : MonoBehaviour
     private CameraShake camShake;
 
     private bool v_isFromContinuousDamage = true;
+    private bool isEnemyDying = false;
+    private float startTimeOfDeath = 0;
+    private float deathFlashDelay = 0.4f;
+    private float timeToLive = 1.6f;
+    private SpriteRenderer enemySpriteRenderer;
     
 
 
@@ -59,6 +64,7 @@ public class Enemy : MonoBehaviour
         player = playerObject.GetComponent<Player>();
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         camShake = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>();
+        enemySpriteRenderer = GetComponent<SpriteRenderer>();
 
         health = maxHealth;
 
@@ -83,7 +89,8 @@ public class Enemy : MonoBehaviour
     void Update()
     {
 
-        if (gameController.gameEnded)
+        
+        if (gameController.gameEnded || isEnemyDying)
             return;
 
         if ((arrivedAtDestination) && (lastAttackTime + attackDelay <= Time.time))
@@ -107,7 +114,11 @@ public class Enemy : MonoBehaviour
     {
         if (gameController.gameEnded)
             return;
-        
+
+        if (isEnemyDying)
+        {
+            HandleDeathProcess();
+        }
         
         // If the cotinuous attack is still in affect and a second passed since the last one
         if ((continuousDamageCount > 0) && (Time.time >= lastContinuousDamage + 1.0f))
@@ -193,8 +204,9 @@ public class Enemy : MonoBehaviour
             arrivedAtDestination = false;
             rigidbody2D.velocity = new Vector2(enemyThrowBackFromRegularAttack, 0);
         }
-        
-        
+
+        UpdateHealthBar();
+
         if (health <= 0f)
         {
             Death();
@@ -211,7 +223,7 @@ public class Enemy : MonoBehaviour
                 rigidbody2D.velocity = new Vector2(throwBackForce, 0);
         }
 
-        UpdateHealthBar();
+        
 
 
     }
@@ -241,6 +253,9 @@ public class Enemy : MonoBehaviour
     public void SpecialHit(int damage, DragonAttack.AttackType attackType)
     {
 
+        if (isEnemyDying)
+            return;
+        
         Hit(damage, attackType, false);
 
         if (enemyType == EnemyType.Boss)
@@ -254,6 +269,9 @@ public class Enemy : MonoBehaviour
 
     public void slowEnemy(float slowFactor, float slowTime)
     {
+        if (isEnemyDying)
+            return;
+        
         if ((slowFactor == 0) || (slowTime == 0))
             return;
 
@@ -264,6 +282,9 @@ public class Enemy : MonoBehaviour
 
     public void continuousDamageHit(int damage, float damageTime, DragonAttack.AttackType attackType)
     {
+        if (isEnemyDying)
+            return;
+        
         this.continuousDamage = damage;
         this.continuousDamageCount = (int) damageTime;
         this.lastContinuousDamage = Time.time;
@@ -275,10 +296,41 @@ public class Enemy : MonoBehaviour
     {
 
         gameController.RemoveEnemy(gameObject);
+        isEnemyDying = true;
+        startTimeOfDeath = Time.time;
+        gameObject.layer = LayerMask.NameToLayer("Death");
+        enemySpriteRenderer.sortingLayerName = "Background";
+        enemySpriteRenderer.sortingOrder = 1;
+        arrivedAtDestination = true;
+        
+    }
+
+    private void HandleDeathProcess()
+    {
+        rigidbody2D.velocity = new Vector2(0, 0);
+        
+        if (animator != null)
+        {
+            animator.Play("Standing");
+            animator.SetFloat("speed", 0);
+            Color imageColor = enemySpriteRenderer.color;
+            float lerp = Mathf.PingPong(Time.time, deathFlashDelay) / deathFlashDelay;
+            imageColor.a = 1 - Mathf.Lerp(0, 1, lerp);
+            enemySpriteRenderer.color = imageColor;
+
+        }
+
+        if (Time.time > timeToLive + startTimeOfDeath)
+            Destroy(gameObject);
+
+        
     }
 
     private void Attack()
     {
+        if (isEnemyDying)
+            return;
+
         lastAttackTime = Time.time;
 
         // For projectile and heal the attack is called from inside the animation
@@ -292,12 +344,15 @@ public class Enemy : MonoBehaviour
 
     public void CloseAttackDamage()
     {
-        if (player != null)
+        if (player != null && !isEnemyDying)
             player.Hit(attackDamage);
     }
 
     private void Heal()
     {
+        if (isEnemyDying)
+            return;
+        
         if (gameController.nonHealerEnemies() == null)
         {
             ProjectileAttack();
@@ -315,6 +370,9 @@ public class Enemy : MonoBehaviour
 
     public void getHealed(float amount)
     {
+        if (isEnemyDying)
+            return;
+        
         if (health == maxHealth)
             return;
 
@@ -329,6 +387,9 @@ public class Enemy : MonoBehaviour
     public void ProjectileAttack()
     {
 
+        if (isEnemyDying)
+            return;
+        
         // We get the player position and the enemy's
         Vector2 target = player.transform.position;
         Vector2 start = transform.position;

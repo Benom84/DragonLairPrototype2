@@ -47,6 +47,8 @@ public class Player : MonoBehaviour
     public GameObject deadDragon;
     [HideInInspector]
     public Quaternion attackRotation;
+    public AudioClip screamSound;
+    public AudioClip fireBallSound;
 
 
 
@@ -371,6 +373,7 @@ public class Player : MonoBehaviour
         dragonAttack.slowTime = activeSlowTime;
         attack.rigidbody2D.velocity = attackDirection;
         lastAttack = Time.time;
+        GetComponent<AudioSource>().PlayOneShot(fireBallSound);
 
     }
 
@@ -396,6 +399,7 @@ public class Player : MonoBehaviour
             return;
 
         currMana -= screamManaCost;
+        GetComponent<AudioSource>().PlayOneShot(screamSound);
 
         foreach (GameObject enemy in gameController.getAllEnemiesOnBoard())
         {
