@@ -57,6 +57,8 @@ public class GameController : MonoBehaviour
     private float endTimeScaleEffectStartTime = 0;
     private float delayInEndMenuDisplay = 3.0f;
     private bool calledLevelEnd = false;
+    private SpriteRenderer blackBackground;
+    private bool isGamePaused;
 
 
 
@@ -72,6 +74,8 @@ public class GameController : MonoBehaviour
         specialAttackButtons = GameObject.FindGameObjectsWithTag("SpecialAttack");
         manaCrystalsText = GameObject.FindGameObjectWithTag("ManaCrystalsText").GetComponent<Text>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        blackBackground = transform.Find("BlackBackground").GetComponent<SpriteRenderer>();
+        setImageVisibilty(blackBackground, 0);
 
         pauseMenu.SetActive(false);
         winLoseMenu.SetActive(false);
@@ -131,6 +135,7 @@ public class GameController : MonoBehaviour
             {
                 float newTimeScale = Time.timeScale;
                 newTimeScale -= 0.05f * (Time.realtimeSinceStartup - endTimeScaleEffectStartTime);
+                setImageVisibilty(blackBackground, 1 - Time.timeScale);
                 Time.timeScale = Mathf.Max(newTimeScale, 0.2f);
             }
         }
@@ -246,6 +251,8 @@ public class GameController : MonoBehaviour
             button.SetActive(false);
         }
 
+        isGamePaused = true;
+
     }
 
     public void ResumeGame()
@@ -325,7 +332,7 @@ public class GameController : MonoBehaviour
         //GameObject menu;
         //string message;
 
-        //Time.timeScale = 0;
+        Time.timeScale = 0;
         //if (!gameLost)
         //{
 
@@ -382,16 +389,23 @@ public class GameController : MonoBehaviour
         coinsText.text = coins.ToString();
         crystalsText.text = crystals.ToString();
 
-        DataController.dataController.coins += coins;
-        DataController.dataController.crystals += crystals;
-        DataController.dataController.Save();
+        if (DataController.dataController != null)
+        {
+            
+            DataController.dataController.level += (gameLost) ? 0 : 1;
+            DataController.dataController.coins += coins;
+            DataController.dataController.crystals += crystals;
+            DataController.dataController.Save();
+        }
+
+        
 
     }
 
     public void UseManaCrystals()
     {
 
-        if (manaCrystals < 1)
+        if (manaCrystals < 1 || isGamePaused | gameEnded)
             return;
 
         manaCrystals--;
@@ -432,6 +446,16 @@ public class GameController : MonoBehaviour
     public int GetEnemiesOnBoardCount()
     {
         return enemiesOnBoardCount;
+    }
+
+    private void setImageVisibilty(SpriteRenderer imageToChangeVisibilty, float visibily)
+    {
+        if (imageToChangeVisibilty != null)
+        {
+            Color imageColor = imageToChangeVisibilty.color;
+            imageColor.a = visibily;
+            imageToChangeVisibilty.color = imageColor;
+        }
     }
 
 
