@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
     public Sprite lockedAttack;
     public GameObject fireSpecialAttack;
     public GameObject waterSpecialAttack;
+    public GameObject deadDragon;
     [HideInInspector]
     public Quaternion attackRotation;
 
@@ -98,6 +99,7 @@ public class Player : MonoBehaviour
     private Animator dragonAnimator;
     private float earthquakeShakeFactor = 0.5f;
     private Transform headTransform;
+    private SpriteRenderer bloodPoolSprite;
     
 
 
@@ -128,6 +130,12 @@ public class Player : MonoBehaviour
         if (DataController.dataController != null)
         {
             loadFromDataController();
+        }
+
+        bloodPoolSprite = transform.FindChild("Blood").GetComponent<SpriteRenderer>();
+        if (bloodPoolSprite != null)
+        {
+            changeImageTransparency(bloodPoolSprite, 0f);
         }
 
         // Get the Change Attack button and color
@@ -200,6 +208,8 @@ public class Player : MonoBehaviour
         
 
     }
+
+    
 
     private void getSpecialAttackAreaPoints()
     {
@@ -320,9 +330,17 @@ public class Player : MonoBehaviour
         currHealth -= damage;
         currHealth = Mathf.Max(currHealth, 0);
         healthBar.setValue(currHealth);
+        changeImageTransparency(bloodPoolSprite, (float)(1 - getCurrentHealthPrecentage()));
         if (currHealth == 0)
             Die();
 
+    }
+
+    private void changeImageTransparency(SpriteRenderer imageToChange, float percentOfTransparency)
+    {
+        Color tempColor = imageToChange.color;
+        tempColor.a = percentOfTransparency;
+        imageToChange.color = tempColor;
     }
 
     public void StartAttack(Vector2 attackPosition)
@@ -361,6 +379,7 @@ public class Player : MonoBehaviour
     {
         gameController.gameEnded = true;
         gameController.gameLost = true;
+        Instantiate(deadDragon, transform.position, transform.rotation);
         GameObject.Destroy(gameObject);
     }
 
