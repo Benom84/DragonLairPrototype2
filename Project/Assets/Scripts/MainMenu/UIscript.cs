@@ -244,7 +244,10 @@ public class UIscript : MonoBehaviour
             int[] upgradesWithLevels = new int[] { 0, 1, 9, 10, 12 };
             foreach (int i in upgradesWithLevels)
             {
-                buttons[i].transform.FindChild("LevelNumber").GetComponent<Text>().text = DataController.dataController.upgradesLevel[i].ToString();
+                if (DataController.dataController.upgradesLevel[i] > 0)
+                {
+                    buttons[i].transform.FindChild("LevelNumber").GetComponent<Text>().text = DataController.dataController.upgradesLevel[i].ToString();
+                }
             }
 
             buttons[8].transform.FindChild("LevelNumber").GetComponent<Text>().text = DataController.dataController.upgradesData[8].ToString();
