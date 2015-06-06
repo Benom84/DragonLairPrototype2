@@ -534,6 +534,7 @@ public class UIscript : MonoBehaviour
                     DataController.dataController.upgradesLevel[numberOfUpgrade]++;
 
                     totalCrystalsText.text = DataController.dataController.crystals.ToString();
+                    upgradeCostText.text = allUpgrades[numberOfUpgrade][DataController.dataController.upgradesLevel[numberOfUpgrade]].Cost.ToString();
                 }
                 else
                 {

@@ -167,6 +167,21 @@ public class DataController : MonoBehaviour {
         binaryFormatter.Serialize(playerDataFile, data);
         playerDataFile.Close();
 
+        b_fireDamageLevel = data.b_fireDamageLevel;
+        b_fireAgilityLevel = data.b_fireAgilityLevel;
+        b_waterDamageLevel = data.b_waterDamageLevel;
+        b_waterAgilityLevel = data.b_waterAgilityLevel;
+        b_heavenlyFireLevel = data.b_heavenlyFireLevel;
+        b_frozenSkyLevel = data.b_frozenSkyLevel;
+        b_thunderLevel = data.b_thunderLevel;
+        b_cursedBreathLevel = data.b_cursedBreathLevel;
+        p_caveLevel = data.p_caveLevel;
+        m_screamLevel = data.m_screamLevel;
+        m_meteorLevel = data.m_meteorLevel;
+        m_iceLevel = data.m_iceLevel;
+        m_tailLevel = data.m_tailLevel;
+        m_manaLevel = data.m_manaLevel;
+
     }
 
     public void Load()
