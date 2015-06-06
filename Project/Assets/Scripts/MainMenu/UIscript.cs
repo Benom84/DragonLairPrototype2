@@ -196,15 +196,18 @@ public class UIscript : MonoBehaviour
                 isUnlocked[11] = false;
                 isUnlocked[12] = false;
 
-                GameObject.Find("Water").GetComponent<Image>().sprite = waterLocked;
-                GameObject.Find("IceImage").GetComponent<Image>().sprite = iceLocked;
-                GameObject.Find("Tail").GetComponent<Image>().sprite = tailLocked;
+                //GameObject.Find("Water").GetComponent<Image>().sprite = waterLocked;
+                //GameObject.Find("IceImage").GetComponent<Image>().sprite = iceLocked;
+                Tail.GetComponent<Image>().sprite = tailLocked;
+                Debug.Log("i am in datacontroller level < 4");
             }
             else
             {
-                GameObject.Find("Water").GetComponent<Image>().sprite = waterUnlocked;
-                GameObject.Find("IceImage").GetComponent<Image>().sprite = iceUnlocked;
-                GameObject.Find("Tail").GetComponent<Image>().sprite = tailUnlocked;
+                //GameObject.Find("Water").GetComponent<Image>().sprite = waterUnlocked;
+                //GameObject.Find("IceImage").GetComponent<Image>().sprite = iceUnlocked;
+                Tail.GetComponent<Image>().sprite = TailRegular;
+                Debug.Log("i am in datacontroller level >= 4");
+
             }
 
             if (DataController.dataController.level < 5)
@@ -215,23 +218,25 @@ public class UIscript : MonoBehaviour
                 isUnlocked[5] = false;
                 isUnlocked[7] = false;
 
-                GameObject.Find("HeavenlyFire").GetComponent<Image>().sprite = heavenlyFireAndThunderLocked;
-                GameObject.Find("Thunder").GetComponent<Image>().sprite = heavenlyFireAndThunderLocked;
+                HeavenlyFire.GetComponent<Image>().sprite = heavenlyFireAndThunderLocked;
+                Thunder.GetComponent<Image>().sprite = heavenlyFireAndThunderLocked;
+                Debug.Log("i am in datacontroller level < 5");
             }
             else
             {
-                GameObject.Find("HeavenlyFire").GetComponent<Image>().sprite = HeavenlyFireRegular;
-                GameObject.Find("Thunder").GetComponent<Image>().sprite = ThunderRegular;
+                HeavenlyFire.GetComponent<Image>().sprite = HeavenlyFireRegular;
+                Thunder.GetComponent<Image>().sprite = ThunderRegular;
+                Debug.Log("i am in data controller >= 5");
             }
 
             if (DataController.dataController.level < 7)
             {
                 isUnlocked[9] = false;
-                GameObject.Find("Scream").GetComponent<Image>().sprite = screamLocked;
+                Scream.GetComponent<Image>().sprite = screamLocked;
             }
             else
             {
-                GameObject.Find("Scream").GetComponent<Image>().sprite = screamUnlocked;
+                Scream.GetComponent<Image>().sprite = screamUnlocked;
             }
 
 
@@ -239,7 +244,10 @@ public class UIscript : MonoBehaviour
             int[] upgradesWithLevels = new int[] { 0, 1, 9, 10, 12 };
             foreach (int i in upgradesWithLevels)
             {
-                buttons[i].transform.FindChild("LevelNumber").GetComponent<Text>().text = DataController.dataController.upgradesLevel[i].ToString();
+                if (DataController.dataController.upgradesLevel[i] > 0)
+                {
+                    buttons[i].transform.FindChild("LevelNumber").GetComponent<Text>().text = DataController.dataController.upgradesLevel[i].ToString();
+                }
             }
 
             buttons[8].transform.FindChild("LevelNumber").GetComponent<Text>().text = DataController.dataController.upgradesData[8].ToString();
@@ -398,11 +406,21 @@ public class UIscript : MonoBehaviour
                     FireAgility.GetComponent<Image>().sprite = AgilityRegular;
                     HealthBar.GetComponent<Image>().sprite = HealthBarRegular;
                     ManaBar.GetComponent<Image>().sprite = ManaBarRegular;
-                    HeavenlyFire.GetComponent<Image>().sprite = HeavenlyFireRegular;
-                    Thunder.GetComponent<Image>().sprite = ThunderRegular;
                     Meteor.GetComponent<Image>().sprite = MeteorRegular;
-                    Scream.GetComponent<Image>().sprite = ScreamRegular;
-                    Tail.GetComponent<Image>().sprite = TailRegular;
+                    if (DataController.dataController.level >= 4)
+                    {
+                        Tail.GetComponent<Image>().sprite = TailRegular;
+                        if (DataController.dataController.level >= 5)
+                        {
+                            HeavenlyFire.GetComponent<Image>().sprite = HeavenlyFireRegular;
+                            Thunder.GetComponent<Image>().sprite = ThunderRegular;
+                            if (DataController.dataController.level >= 7)
+                            {
+                                Scream.GetComponent<Image>().sprite = ScreamRegular;
+                            }
+                        }
+                    }
+
                     GameObject.Find("FireRoar").GetComponent<Image>().sprite = FireRoarSelected;
                     break;
                 case 2:
@@ -410,11 +428,27 @@ public class UIscript : MonoBehaviour
                     FireAgility.GetComponent<Image>().sprite = AgilitySelected;
                     HealthBar.GetComponent<Image>().sprite = HealthBarRegular;
                     ManaBar.GetComponent<Image>().sprite = ManaBarRegular;
-                    HeavenlyFire.GetComponent<Image>().sprite = HeavenlyFireRegular;
-                    Thunder.GetComponent<Image>().sprite = ThunderRegular;
                     Meteor.GetComponent<Image>().sprite = MeteorRegular;
-                    Scream.GetComponent<Image>().sprite = ScreamRegular;
-                    Tail.GetComponent<Image>().sprite = TailRegular;
+
+                    if (DataController.dataController.level >= 4)
+                    {
+                        Tail.GetComponent<Image>().sprite = TailRegular;
+                        if (DataController.dataController.level >= 5)
+                        {
+                            HeavenlyFire.GetComponent<Image>().sprite = HeavenlyFireRegular;
+                            Thunder.GetComponent<Image>().sprite = ThunderRegular;
+                            if (DataController.dataController.level >= 7)
+                            {
+                                Scream.GetComponent<Image>().sprite = ScreamRegular;
+                            }
+                        }
+                    }
+
+
+
+
+
+
                     GameObject.Find("FireRoar").GetComponent<Image>().sprite = FireRoarSelected;
                     break;
                 case 5:
@@ -425,8 +459,14 @@ public class UIscript : MonoBehaviour
                     HeavenlyFire.GetComponent<Image>().sprite = HeavenlyFireSelected;
                     Thunder.GetComponent<Image>().sprite = ThunderRegular;
                     Meteor.GetComponent<Image>().sprite = MeteorRegular;
-                    Scream.GetComponent<Image>().sprite = ScreamRegular;
                     Tail.GetComponent<Image>().sprite = TailRegular;
+
+
+                    if (DataController.dataController.level >= 7)
+                    {
+                        Scream.GetComponent<Image>().sprite = ScreamRegular;
+                    }
+
                     GameObject.Find("FireRoar").GetComponent<Image>().sprite = FireRoarRegular;
                     break;
                 case 7:
@@ -437,7 +477,11 @@ public class UIscript : MonoBehaviour
                     HeavenlyFire.GetComponent<Image>().sprite = HeavenlyFireRegular;
                     Thunder.GetComponent<Image>().sprite = ThunderSelected;
                     Meteor.GetComponent<Image>().sprite = MeteorRegular;
-                    Scream.GetComponent<Image>().sprite = ScreamRegular;
+                    if (DataController.dataController.level >= 7)
+                    {
+                        Scream.GetComponent<Image>().sprite = ScreamRegular;
+                    }
+
                     Tail.GetComponent<Image>().sprite = TailRegular;
                     GameObject.Find("FireRoar").GetComponent<Image>().sprite = FireRoarRegular;
                     break;
@@ -446,11 +490,22 @@ public class UIscript : MonoBehaviour
                     FireAgility.GetComponent<Image>().sprite = AgilityRegular;
                     HealthBar.GetComponent<Image>().sprite = HealthBarSelected;
                     ManaBar.GetComponent<Image>().sprite = ManaBarRegular;
-                    HeavenlyFire.GetComponent<Image>().sprite = HeavenlyFireRegular;
-                    Thunder.GetComponent<Image>().sprite = ThunderRegular;
                     Meteor.GetComponent<Image>().sprite = MeteorRegular;
-                    Scream.GetComponent<Image>().sprite = ScreamRegular;
-                    Tail.GetComponent<Image>().sprite = TailRegular;
+
+                    if (DataController.dataController.level >= 4)
+                    {
+                        Tail.GetComponent<Image>().sprite = TailRegular;
+                        if (DataController.dataController.level >= 5)
+                        {
+                            HeavenlyFire.GetComponent<Image>().sprite = HeavenlyFireRegular;
+                            Thunder.GetComponent<Image>().sprite = ThunderRegular;
+                            if (DataController.dataController.level >= 7)
+                            {
+                                Scream.GetComponent<Image>().sprite = ScreamRegular;
+                            }
+                        }
+                    }
+
                     GameObject.Find("FireRoar").GetComponent<Image>().sprite = FireRoarRegular;
                     break;
                 case 10:
@@ -470,11 +525,21 @@ public class UIscript : MonoBehaviour
                     FireAgility.GetComponent<Image>().sprite = AgilityRegular;
                     HealthBar.GetComponent<Image>().sprite = HealthBarRegular;
                     ManaBar.GetComponent<Image>().sprite = ManaBarRegular;
-                    HeavenlyFire.GetComponent<Image>().sprite = HeavenlyFireRegular;
-                    Thunder.GetComponent<Image>().sprite = ThunderRegular;
                     Meteor.GetComponent<Image>().sprite = MeteorSelected;
-                    Scream.GetComponent<Image>().sprite = ScreamRegular;
-                    Tail.GetComponent<Image>().sprite = TailRegular;
+
+                    if (DataController.dataController.level >= 4)
+                    {
+                        Tail.GetComponent<Image>().sprite = TailRegular;
+                        if (DataController.dataController.level >= 5)
+                        {
+                            HeavenlyFire.GetComponent<Image>().sprite = HeavenlyFireRegular;
+                            Thunder.GetComponent<Image>().sprite = ThunderRegular;
+                            if (DataController.dataController.level >= 7)
+                            {
+                                Scream.GetComponent<Image>().sprite = ScreamRegular;
+                            }
+                        }
+                    }
                     GameObject.Find("FireRoar").GetComponent<Image>().sprite = FireRoarRegular;
                     break;
                 case 13:
@@ -482,23 +547,42 @@ public class UIscript : MonoBehaviour
                     FireAgility.GetComponent<Image>().sprite = AgilityRegular;
                     HealthBar.GetComponent<Image>().sprite = HealthBarRegular;
                     ManaBar.GetComponent<Image>().sprite = ManaBarRegular;
-                    HeavenlyFire.GetComponent<Image>().sprite = HeavenlyFireRegular;
-                    Thunder.GetComponent<Image>().sprite = ThunderRegular;
                     Meteor.GetComponent<Image>().sprite = MeteorRegular;
-                    Scream.GetComponent<Image>().sprite = ScreamRegular;
                     Tail.GetComponent<Image>().sprite = TailSelected;
                     GameObject.Find("FireRoar").GetComponent<Image>().sprite = FireRoarRegular;
+
+
+                    if (DataController.dataController.level >= 5)
+                    {
+                        HeavenlyFire.GetComponent<Image>().sprite = HeavenlyFireRegular;
+                        Thunder.GetComponent<Image>().sprite = ThunderRegular;
+                        if (DataController.dataController.level >= 7)
+                        {
+                            Scream.GetComponent<Image>().sprite = ScreamRegular;
+                        }
+                    }
+
                     break;
                 case 14:
                     FireDamage.GetComponent<Image>().sprite = DamageRegular;
                     FireAgility.GetComponent<Image>().sprite = AgilityRegular;
                     HealthBar.GetComponent<Image>().sprite = HealthBarRegular;
                     ManaBar.GetComponent<Image>().sprite = ManaBarSelected;
-                    HeavenlyFire.GetComponent<Image>().sprite = HeavenlyFireRegular;
-                    Thunder.GetComponent<Image>().sprite = ThunderRegular;
                     Meteor.GetComponent<Image>().sprite = MeteorRegular;
-                    Scream.GetComponent<Image>().sprite = ScreamRegular;
-                    Tail.GetComponent<Image>().sprite = TailRegular;
+
+                    if (DataController.dataController.level >= 4)
+                    {
+                        Tail.GetComponent<Image>().sprite = TailRegular;
+                        if (DataController.dataController.level >= 5)
+                        {
+                            HeavenlyFire.GetComponent<Image>().sprite = HeavenlyFireRegular;
+                            Thunder.GetComponent<Image>().sprite = ThunderRegular;
+                            if (DataController.dataController.level >= 7)
+                            {
+                                Scream.GetComponent<Image>().sprite = ScreamRegular;
+                            }
+                        }
+                    }
                     GameObject.Find("FireRoar").GetComponent<Image>().sprite = FireRoarRegular;
                     break;
             }
@@ -569,9 +653,9 @@ public class UIscript : MonoBehaviour
             {
                 strToDisplayInDescription = "UNLOCKS AT LEVEL 5" + Environment.NewLine + allUpgrades[numberOfUpgraded - 1][DataController.dataController.upgradesLevel[numberOfUpgraded - 1]].Description;
             }
-            else if (numberOfUpgraded == 9)
+            else if (numberOfUpgraded == 10)
             {
-                strToDisplayInDescription = "UNLOCKS AT LEVEL 9" + Environment.NewLine + allUpgrades[numberOfUpgraded - 1][DataController.dataController.upgradesLevel[numberOfUpgraded - 1]].Description;
+                strToDisplayInDescription = "UNLOCKS AT LEVEL 7" + Environment.NewLine + allUpgrades[numberOfUpgraded - 1][DataController.dataController.upgradesLevel[numberOfUpgraded - 1]].Description;
             }
         }
 
