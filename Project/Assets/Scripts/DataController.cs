@@ -141,20 +141,20 @@ public class DataController : MonoBehaviour {
         data.m_tailLevel = upgradesLevel[12];
         data.m_manaLevel = upgradesLevel[13];
 
-        data.b_fireDamageData = b_fireDamageData;
-        data.b_fireAgilityData = b_fireAgilityData;
-        data.b_waterDamageData = b_waterDamageData;
-        data.b_waterAgilityData = b_waterAgilityData;
-        data.b_heavenlyFireData = b_heavenlyFireData;
-        data.b_frozenSkyData = b_frozenSkyData;
-        data.b_thunderData = b_thunderData;
-        data.b_cursedBreathData = b_cursedBreathData;
-        data.p_caveData = p_caveData;
-        data.m_screamData = m_screamData;
-        data.m_meteorData = m_meteorData;
-        data.m_iceData = m_iceData;
-        data.m_tailData = m_tailData;
-        data.m_manaData = m_manaData;
+        data.b_fireDamageData = (int)upgradesData[0];
+        data.b_fireAgilityData = upgradesData[1];
+        data.b_waterDamageData = (int)upgradesData[2];
+        data.b_waterAgilityData = upgradesData[3];
+        data.b_heavenlyFireData = (int)upgradesData[4];
+        data.b_frozenSkyData = (int)upgradesData[5];
+        data.b_thunderData = (int)upgradesData[6];
+        data.b_cursedBreathData = (int)upgradesData[7];
+        data.p_caveData = (int)upgradesData[8];
+        data.m_screamData = (int)upgradesData[9];
+        data.m_meteorData = (int)upgradesData[10];
+        data.m_iceData = (int)upgradesData[11];
+        data.m_tailData = (int)upgradesData[12];
+        data.m_manaData = (int)upgradesData[13];
 
         binaryFormatter.Serialize(playerDataFile, data);
         playerDataFile.Close();
@@ -173,6 +173,21 @@ public class DataController : MonoBehaviour {
         m_iceLevel = data.m_iceLevel;
         m_tailLevel = data.m_tailLevel;
         m_manaLevel = data.m_manaLevel;
+
+        b_fireDamageData = data.b_fireDamageData;
+        b_fireAgilityData = data.b_fireAgilityData;
+        b_waterDamageData = data.b_waterDamageData;
+        b_waterAgilityData = data.b_waterAgilityData;
+        b_heavenlyFireData = data.b_heavenlyFireData;
+        b_frozenSkyData = data.b_frozenSkyData;
+        b_thunderData = data.b_thunderData;
+        b_cursedBreathData = data.b_cursedBreathData;
+        p_caveData = data.p_caveData;
+        m_screamData = data.m_screamData;
+        m_meteorData = data.m_meteorData;
+        m_iceData = data.m_iceData;
+        m_tailData = data.m_tailData;
+        m_manaData = data.m_manaData;
 
     }
 
