@@ -1,0 +1,432 @@
+fileFormatVersion: 2
+guid: 46d6185a221984f4bb57c6005494f183
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: partspng_0
+    21300002: partspng_1
+    21300004: partspng_2
+    21300006: partspng_3
+    21300008: partspng_4
+    21300010: partspng_5
+    21300012: partspng_6
+    21300014: partspng_7
+    21300016: partspng_8
+    21300018: partspng_9
+    21300020: partspng_10
+    21300022: partspng_11
+    21300024: partspng_12
+    21300026: partspng_13
+    21300028: partspng_14
+    21300030: partspng_15
+    21300032: partspng_16
+    21300034: partspng_17
+    21300036: partspng_18
+    21300038: partspng_19
+    21300040: partspng_20
+    21300042: partspng_21
+    21300044: partspng_22
+    21300046: partspng_23
+    21300048: partspng_24
+    21300050: partspng_25
+    21300052: partspng_26
+    21300054: partspng_27
+    21300056: partspng_28
+    21300058: partspng_29
+    21300060: partspng_30
+    21300062: partspng_31
+    21300064: partspng_32
+    21300066: partspng_33
+    21300068: partspng_34
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: partspng_0
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 629
+        width: 74
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: partspng_1
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 629
+        width: 75
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: partspng_2
+      rect:
+        serializedVersion: 2
+        x: 973
+        y: 666
+        width: 57
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: partspng_3
+      rect:
+        serializedVersion: 2
+        x: 1037
+        y: 666
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: partspng_4
+      rect:
+        serializedVersion: 2
+        x: 1065
+        y: 659
+        width: 29
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: partspng_5
+      rect:
+        serializedVersion: 2
+        x: 1107
+        y: 666
+        width: 53
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: partspng_6
+      rect:
+        serializedVersion: 2
+        x: 1171
+        y: 653
+        width: 37
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: partspng_7
+      rect:
+        serializedVersion: 2
+        x: 1215
+        y: 666
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: partspng_8
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 494
+        width: 192
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: partspng_9
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 574
+        width: 245
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: partspng_10
+      rect:
+        serializedVersion: 2
+        x: 746
+        y: 481
+        width: 134
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: partspng_11
+      rect:
+        serializedVersion: 2
+        x: 904
+        y: 481
+        width: 130
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: partspng_12
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 479
+        width: 132
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: partspng_13
+      rect:
+        serializedVersion: 2
+        x: 1237
+        y: 481
+        width: 132
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: partspng_14
+      rect:
+        serializedVersion: 2
+        x: 1404
+        y: 481
+        width: 130
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: partspng_15
+      rect:
+        serializedVersion: 2
+        x: 1556
+        y: 481
+        width: 133
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: partspng_16
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 492
+        width: 237
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: partspng_17
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 329
+        width: 134
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: partspng_18
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 320
+        width: 134
+        height: 133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: partspng_19
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 318
+        width: 134
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: partspng_20
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 325
+        width: 138
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: partspng_21
+      rect:
+        serializedVersion: 2
+        x: 1233
+        y: 270
+        width: 138
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: partspng_22
+      rect:
+        serializedVersion: 2
+        x: 1398
+        y: 270
+        width: 139
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: partspng_23
+      rect:
+        serializedVersion: 2
+        x: 1552
+        y: 270
+        width: 139
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: partspng_24
+      rect:
+        serializedVersion: 2
+        x: 1696
+        y: 270
+        width: 138
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: partspng_25
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 177
+        width: 138
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: partspng_26
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 169
+        width: 137
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: partspng_27
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 166
+        width: 136
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: partspng_28
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 166
+        width: 137
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: partspng_29
+      rect:
+        serializedVersion: 2
+        x: 971
+        y: 180
+        width: 30
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: partspng_30
+      rect:
+        serializedVersion: 2
+        x: 1019
+        y: 175
+        width: 37
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: partspng_31
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 32
+        width: 729
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: partspng_32
+      rect:
+        serializedVersion: 2
+        x: 863
+        y: 32
+        width: 172
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: partspng_33
+      rect:
+        serializedVersion: 2
+        x: 1063
+        y: 89
+        width: 179
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: partspng_34
+      rect:
+        serializedVersion: 2
+        x: 1063
+        y: 28
+        width: 179
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 

@@ -49,14 +49,6 @@ public class DataController : MonoBehaviour {
 
     public bool isWaterUnlocked;
 
-    //info to pass from level to victory/lose scene
-    public int kills = 0;
-    public int life = 0;
-    public int coinsFromStage = 0;
-    public int bonusCoinsFromStage = 0;
-    public int crystalsFromStage = 0;
-    public bool won = false;
-
     public int delayBetweenDragonBreath = 100;
     public int screamManaValue = 20;
     public int meteorManaValue = 20;
