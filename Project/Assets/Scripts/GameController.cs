@@ -34,8 +34,7 @@ public class GameController : MonoBehaviour
 
     private GameObject touchManager;
     private GameObject pauseMenu;
-    private GameObject winMenu;
-    private GameObject loseMenu;
+    private GameObject winLoseMenu;
     private GameObject pauseButton;
     private Player player;
     private Text manaCrystalsText;
@@ -68,18 +67,14 @@ public class GameController : MonoBehaviour
 
         touchManager = GameObject.FindGameObjectWithTag("TouchManager");
         pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
-        winMenu = GameObject.FindGameObjectWithTag("WinMenu");
-        loseMenu = GameObject.FindGameObjectWithTag("LoseMenu");
+        winLoseMenu = GameObject.FindGameObjectWithTag("WinLose");
         pauseButton = GameObject.FindGameObjectWithTag("PauseButton");
         specialAttackButtons = GameObject.FindGameObjectsWithTag("SpecialAttack");
         manaCrystalsText = GameObject.FindGameObjectWithTag("ManaCrystalsText").GetComponent<Text>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
-
-
         pauseMenu.SetActive(false);
-        winMenu.SetActive(false);
-        loseMenu.SetActive(false);
+        winLoseMenu.SetActive(false);
         knightsOnBoard = new ArrayList();
         archersOnBoard = new ArrayList();
         cavaliersOnBoard = new ArrayList();
@@ -88,18 +83,12 @@ public class GameController : MonoBehaviour
         nonHealersOnBoard = new ArrayList();
         allEnemiesOnBoard = new ArrayList();
 
-
-
-
-
         if (DataController.dataController != null)
             readLevelData();
 
         manaCrystalsText.text = "" + manaCrystals;
 
         GameObject.FindGameObjectWithTag("Spawner").GetComponent<SpawnerManager>().InitializeSpawner();
-
-
     }
 
     private void readLevelData()
@@ -284,7 +273,7 @@ public class GameController : MonoBehaviour
     public void Continue()
     {
         Time.timeScale = 1.0f;
-        Application.LoadLevel("EndGameScreen");
+        Application.LoadLevel("Store");
     }
 
     public void Exit()
@@ -302,7 +291,6 @@ public class GameController : MonoBehaviour
         Application.LoadLevel("EndGameScreen");
 
     }
-
 
     public ArrayList getAllEnemiesOnBoard()
     {
@@ -334,32 +322,70 @@ public class GameController : MonoBehaviour
 
     private void displayEndMenu()
     {
-        GameObject menu;
-        string message;
+        //GameObject menu;
+        //string message;
 
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
+        //if (!gameLost)
+        //{
+
+        //    if (DataController.dataController != null)
+        //        DataController.dataController.crystalsFromStage = 2;
+        //    menu = winMenu;
+        //    message = "Level Won!";
+        //}
+
+        //else
+        //{
+        //    if (DataController.dataController != null)
+        //        DataController.dataController.crystalsFromStage = 0;
+
+        //    menu = loseMenu;
+        //    message = "Level Lost!";
+        //}
+
+        //menu.transform.FindChild("Message").GetComponent<Text>().text = message;
+        //menu.SetActive(true);
+
+        winLoseMenu.SetActive(true);
+
+        GameObject data = GameObject.Find("Data");
+        Text enemiesText = data.transform.FindChild("EnemiesText").GetComponent<Text>();
+        Text healthText = data.transform.FindChild("HealthText").GetComponent<Text>();
+        Text coinsText = data.transform.FindChild("CoinsText").GetComponent<Text>();
+        Text crystalsText = data.transform.FindChild("CrystalsText").GetComponent<Text>();
+
+        int crystals = 0;
+
         if (!gameLost)
         {
+            GameObject.Find("WinImage").SetActive(true);
+            GameObject.Find("YouWonImage").SetActive(true);
+            GameObject.Find("LoseImage").SetActive(false);
+            GameObject.Find("GameOverImage").SetActive(false);
+            crystals = 2;
+            DataController.dataController.level++;
 
-            if (DataController.dataController != null)
-                DataController.dataController.crystalsFromStage = 2;
-            menu = winMenu;
-            message = "Level Won!";
         }
-
         else
         {
-            if (DataController.dataController != null)
-                DataController.dataController.crystalsFromStage = 0;
-
-            menu = loseMenu;
-            message = "Level Lost!";
+            GameObject.Find("WinImage").SetActive(false);
+            GameObject.Find("YouWonImage").SetActive(false);
+            GameObject.Find("LoseImage").SetActive(true);
+            GameObject.Find("GameOverImage").SetActive(true);
         }
 
+        int coins = CoinsCalculation(!gameLost);
 
+        enemiesText.text = allKillCount.ToString();
+        healthText.text = player.getCurrentHealth().ToString();
+        coinsText.text = coins.ToString();
+        crystalsText.text = crystals.ToString();
 
-        menu.transform.FindChild("Message").GetComponent<Text>().text = message;
-        menu.SetActive(true);
+        DataController.dataController.coins += coins;
+        DataController.dataController.crystals += crystals;
+        DataController.dataController.Save();
+
     }
 
     public void UseManaCrystals()
