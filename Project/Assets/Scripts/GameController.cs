@@ -285,17 +285,9 @@ public class GameController : MonoBehaviour
 
     public void Exit()
     {
-        if (DataController.dataController != null)
-        {
-            DataController.dataController.kills = allKillCount;
-            DataController.dataController.won = false;
-            DataController.dataController.coinsFromStage = CoinsCalculation(false);
-            DataController.dataController.crystalsFromStage = 2;
-            DataController.dataController.life = player.getCurrentHealth();
-        }
-
-        Time.timeScale = 1.0f;
-        Application.LoadLevel("EndGameScreen");
+        gameLost = true;
+        pauseMenu.SetActive(false);
+        LevelEndOnExit();
 
     }
 
@@ -315,16 +307,18 @@ public class GameController : MonoBehaviour
         pauseButton.SetActive(false);
         int points = CoinsCalculation(!gameLost);
 
-        if (DataController.dataController != null)
-        {
-            DataController.dataController.kills = allKillCount;
-            DataController.dataController.won = !gameLost;
-            DataController.dataController.coinsFromStage = points;
-            DataController.dataController.life = player.getCurrentHealth();
-        }
-
         endTimeScaleEffectStartTime = Time.realtimeSinceStartup;
         startEndTimeScaleEffect = true;
+    }
+
+    private void LevelEndOnExit()
+    {
+        gameEnded = true;
+        pauseButton.SetActive(false);
+        int points = CoinsCalculation(!gameLost);
+        displayEndMenu();
+
+        
     }
 
     private void displayEndMenu()
@@ -355,6 +349,7 @@ public class GameController : MonoBehaviour
         //menu.SetActive(true);
 
         winLoseMenu.SetActive(true);
+        setImageVisibilty(blackBackground, 1);
 
         GameObject data = GameObject.Find("Data");
         Text enemiesText = data.transform.FindChild("EnemiesText").GetComponent<Text>();
@@ -371,7 +366,6 @@ public class GameController : MonoBehaviour
             GameObject.Find("LoseImage").SetActive(false);
             GameObject.Find("GameOverImage").SetActive(false);
             crystals = 2;
-            DataController.dataController.level++;
 
         }
         else
