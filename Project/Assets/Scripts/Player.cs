@@ -399,7 +399,8 @@ public class Player : MonoBehaviour
             return;
 
         currMana -= screamManaCost;
-        GetComponent<AudioSource>().PlayOneShot(screamSound);
+        
+        GetComponent<AudioSource>().PlayOneShot(screamSound, 1f);
 
         foreach (GameObject enemy in gameController.getAllEnemiesOnBoard())
         {

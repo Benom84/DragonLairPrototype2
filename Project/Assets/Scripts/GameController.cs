@@ -360,6 +360,11 @@ public class GameController : MonoBehaviour
         Text coinsText = data.transform.FindChild("CoinsText").GetComponent<Text>();
         Text crystalsText = data.transform.FindChild("CrystalsText").GetComponent<Text>();
 
+        foreach (GameObject button in specialAttackButtons)
+        {
+            button.SetActive(false);
+        }
+
         int crystals = 0;
 
         if (!gameLost)
