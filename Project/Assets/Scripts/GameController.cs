@@ -407,7 +407,7 @@ public class GameController : MonoBehaviour
     public void UseManaCrystals()
     {
 
-        if (manaCrystals < 1 || isGamePaused | gameEnded)
+        if (manaCrystals < 1 || isGamePaused || gameEnded)
             return;
 
         manaCrystals--;

@@ -66,6 +66,7 @@
      <Compile Include="Assets\Scripts\SpawnerManager.cs" />
      <Compile Include="Assets\Scripts\SpecialAttack.cs" />
      <Compile Include="Assets\Scripts\SpecialAttackButton.cs" />
+     <Compile Include="Assets\Scripts\Swipper.cs" />
      <Compile Include="Assets\Scripts\Timer.cs" />
      <Compile Include="Assets\Scripts\TimerBarMovement.cs" />
      <Compile Include="Assets\Scripts\TouchManager.cs" />
@@ -75,6 +76,7 @@
      <Compile Include="Assets\Scripts\XML\UpgradeLevel.cs" />
      <Compile Include="Assets\Scripts\XML\Wave.cs" />
      <Compile Include="Assets\Scripts\XML\Waves.cs" />
+     <Compile Include="Assets\SpecialFireAttackHandler.cs" />
      <None Include="Assets\Resources\CaveUpgrade.txt" />
      <None Include="Assets\Resources\WaterAgilityUpgrade.txt" />
      <None Include="Assets\Resources\FrozenSkyUpgrade.txt" />

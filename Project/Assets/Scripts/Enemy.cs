@@ -89,9 +89,16 @@ public class Enemy : MonoBehaviour
     void Update()
     {
 
-        
+        if (gameController.gameEnded && isEnemyDying)
+        {
+            Debug.Log("Enemy is dead and the level ended");
+            Destroy(gameObject);
+        }
+       
         if (gameController.gameEnded || isEnemyDying)
             return;
+
+        
 
         if ((arrivedAtDestination) && (lastAttackTime + attackDelay <= Time.time))
         {
@@ -427,8 +434,12 @@ public class Enemy : MonoBehaviour
 
     public void ColorHandler(SpriteRenderer spriteRenderer, float f)
     {
-        Color temporaryColorHolder = spriteRenderer.material.color;
-        temporaryColorHolder.a = f;
-        spriteRenderer.material.color = temporaryColorHolder;
+        if (spriteRenderer != null)
+        {
+            Color temporaryColorHolder = spriteRenderer.material.color;
+            temporaryColorHolder.a = f;
+            spriteRenderer.material.color = temporaryColorHolder;
+        }
+        
     }
 }

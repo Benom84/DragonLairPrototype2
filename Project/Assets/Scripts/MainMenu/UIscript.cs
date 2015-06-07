@@ -121,7 +121,7 @@ public class UIscript : MonoBehaviour
     {
         if (gameObject.tag == "FirstScreen")
         {
-            DataController.dataController.Load();
+            //DataController.dataController.Load();
         }
         else if (gameObject.tag == "Store")
         {
