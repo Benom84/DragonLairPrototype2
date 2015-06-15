@@ -60,21 +60,23 @@
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\GameLevelText.cs" />
      <Compile Include="Assets\Scripts\GameMenuButtons.cs" />
-     <Compile Include="Assets\Scripts\MainMenu\UIscript.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\RotateTowards.cs" />
      <Compile Include="Assets\Scripts\SpawnerManager.cs" />
      <Compile Include="Assets\Scripts\SpecialAttack.cs" />
      <Compile Include="Assets\Scripts\SpecialAttackButton.cs" />
+     <Compile Include="Assets\Scripts\Swipper.cs" />
      <Compile Include="Assets\Scripts\Timer.cs" />
      <Compile Include="Assets\Scripts\TimerBarMovement.cs" />
      <Compile Include="Assets\Scripts\TouchManager.cs" />
+     <Compile Include="Assets\Scripts\UIscript.cs" />
      <Compile Include="Assets\Scripts\XML\Attack.cs" />
      <Compile Include="Assets\Scripts\XML\Level.cs" />
      <Compile Include="Assets\Scripts\XML\Upgrade.cs" />
      <Compile Include="Assets\Scripts\XML\UpgradeLevel.cs" />
      <Compile Include="Assets\Scripts\XML\Wave.cs" />
      <Compile Include="Assets\Scripts\XML\Waves.cs" />
+     <Compile Include="Assets\SpecialFireAttackHandler.cs" />
      <None Include="Assets\Resources\CaveUpgrade.txt" />
      <None Include="Assets\Resources\WaterAgilityUpgrade.txt" />
      <None Include="Assets\Resources\FrozenSkyUpgrade.txt" />
@@ -103,7 +105,7 @@
      <None Include="Assets\Resources\Level1-old.txt" />
      <None Include="Assets\Resources\Level4.txt" />
  <Reference Include="Assembly-UnityScript-firstpass">
- <HintPath>C:/Data/GitHub/DragonLairPrototype2/Project/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
+ <HintPath>C:/Users/Thalia/Desktop/CS/Second Year/Ingame/Game 4/DragonLairPrototype2/Project/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.3/UnityEngine.UI.dll</HintPath>

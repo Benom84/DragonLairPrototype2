@@ -60,7 +60,6 @@
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\GameLevelText.cs" />
      <Compile Include="Assets\Scripts\GameMenuButtons.cs" />
-     <Compile Include="Assets\Scripts\MainMenu\UIscript.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\RotateTowards.cs" />
      <Compile Include="Assets\Scripts\SpawnerManager.cs" />
@@ -70,6 +69,7 @@
      <Compile Include="Assets\Scripts\Timer.cs" />
      <Compile Include="Assets\Scripts\TimerBarMovement.cs" />
      <Compile Include="Assets\Scripts\TouchManager.cs" />
+     <Compile Include="Assets\Scripts\UIscript.cs" />
      <Compile Include="Assets\Scripts\XML\Attack.cs" />
      <Compile Include="Assets\Scripts\XML\Level.cs" />
      <Compile Include="Assets\Scripts\XML\Upgrade.cs" />
