@@ -40,7 +40,7 @@ public class DataController : MonoBehaviour {
     public int b_frozenSkyLevel = 0;
     public int b_thunderLevel = 0;
     public int b_cursedBreathLevel = 0;
-    public int m_meteorLevel = 0;
+    public int m_meteorLevel = 1;
     public int m_iceLevel = 0;
     public int m_manaLevel = 0;
 
