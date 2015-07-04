@@ -53,7 +53,6 @@
      <None Include="Assets\Resources\FireDamageUpgrade.txt" />
      <None Include="Assets\Resources\EarthquakeUpgrade.txt" />
      <None Include="Assets\Resources\ThunderUpgrade.txt" />
-     <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Resources\Level5.txt" />
      <None Include="Assets\Resources\Level3.txt" />
      <None Include="Assets\Resources\CursedBreathUpgrade.txt" />
@@ -61,6 +60,7 @@
      <None Include="Assets\Resources\HeavenlyFireUpgrade.txt" />
      <None Include="Assets\Resources\IceUpgrade.txt" />
      <None Include="Assets\Resources\Level2.txt" />
+     <None Include="Assets\Standard Assets - Copy\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Resources\Level2-old.txt" />
      <None Include="Assets\Resources\ScreamUpgrade.txt" />
      <None Include="Assets\Resources\Level7.txt" />

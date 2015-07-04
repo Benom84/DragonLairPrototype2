@@ -46,7 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\MeteorAttack.cs" />
      <Compile Include="Assets\Scripts\BarMovement.cs" />
      <Compile Include="Assets\Scripts\ButtonStamina.cs" />
      <Compile Include="Assets\Scripts\CameraAspectController.cs" />
@@ -60,11 +59,13 @@
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\GameLevelText.cs" />
      <Compile Include="Assets\Scripts\GameMenuButtons.cs" />
+     <Compile Include="Assets\Scripts\MeteorAttack.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\RotateTowards.cs" />
      <Compile Include="Assets\Scripts\SpawnerManager.cs" />
      <Compile Include="Assets\Scripts\SpecialAttack.cs" />
      <Compile Include="Assets\Scripts\SpecialAttackButton.cs" />
+     <Compile Include="Assets\Scripts\SpecialFireAttackHandler.cs" />
      <Compile Include="Assets\Scripts\Swipper.cs" />
      <Compile Include="Assets\Scripts\Timer.cs" />
      <Compile Include="Assets\Scripts\TimerBarMovement.cs" />
@@ -76,14 +77,12 @@
      <Compile Include="Assets\Scripts\XML\UpgradeLevel.cs" />
      <Compile Include="Assets\Scripts\XML\Wave.cs" />
      <Compile Include="Assets\Scripts\XML\Waves.cs" />
-     <Compile Include="Assets\SpecialFireAttackHandler.cs" />
      <None Include="Assets\Resources\CaveUpgrade.txt" />
      <None Include="Assets\Resources\WaterAgilityUpgrade.txt" />
      <None Include="Assets\Resources\FrozenSkyUpgrade.txt" />
      <None Include="Assets\Resources\FireDamageUpgrade.txt" />
      <None Include="Assets\Resources\EarthquakeUpgrade.txt" />
      <None Include="Assets\Resources\ThunderUpgrade.txt" />
-     <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Resources\Level5.txt" />
      <None Include="Assets\Resources\Level3.txt" />
      <None Include="Assets\Resources\CursedBreathUpgrade.txt" />
@@ -106,10 +105,6 @@
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.3/UnityEngine.UI.dll</HintPath>
  </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
-      <Project>{6F4D0F38-84A9-F27A-19D7-9961C098D6DA}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
