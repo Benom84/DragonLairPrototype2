@@ -472,6 +472,9 @@ public class Player : MonoBehaviour
             return;
 
         currMana -= activeSpecialAttackManaCost;
+        specialAttackEnabled = false;
+        specialAttackCharge = 0;
+        specialAttackChargeFinish = activeSpecialAttackManaCost;
 
         if (dragonAnimator != null)
         {
@@ -482,32 +485,6 @@ public class Player : MonoBehaviour
     public void MeteorAttackShoot()
     {
         
-        //float lifeTime = 2.0f;
-        //float changeAngleFactor = 1f;
-        //// We will calculate the direction vector the attack is supposed to go
-        //Vector2 attackDirection = new Vector2(headTransform.right.x, headTransform.right.y);
-        ////Vector2 attackDirection = new Vector2(attackPosition.x - headTransform.position.x, attackPosition.y - headTransform.position.y);
-        //attackDirection = headTransform.right;
-
-        //// Now we normalize it and multiply by the attack speed
-        //attackDirection = attackDirection.normalized * activeAttackSpeed;
-
-        //// Generate a random direction for the attack
-        //for (int i = 0; i < 20; i++)
-        //{
-        //    float rand = Mathf.PerlinNoise(transform.position.x * changeAngleFactor, transform.position.y * changeAngleFactor);
-        //    float rand_angle = Mathf.Lerp(rand, -30, 30);
-        //    attackRotation = transform.rotation * Quaternion.AngleAxis(rand_angle, transform.right);
-
-
-        //    // Now we instantiate the attack at the dragon's mouth, set it's velocity and damage
-        //    GameObject attack = (GameObject)Instantiate(fireSpecialAttack, dragonMouth, attackRotation);
-        //    DragonAttack dragonAttack = attack.GetComponent<DragonAttack>();
-        //    dragonAttack.attackDamage = activeAttackDamage;
-        //    attack.rigidbody2D.velocity = attackDirection;
-        //}
-
-
         GameObject attack = (GameObject)Instantiate(fireSpecialAttack, dragonMouthPosition, attackRotation);
         SpecialFireAttackHandler specialFireAttackHandler = attack.GetComponent<SpecialFireAttackHandler>();
         if (specialFireAttackHandler != null)
@@ -516,9 +493,7 @@ public class Player : MonoBehaviour
             specialFireAttackHandler.mouthPoisiton = dragonMouthPosition;
             specialFireAttackHandler.damage = fireSpecialAttackDamage;
         }
-        specialAttackEnabled = false;
-        specialAttackCharge = 0;
-        specialAttackChargeFinish = activeSpecialAttackManaCost;
+
         
         
     }

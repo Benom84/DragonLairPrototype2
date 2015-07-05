@@ -6,9 +6,10 @@ public class SpecialFireAttackHandler : MonoBehaviour {
     public GameObject meteor;
     public float maxAngleChange = 30;
     public float speed = 12.0f;
-    public int numberOfMeteors = 10;
+    public int numberOfMeteors = 20;
     public float meteorCreationDelta = 0.02f;
     public float changeAngleFactor = 1f;
+    public float speedVariance = 1.5f;
     [HideInInspector]
     public Vector3 mouthPoisiton;
     [HideInInspector]
@@ -47,10 +48,10 @@ public class SpecialFireAttackHandler : MonoBehaviour {
                 rand_angle = rand_angle * Mathf.Deg2Rad;
                 Vector2 dir = new Vector2((float)Mathf.Cos(rand_angle), (float)Mathf.Sin(rand_angle));
 
-                float thisAttackSpeed = Random.Range(speed - 3, speed + 5);
+                float thisAttackSpeed = Random.Range(speed - speedVariance, speed + speedVariance);
                 float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
                 attack.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-                attack.rigidbody2D.AddForce(dir.normalized * speed * 100);
+                attack.rigidbody2D.AddForce(dir.normalized * thisAttackSpeed * 100);
 
                 
                 //dragonAttack.speed = thisAttackSpeed;
