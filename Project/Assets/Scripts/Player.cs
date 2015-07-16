@@ -49,6 +49,8 @@ public class Player : MonoBehaviour
     public Quaternion attackRotation;
     public AudioClip screamSound;
     public AudioClip fireBallSound;
+    public AudioClip tailSound;
+    public AudioClip specialAttackSound;
 
 
 
@@ -430,6 +432,8 @@ public class Player : MonoBehaviour
             dragonAnimator.SetTrigger("tailAttack");
         }
         currMana -= earthquakeManaCost;
+        GetComponent<AudioSource>().PlayOneShot(tailSound);
+        
         
 
 
@@ -480,6 +484,7 @@ public class Player : MonoBehaviour
         {
             dragonAnimator.SetTrigger("fireSpecialAttack");
         }
+        GetComponent<AudioSource>().PlayOneShot(specialAttackSound);
     }
 
     public void MeteorAttackShoot()
