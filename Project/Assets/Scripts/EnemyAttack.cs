@@ -5,6 +5,8 @@ public class EnemyAttack : MonoBehaviour {
 
     [HideInInspector]
     public int attackDamage = 1;
+    public AudioClip attackHitSound;
+    public GameObject soundPlayer;
 
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -17,6 +19,16 @@ public class EnemyAttack : MonoBehaviour {
         {
 
             collider.GetComponent<Player>().Hit(attackDamage);
+            GameObject createdSoundPlayer = (GameObject)Instantiate(soundPlayer);
+            SoundPlayerScript soundPlayerScript = createdSoundPlayer.GetComponent<SoundPlayerScript>();
+            if (soundPlayerScript != null)
+            {
+                soundPlayerScript.PlaySound(attackHitSound);
+            }
+            else
+            {
+                GameObject.Destroy(createdSoundPlayer);
+            }
             GameObject.Destroy(gameObject);
         }
 

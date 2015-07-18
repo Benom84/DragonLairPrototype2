@@ -23,6 +23,9 @@ public class Enemy : MonoBehaviour
     public float throwBackForce = 8.0f;
     public float enemyThrowBackFromRegularAttack = 2.0f;
     public bool arrivedAtDestination = false;
+    public AudioClip projectileAttackSound;
+    public AudioClip attackRaiseSound;
+    public AudioClip attackHitSound;
     private float shakeFromDragonAttack = 0.2f;
 
     private GameController gameController;
@@ -53,6 +56,7 @@ public class Enemy : MonoBehaviour
     private float deathFlashDelay = 0.4f;
     private float timeToLive = 1.6f;
     private SpriteRenderer enemySpriteRenderer;
+    
     
 
 
@@ -124,7 +128,7 @@ public class Enemy : MonoBehaviour
 
         if (isEnemyDying)
         {
-            HandleDeathProcess();
+            //HandleDeathProcess();
         }
         
         // If the cotinuous attack is still in affect and a second passed since the last one
@@ -309,6 +313,7 @@ public class Enemy : MonoBehaviour
         enemySpriteRenderer.sortingLayerName = "Background";
         enemySpriteRenderer.sortingOrder = 1;
         arrivedAtDestination = true;
+        animator.SetBool("isDying", true);
         
     }
 
@@ -340,6 +345,11 @@ public class Enemy : MonoBehaviour
 
         lastAttackTime = Time.time;
 
+        if (enemyType == EnemyType.Knight || enemyType == EnemyType.Cavalier)
+        {
+            GetComponent<AudioSource>().PlayOneShot(attackRaiseSound);
+        }
+
         // For projectile and heal the attack is called from inside the animation
         if (animator != null)
             animator.SetTrigger("attacking");
@@ -352,7 +362,11 @@ public class Enemy : MonoBehaviour
     public void CloseAttackDamage()
     {
         if (player != null && !isEnemyDying)
+        {
             player.Hit(attackDamage);
+            GetComponent<AudioSource>().PlayOneShot(attackHitSound);
+        }
+            
     }
 
     private void Heal()
@@ -396,6 +410,9 @@ public class Enemy : MonoBehaviour
 
         if (isEnemyDying)
             return;
+        
+        // Play the projectileAttackSound
+        GetComponent<AudioSource>().PlayOneShot(projectileAttackSound);
         
         // We get the player position and the enemy's
         Vector2 target = player.transform.position;
