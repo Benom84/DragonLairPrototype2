@@ -52,7 +52,7 @@ public class Enemy : MonoBehaviour
 
     private bool v_isFromContinuousDamage = true;
     private bool isEnemyDying = false;
-    private float startTimeOfDeath = 0;
+    private float deleteObjectTimeAfterDeath = 0;
     private float deathFlashDelay = 0.4f;
     private float timeToLive = 1.6f;
     private SpriteRenderer enemySpriteRenderer;
@@ -128,8 +128,10 @@ public class Enemy : MonoBehaviour
 
         if (isEnemyDying)
         {
-            
-            //HandleDeathProcess();
+            ColorHandler(healthBar, 0.0f);
+            ColorHandler(healthOutline, 0.0f);
+            if (Time.time > deleteObjectTimeAfterDeath)
+                Destroy(gameObject);
         }
         
         // If the cotinuous attack is still in affect and a second passed since the last one
@@ -309,7 +311,7 @@ public class Enemy : MonoBehaviour
 
         gameController.RemoveEnemy(gameObject);
         isEnemyDying = true;
-        startTimeOfDeath = Time.time;
+        deleteObjectTimeAfterDeath = Time.time + timeToLive;
         gameObject.layer = LayerMask.NameToLayer("Death");
         enemySpriteRenderer.sortingLayerName = "Background";
         enemySpriteRenderer.sortingOrder = 1;
@@ -321,26 +323,7 @@ public class Enemy : MonoBehaviour
         
     }
 
-    private void HandleDeathProcess()
-    {
-        rigidbody2D.velocity = new Vector2(0, 0);
-        
-        if (animator != null)
-        {
-            animator.Play("Standing");
-            animator.SetFloat("speed", 0);
-            Color imageColor = enemySpriteRenderer.color;
-            float lerp = Mathf.PingPong(Time.time, deathFlashDelay) / deathFlashDelay;
-            imageColor.a = 1 - Mathf.Lerp(0, 1, lerp);
-            enemySpriteRenderer.color = imageColor;
 
-        }
-
-        if (Time.time > timeToLive + startTimeOfDeath)
-            Destroy(gameObject);
-
-        
-    }
 
     private void Attack()
     {
