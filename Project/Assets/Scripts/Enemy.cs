@@ -56,6 +56,7 @@ public class Enemy : MonoBehaviour
     private float deathFlashDelay = 0.4f;
     private float timeToLive = 1.6f;
     private SpriteRenderer enemySpriteRenderer;
+    private HealingOrbScript healingOrbScript;
     
     
 
@@ -86,6 +87,10 @@ public class Enemy : MonoBehaviour
 
 
         animator = gameObject.GetComponent<Animator>();
+        if (enemyType == EnemyType.Healer)
+        {
+            healingOrbScript = transform.Find("HealingOrb").GetComponent<HealingOrbScript>();
+        }
 
     }
 
@@ -337,11 +342,12 @@ public class Enemy : MonoBehaviour
             GetComponent<AudioSource>().PlayOneShot(attackRaiseSound);
         }
 
-        // For projectile and heal the attack is called from inside the animation
         if (animator != null)
+        {
             animator.SetTrigger("attacking");
 
-        //if ((enemyType == EnemyType.Knight) || (enemyType == EnemyType.Cavalier) || (enemyType == EnemyType.Boss))
+        }
+
             
 
     }
@@ -366,8 +372,8 @@ public class Enemy : MonoBehaviour
             ProjectileAttack();
             return;
         }
-            
-        
+
+        healingOrbScript.ShowOrb();
         ArrayList nonHealerEnemies = gameController.nonHealerEnemies();
         foreach (GameObject enemy in nonHealerEnemies)
         {
