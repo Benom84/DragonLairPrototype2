@@ -128,6 +128,7 @@ public class Enemy : MonoBehaviour
 
         if (isEnemyDying)
         {
+            
             //HandleDeathProcess();
         }
         
@@ -312,8 +313,11 @@ public class Enemy : MonoBehaviour
         gameObject.layer = LayerMask.NameToLayer("Death");
         enemySpriteRenderer.sortingLayerName = "Background";
         enemySpriteRenderer.sortingOrder = 1;
+
+        rigidbody2D.velocity = Vector2.zero;
         arrivedAtDestination = true;
-        animator.SetBool("isDying", true);
+        animator.SetTrigger("isDying");
+        animator.SetBool("dead", true);
         
     }
 
