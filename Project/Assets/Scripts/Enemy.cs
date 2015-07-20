@@ -54,7 +54,7 @@ public class Enemy : MonoBehaviour
     private bool isEnemyDying = false;
     private float deleteObjectTimeAfterDeath = 0;
     private float deathFlashDelay = 0.4f;
-    private float timeToLive = 1.6f;
+    private float timeToLive = 3.6f;
     private SpriteRenderer enemySpriteRenderer;
     private HealingOrbScript healingOrbScript;
     
@@ -135,6 +135,9 @@ public class Enemy : MonoBehaviour
         {
             ColorHandler(healthBar, 0.0f);
             ColorHandler(healthOutline, 0.0f);
+            Color c = GetComponent<SpriteRenderer>().color;
+            c.a -= 0.005f;
+            GetComponent<SpriteRenderer>().color = c;
             if (Time.time > deleteObjectTimeAfterDeath)
                 Destroy(gameObject);
         }
