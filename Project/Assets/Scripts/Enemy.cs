@@ -205,6 +205,14 @@ public class Enemy : MonoBehaviour
 
     }
 
+    void OnTriggerStay2D(Collider2D col)
+    {
+
+        if (col.gameObject.tag == "Player")
+            arrivedAtDestination = true;
+
+    }
+
 
     public void Hit(int damage, DragonAttack.AttackType attackType, bool isFromContinuosDamage)
     {
