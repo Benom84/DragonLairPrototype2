@@ -22,11 +22,9 @@ public class TutorialHandlerScript : MonoBehaviour {
     // Use this for initialization
 	void Awake () {
         startTime = Time.time;
-        continueButton = transform.Find("Button").gameObject;
-        regularAttackBaloon = transform.Find("regularAttackBaloon").gameObject;
-        specialAttackBaloon = transform.Find("specialAttackBaloon").gameObject;
-        crystalUsageBaloon = transform.Find("crystalUsageBaloon").gameObject;
-        continueButton.SetActive(false);
+        regularAttackBaloon = transform.Find("Canvas/regularAttackBaloon").gameObject;
+        specialAttackBaloon = transform.Find("Canvas/specialAttackBaloon").gameObject;
+        crystalUsageBaloon = transform.Find("Canvas/crystalUsageBaloon").gameObject;
         regularAttackBaloon.SetActive(false);
         specialAttackBaloon.SetActive(false);
         crystalUsageBaloon.SetActive(false);
@@ -39,7 +37,6 @@ public class TutorialHandlerScript : MonoBehaviour {
             passedRegularAttack = true;
             Time.timeScale = 0;
             regularAttackBaloon.SetActive(true);
-            continueButton.SetActive(true);
         }
 
         if (!passedSpecialAttack && Time.time > startTime + specialAttackTime)
@@ -47,7 +44,6 @@ public class TutorialHandlerScript : MonoBehaviour {
             passedSpecialAttack = true;
             Time.timeScale = 0;
             specialAttackBaloon.SetActive(true);
-            continueButton.SetActive(true);
         }
 
         if (!passedCrystalUsage && Time.time > startTime + crystalUsageTime)
@@ -55,18 +51,16 @@ public class TutorialHandlerScript : MonoBehaviour {
             passedCrystalUsage = true;
             Time.timeScale = 0;
             crystalUsageBaloon.SetActive(true);
-            continueButton.SetActive(true);
         }
 	}
 
     public void Continue()
     {
         Time.timeScale = 1;
-        continueButton.SetActive(false);
         regularAttackBaloon.SetActive(false);
         specialAttackBaloon.SetActive(false);
         crystalUsageBaloon.SetActive(false);
-        Debug.Log("hi");
+
     }
 
     void Update()
