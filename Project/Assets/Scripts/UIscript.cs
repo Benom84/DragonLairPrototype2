@@ -10,14 +10,13 @@ public class UIscript : MonoBehaviour
 {
     private const int amountOfCanvases = 3;
 
-    //store stuff
-
     private GameObject FireRoarCanvas;
     private GameObject SpecialAttacksCanvas;
     private GameObject ManaLifeCanvas;
 
     private Text totalCoinsText;
     private Text totalCrystalsText;
+    private Text currentLevelText;
 
     private GameObject FireDamage;
     private GameObject FireAgility;
@@ -49,16 +48,17 @@ public class UIscript : MonoBehaviour
     private Text upgradeDescription;
     private Text upgradeNameInDescription;
 
+    private GameObject upgradeButton;
+
     private GameObject[] canvases;
     private bool[] selectUpgradeToUpgrade;
     private bool[] isUnlocked;
 
     public Sprite lockedUpgrade;
-    //public Sprite selectedUpgrade;
-    //public Sprite regularUpgrade;
 
-    //public Sprite regularIcon;
-    //public Sprite selectedIcon;
+    public Sprite regularUpgradeButton;
+    public Sprite notEnoughMoneyUpgradeButton;
+    private bool enoughMoney;
     
     private UpgradeLevel[] fireDamageLevels;
     private UpgradeLevel[] fireAgilityLevels;
@@ -80,37 +80,6 @@ public class UIscript : MonoBehaviour
     public Sprite coin;
     public Sprite crystal;
 
-    //public Sprite waterLocked;
-    //public Sprite waterUnlocked;
-    //public Sprite screamLocked;
-    //public Sprite screamUnlocked;
-    //public Sprite iceLocked;
-    //public Sprite iceUnlocked;
-    //public Sprite tailLocked;
-    //public Sprite tailUnlocked;
-    //public Sprite HeavenlyFireRegular;
-    //public Sprite ThunderRegular;
-    //public Sprite heavenlyFireAndThunderLocked;
-
-    //public Sprite FireRoarRegular;
-    //public Sprite FireRoarSelected;
-    //public Sprite AgilityRegular;
-    //public Sprite AgilitySelected;
-    //public Sprite DamageRegular;
-    //public Sprite DamageSelected;
-    //public Sprite HealthBarRegular;
-    //public Sprite HealthBarSelected;
-    //public Sprite ManaBarRegular;
-    //public Sprite ManaBarSelected;
-    //public Sprite HeavenlyFireSelected;
-    //public Sprite ThunderSelected;
-    //public Sprite MeteorRegular;
-    //public Sprite MeteorSelected;
-    //public Sprite ScreamRegular;
-    //public Sprite ScreamSelected;
-    //public Sprite TailRegular;
-    //public Sprite TailSelected;
-
     public void Start()
     {
         if (gameObject.tag == "FirstScreen")
@@ -126,8 +95,8 @@ public class UIscript : MonoBehaviour
 
             canvases = new GameObject[] { FireRoarCanvas, SpecialAttacksCanvas, ManaLifeCanvas };
 
-            NotEnoughMoneyCanvas = GameObject.Find("NotEnoughMoneyCanvas");
-            NotEnoughMoneyCanvas.SetActive(false);
+            //NotEnoughMoneyCanvas = GameObject.Find("NotEnoughMoneyCanvas");
+            //NotEnoughMoneyCanvas.SetActive(false);
 
             fireRoarIcon = GameObject.Find("FireRoarIcon");
             manaLifeIcon = GameObject.Find("ManaLifeIcon");
@@ -156,28 +125,24 @@ public class UIscript : MonoBehaviour
             totalCrystalsText = GameObject.Find("Crystals").GetComponentInChildren<Text>();
             totalCrystalsText.text = DataController.dataController.crystals.ToString();
 
+            currentLevelText = GameObject.Find("CurrentLevelText").GetComponent<Text>();
+            currentLevelText.text = "Lv." + DataController.dataController.level;
+
             FireDamage = GameObject.Find("Damage");
             FireAgility = GameObject.Find("Agility");
-            //WaterDamage = GameObject.Find("WaterDamage");
-            //WaterAgility = GameObject.Find("WaterAgility");
             HeavenlyFire = GameObject.Find("HeavenlyFire");
             Thunder = GameObject.Find("Thunder");
-            //FrozenSky = GameObject.Find("FrozenSky");
-            //CursedBreath = GameObject.Find("CursedBreath");
             HealthBar = GameObject.Find("HealthBar");
             Scream = GameObject.Find("Scream");
             Meteor = GameObject.Find("Meteor");
-            //Ice = GameObject.Find("Ice");
             Tail = GameObject.Find("Tail");
             ManaBar = GameObject.Find("ManaBar");
 
             buttons = new GameObject[] { FireDamage, FireAgility, WaterDamage, WaterAgility, HeavenlyFire, FrozenSky, Thunder,
                 CursedBreath, HealthBar, Scream, Meteor, Ice, Tail, ManaBar};
 
-            //sets the button on transperant
-            //Color buttonColor = upgradeButtonImage.color;
-            //buttonColor.a = 0;
-            //upgradeButtonImage.color = buttonColor;
+            upgradeButton = GameObject.Find("Upgrade");
+            enoughMoney = false;
 
             isUnlocked = new bool[14];
 
@@ -191,8 +156,7 @@ public class UIscript : MonoBehaviour
                     Color color = selectedImage.color;
                     color.a = 0;
                     selectedImage.color = color;
-                }
-                
+                }  
             }
 
             //if conditions to unlock the upgrades
@@ -203,8 +167,6 @@ public class UIscript : MonoBehaviour
                 isUnlocked[11] = false;
                 isUnlocked[12] = false;
 
-                //GameObject.Find("Water").GetComponent<Image>().sprite = waterLocked;
-                //GameObject.Find("IceImage").GetComponent<Image>().sprite = iceLocked;
                 Tail.transform.FindChild("Image").GetComponent<Image>().sprite = lockedUpgrade;
             }
 
@@ -226,17 +188,20 @@ public class UIscript : MonoBehaviour
                 Scream.transform.FindChild("Image").GetComponent<Image>().sprite = lockedUpgrade;
             }
 
-            int[] upgradesWithLevels = new int[] { 0, 1, 9, 10, 12 };
-            //foreach (int i in upgradesWithLevels)
-            //{
-            //    if (DataController.dataController.upgradesLevel[i] > 0)
-            //    {
-            //        buttons[i].transform.FindChild("LevelNumber").GetComponent<Text>().text = DataController.dataController.upgradesLevel[i].ToString();
-            //    }
-            //}
-
-            //buttons[8].transform.FindChild("LevelNumber").GetComponent<Text>().text = DataController.dataController.upgradesData[8].ToString();
-            //buttons[13].transform.FindChild("LevelNumber").GetComponent<Text>().text = DataController.dataController.upgradesData[13].ToString();
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                if (buttons[i] != null)
+                {
+                    if (DataController.dataController.upgradesLevel[i] > 0)
+                    {
+                        buttons[i].transform.FindChild("Text").GetComponent<Text>().text = DataController.dataController.upgradesLevel[i].ToString();
+                    }
+                    else
+                    {
+                        buttons[i].transform.FindChild("Text").GetComponent<Text>().text = string.Empty;
+                    }
+                }
+            }
 
             fireDamageLevels = ReadUpgradeLevels("FireDamageUpgrade");
             fireAgilityLevels = ReadUpgradeLevels("FireAgilityUpgrade");
@@ -261,11 +226,7 @@ public class UIscript : MonoBehaviour
             upgradeDescription = GameObject.Find("Description").GetComponent<Text>();
             upgradeNameInDescription = GameObject.Find("UpgradeName").GetComponent<Text>();
 
-            UpgradeLevel fireAgilityUpgradeLevel = fireAgilityLevels[DataController.dataController.upgradesLevel[1]];
-            upgradeCostText.text = fireAgilityUpgradeLevel.Cost.ToString();
-            upgradeDescription.text = fireAgilityUpgradeLevel.Description;
-            upgradeNameInDescription.text = fireAgilityUpgradeLevel.Name;
-            upgradeButtonImage.sprite = coin;
+            ChooseToUpgrade(2);
 
             for (int i = 0; i < amountOfCanvases; i++)
             {
@@ -341,6 +302,8 @@ public class UIscript : MonoBehaviour
                 selectedImage.color = color;
             } 
         }
+
+        upgradeButton.GetComponent<Image>().sprite = regularUpgradeButton;
     }
 
     public void ChooseToUpgrade(int numberOfUpgraded)
@@ -348,7 +311,7 @@ public class UIscript : MonoBehaviour
         for (int i = 0; i < selectUpgradeToUpgrade.Length; i++)
         {
             selectUpgradeToUpgrade[i] = false;
-            //buttons[i].GetComponent<Image>().sprite = regularUpgrade;
+
             if (buttons[i] != null)
             {
                 Image selectedImage = buttons[i].GetComponent<Image>();
@@ -365,59 +328,9 @@ public class UIscript : MonoBehaviour
             Color color = selectedImage.color;
             color.a = 255;
             selectedImage.color = color;
-            
-            //buttons[numberOfUpgraded - 1].GetComponent<Image>().sprite = selectedUpgrade;
-            //selectUpgradeToUpgrade[numberOfUpgraded - 1] = true;
+
+            selectUpgradeToUpgrade[numberOfUpgraded - 1] = true;
         }
-
-
-        //for (int i = 0; i < selectUpgradeToUpgrade.Length; i++)
-        //{
-        //    selectUpgradeToUpgrade[i] = false;
-        //    if (isUnlocked[i] && i > 3)
-        //    {
-        //        buttons[i].GetComponent<Image>().sprite = regularUpgrade;
-        //    }
-        //}
-
-        //for (int i = 0; i < 4; i++)
-        //{
-        //    if (isUnlocked[i] && i % 2 == 0)
-        //    {
-        //        buttons[i].GetComponent<Image>().sprite = damageRegularUpgrade;
-        //    }
-        //    else if (isUnlocked[i] && i % 2 != 0)
-        //    {
-        //        buttons[i].GetComponent<Image>().sprite = agilityRegularUpgrade;
-        //    }
-        //    else if (!isUnlocked[i] && i % 2 == 0)
-        //    {
-        //        buttons[i].GetComponent<Image>().sprite = damageLockedUpgrade;
-        //    }
-        //    else
-        //    {
-        //        buttons[i].GetComponent<Image>().sprite = agilityLockedUpgrade;
-        //    }
-        //}
-
-        //if (isUnlocked[numberOfUpgraded - 1] && numberOfUpgraded > 3)
-        //{
-        //    selectUpgradeToUpgrade[numberOfUpgraded - 1] = true;
-        //    buttons[numberOfUpgraded - 1].GetComponent<Image>().sprite = selectedUpgrade;
-        //}
-        //else if (isUnlocked[numberOfUpgraded - 1])
-        //{
-        //    if (numberOfUpgraded - 1 % 2 == 0)
-        //    {
-        //        selectUpgradeToUpgrade[numberOfUpgraded - 1] = true;
-        //        buttons[numberOfUpgraded - 1].GetComponent<Image>().sprite = damageSelectedUpgrade;
-        //    }
-        //    else
-        //    {
-        //        selectUpgradeToUpgrade[numberOfUpgraded - 1] = true;
-        //        buttons[numberOfUpgraded - 1].GetComponent<Image>().sprite = agilitySelectedUpgrade;
-        //    }
-        //}
 
         string strToDisplayInDescription = allUpgrades[numberOfUpgraded - 1][DataController.dataController.upgradesLevel[numberOfUpgraded - 1]].Description;
         string strToDisplayInUpgrade = allUpgrades[numberOfUpgraded - 1][DataController.dataController.upgradesLevel[numberOfUpgraded - 1]].Cost.ToString();
@@ -443,13 +356,36 @@ public class UIscript : MonoBehaviour
         upgradeNameInDescription.text = strToDisplayInDescriptionName;
         upgradeDescription.text = strToDisplayInDescription;
 
+        int costOfUpgrade = allUpgrades[numberOfUpgraded - 1][DataController.dataController.upgradesLevel[numberOfUpgraded - 1]].Cost;
+
+        Image buttonImage = upgradeButton.GetComponent<Image>();
         if (numberOfUpgraded < 10)
         {
             upgradeButtonImage.sprite = coin;
+            if (!EnoughMoney(costOfUpgrade))
+            {
+                buttonImage.sprite = notEnoughMoneyUpgradeButton;
+                enoughMoney = false;
+            }
+            else
+            {
+                buttonImage.sprite = regularUpgradeButton;
+                enoughMoney = true;
+            }
         }
         else
         {
             upgradeButtonImage.sprite = crystal;
+            if (!EnoughCrystals(costOfUpgrade))
+            {
+                buttonImage.sprite = notEnoughMoneyUpgradeButton;
+                enoughMoney = false;
+            }
+            else
+            {
+                buttonImage.sprite = regularUpgradeButton;
+                enoughMoney = true;
+            }
         }
 
         Color buttonColor = upgradeButtonImage.color;
@@ -472,11 +408,9 @@ public class UIscript : MonoBehaviour
         }
 
         int costOfUpgrade = allUpgrades[numberOfUpgrade][DataController.dataController.upgradesLevel[numberOfUpgrade]].Cost;
-        if (wasSelected && isUnlocked[numberOfUpgrade])
+        if (wasSelected && isUnlocked[numberOfUpgrade] && enoughMoney)
         {
             if (costOfUpgrade > 100)
-            {
-                if (EnoughMoney(costOfUpgrade))
                 {
                     DataController.dataController.coins -= costOfUpgrade;
                     if (numberOfUpgrade != 1 && numberOfUpgrade != 3)
@@ -487,44 +421,26 @@ public class UIscript : MonoBehaviour
                     {
                         DataController.dataController.upgradesData[numberOfUpgrade] -= allUpgrades[numberOfUpgrade][DataController.dataController.upgradesLevel[numberOfUpgrade]].Data;
                     }
+
                     DataController.dataController.upgradesLevel[numberOfUpgrade]++;
-
-                    if (numberOfUpgrade == 13 || numberOfUpgrade == 8)
-                    {
-                        buttons[numberOfUpgrade].transform.FindChild("LevelNumber").GetComponent<Text>().text = DataController.dataController.upgradesData[numberOfUpgrade].ToString();
-
-                    }
-                    else
-                    {
-                        buttons[numberOfUpgrade].transform.FindChild("LevelNumber").GetComponent<Text>().text = DataController.dataController.upgradesLevel[numberOfUpgrade].ToString();
-                    }
+                    
+                    buttons[numberOfUpgrade].transform.FindChild("Text").GetComponent<Text>().text = DataController.dataController.upgradesLevel[numberOfUpgrade].ToString();
 
                     totalCoinsText.text = DataController.dataController.coins.ToString();
                     upgradeCostText.text = allUpgrades[numberOfUpgrade][DataController.dataController.upgradesLevel[numberOfUpgrade]].Cost.ToString();
                 }
                 else
                 {
-                    NotEnoughMoney();
-                }
-            }
-            else
-            {
-                if (EnoughCrystals(costOfUpgrade))
-                {
                     DataController.dataController.crystals -= costOfUpgrade;
                     DataController.dataController.upgradesData[numberOfUpgrade] += (int)allUpgrades[numberOfUpgrade][DataController.dataController.upgradesLevel[numberOfUpgrade]].Data;
                     DataController.dataController.upgradesLevel[numberOfUpgrade]++;
 
-                    buttons[numberOfUpgrade].transform.FindChild("LevelNumber").GetComponent<Text>().text = DataController.dataController.upgradesLevel[numberOfUpgrade].ToString();
+                    buttons[numberOfUpgrade].transform.FindChild("Text").GetComponent<Text>().text = DataController.dataController.upgradesLevel[numberOfUpgrade].ToString();
 
                     totalCrystalsText.text = DataController.dataController.crystals.ToString();
                     upgradeCostText.text = allUpgrades[numberOfUpgrade][DataController.dataController.upgradesLevel[numberOfUpgrade]].Cost.ToString();
                 }
-                else
-                {
-                    NotEnoughMoney();
-                }
-            }
+            
         }
     }
 
@@ -593,11 +509,4 @@ public class UIscript : MonoBehaviour
             }
         }
     }
-
-}
-
-public enum eDirectionOfSwipe
-{
-    right,
-    left
 }
