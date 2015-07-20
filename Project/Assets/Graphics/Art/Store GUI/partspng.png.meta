@@ -131,9 +131,9 @@ TextureImporter:
     - name: partspng_5
       rect:
         serializedVersion: 2
-        x: 1107
+        x: 1105
         y: 666
-        width: 53
+        width: 55
         height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -191,9 +191,9 @@ TextureImporter:
     - name: partspng_11
       rect:
         serializedVersion: 2
-        x: 904
+        x: 902
         y: 481
-        width: 130
+        width: 132
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -211,9 +211,9 @@ TextureImporter:
     - name: partspng_13
       rect:
         serializedVersion: 2
-        x: 1237
+        x: 1231
         y: 481
-        width: 132
+        width: 138
         height: 172
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -221,9 +221,9 @@ TextureImporter:
     - name: partspng_14
       rect:
         serializedVersion: 2
-        x: 1404
+        x: 1402
         y: 481
-        width: 130
+        width: 132
         height: 174
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -231,9 +231,9 @@ TextureImporter:
     - name: partspng_15
       rect:
         serializedVersion: 2
-        x: 1556
+        x: 1547
         y: 481
-        width: 133
+        width: 150
         height: 174
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -251,30 +251,30 @@ TextureImporter:
     - name: partspng_17
       rect:
         serializedVersion: 2
-        x: 74
+        x: 72
         y: 329
-        width: 134
-        height: 132
+        width: 136
+        height: 138
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: partspng_18
       rect:
         serializedVersion: 2
-        x: 233
-        y: 320
-        width: 134
-        height: 133
+        x: 228
+        y: 318
+        width: 139
+        height: 135
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: partspng_19
       rect:
         serializedVersion: 2
-        x: 391
+        x: 387
         y: 318
-        width: 134
-        height: 134
+        width: 138
+        height: 135
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -291,9 +291,9 @@ TextureImporter:
     - name: partspng_21
       rect:
         serializedVersion: 2
-        x: 1233
+        x: 1230
         y: 270
-        width: 138
+        width: 141
         height: 180
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -311,9 +311,9 @@ TextureImporter:
     - name: partspng_23
       rect:
         serializedVersion: 2
-        x: 1552
+        x: 1547
         y: 270
-        width: 139
+        width: 287
         height: 180
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -321,19 +321,19 @@ TextureImporter:
     - name: partspng_24
       rect:
         serializedVersion: 2
-        x: 1696
-        y: 270
-        width: 138
-        height: 180
+        x: 71
+        y: 177
+        width: 139
+        height: 142
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: partspng_25
       rect:
         serializedVersion: 2
-        x: 72
-        y: 177
-        width: 138
+        x: 228
+        y: 168
+        width: 139
         height: 137
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -341,24 +341,14 @@ TextureImporter:
     - name: partspng_26
       rect:
         serializedVersion: 2
-        x: 230
-        y: 169
-        width: 137
-        height: 136
+        x: 386
+        y: 166
+        width: 139
+        height: 139
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: partspng_27
-      rect:
-        serializedVersion: 2
-        x: 389
-        y: 166
-        width: 136
-        height: 137
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: partspng_28
       rect:
         serializedVersion: 2
         x: 530
@@ -368,7 +358,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: partspng_29
+    - name: partspng_28
       rect:
         serializedVersion: 2
         x: 971
@@ -378,7 +368,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: partspng_30
+    - name: partspng_29
       rect:
         serializedVersion: 2
         x: 1019
@@ -388,7 +378,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: partspng_31
+    - name: partspng_30
       rect:
         serializedVersion: 2
         x: 98
@@ -398,17 +388,17 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: partspng_32
+    - name: partspng_31
       rect:
         serializedVersion: 2
         x: 863
         y: 32
-        width: 172
+        width: 174
         height: 112
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: partspng_33
+    - name: partspng_32
       rect:
         serializedVersion: 2
         x: 1063
@@ -418,7 +408,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: partspng_34
+    - name: partspng_33
       rect:
         serializedVersion: 2
         x: 1063
