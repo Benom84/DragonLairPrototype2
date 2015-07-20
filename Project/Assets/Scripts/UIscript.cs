@@ -12,9 +12,9 @@ public class UIscript : MonoBehaviour
 
     //store stuff
 
-    //private GameObject BreathCanvas;
-    //private GameObject LifeCanvas;
-    //private GameObject MagicCanvas;
+    private GameObject FireRoarCanvas;
+    private GameObject SpecialAttacksCanvas;
+    private GameObject ManaLifeCanvas;
 
     private Text totalCoinsText;
     private Text totalCrystalsText;
@@ -36,6 +36,12 @@ public class UIscript : MonoBehaviour
 
     private GameObject[] buttons;
 
+    private GameObject fireRoarIcon;
+    private GameObject manaLifeIcon;
+    private GameObject specialAttacksIcon;
+
+    private GameObject[] icons;
+
     private GameObject NotEnoughMoneyCanvas;
 
     private Text upgradeCostText;
@@ -43,20 +49,17 @@ public class UIscript : MonoBehaviour
     private Text upgradeDescription;
     private Text upgradeNameInDescription;
 
-    //private GameObject[] canvases;
+    private GameObject[] canvases;
     private bool[] selectUpgradeToUpgrade;
     private bool[] isUnlocked;
 
     public Sprite lockedUpgrade;
-    public Sprite selectedUpgrade;
-    public Sprite regularUpgrade;
-    public Sprite damageRegularUpgrade;
-    public Sprite damageSelectedUpgrade;
-    public Sprite damageLockedUpgrade;
-    public Sprite agilityRegularUpgrade;
-    public Sprite agilitySelectedUpgrade;
-    public Sprite agilityLockedUpgrade;
+    //public Sprite selectedUpgrade;
+    //public Sprite regularUpgrade;
 
+    //public Sprite regularIcon;
+    //public Sprite selectedIcon;
+    
     private UpgradeLevel[] fireDamageLevels;
     private UpgradeLevel[] fireAgilityLevels;
     private UpgradeLevel[] waterDamageLevels;
@@ -74,47 +77,39 @@ public class UIscript : MonoBehaviour
 
     private UpgradeLevel[][] allUpgrades;
 
-    //win/lose stuff
-    private Text stageStatus;
-    private Text percentageOfLife;
-    private Text coinsBonus;
-    private Text crystalsBonus;
-
     public Sprite coin;
     public Sprite crystal;
 
-    public Sprite waterLocked;
-    public Sprite waterUnlocked;
-    public Sprite screamLocked;
-    public Sprite screamUnlocked;
-    public Sprite iceLocked;
-    public Sprite iceUnlocked;
-    public Sprite tailLocked;
-    public Sprite tailUnlocked;
-    public Sprite HeavenlyFireRegular;
-    public Sprite ThunderRegular;
-    public Sprite heavenlyFireAndThunderLocked;
+    //public Sprite waterLocked;
+    //public Sprite waterUnlocked;
+    //public Sprite screamLocked;
+    //public Sprite screamUnlocked;
+    //public Sprite iceLocked;
+    //public Sprite iceUnlocked;
+    //public Sprite tailLocked;
+    //public Sprite tailUnlocked;
+    //public Sprite HeavenlyFireRegular;
+    //public Sprite ThunderRegular;
+    //public Sprite heavenlyFireAndThunderLocked;
 
-    public Sprite FireRoarRegular;
-    public Sprite FireRoarSelected;
-    public Sprite AgilityRegular;
-    public Sprite AgilitySelected;
-    public Sprite DamageRegular;
-    public Sprite DamageSelected;
-    public Sprite HealthBarRegular;
-    public Sprite HealthBarSelected;
-    public Sprite ManaBarRegular;
-    public Sprite ManaBarSelected;
-    public Sprite HeavenlyFireSelected;
-    public Sprite ThunderSelected;
-    public Sprite MeteorRegular;
-    public Sprite MeteorSelected;
-    public Sprite ScreamRegular;
-    public Sprite ScreamSelected;
-    public Sprite TailRegular;
-    public Sprite TailSelected;
-
-
+    //public Sprite FireRoarRegular;
+    //public Sprite FireRoarSelected;
+    //public Sprite AgilityRegular;
+    //public Sprite AgilitySelected;
+    //public Sprite DamageRegular;
+    //public Sprite DamageSelected;
+    //public Sprite HealthBarRegular;
+    //public Sprite HealthBarSelected;
+    //public Sprite ManaBarRegular;
+    //public Sprite ManaBarSelected;
+    //public Sprite HeavenlyFireSelected;
+    //public Sprite ThunderSelected;
+    //public Sprite MeteorRegular;
+    //public Sprite MeteorSelected;
+    //public Sprite ScreamRegular;
+    //public Sprite ScreamSelected;
+    //public Sprite TailRegular;
+    //public Sprite TailSelected;
 
     public void Start()
     {
@@ -125,16 +120,30 @@ public class UIscript : MonoBehaviour
         else if (gameObject.tag == "Store")
         {
             // DataController.dataController.SetLevels();
-            //BreathCanvas = GameObject.Find("BreathCanvas");
-            //LifeCanvas = GameObject.Find("LifeCanvas");
-            //MagicCanvas = GameObject.Find("MagicCanvas");
+            FireRoarCanvas = GameObject.Find("FireRoarCanvas");
+            SpecialAttacksCanvas = GameObject.Find("SpecialAttacksCanvas");
+            ManaLifeCanvas = GameObject.Find("ManaLifeCanvas");
 
-            //canvases = new GameObject[] { BreathCanvas, LifeCanvas, MagicCanvas };
+            canvases = new GameObject[] { FireRoarCanvas, SpecialAttacksCanvas, ManaLifeCanvas };
 
             NotEnoughMoneyCanvas = GameObject.Find("NotEnoughMoneyCanvas");
             NotEnoughMoneyCanvas.SetActive(false);
 
-            selectUpgradeToUpgrade = new bool[14];
+            fireRoarIcon = GameObject.Find("FireRoarIcon");
+            manaLifeIcon = GameObject.Find("ManaLifeIcon");
+            specialAttacksIcon = GameObject.Find("SpecialAttacksIcon");
+
+            icons = new GameObject[] { fireRoarIcon, specialAttacksIcon, manaLifeIcon };
+
+            for (int i = 1; i < 3; i++)
+            {
+                Image selectedImage = icons[i].GetComponent<Image>();
+                Color color = selectedImage.color;
+                color.a = 0;
+                selectedImage.color = color;
+            }
+
+                selectUpgradeToUpgrade = new bool[14];
 
             for (int i = 0; i < selectUpgradeToUpgrade.Length; i++)
             {
@@ -149,42 +158,41 @@ public class UIscript : MonoBehaviour
 
             FireDamage = GameObject.Find("Damage");
             FireAgility = GameObject.Find("Agility");
-            WaterDamage = GameObject.Find("WaterDamage");
-            WaterAgility = GameObject.Find("WaterAgility");
+            //WaterDamage = GameObject.Find("WaterDamage");
+            //WaterAgility = GameObject.Find("WaterAgility");
             HeavenlyFire = GameObject.Find("HeavenlyFire");
             Thunder = GameObject.Find("Thunder");
-            FrozenSky = GameObject.Find("FrozenSky");
-            CursedBreath = GameObject.Find("CursedBreath");
+            //FrozenSky = GameObject.Find("FrozenSky");
+            //CursedBreath = GameObject.Find("CursedBreath");
             HealthBar = GameObject.Find("HealthBar");
             Scream = GameObject.Find("Scream");
             Meteor = GameObject.Find("Meteor");
-            Ice = GameObject.Find("Ice");
+            //Ice = GameObject.Find("Ice");
             Tail = GameObject.Find("Tail");
             ManaBar = GameObject.Find("ManaBar");
 
             buttons = new GameObject[] { FireDamage, FireAgility, WaterDamage, WaterAgility, HeavenlyFire, FrozenSky, Thunder,
                 CursedBreath, HealthBar, Scream, Meteor, Ice, Tail, ManaBar};
 
-            upgradeCostText = GameObject.Find("CostText").GetComponent<Text>();
-            upgradeButtonImage = GameObject.Find("CostImage").GetComponent<Image>();
-            upgradeDescription = GameObject.Find("Description").GetComponent<Text>();
-            upgradeNameInDescription = GameObject.Find("UpgradeName").GetComponent<Text>();
-
-            upgradeCostText.text = string.Empty;
-            upgradeDescription.text = string.Empty;
-            upgradeNameInDescription.text = string.Empty;
-            upgradeButtonImage.sprite = null;
-
             //sets the button on transperant
-            Color buttonColor = upgradeButtonImage.color;
-            buttonColor.a = 0;
-            upgradeButtonImage.color = buttonColor;
+            //Color buttonColor = upgradeButtonImage.color;
+            //buttonColor.a = 0;
+            //upgradeButtonImage.color = buttonColor;
 
             isUnlocked = new bool[14];
 
             for (int i = 0; i < isUnlocked.Length; i++)
             {
                 isUnlocked[i] = true;
+
+                if (buttons[i] != null && i != 1)
+                {
+                    Image selectedImage = buttons[i].GetComponent<Image>();
+                    Color color = selectedImage.color;
+                    color.a = 0;
+                    selectedImage.color = color;
+                }
+                
             }
 
             //if conditions to unlock the upgrades
@@ -197,13 +205,7 @@ public class UIscript : MonoBehaviour
 
                 //GameObject.Find("Water").GetComponent<Image>().sprite = waterLocked;
                 //GameObject.Find("IceImage").GetComponent<Image>().sprite = iceLocked;
-                Tail.GetComponent<Image>().sprite = tailLocked;
-            }
-            else
-            {
-                //GameObject.Find("Water").GetComponent<Image>().sprite = waterUnlocked;
-                //GameObject.Find("IceImage").GetComponent<Image>().sprite = iceUnlocked;
-                Tail.GetComponent<Image>().sprite = TailRegular;
+                Tail.transform.FindChild("Image").GetComponent<Image>().sprite = lockedUpgrade;
             }
 
             if (DataController.dataController.level < 5)
@@ -214,83 +216,27 @@ public class UIscript : MonoBehaviour
                 isUnlocked[5] = false;
                 isUnlocked[7] = false;
 
-                HeavenlyFire.GetComponent<Image>().sprite = heavenlyFireAndThunderLocked;
-                Thunder.GetComponent<Image>().sprite = heavenlyFireAndThunderLocked;
-            }
-            else
-            {
-                HeavenlyFire.GetComponent<Image>().sprite = HeavenlyFireRegular;
-                Thunder.GetComponent<Image>().sprite = ThunderRegular;
+                HeavenlyFire.transform.FindChild("Image").GetComponent<Image>().sprite = lockedUpgrade;
+                Thunder.transform.FindChild("Image").GetComponent<Image>().sprite = lockedUpgrade;
             }
 
             if (DataController.dataController.level < 7)
             {
                 isUnlocked[9] = false;
-                Scream.GetComponent<Image>().sprite = screamLocked;
-            }
-            else
-            {
-                Scream.GetComponent<Image>().sprite = screamUnlocked;
+                Scream.transform.FindChild("Image").GetComponent<Image>().sprite = lockedUpgrade;
             }
 
             int[] upgradesWithLevels = new int[] { 0, 1, 9, 10, 12 };
-            foreach (int i in upgradesWithLevels)
-            {
-                if (DataController.dataController.upgradesLevel[i] > 0)
-                {
-                    buttons[i].transform.FindChild("LevelNumber").GetComponent<Text>().text = DataController.dataController.upgradesLevel[i].ToString();
-                }
-            }
-
-            buttons[8].transform.FindChild("LevelNumber").GetComponent<Text>().text = DataController.dataController.upgradesData[8].ToString();
-            buttons[13].transform.FindChild("LevelNumber").GetComponent<Text>().text = DataController.dataController.upgradesData[13].ToString();
-
-            //for (int i = 0; i < 4; i++)
+            //foreach (int i in upgradesWithLevels)
             //{
-            //    if (isUnlocked[i] && i % 2 == 0)
+            //    if (DataController.dataController.upgradesLevel[i] > 0)
             //    {
-            //        buttons[i].GetComponent<Image>().sprite = damageRegularUpgrade;
-            //        if (DataController.dataController.upgradesLevel[i] != 0)
-            //        {
-            //            buttons[i].transform.FindChild("LevelNumber").GetComponent<Text>().text = DataController.dataController.upgradesLevel[i].ToString();
-            //        }
-            //    }
-            //    else if (isUnlocked[i] && i % 2 != 0)
-            //    {
-            //        buttons[i].GetComponent<Image>().sprite = agilityRegularUpgrade;
-            //        if (DataController.dataController.upgradesLevel[i] != 0)
-            //        {
-            //            buttons[i].transform.FindChild("LevelNumber").GetComponent<Text>().text = DataController.dataController.upgradesLevel[i].ToString();
-            //        }
-
-            //    }
-            //    else if (!isUnlocked[i] && i % 2 == 0)
-            //    {
-            //        buttons[i].GetComponent<Image>().sprite = damageLockedUpgrade;
-
-            //    }
-            //    else
-            //    {
-            //        buttons[i].GetComponent<Image>().sprite = agilityLockedUpgrade;
-
+            //        buttons[i].transform.FindChild("LevelNumber").GetComponent<Text>().text = DataController.dataController.upgradesLevel[i].ToString();
             //    }
             //}
 
-            //for (int i = 4; i < buttons.Length; i++)
-            //{
-            //    if (isUnlocked[i])
-            //    {
-            //        buttons[i].GetComponent<Image>().sprite = regularUpgrade;
-            //        if (DataController.dataController.upgradesLevel[i] != 0)
-            //        {
-            //            buttons[i].transform.FindChild("LevelNumber").GetComponent<Text>().text = DataController.dataController.upgradesLevel[i].ToString();
-            //        }
-            //    }
-            //    else
-            //    {
-            //        buttons[i].GetComponent<Image>().sprite = lockedUpgrade;
-            //    }
-            //}
+            //buttons[8].transform.FindChild("LevelNumber").GetComponent<Text>().text = DataController.dataController.upgradesData[8].ToString();
+            //buttons[13].transform.FindChild("LevelNumber").GetComponent<Text>().text = DataController.dataController.upgradesData[13].ToString();
 
             fireDamageLevels = ReadUpgradeLevels("FireDamageUpgrade");
             fireAgilityLevels = ReadUpgradeLevels("FireAgilityUpgrade");
@@ -310,12 +256,23 @@ public class UIscript : MonoBehaviour
             allUpgrades = new UpgradeLevel[][] {fireDamageLevels, fireAgilityLevels, waterDamageLevels, waterAgilityLevels, heavenlyFireLevels, 
                 frozenSkyLevels, thunderLevels, cursedBreathLevels, caveLevels, screamLevels, meteorLevels, iceLevels, tailLevels, manaLevels};
 
-            //for (int i = 0; i < amountOfCanvases; i++)
-            //{
-            //    canvases[i].SetActive(false);
-            //}
+            upgradeCostText = GameObject.Find("CostText").GetComponent<Text>();
+            upgradeButtonImage = GameObject.Find("CostImage").GetComponent<Image>();
+            upgradeDescription = GameObject.Find("Description").GetComponent<Text>();
+            upgradeNameInDescription = GameObject.Find("UpgradeName").GetComponent<Text>();
 
-            //BreathCanvas.SetActive(true);
+            UpgradeLevel fireAgilityUpgradeLevel = fireAgilityLevels[DataController.dataController.upgradesLevel[1]];
+            upgradeCostText.text = fireAgilityUpgradeLevel.Cost.ToString();
+            upgradeDescription.text = fireAgilityUpgradeLevel.Description;
+            upgradeNameInDescription.text = fireAgilityUpgradeLevel.Name;
+            upgradeButtonImage.sprite = coin;
+
+            for (int i = 0; i < amountOfCanvases; i++)
+            {
+                canvases[i].SetActive(false);
+            }
+
+            FireRoarCanvas.SetActive(true);
         }
     }
 
@@ -337,256 +294,80 @@ public class UIscript : MonoBehaviour
         Application.Quit();
     }
 
-    //public void SwitchCanvas(int canvasNumber)
-    //{
-    //    foreach (GameObject canvas in canvases)
-    //    {
-    //        canvas.SetActive(false);
-    //    }
+    public void SwitchCanvas(int canvasNumber)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            Image selectedImage = icons[i].GetComponent<Image>();
+            Color color = selectedImage.color;
+            color.a = 0;
+            selectedImage.color = color;
+        }
 
-    //    canvases[canvasNumber - 1].SetActive(true);
-    //    for (int i = 0; i < selectUpgradeToUpgrade.Length; i++)
-    //    {
-    //        selectUpgradeToUpgrade[i] = false;
-    //    }
+        Image icon = icons[canvasNumber - 1].GetComponent<Image>();
+        Color colorOfIcon = icon.color;
+        colorOfIcon.a = 255;
+        icon.color = colorOfIcon;
+        
+        foreach (GameObject canvas in canvases)
+        {
+            canvas.SetActive(false);
+        }
 
-    //    upgradeCostText.text = string.Empty;
-    //    upgradeNameInDescription.text = string.Empty;
-    //    upgradeDescription.text = string.Empty;
+        canvases[canvasNumber - 1].SetActive(true);
+        for (int i = 0; i < selectUpgradeToUpgrade.Length; i++)
+        {
+            selectUpgradeToUpgrade[i] = false;
+        }
 
-    //    upgradeButtonImage.sprite = null;
-    //    Color buttonColor = upgradeButtonImage.color;
-    //    buttonColor.a = 0;
-    //    upgradeButtonImage.color = buttonColor;
+        upgradeCostText.text = string.Empty;
+        upgradeNameInDescription.text = string.Empty;
+        upgradeDescription.text = string.Empty;
 
-    //    for (int i = 0; i < selectUpgradeToUpgrade.Length; i++)
-    //    {
-    //        selectUpgradeToUpgrade[i] = false;
-    //        if (isUnlocked[i] && i > 3)
-    //        {
-    //            buttons[i].GetComponent<Image>().sprite = regularUpgrade;
-    //        }
-    //    }
+        upgradeButtonImage.sprite = null;
+        Color buttonColor = upgradeButtonImage.color;
+        buttonColor.a = 0;
+        upgradeButtonImage.color = buttonColor;
 
-    //    for (int i = 0; i < 4; i++)
-    //    {
-    //        if (isUnlocked[i] && i % 2 == 0)
-    //        {
-    //            buttons[i].GetComponent<Image>().sprite = damageRegularUpgrade;
-    //        }
-    //        else if (isUnlocked[i] && i % 2 != 0)
-    //        {
-    //            buttons[i].GetComponent<Image>().sprite = agilityRegularUpgrade;
-    //        }
-    //        else if (!isUnlocked[i] && i % 2 == 0)
-    //        {
-    //            buttons[i].GetComponent<Image>().sprite = damageLockedUpgrade;
-    //        }
-    //        else
-    //        {
-    //            buttons[i].GetComponent<Image>().sprite = agilityLockedUpgrade;
-    //        }
-    //    }
-    //}
+        for (int i = 0; i < selectUpgradeToUpgrade.Length; i++)
+        {
+            selectUpgradeToUpgrade[i] = false;
+
+            if (buttons[i] != null)
+            {
+                Image selectedImage = buttons[i].GetComponent<Image>();
+                Color color = selectedImage.color;
+                color.a = 0;
+                selectedImage.color = color;
+            } 
+        }
+    }
 
     public void ChooseToUpgrade(int numberOfUpgraded)
     {
         for (int i = 0; i < selectUpgradeToUpgrade.Length; i++)
         {
             selectUpgradeToUpgrade[i] = false;
+            //buttons[i].GetComponent<Image>().sprite = regularUpgrade;
+            if (buttons[i] != null)
+            {
+                Image selectedImage = buttons[i].GetComponent<Image>();
+                Color color = selectedImage.color;
+                color.a = 0;
+                selectedImage.color = color;
+            }
+            
         }
 
         if (isUnlocked[numberOfUpgraded - 1])
         {
-            switch (numberOfUpgraded)
-            {
-                case 1:
-                    FireDamage.GetComponent<Image>().sprite = DamageSelected;
-                    FireAgility.GetComponent<Image>().sprite = AgilityRegular;
-                    HealthBar.GetComponent<Image>().sprite = HealthBarRegular;
-                    ManaBar.GetComponent<Image>().sprite = ManaBarRegular;
-                    Meteor.GetComponent<Image>().sprite = MeteorRegular;
-                    if (DataController.dataController.level >= 4)
-                    {
-                        Tail.GetComponent<Image>().sprite = TailRegular;
-                        if (DataController.dataController.level >= 5)
-                        {
-                            HeavenlyFire.GetComponent<Image>().sprite = HeavenlyFireRegular;
-                            Thunder.GetComponent<Image>().sprite = ThunderRegular;
-                            if (DataController.dataController.level >= 7)
-                            {
-                                Scream.GetComponent<Image>().sprite = ScreamRegular;
-                            }
-                        }
-                    }
-
-                    GameObject.Find("FireRoar").GetComponent<Image>().sprite = FireRoarSelected;
-                    break;
-                case 2:
-                    FireDamage.GetComponent<Image>().sprite = DamageRegular;
-                    FireAgility.GetComponent<Image>().sprite = AgilitySelected;
-                    HealthBar.GetComponent<Image>().sprite = HealthBarRegular;
-                    ManaBar.GetComponent<Image>().sprite = ManaBarRegular;
-                    Meteor.GetComponent<Image>().sprite = MeteorRegular;
-
-                    if (DataController.dataController.level >= 4)
-                    {
-                        Tail.GetComponent<Image>().sprite = TailRegular;
-                        if (DataController.dataController.level >= 5)
-                        {
-                            HeavenlyFire.GetComponent<Image>().sprite = HeavenlyFireRegular;
-                            Thunder.GetComponent<Image>().sprite = ThunderRegular;
-                            if (DataController.dataController.level >= 7)
-                            {
-                                Scream.GetComponent<Image>().sprite = ScreamRegular;
-                            }
-                        }
-                    }
-
-
-
-
-
-
-                    GameObject.Find("FireRoar").GetComponent<Image>().sprite = FireRoarSelected;
-                    break;
-                case 5:
-                    FireDamage.GetComponent<Image>().sprite = DamageRegular;
-                    FireAgility.GetComponent<Image>().sprite = AgilityRegular;
-                    HealthBar.GetComponent<Image>().sprite = HealthBarRegular;
-                    ManaBar.GetComponent<Image>().sprite = ManaBarRegular;
-                    HeavenlyFire.GetComponent<Image>().sprite = HeavenlyFireSelected;
-                    Thunder.GetComponent<Image>().sprite = ThunderRegular;
-                    Meteor.GetComponent<Image>().sprite = MeteorRegular;
-                    Tail.GetComponent<Image>().sprite = TailRegular;
-
-
-                    if (DataController.dataController.level >= 7)
-                    {
-                        Scream.GetComponent<Image>().sprite = ScreamRegular;
-                    }
-
-                    GameObject.Find("FireRoar").GetComponent<Image>().sprite = FireRoarRegular;
-                    break;
-                case 7:
-                    FireDamage.GetComponent<Image>().sprite = DamageRegular;
-                    FireAgility.GetComponent<Image>().sprite = AgilityRegular;
-                    HealthBar.GetComponent<Image>().sprite = HealthBarRegular;
-                    ManaBar.GetComponent<Image>().sprite = ManaBarRegular;
-                    HeavenlyFire.GetComponent<Image>().sprite = HeavenlyFireRegular;
-                    Thunder.GetComponent<Image>().sprite = ThunderSelected;
-                    Meteor.GetComponent<Image>().sprite = MeteorRegular;
-                    if (DataController.dataController.level >= 7)
-                    {
-                        Scream.GetComponent<Image>().sprite = ScreamRegular;
-                    }
-
-                    Tail.GetComponent<Image>().sprite = TailRegular;
-                    GameObject.Find("FireRoar").GetComponent<Image>().sprite = FireRoarRegular;
-                    break;
-                case 9:
-                    FireDamage.GetComponent<Image>().sprite = DamageRegular;
-                    FireAgility.GetComponent<Image>().sprite = AgilityRegular;
-                    HealthBar.GetComponent<Image>().sprite = HealthBarSelected;
-                    ManaBar.GetComponent<Image>().sprite = ManaBarRegular;
-                    Meteor.GetComponent<Image>().sprite = MeteorRegular;
-
-                    if (DataController.dataController.level >= 4)
-                    {
-                        Tail.GetComponent<Image>().sprite = TailRegular;
-                        if (DataController.dataController.level >= 5)
-                        {
-                            HeavenlyFire.GetComponent<Image>().sprite = HeavenlyFireRegular;
-                            Thunder.GetComponent<Image>().sprite = ThunderRegular;
-                            if (DataController.dataController.level >= 7)
-                            {
-                                Scream.GetComponent<Image>().sprite = ScreamRegular;
-                            }
-                        }
-                    }
-
-                    GameObject.Find("FireRoar").GetComponent<Image>().sprite = FireRoarRegular;
-                    break;
-                case 10:
-                    FireDamage.GetComponent<Image>().sprite = DamageRegular;
-                    FireAgility.GetComponent<Image>().sprite = AgilityRegular;
-                    HealthBar.GetComponent<Image>().sprite = HealthBarRegular;
-                    ManaBar.GetComponent<Image>().sprite = ManaBarRegular;
-                    HeavenlyFire.GetComponent<Image>().sprite = HeavenlyFireRegular;
-                    Thunder.GetComponent<Image>().sprite = ThunderRegular;
-                    Meteor.GetComponent<Image>().sprite = MeteorRegular;
-                    Scream.GetComponent<Image>().sprite = ScreamSelected;
-                    Tail.GetComponent<Image>().sprite = TailRegular;
-                    GameObject.Find("FireRoar").GetComponent<Image>().sprite = FireRoarRegular;
-                    break;
-                case 11:
-                    FireDamage.GetComponent<Image>().sprite = DamageRegular;
-                    FireAgility.GetComponent<Image>().sprite = AgilityRegular;
-                    HealthBar.GetComponent<Image>().sprite = HealthBarRegular;
-                    ManaBar.GetComponent<Image>().sprite = ManaBarRegular;
-                    Meteor.GetComponent<Image>().sprite = MeteorSelected;
-
-                    if (DataController.dataController.level >= 4)
-                    {
-                        Tail.GetComponent<Image>().sprite = TailRegular;
-                        if (DataController.dataController.level >= 5)
-                        {
-                            HeavenlyFire.GetComponent<Image>().sprite = HeavenlyFireRegular;
-                            Thunder.GetComponent<Image>().sprite = ThunderRegular;
-                            if (DataController.dataController.level >= 7)
-                            {
-                                Scream.GetComponent<Image>().sprite = ScreamRegular;
-                            }
-                        }
-                    }
-                    GameObject.Find("FireRoar").GetComponent<Image>().sprite = FireRoarRegular;
-                    break;
-                case 13:
-                    FireDamage.GetComponent<Image>().sprite = DamageRegular;
-                    FireAgility.GetComponent<Image>().sprite = AgilityRegular;
-                    HealthBar.GetComponent<Image>().sprite = HealthBarRegular;
-                    ManaBar.GetComponent<Image>().sprite = ManaBarRegular;
-                    Meteor.GetComponent<Image>().sprite = MeteorRegular;
-                    Tail.GetComponent<Image>().sprite = TailSelected;
-                    GameObject.Find("FireRoar").GetComponent<Image>().sprite = FireRoarRegular;
-
-
-                    if (DataController.dataController.level >= 5)
-                    {
-                        HeavenlyFire.GetComponent<Image>().sprite = HeavenlyFireRegular;
-                        Thunder.GetComponent<Image>().sprite = ThunderRegular;
-                        if (DataController.dataController.level >= 7)
-                        {
-                            Scream.GetComponent<Image>().sprite = ScreamRegular;
-                        }
-                    }
-
-                    break;
-                case 14:
-                    FireDamage.GetComponent<Image>().sprite = DamageRegular;
-                    FireAgility.GetComponent<Image>().sprite = AgilityRegular;
-                    HealthBar.GetComponent<Image>().sprite = HealthBarRegular;
-                    ManaBar.GetComponent<Image>().sprite = ManaBarSelected;
-                    Meteor.GetComponent<Image>().sprite = MeteorRegular;
-
-                    if (DataController.dataController.level >= 4)
-                    {
-                        Tail.GetComponent<Image>().sprite = TailRegular;
-                        if (DataController.dataController.level >= 5)
-                        {
-                            HeavenlyFire.GetComponent<Image>().sprite = HeavenlyFireRegular;
-                            Thunder.GetComponent<Image>().sprite = ThunderRegular;
-                            if (DataController.dataController.level >= 7)
-                            {
-                                Scream.GetComponent<Image>().sprite = ScreamRegular;
-                            }
-                        }
-                    }
-                    GameObject.Find("FireRoar").GetComponent<Image>().sprite = FireRoarRegular;
-                    break;
-            }
-
-            selectUpgradeToUpgrade[numberOfUpgraded - 1] = true;
+            Image selectedImage = buttons[numberOfUpgraded - 1].GetComponent<Image>();
+            Color color = selectedImage.color;
+            color.a = 255;
+            selectedImage.color = color;
+            
+            //buttons[numberOfUpgraded - 1].GetComponent<Image>().sprite = selectedUpgrade;
+            //selectUpgradeToUpgrade[numberOfUpgraded - 1] = true;
         }
 
 
