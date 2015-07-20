@@ -136,7 +136,7 @@ public class Enemy : MonoBehaviour
             ColorHandler(healthBar, 0.0f);
             ColorHandler(healthOutline, 0.0f);
             Color c = GetComponent<SpriteRenderer>().color;
-            c.a -= 0.005f;
+            c.a -= 0.01f;
             GetComponent<SpriteRenderer>().color = c;
             if (Time.time > deleteObjectTimeAfterDeath)
                 Destroy(gameObject);
@@ -444,12 +444,15 @@ public class Enemy : MonoBehaviour
         ColorHandler(healthBar, 1.0f);
         ColorHandler(healthOutline, 1.0f);
 
+        if (healthBar != null)
+        {
+            // Set the health bar's colour to proportion of the way between green and red based on the player's health.
+            healthBar.material.color = Color.Lerp(Color.green, Color.red, 1 - health / maxHealth);
 
-        // Set the health bar's colour to proportion of the way between green and red based on the player's health.
-        healthBar.material.color = Color.Lerp(Color.green, Color.red, 1 - health / maxHealth);
-
-        // Set the scale of the health bar to be proportional to the player's health.
-        healthBar.transform.localScale = new Vector3(healthScale.x * health / maxHealth, 1, 1);
+            // Set the scale of the health bar to be proportional to the player's health.
+            healthBar.transform.localScale = new Vector3(healthScale.x * health / maxHealth, 1, 1);
+        }
+        
     }
 
 

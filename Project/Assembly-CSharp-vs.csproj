@@ -79,6 +79,7 @@
      <Compile Include="Assets\Scripts\XML\Wave.cs" />
      <Compile Include="Assets\Scripts\XML\Waves.cs" />
      <Compile Include="Assets\SoundPlayerScript.cs" />
+     <Compile Include="Assets\TutorialHandlerScript.cs" />
      <None Include="Assets\Resources\CaveUpgrade.txt" />
      <None Include="Assets\Resources\WaterAgilityUpgrade.txt" />
      <None Include="Assets\Resources\FrozenSkyUpgrade.txt" />

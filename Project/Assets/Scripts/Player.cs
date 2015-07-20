@@ -97,8 +97,8 @@ public class Player : MonoBehaviour
     private float specialAreaMinY = float.MaxValue;
     private float specialAreaMaxY = float.MinValue;
     private bool changeAttackButtonAvailable = true;
-    private bool screamAttackButtonAvailable = true;
-    private bool earthquakeButtonAvailable = true;
+    private bool screamAttackButtonAvailable = false;
+    private bool earthquakeButtonAvailable = false;
     private GameObject activeSpecialAttack;
     private Animator dragonAnimator;
     private float earthquakeShakeFactor = 0.5f;
@@ -142,12 +142,6 @@ public class Player : MonoBehaviour
             changeImageTransparency(bloodPoolSprite, 0f);
         }
 
-        // Get the Change Attack button and color
-        //changeAttackButton = GameObject.FindGameObjectWithTag("ChangeAttackButton");
-        //changeAttackButtonColor = new Color();
-        //changeAttackButtonColor.r = changeAttackButton.GetComponent<Image>().color.r;
-        //changeAttackButtonColor.g = changeAttackButton.GetComponent<Image>().color.g;
-        //changeAttackButtonColor.b = changeAttackButton.GetComponent<Image>().color.b;
         changeAttackButtonLastPress = Time.time;
 
         // Get the special attacks buttons
@@ -168,6 +162,7 @@ public class Player : MonoBehaviour
                 if (!earthquakeButtonAvailable)
                 {
                     earthquakeButton.GetComponent<Image>().sprite = lockedAttack;
+
                 }
             }
 
