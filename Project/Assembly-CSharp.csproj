@@ -104,15 +104,21 @@
      <None Include="Assets\Resources\Waves-old.txt" />
      <None Include="Assets\Resources\WaterDamageUpgrade.txt" />
      <None Include="Assets\Resources\Waves.txt" />
+     <None Include="Assets\Resources\Level9.txt" />
      <None Include="Assets\Resources\Level6.txt" />
      <None Include="Assets\Plugins\Android\GoogleMobileAdsPlugin\AndroidManifest.xml" />
      <None Include="Assets\Resources\Level1.txt" />
+     <None Include="Assets\Resources\Level8.txt" />
      <None Include="Assets\Resources\Level1-old.txt" />
      <None Include="Assets\Resources\Level4.txt" />
      <None Include="Assets\Plugins\Android\unityads\AndroidManifest.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.3/UnityEngine.UI.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{EB8AA23C-2655-E22B-2EBB-05697394EDB3}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

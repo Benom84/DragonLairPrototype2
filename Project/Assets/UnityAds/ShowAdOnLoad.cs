@@ -21,8 +21,8 @@ public class ShowAdOnLoad : MonoBehaviour
 	// A return type of IEnumerator allows for the use of yield statements.
 	//  For more info, see: http://docs.unity3d.com/ScriptReference/YieldInstruction.html
 	IEnumerator Start ()
-	{
-		// Zone name used in debug messages.
+	{    
+        // Zone name used in debug messages.
 		string zoneName = string.IsNullOrEmpty(zoneID) ? "the default ad placement zone" : zoneID;
 		
 		// Set a start time for the timeout.
@@ -70,7 +70,9 @@ public class ShowAdOnLoad : MonoBehaviour
 		Debug.Log(string.Format("Ads for {0} are available and ready. Showing ad now...",zoneName));
 		
 		// Now that ads are ready, show an ad campaign.
-		UnityAdsHelper.ShowAd(zoneID);
+        
+        if (DataController.dataController.level > 3)
+            UnityAdsHelper.ShowAd(zoneID);
 	}
 #endif
 }
