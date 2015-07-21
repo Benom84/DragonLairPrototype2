@@ -14,6 +14,15 @@ public class DestroyExplosion : MonoBehaviour {
     [HideInInspector]
     public bool specialAttackChild;
 
+    void Awake()
+    {
+        if (!GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().isSoundEffectsOn)
+        {
+            GetComponent<AudioSource>().volume = 0;
+        }
+    }
+
+
     // Update is called once per frame
 	void Update () {
         if (!particleSystem.IsAlive())

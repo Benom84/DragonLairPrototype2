@@ -15,7 +15,6 @@ public class DragonAttack : MonoBehaviour {
     public float slowTime = 0;
 
 
-
     void OnTriggerEnter2D(Collider2D collider)
     {
 

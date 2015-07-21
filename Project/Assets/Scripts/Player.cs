@@ -370,7 +370,8 @@ public class Player : MonoBehaviour
         dragonAttack.slowTime = activeSlowTime;
         attack.rigidbody2D.velocity = attackDirection;
         lastAttack = Time.time;
-        GetComponent<AudioSource>().PlayOneShot(fireBallSound);
+        if (gameController.isSoundEffectsOn)
+            GetComponent<AudioSource>().PlayOneShot(fireBallSound);
 
     }
 
@@ -396,8 +397,9 @@ public class Player : MonoBehaviour
             return;
 
         currMana -= screamManaCost;
-        
-        GetComponent<AudioSource>().PlayOneShot(screamSound, 1f);
+
+        if (gameController.isSoundEffectsOn)
+            GetComponent<AudioSource>().PlayOneShot(screamSound, 1f);
 
         foreach (GameObject enemy in gameController.getAllEnemiesOnBoard())
         {
@@ -427,7 +429,9 @@ public class Player : MonoBehaviour
             dragonAnimator.SetTrigger("tailAttack");
         }
         currMana -= earthquakeManaCost;
-        GetComponent<AudioSource>().PlayOneShot(tailSound);
+
+        if (gameController.isSoundEffectsOn)
+            GetComponent<AudioSource>().PlayOneShot(tailSound);
         
         
 
@@ -479,7 +483,9 @@ public class Player : MonoBehaviour
         {
             dragonAnimator.SetTrigger("fireSpecialAttack");
         }
-        GetComponent<AudioSource>().PlayOneShot(specialAttackSound);
+
+        if (gameController.isSoundEffectsOn)
+            GetComponent<AudioSource>().PlayOneShot(specialAttackSound);
     }
 
     public void MeteorAttackShoot()

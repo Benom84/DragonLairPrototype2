@@ -350,7 +350,8 @@ public class Enemy : MonoBehaviour
 
         if (enemyType == EnemyType.Knight || enemyType == EnemyType.Cavalier)
         {
-            GetComponent<AudioSource>().PlayOneShot(attackRaiseSound);
+            if (gameController.isSoundEffectsOn)
+                GetComponent<AudioSource>().PlayOneShot(attackRaiseSound);
         }
 
         if (animator != null)
@@ -368,7 +369,9 @@ public class Enemy : MonoBehaviour
         if (player != null && !isEnemyDying)
         {
             player.Hit(attackDamage);
-            GetComponent<AudioSource>().PlayOneShot(attackHitSound);
+
+            if (gameController.isSoundEffectsOn)
+                GetComponent<AudioSource>().PlayOneShot(attackHitSound);
         }
             
     }
@@ -416,7 +419,8 @@ public class Enemy : MonoBehaviour
             return;
         
         // Play the projectileAttackSound
-        GetComponent<AudioSource>().PlayOneShot(projectileAttackSound);
+        if (gameController.isSoundEffectsOn)
+            GetComponent<AudioSource>().PlayOneShot(projectileAttackSound);
         
         // We get the player position and the enemy's
         Vector2 target = player.transform.position;

@@ -21,6 +21,9 @@ public class GameController : MonoBehaviour
     public int perKillGold = 7;
     public int goldBonusPerKill = 4;
     public int levelToChangeGold = 4; // Including
+    public bool isMusicOn = false;
+    public bool isSoundEffectsOn = false;
+    public float musicOnVolume = 0.4f;
 
     [HideInInspector]
     public bool gameEnded = false;
@@ -64,6 +67,7 @@ public class GameController : MonoBehaviour
 
 
 
+
     void Start()
     {
 
@@ -92,14 +96,25 @@ public class GameController : MonoBehaviour
 
         manaCrystalsText.text = "" + manaCrystals;
 
+        if (isMusicOn)
+        {
+            GetComponent<AudioSource>().volume = musicOnVolume;
+        }
+        else
+        {
+            GetComponent<AudioSource>().volume = 0;
+        }
+
         GameObject.FindGameObjectWithTag("Spawner").GetComponent<SpawnerManager>().InitializeSpawner();
     }
 
     private void readLevelData()
     {
         currentLevel = DataController.dataController.level;
-        Debug.Log("Reading level data, current level: " + currentLevel);
+        //Debug.Log("Reading level data, current level: " + currentLevel);
         manaCrystals = DataController.dataController.crystals;
+        //isMusicOn = DataController.dataController.isMusicOn;
+        //isSoundEffectsOn = DataController.dataController.isSoundEffectsOn;
     }
 
     void FixedUpdate()
@@ -272,12 +287,28 @@ public class GameController : MonoBehaviour
 
     public void Music()
     {
-
+        isMusicOn = !isMusicOn;
+        if (DataController.dataController != null)
+        {
+            //DataController.dataController.isMusicOn = isMusicOn;
+        }
+        if (isMusicOn)
+        {
+            GetComponent<AudioSource>().volume = musicOnVolume;
+        }
+        else
+        {
+            GetComponent<AudioSource>().volume = 0;
+        }
     }
 
     public void SFX()
     {
-
+        isSoundEffectsOn = !isSoundEffectsOn;
+        if (DataController.dataController != null)
+        {
+            //DataController.dataController.isSoundEffectsOn = isSoundEffectsOn;
+        }
     }
 
     public void Continue()
@@ -421,6 +452,12 @@ public class GameController : MonoBehaviour
     {
 
         int coins = allKillCount * ((currentLevel >= levelToChangeGold) ? perKillGold : perKillGoldFirstLevels);
+
+        if (win)
+        {
+            coins += CoinsBonusCalculation();
+
+        }
         return coins;
     }
 

@@ -15,6 +15,7 @@ public class TutorialHandlerScript : MonoBehaviour {
     private GameObject regularAttackBaloon;
     private GameObject specialAttackBaloon;
     private GameObject crystalUsageBaloon;
+    private GameObject currentMana;
 
 
     private float startTime;
@@ -22,14 +23,18 @@ public class TutorialHandlerScript : MonoBehaviour {
     // Use this for initialization
 	void Awake () {
         startTime = Time.time;
-        continueButton = transform.Find("Button").gameObject;
-        regularAttackBaloon = transform.Find("regularAttackBaloon").gameObject;
-        specialAttackBaloon = transform.Find("specialAttackBaloon").gameObject;
-        crystalUsageBaloon = transform.Find("crystalUsageBaloon").gameObject;
-        continueButton.SetActive(false);
+        regularAttackBaloon = transform.Find("Canvas/regularAttackBaloon").gameObject;
+        specialAttackBaloon = transform.Find("Canvas/specialAttackBaloon").gameObject;
+        crystalUsageBaloon = transform.Find("Canvas/crystalUsageBaloon").gameObject;
+        currentMana = transform.Find("Canvas/crystalUsageBaloon/ManaBar").gameObject;
         regularAttackBaloon.SetActive(false);
         specialAttackBaloon.SetActive(false);
         crystalUsageBaloon.SetActive(false);
+        int currentLevel = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().currentLevel;
+        if (currentLevel != 1)
+        {
+            Destroy(gameObject);
+        }
 	}
 	
 	// Update is called once per frame
@@ -39,7 +44,6 @@ public class TutorialHandlerScript : MonoBehaviour {
             passedRegularAttack = true;
             Time.timeScale = 0;
             regularAttackBaloon.SetActive(true);
-            continueButton.SetActive(true);
         }
 
         if (!passedSpecialAttack && Time.time > startTime + specialAttackTime)
@@ -47,26 +51,25 @@ public class TutorialHandlerScript : MonoBehaviour {
             passedSpecialAttack = true;
             Time.timeScale = 0;
             specialAttackBaloon.SetActive(true);
-            continueButton.SetActive(true);
         }
 
         if (!passedCrystalUsage && Time.time > startTime + crystalUsageTime)
         {
             passedCrystalUsage = true;
             Time.timeScale = 0;
+            
             crystalUsageBaloon.SetActive(true);
-            continueButton.SetActive(true);
+            currentMana.GetComponent<BarMovement>().setValue(GameObject.FindGameObjectWithTag("ManaBar").GetComponent<BarMovement>().currValue);
         }
 	}
 
     public void Continue()
     {
         Time.timeScale = 1;
-        continueButton.SetActive(false);
         regularAttackBaloon.SetActive(false);
         specialAttackBaloon.SetActive(false);
         crystalUsageBaloon.SetActive(false);
-        Debug.Log("hi");
+
     }
 
     void Update()
