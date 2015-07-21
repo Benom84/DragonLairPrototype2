@@ -113,8 +113,8 @@ public class GameController : MonoBehaviour
         currentLevel = DataController.dataController.level;
         //Debug.Log("Reading level data, current level: " + currentLevel);
         manaCrystals = DataController.dataController.crystals;
-        //isMusicOn = DataController.dataController.isMusicOn;
-        //isSoundEffectsOn = DataController.dataController.isSoundEffectsOn;
+        isMusicOn = DataController.dataController.isMusicOn;
+        isSoundEffectsOn = DataController.dataController.isSoundEffectsOn;
     }
 
     void FixedUpdate()
@@ -152,7 +152,8 @@ public class GameController : MonoBehaviour
                 newTimeScale -= 0.05f * (Time.realtimeSinceStartup - endTimeScaleEffectStartTime);
                 setImageVisibilty(blackBackground, 1 - Time.timeScale);
                 Time.timeScale = Mathf.Max(newTimeScale, 0.2f);
-                GetComponent<AudioSource>().volume = newTimeScale;
+                if (isMusicOn)
+                    GetComponent<AudioSource>().volume = newTimeScale;
             }
         }
 
@@ -290,7 +291,7 @@ public class GameController : MonoBehaviour
         isMusicOn = !isMusicOn;
         if (DataController.dataController != null)
         {
-            //DataController.dataController.isMusicOn = isMusicOn;
+            DataController.dataController.isMusicOn = isMusicOn;
         }
         if (isMusicOn)
         {
@@ -307,7 +308,7 @@ public class GameController : MonoBehaviour
         isSoundEffectsOn = !isSoundEffectsOn;
         if (DataController.dataController != null)
         {
-            //DataController.dataController.isSoundEffectsOn = isSoundEffectsOn;
+            DataController.dataController.isSoundEffectsOn = isSoundEffectsOn;
         }
     }
 
