@@ -5,9 +5,7 @@ using System.Xml.Serialization;
 using System.IO;
 using System;
 using UnityEngine.UI;
-#if UNITY_ANDROID
-using UnityEngine.Advertisements;
-#endif
+
 
 
 
@@ -169,10 +167,10 @@ public class UIscript : MonoBehaviour
             {
                 isUnlocked[2] = false;
                 isUnlocked[3] = false;
-                isUnlocked[11] = false;
-                isUnlocked[12] = false;
+                isUnlocked[9] = false;
 
-                Tail.transform.FindChild("Image").GetComponent<Image>().sprite = lockedUpgrade;
+                Scream.transform.FindChild("Image").GetComponent<Image>().sprite = lockedUpgrade;
+
             }
 
             if (DataController.dataController.level < 5)
@@ -189,8 +187,11 @@ public class UIscript : MonoBehaviour
 
             if (DataController.dataController.level < 7)
             {
-                isUnlocked[9] = false;
-                Scream.transform.FindChild("Image").GetComponent<Image>().sprite = lockedUpgrade;
+                isUnlocked[12] = false;
+                isUnlocked[11] = false;
+
+
+                Tail.transform.FindChild("Image").GetComponent<Image>().sprite = lockedUpgrade;
             }
 
             for (int i = 0; i < buttons.Length; i++)
@@ -240,26 +241,26 @@ public class UIscript : MonoBehaviour
 
             FireRoarCanvas.SetActive(true);
             
-#if UNITY_ANDROID
-            if (DataController.dataController.level > 3)
-            {
-                Advertisement.Initialize("56547", true);
+//#if UNITY_ANDROID
+//            if (DataController.dataController.level > 3)
+//            {
+//                Advertisement.Initialize("56547", true);
 
-                StartCoroutine(ShowAdWhenReady());
-            }
-#endif
+//                StartCoroutine(ShowAdWhenReady());
+//            }
+//#endif
         }
     }
 
-#if UNITY_ANDROID
-    IEnumerator ShowAdWhenReady()
-    {
-        while (!Advertisement.isReady())
-            yield return null;
+//#if UNITY_ANDROID
+//    IEnumerator ShowAdWhenReady()
+//    {
+//        while (!Advertisement.isReady())
+//            yield return null;
 
-        Advertisement.Show();
-    }
-#endif
+//        Advertisement.Show();
+//    }
+//#endif
 
     public void LoadScene(string sceneName)
     {
