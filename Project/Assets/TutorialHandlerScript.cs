@@ -31,6 +31,11 @@ public class TutorialHandlerScript : MonoBehaviour {
         specialAttackBaloon.SetActive(false);
         crystalUsageBaloon.SetActive(false);
         int currentLevel = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().currentLevel;
+        if (DataController.dataController != null)
+        {
+            currentLevel = DataController.dataController.level;
+        }
+        
         if (currentLevel != 1)
         {
             Destroy(gameObject);
