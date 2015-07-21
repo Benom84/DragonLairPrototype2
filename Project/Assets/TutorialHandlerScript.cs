@@ -15,6 +15,7 @@ public class TutorialHandlerScript : MonoBehaviour {
     private GameObject regularAttackBaloon;
     private GameObject specialAttackBaloon;
     private GameObject crystalUsageBaloon;
+    private GameObject currentMana;
 
 
     private float startTime;
@@ -25,9 +26,15 @@ public class TutorialHandlerScript : MonoBehaviour {
         regularAttackBaloon = transform.Find("Canvas/regularAttackBaloon").gameObject;
         specialAttackBaloon = transform.Find("Canvas/specialAttackBaloon").gameObject;
         crystalUsageBaloon = transform.Find("Canvas/crystalUsageBaloon").gameObject;
+        currentMana = transform.Find("Canvas/crystalUsageBaloon/ManaBar").gameObject;
         regularAttackBaloon.SetActive(false);
         specialAttackBaloon.SetActive(false);
         crystalUsageBaloon.SetActive(false);
+        int currentLevel = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().currentLevel;
+        if (currentLevel != 1)
+        {
+            Destroy(gameObject);
+        }
 	}
 	
 	// Update is called once per frame
@@ -50,7 +57,9 @@ public class TutorialHandlerScript : MonoBehaviour {
         {
             passedCrystalUsage = true;
             Time.timeScale = 0;
+            
             crystalUsageBaloon.SetActive(true);
+            currentMana.GetComponent<BarMovement>().setValue(GameObject.FindGameObjectWithTag("ManaBar").GetComponent<BarMovement>().currValue);
         }
 	}
 

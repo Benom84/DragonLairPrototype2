@@ -39,7 +39,7 @@ public class CameraShake : MonoBehaviour {
         originalPos = camTransform.localPosition;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (isSpecialAttackShake)
         {
