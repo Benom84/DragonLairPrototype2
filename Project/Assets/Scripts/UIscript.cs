@@ -5,6 +5,11 @@ using System.Xml.Serialization;
 using System.IO;
 using System;
 using UnityEngine.UI;
+#if UNITY_ANDROID
+using UnityEngine.Advertisements;
+#endif
+
+
 
 public class UIscript : MonoBehaviour
 {
@@ -234,8 +239,27 @@ public class UIscript : MonoBehaviour
             }
 
             FireRoarCanvas.SetActive(true);
+            
+#if UNITY_ANDROID
+            if (DataController.dataController.level > 3)
+            {
+                Advertisement.Initialize("56547", true);
+
+                StartCoroutine(ShowAdWhenReady());
+            }
+#endif
         }
     }
+
+#if UNITY_ANDROID
+    IEnumerator ShowAdWhenReady()
+    {
+        while (!Advertisement.isReady())
+            yield return null;
+
+        Advertisement.Show();
+    }
+#endif
 
     public void LoadScene(string sceneName)
     {

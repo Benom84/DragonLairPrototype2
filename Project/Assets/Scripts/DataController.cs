@@ -49,6 +49,9 @@ public class DataController : MonoBehaviour {
 
     public bool isWaterUnlocked;
 
+    public bool isMusicOn = true;
+    public bool isSoundEffectsOn = true;
+
     public int delayBetweenDragonBreath = 100;
     public int screamManaValue = 20;
     public int meteorManaValue = 20;
