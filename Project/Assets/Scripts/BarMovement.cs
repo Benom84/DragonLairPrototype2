@@ -11,15 +11,14 @@ public class BarMovement : MonoBehaviour {
 
     void Start()
     {
-        //valueText = GetComponentInChildren<Text>();
+
+        currValue = maxValue;
+        valueText = GetComponentInChildren<Text>();
     }
     
     void Awake () {
 
 
-        maxValue = 100;
-        currValue = maxValue;
-        valueText = GetComponentInChildren<Text>();
 	
 	}
 
