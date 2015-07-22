@@ -120,8 +120,8 @@ public class Enemy : MonoBehaviour
 
         if ((showHealthBar == true) && (Time.time > lastHealthChange + 1.0f))
         {
-            ColorHandler(healthBar, 0.0f);
-            ColorHandler(healthOutline, 0.0f);
+            //ColorHandler(healthBar, 0.0f);
+            //ColorHandler(healthOutline, 0.0f);
         }
 
     }

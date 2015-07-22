@@ -97,8 +97,8 @@ public class Player : MonoBehaviour
     private float specialAreaMinY = float.MaxValue;
     private float specialAreaMaxY = float.MinValue;
     private bool changeAttackButtonAvailable = true;
-    private bool screamAttackButtonAvailable = false;
-    private bool earthquakeButtonAvailable = false;
+    private bool screamAttackButtonAvailable = true;
+    private bool earthquakeButtonAvailable = true;
     private GameObject activeSpecialAttack;
     private Animator dragonAnimator;
     private float earthquakeShakeFactor = 0.5f;
@@ -451,7 +451,7 @@ public class Player : MonoBehaviour
             if (enemyScript != null)
             {
                 enemyScript.Hit(earthquakeAttackDamage, DragonAttack.AttackType.Earthquake, false);
-                enemyScript.slowEnemy(1.0f, 1.0f);
+                enemyScript.slowEnemy(1.0f, 2.0f);
             }
 
         }
