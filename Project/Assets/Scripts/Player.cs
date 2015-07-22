@@ -204,8 +204,53 @@ public class Player : MonoBehaviour
         //}
 
         setFireAttack();
+        setFireAttackSpeed();
         
 
+    }
+
+    private void setFireAttackSpeed()
+    {
+        if (fireAttackDelay == 0.55f)
+        {
+            fireAttackSpeed = 6.0f;
+        }
+        else if (fireAttackDelay == 0.5f)
+        {
+            fireAttackSpeed = 7.5f;
+        }
+        else if (fireAttackDelay == 0.45f)
+        {
+            fireAttackSpeed = 8f;
+        }
+        else if (fireAttackDelay == 0.4f)
+        {
+            fireAttackSpeed = 10f;
+        }
+        else if (fireAttackDelay == 0.35f)
+        {
+            fireAttackSpeed = 11f;
+        }
+        else if (fireAttackDelay == 0.3f)
+        {
+            fireAttackSpeed = 11f;
+        }
+        else if (fireAttackDelay == 0.25f)
+        {
+            fireAttackSpeed = 11.5f;
+        }
+        else if (fireAttackDelay == 0.2f)
+        {
+            fireAttackSpeed = 12f;
+        }
+        else if (fireAttackDelay == 0.15f)
+        {
+            fireAttackSpeed = 12f;
+        }
+        else
+        {
+            fireAttackSpeed = 13f;
+        }
     }
 
     
