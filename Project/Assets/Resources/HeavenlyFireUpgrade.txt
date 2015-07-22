@@ -2,14 +2,14 @@
 	<Upgrade_Levels>
 		<Upgrade_Level>
 			<ID>001</ID>
-			<Cost>1000</Cost>
+			<Cost>600</Cost>
 			<Data>1</Data>
 			<Name>Heavenly Fire</Name>
 			<Description>After being hit continue to lower the heroes life bar</Description>
 		</Upgrade_Level>
 		<Upgrade_Level>
 			<ID>002</ID>
-			<Cost>1000</Cost>
+			<Cost>800</Cost>
 			<Data>1</Data>
 			<Name>Heavenly Fire</Name>
 			<Description>After being hit continue to lower the heroes life bar</Description>
@@ -23,7 +23,7 @@
 		</Upgrade_Level>
 		<Upgrade_Level>
 			<ID>004</ID>
-			<Cost>1000</Cost>
+			<Cost>1200</Cost>
 			<Data>1</Data>
 			<Name>Heavenly Fire</Name>
 			<Description>After being hit continue to lower the heroes life bar</Description>

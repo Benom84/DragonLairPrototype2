@@ -2,37 +2,37 @@
 	<Upgrade_Levels>
 		<Upgrade_Level>
 			<ID>001</ID>
-			<Cost>1500</Cost>
+			<Cost>800</Cost>
 			<Data>10</Data>
-			<Name>Cave</Name>
+			<Name>Life</Name>
 			<Description>Increase the life bar</Description>
 		</Upgrade_Level>
 		<Upgrade_Level>
 			<ID>002</ID>
-			<Cost>2000</Cost>
+			<Cost>1000</Cost>
 			<Data>10</Data>
-			<Name>Cave</Name>
+			<Name>Life</Name>
 			<Description>Increase the life bar</Description>
 		</Upgrade_Level>
 		<Upgrade_Level>
 			<ID>003</ID>
-			<Cost>2000</Cost>
+			<Cost>1200</Cost>
 			<Data>10</Data>
-			<Name>Cave</Name>
+			<Name>Life</Name>
 			<Description>Increase the life bar</Description>
 		</Upgrade_Level>
 		<Upgrade_Level>
 			<ID>004</ID>
-			<Cost>2000</Cost>
+			<Cost>1400</Cost>
 			<Data>10</Data>
-			<Name>Cave</Name>
+			<Name>Life</Name>
 			<Description>Increase the life bar</Description>
 		</Upgrade_Level>
 		<Upgrade_Level>
 			<ID>005</ID>
-			<Cost>2000</Cost>
+			<Cost>1600</Cost>
 			<Data>10</Data>
-			<Name>Cave</Name>
+			<Name>Life</Name>
 			<Description>Increase the life bar</Description>
 		</Upgrade_Level>
 	</Upgrade_Levels>

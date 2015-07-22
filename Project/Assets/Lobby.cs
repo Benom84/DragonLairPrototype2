@@ -64,7 +64,7 @@ public class Lobby : MonoBehaviour {
 
         stages = GameObject.Find("Stages");
 
-        stages.GetComponent<Text>().text = "Stage: " + (DataController.dataController.level - 1).ToString() + "/12";
+        stages.GetComponent<Text>().text = "Level: " + (DataController.dataController.level - 1).ToString() + "/12";
 	}
 	
 

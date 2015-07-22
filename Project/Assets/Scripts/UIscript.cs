@@ -252,21 +252,12 @@ public class UIscript : MonoBehaviour
         }
     }
 
-//#if UNITY_ANDROID
-//    IEnumerator ShowAdWhenReady()
-//    {
-//        while (!Advertisement.isReady())
-//            yield return null;
-
-//        Advertisement.Show();
-//    }
-//#endif
-
-    public void LoadScene(string sceneName)
+    public void LoadLevel(string sceneName)
     {
         DataController.dataController.Save();
         DataController.dataController.fromLevel = false;
-        if (gameObject.tag == "FirstScreen" && DataController.dataController.level == 1)
+
+        if (DataController.dataController.level == 1)
         {
             Application.LoadLevel("GameLevel");
         }
@@ -274,6 +265,15 @@ public class UIscript : MonoBehaviour
         {
             Application.LoadLevel(sceneName);
         }
+    }
+    
+    public void LoadScene(string sceneName)
+    {
+        DataController.dataController.Save();
+        DataController.dataController.fromLevel = false;
+        
+            Application.LoadLevel(sceneName);
+        
     }
 
     public void QuitApplication()
@@ -364,7 +364,7 @@ public class UIscript : MonoBehaviour
 
         if (!isUnlocked[numberOfUpgraded - 1])
         {
-            if (numberOfUpgraded == 3 || numberOfUpgraded == 4 || numberOfUpgraded == 12 || numberOfUpgraded == 13)
+            if (numberOfUpgraded == 3 || numberOfUpgraded == 4 || numberOfUpgraded == 10)
             {
                 strToDisplayInDescription = "UNLOCKS AT LEVEL 4" + Environment.NewLine + allUpgrades[numberOfUpgraded - 1][DataController.dataController.upgradesLevel[numberOfUpgraded - 1]].Description;
             }
@@ -372,7 +372,7 @@ public class UIscript : MonoBehaviour
             {
                 strToDisplayInDescription = "UNLOCKS AT LEVEL 5" + Environment.NewLine + allUpgrades[numberOfUpgraded - 1][DataController.dataController.upgradesLevel[numberOfUpgraded - 1]].Description;
             }
-            else if (numberOfUpgraded == 10)
+            else if (numberOfUpgraded == 12 || numberOfUpgraded == 13)
             {
                 strToDisplayInDescription = "UNLOCKS AT LEVEL 7" + Environment.NewLine + allUpgrades[numberOfUpgraded - 1][DataController.dataController.upgradesLevel[numberOfUpgraded - 1]].Description;
             }
@@ -438,24 +438,27 @@ public class UIscript : MonoBehaviour
         {
             if (costOfUpgrade > 100)
                 {
-                    DataController.dataController.coins -= costOfUpgrade;
-                    if (numberOfUpgrade != 1 && numberOfUpgrade != 3)
+                    if (DataController.dataController.coins >= costOfUpgrade)
                     {
-                        DataController.dataController.upgradesData[numberOfUpgrade] += allUpgrades[numberOfUpgrade][DataController.dataController.upgradesLevel[numberOfUpgrade]].Data;
-                    }
-                    else
-                    {
-                        DataController.dataController.upgradesData[numberOfUpgrade] -= allUpgrades[numberOfUpgrade][DataController.dataController.upgradesLevel[numberOfUpgrade]].Data;
-                    }
+                        DataController.dataController.coins -= costOfUpgrade;
+                        if (numberOfUpgrade != 1 && numberOfUpgrade != 3)
+                        {
+                            DataController.dataController.upgradesData[numberOfUpgrade] += allUpgrades[numberOfUpgrade][DataController.dataController.upgradesLevel[numberOfUpgrade]].Data;
+                        }
+                        else
+                        {
+                            DataController.dataController.upgradesData[numberOfUpgrade] -= allUpgrades[numberOfUpgrade][DataController.dataController.upgradesLevel[numberOfUpgrade]].Data;
+                        }
 
-                    DataController.dataController.upgradesLevel[numberOfUpgrade]++;
-                    
-                    buttons[numberOfUpgrade].transform.FindChild("Text").GetComponent<Text>().text = DataController.dataController.upgradesLevel[numberOfUpgrade].ToString();
+                        DataController.dataController.upgradesLevel[numberOfUpgrade]++;
 
-                    totalCoinsText.text = DataController.dataController.coins.ToString();
-                    upgradeCostText.text = allUpgrades[numberOfUpgrade][DataController.dataController.upgradesLevel[numberOfUpgrade]].Cost.ToString();
+                        buttons[numberOfUpgrade].transform.FindChild("Text").GetComponent<Text>().text = DataController.dataController.upgradesLevel[numberOfUpgrade].ToString();
+
+                        totalCoinsText.text = DataController.dataController.coins.ToString();
+                        upgradeCostText.text = allUpgrades[numberOfUpgrade][DataController.dataController.upgradesLevel[numberOfUpgrade]].Cost.ToString();
+                    }
                 }
-                else
+            else if (DataController.dataController.crystals >= costOfUpgrade)
                 {
                     DataController.dataController.crystals -= costOfUpgrade;
                     DataController.dataController.upgradesData[numberOfUpgrade] += (int)allUpgrades[numberOfUpgrade][DataController.dataController.upgradesLevel[numberOfUpgrade]].Data;

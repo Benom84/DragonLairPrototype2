@@ -2,35 +2,35 @@
 	<Upgrade_Levels>
 		<Upgrade_Level>
 			<ID>001</ID>
-			<Cost>5</Cost>
+			<Cost>2</Cost>
 			<Data>5</Data>
 			<Name>Tail</Name>
 			<Description>Lowers the life bar of all the heroes and stop them for a while</Description>
 		</Upgrade_Level>
 		<Upgrade_Level>
 			<ID>002</ID>
-			<Cost>7</Cost>
+			<Cost>4</Cost>
 			<Data>5</Data>
 			<Name>Tail</Name>
 			<Description>Lowers the life bar of all the heroes and stop them for a while</Description>
 		</Upgrade_Level>
 		<Upgrade_Level>
 			<ID>003</ID>
-			<Cost>9</Cost>
+			<Cost>8</Cost>
 			<Data>5</Data>
 			<Name>Tail</Name>
 			<Description>Lowers the life bar of all the heroes and stop them for a while</Description>
 		</Upgrade_Level>
 		<Upgrade_Level>
 			<ID>004</ID>
-			<Cost>11</Cost>
+			<Cost>12</Cost>
 			<Data>5</Data>
 			<Name>Tail</Name>
 			<Description>Lowers the life bar of all the heroes and stop them for a while</Description>
 		</Upgrade_Level>
 		<Upgrade_Level>
 			<ID>005</ID>
-			<Cost>13</Cost>
+			<Cost>4</Cost>
 			<Data>5</Data>
 			<Name>Tail</Name>
 			<Description>Lowers the life bar of all the heroes and stop them for a while</Description>
