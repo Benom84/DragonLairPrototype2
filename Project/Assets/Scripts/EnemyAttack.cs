@@ -38,8 +38,10 @@ public class EnemyAttack : MonoBehaviour
                 {
                     GameObject.Destroy(createdSoundPlayer);
                 }
-                GameObject.Destroy(gameObject);
+                
             }
+
+            GameObject.Destroy(gameObject);
         }
     }
 }
