@@ -128,8 +128,8 @@ public class UIscript : MonoBehaviour
             totalCrystalsText = GameObject.Find("Crystals").GetComponentInChildren<Text>();
             totalCrystalsText.text = DataController.dataController.crystals.ToString();
 
-            currentLevelText = GameObject.Find("CurrentLevelText").GetComponent<Text>();
-            currentLevelText.text = "Lv." + DataController.dataController.level;
+            //currentLevelText = GameObject.Find("CurrentLevelText").GetComponent<Text>();
+            //currentLevelText.text = "Lv." + DataController.dataController.level;
 
             FireDamage = GameObject.Find("Damage");
             FireAgility = GameObject.Find("Agility");
