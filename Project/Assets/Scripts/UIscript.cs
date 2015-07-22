@@ -539,10 +539,15 @@ public class UIscript : MonoBehaviour
             {
                 Application.Quit();
             }
+            else if (gameObject.tag == "Lobby")
+            {
+                LoadScene("FirstScreen");
+            }
             else if (gameObject.tag == "Store")
             {
-                LoadScene("MainMenu");
+                LoadScene("Lobby");
             }
+            
         }
     }
 }
