@@ -315,6 +315,7 @@ public class GameController : MonoBehaviour
     public void Continue()
     {
         Time.timeScale = 1.0f;
+        DataController.dataController.fromLevel = true;
         Application.LoadLevel("Store");
     }
 
