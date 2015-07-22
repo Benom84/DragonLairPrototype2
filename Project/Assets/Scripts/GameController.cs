@@ -104,7 +104,7 @@ public class GameController : MonoBehaviour
         {
             GetComponent<AudioSource>().volume = 0;
         }
-
+        Time.timeScale = 1;
         GameObject.FindGameObjectWithTag("Spawner").GetComponent<SpawnerManager>().InitializeSpawner();
     }
 
