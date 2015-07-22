@@ -38,6 +38,7 @@ public class Player : MonoBehaviour
     public GameObject waterAttack;
     public GameObject airAttack;
     public GameObject heavenlyFireAttack;
+    public GameObject screamEffect;
     public Sprite fireButtonImage;
     public Sprite waterButtonImage;
     public Sprite fireSpecialAttackImage;
@@ -451,6 +452,8 @@ public class Player : MonoBehaviour
 
         if (gameController.isSoundEffectsOn)
             GetComponent<AudioSource>().PlayOneShot(screamSound, 1f);
+
+        Instantiate(screamEffect);
 
         foreach (GameObject enemy in gameController.getAllEnemiesOnBoard())
         {
