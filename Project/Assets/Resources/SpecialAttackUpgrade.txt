@@ -30,7 +30,7 @@
 		</Upgrade_Level>
 		<Upgrade_Level>
 			<ID>005</ID>
-			<Cost>20<Cost>
+			<Cost>20</Cost>
 			<Data>20</Data>
 			<Name>Mana</Name>
 			<Description>Increase the mana bar</Description>

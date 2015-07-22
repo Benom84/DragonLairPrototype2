@@ -102,7 +102,6 @@ public class Enemy : MonoBehaviour
 
         if (gameController.gameEnded && isEnemyDying)
         {
-            Debug.Log("Enemy is dead and the level ended");
             Destroy(gameObject);
         }
        
