@@ -1,0 +1,200 @@
+fileFormatVersion: 2
+guid: c55725ef0f45c0e42a3d15bc29713df9
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: glow_0
+    21300002: glow_1
+    21300006: glow_3
+    21300008: glow_4
+    21300010: glow_5
+    21300012: glow_6
+    21300014: glow_7
+    21300016: glow_8
+    21300018: glow_9
+    21300020: glow_10
+    21300022: glow_11
+    21300024: glow_12
+    21300026: glow_13
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: glow_0
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 206
+        width: 473
+        height: 398
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: glow_1
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 296
+        width: 338
+        height: 255
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 85
+        width: 1000
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: glow_3
+      rect:
+        serializedVersion: 2
+        x: 2107
+        y: 94
+        width: 900
+        height: 480
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: glow_4
+      rect:
+        serializedVersion: 2
+        x: 3151
+        y: 139
+        width: 630
+        height: 435
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: glow_5
+      rect:
+        serializedVersion: 2
+        x: 3992
+        y: 131
+        width: 547
+        height: 443
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: glow_6
+      rect:
+        serializedVersion: 2
+        x: 4720
+        y: 154
+        width: 525
+        height: 390
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: glow_7
+      rect:
+        serializedVersion: 2
+        x: 5456
+        y: 206
+        width: 323
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: glow_8
+      rect:
+        serializedVersion: 2
+        x: 5884
+        y: 161
+        width: 338
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: glow_9
+      rect:
+        serializedVersion: 2
+        x: 6305
+        y: 251
+        width: 285
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: glow_10
+      rect:
+        serializedVersion: 2
+        x: 6628
+        y: 139
+        width: 269
+        height: 195
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: glow_11
+      rect:
+        serializedVersion: 2
+        x: 6958
+        y: 304
+        width: 240
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: glow_12
+      rect:
+        serializedVersion: 2
+        x: 7221
+        y: 161
+        width: 187
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: glow_13
+      rect:
+        serializedVersion: 2
+        x: 7431
+        y: 326
+        width: 127
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 

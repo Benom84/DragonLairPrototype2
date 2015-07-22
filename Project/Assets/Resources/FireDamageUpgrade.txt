@@ -2,36 +2,71 @@
 	<Upgrade_Levels>
 		<Upgrade_Level>
 			<ID>001</ID>
-			<Cost>500</Cost>
-			<Data>2</Data>
+			<Cost>400</Cost>
+			<Data>1</Data>
 			<Name>Fire Damage</Name>
 			<Description>Increases the damage your fire creates</Description>
 		</Upgrade_Level>
 		<Upgrade_Level>
 			<ID>002</ID>
-			<Cost>700</Cost>
-			<Data>2</Data>
+			<Cost>500</Cost>
+			<Data>1</Data>
 			<Name>Fire Damage</Name>
 			<Description>Increases the damage your fire creates</Description>
 		</Upgrade_Level>
 		<Upgrade_Level>
 			<ID>003</ID>
-			<Cost>900</Cost>
-			<Data>2</Data>
+			<Cost>600</Cost>
+			<Data>1</Data>
 			<Name>Fire Damage</Name>
 			<Description>Increases the damage your fire creates</Description>
 		</Upgrade_Level>
 		<Upgrade_Level>
 			<ID>004</ID>
-			<Cost>1100</Cost>
-			<Data>2</Data>
+			<Cost>700</Cost>
+			<Data>1</Data>
 			<Name>Fire Damage</Name>
 			<Description>Increases the damage your fire creates</Description>
 		</Upgrade_Level>
 		<Upgrade_Level>
 			<ID>005</ID>
+			<Cost>800</Cost>
+			<Data>1</Data>
+			<Name>Fire Damage</Name>
+			<Description>Increases the damage your fire creates</Description>
+		</Upgrade_Level>
+		<Upgrade_Level>
+			<ID>006</ID>
+			<Cost>900</Cost>
+			<Data>1</Data>
+			<Name>Fire Damage</Name>
+			<Description>Increases the damage your fire creates</Description>
+		</Upgrade_Level>
+		<Upgrade_Level>
+			<ID>007</ID>
+			<Cost>1100</Cost>
+			<Data>1</Data>
+			<Name>Fire Damage</Name>
+			<Description>Increases the damage your fire creates</Description>
+		</Upgrade_Level>
+		<Upgrade_Level>
+			<ID>008</ID>
+			<Cost>1200</Cost>
+			<Data>1</Data>
+			<Name>Fire Damage</Name>
+			<Description>Increases the damage your fire creates</Description>
+		</Upgrade_Level>
+		<Upgrade_Level>
+			<ID>009</ID>
 			<Cost>1300</Cost>
-			<Data>2</Data>
+			<Data>1</Data>
+			<Name>Fire Damage</Name>
+			<Description>Increases the damage your fire creates</Description>
+		</Upgrade_Level>
+		<Upgrade_Level>
+			<ID>010</ID>
+			<Cost>1400</Cost>
+			<Data>1</Data>
 			<Name>Fire Damage</Name>
 			<Description>Increases the damage your fire creates</Description>
 		</Upgrade_Level>

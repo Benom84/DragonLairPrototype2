@@ -1,0 +1,200 @@
+fileFormatVersion: 2
+guid: 92d7377fcf8d66741b17bb8525c7dc20
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: outline_fill_0
+    21300002: outline_fill_5
+    21300004: outline_fill_7
+    21300008: outline_fill_11
+    21300010: outline_fill_12
+    21300012: outline_fill_13
+    21300014: outline_fill_15
+    21300016: outline_fill_19
+    21300018: outline_fill_20
+    21300020: outline_fill_21
+    21300022: outline_fill_29
+    21300024: outline_fill_30
+    21300026: outline_fill_1
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: outline_fill_0
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 304
+        width: 338
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: outline_fill_5
+      rect:
+        serializedVersion: 2
+        x: 2116
+        y: 105
+        width: 878
+        height: 469
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: outline_fill_7
+      rect:
+        serializedVersion: 2
+        x: 3155
+        y: 147
+        width: 619
+        height: 427
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 
+      rect:
+        serializedVersion: 2
+        x: 4730
+        y: 166
+        width: 508
+        height: 370
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: outline_fill_11
+      rect:
+        serializedVersion: 2
+        x: 5464
+        y: 206
+        width: 300
+        height: 323
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: outline_fill_12
+      rect:
+        serializedVersion: 2
+        x: 6319
+        y: 266
+        width: 263
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: outline_fill_13
+      rect:
+        serializedVersion: 2
+        x: 6965
+        y: 319
+        width: 226
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: outline_fill_15
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 99
+        width: 1011
+        height: 495
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: outline_fill_19
+      rect:
+        serializedVersion: 2
+        x: 3999
+        y: 144
+        width: 526
+        height: 425
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: outline_fill_20
+      rect:
+        serializedVersion: 2
+        x: 5899
+        y: 169
+        width: 315
+        height: 255
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: outline_fill_21
+      rect:
+        serializedVersion: 2
+        x: 7431
+        y: 341
+        width: 120
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: outline_fill_29
+      rect:
+        serializedVersion: 2
+        x: 6646
+        y: 156
+        width: 244
+        height: 170
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: outline_fill_30
+      rect:
+        serializedVersion: 2
+        x: 7236
+        y: 184
+        width: 165
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: outline_fill_1
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 209
+        width: 456
+        height: 398
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
