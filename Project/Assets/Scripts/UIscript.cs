@@ -259,6 +259,8 @@ public class UIscript : MonoBehaviour
 
         if (DataController.dataController.level == 1)
         {
+            GameObject sound = GameObject.Find("Sound");
+            Destroy(sound);
             Application.LoadLevel("GameLevel");
         }
         else
@@ -271,7 +273,12 @@ public class UIscript : MonoBehaviour
     {
         DataController.dataController.Save();
         DataController.dataController.fromLevel = false;
-        
+
+        if (gameObject.tag == "Store" && sceneName == "GameLevel")
+        {
+            GameObject sound = GameObject.Find("Sound");
+            Destroy(sound);
+        }
             Application.LoadLevel(sceneName);
         
     }
