@@ -71,7 +71,7 @@ public class ShowAdOnLoad : MonoBehaviour
 		
         // Now that ads are ready, show an ad campaign.
         
-        if (DataController.dataController.level > 3)
+        if (DataController.dataController.level > 3 && DataController.dataController.FromLevel)
             UnityAdsHelper.ShowAd(zoneID);
     }
 #endif

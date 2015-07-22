@@ -35,7 +35,7 @@ TextureImporter:
   generateCubemap: 0
   seamlessCubemap: 0
   textureFormat: -3
-  maxTextureSize: 1024
+  maxTextureSize: 4096
   textureSettings:
     filterMode: -1
     aniso: 16
@@ -56,16 +56,6 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: outline_fill_0
-      rect:
-        serializedVersion: 2
-        x: 582
-        y: 304
-        width: 338
-        height: 240
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
     - name: outline_fill_5
       rect:
         serializedVersion: 2
@@ -104,7 +94,7 @@ TextureImporter:
         width: 300
         height: 323
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: outline_fill_12
       rect:
@@ -114,7 +104,7 @@ TextureImporter:
         width: 263
         height: 233
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: outline_fill_13
       rect:
@@ -124,14 +114,14 @@ TextureImporter:
         width: 226
         height: 172
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: outline_fill_15
       rect:
         serializedVersion: 2
-        x: 965
+        x: 568
         y: 99
-        width: 1011
+        width: 1408
         height: 495
       alignment: 0
       pivot: {x: .5, y: .5}
@@ -154,7 +144,7 @@ TextureImporter:
         width: 315
         height: 255
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: outline_fill_21
       rect:
@@ -164,7 +154,7 @@ TextureImporter:
         width: 120
         height: 90
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: outline_fill_29
       rect:
@@ -184,7 +174,7 @@ TextureImporter:
         width: 165
         height: 135
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: outline_fill_1
       rect:

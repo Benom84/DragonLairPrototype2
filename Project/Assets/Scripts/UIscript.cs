@@ -265,6 +265,7 @@ public class UIscript : MonoBehaviour
     public void LoadScene(string sceneName)
     {
         DataController.dataController.Save();
+        DataController.dataController.fromLevel = false;
         if (gameObject.tag == "FirstScreen" && DataController.dataController.level == 1)
         {
             Application.LoadLevel("GameLevel");
