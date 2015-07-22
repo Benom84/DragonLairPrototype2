@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
     public GameObject fireAttack;
     public GameObject waterAttack;
     public GameObject airAttack;
+    public GameObject heavenlyFireAttack;
     public Sprite fireButtonImage;
     public Sprite waterButtonImage;
     public Sprite fireSpecialAttackImage;
@@ -205,6 +206,10 @@ public class Player : MonoBehaviour
 
         setFireAttack();
         setFireAttackSpeed();
+        if (fireContinuousDamageTime > 0)
+        {
+            activeAttack = heavenlyFireAttack;
+        }
         
 
     }
@@ -413,6 +418,7 @@ public class Player : MonoBehaviour
         dragonAttack.continuosDamageTime = activeContinuousDamageTime;
         dragonAttack.slowFactor = activeSlowFactor;
         dragonAttack.slowTime = activeSlowTime;
+        attack.transform.Find("Lightning").gameObject.SetActive(fireSlowTime > 0);
         attack.rigidbody2D.velocity = attackDirection;
         lastAttack = Time.time;
         if (gameController.isSoundEffectsOn)
@@ -496,7 +502,7 @@ public class Player : MonoBehaviour
             if (enemyScript != null)
             {
                 enemyScript.Hit(earthquakeAttackDamage, DragonAttack.AttackType.Earthquake, false);
-                enemyScript.slowEnemy(1.0f, 2.0f);
+                enemyScript.slowEnemy(1.0f, 1.5f);
             }
 
         }
