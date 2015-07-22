@@ -18,7 +18,11 @@ public class DestroyExplosion : MonoBehaviour {
     {
         if (!GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().isSoundEffectsOn)
         {
-            GetComponent<AudioSource>().volume = 0;
+            AudioSource src = GetComponent<AudioSource>();
+            if (src != null)
+            {
+                src.volume = 0;
+            }
         }
     }
 

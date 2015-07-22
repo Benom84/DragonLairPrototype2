@@ -57,6 +57,7 @@ public class Enemy : MonoBehaviour
     private float timeToLive = 3.6f;
     private SpriteRenderer enemySpriteRenderer;
     private HealingOrbScript healingOrbScript;
+    private Color pink = new Color(1, 0.078431372f, 0.5764706f);
     
     
 
@@ -451,7 +452,7 @@ public class Enemy : MonoBehaviour
         if (healthBar != null)
         {
             // Set the health bar's colour to proportion of the way between green and red based on the player's health.
-            healthBar.material.color = Color.Lerp(Color.green, Color.red, 1 - health / maxHealth);
+            healthBar.material.color = Color.Lerp(Color.green, pink, 1 - health / maxHealth);
 
             // Set the scale of the health bar to be proportional to the player's health.
             healthBar.transform.localScale = new Vector3(healthScale.x * health / maxHealth, 1, 1);

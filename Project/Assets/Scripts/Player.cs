@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
     public GameObject fireAttack;
     public GameObject waterAttack;
     public GameObject airAttack;
+    public GameObject heavenlyFireAttack;
     public Sprite fireButtonImage;
     public Sprite waterButtonImage;
     public Sprite fireSpecialAttackImage;
@@ -204,8 +205,57 @@ public class Player : MonoBehaviour
         //}
 
         setFireAttack();
+        setFireAttackSpeed();
+        if (fireContinuousDamageTime > 0)
+        {
+            activeAttack = heavenlyFireAttack;
+        }
         
 
+    }
+
+    private void setFireAttackSpeed()
+    {
+        if (fireAttackDelay == 0.55f)
+        {
+            fireAttackSpeed = 6.0f;
+        }
+        else if (fireAttackDelay == 0.5f)
+        {
+            fireAttackSpeed = 7.5f;
+        }
+        else if (fireAttackDelay == 0.45f)
+        {
+            fireAttackSpeed = 8f;
+        }
+        else if (fireAttackDelay == 0.4f)
+        {
+            fireAttackSpeed = 10f;
+        }
+        else if (fireAttackDelay == 0.35f)
+        {
+            fireAttackSpeed = 11f;
+        }
+        else if (fireAttackDelay == 0.3f)
+        {
+            fireAttackSpeed = 11f;
+        }
+        else if (fireAttackDelay == 0.25f)
+        {
+            fireAttackSpeed = 11.5f;
+        }
+        else if (fireAttackDelay == 0.2f)
+        {
+            fireAttackSpeed = 12f;
+        }
+        else if (fireAttackDelay == 0.15f)
+        {
+            fireAttackSpeed = 12f;
+        }
+        else
+        {
+            fireAttackSpeed = 13f;
+        }
     }
 
     
@@ -368,6 +418,7 @@ public class Player : MonoBehaviour
         dragonAttack.continuosDamageTime = activeContinuousDamageTime;
         dragonAttack.slowFactor = activeSlowFactor;
         dragonAttack.slowTime = activeSlowTime;
+        attack.transform.Find("Lightning").gameObject.SetActive(fireSlowTime > 0);
         attack.rigidbody2D.velocity = attackDirection;
         lastAttack = Time.time;
         if (gameController.isSoundEffectsOn)
@@ -451,7 +502,7 @@ public class Player : MonoBehaviour
             if (enemyScript != null)
             {
                 enemyScript.Hit(earthquakeAttackDamage, DragonAttack.AttackType.Earthquake, false);
-                enemyScript.slowEnemy(1.0f, 2.0f);
+                enemyScript.slowEnemy(1.0f, 1.5f);
             }
 
         }
