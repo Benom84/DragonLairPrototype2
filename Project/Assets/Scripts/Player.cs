@@ -38,7 +38,6 @@ public class Player : MonoBehaviour
     public GameObject waterAttack;
     public GameObject airAttack;
     public GameObject heavenlyFireAttack;
-    public GameObject screamEffect;
     public Sprite fireButtonImage;
     public Sprite waterButtonImage;
     public Sprite fireSpecialAttackImage;
