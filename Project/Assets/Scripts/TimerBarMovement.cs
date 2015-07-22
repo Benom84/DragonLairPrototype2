@@ -17,6 +17,7 @@ public class TimerBarMovement : MonoBehaviour {
     private TimerBarMovement activeTimer;
     private int lastValue;
     private Text timerText;
+    private AudioSource audioSource;
 
 
     void Awake()
@@ -42,9 +43,9 @@ public class TimerBarMovement : MonoBehaviour {
             maxXPosValue = minXPosValue + barTransform.rect.width;
 
         }
-        
-     
-        
+
+
+        audioSource = GetComponent<AudioSource>();
 
         currValue = 0;
         lastValue = 0;
@@ -88,6 +89,14 @@ public class TimerBarMovement : MonoBehaviour {
     public void increaseCurrentValue()
     {
         currValue++;
+
+        if (audioSource != null)
+        {
+            if ((currValue == 1) || (currValue == (maxValue / 2)) || (currValue == (maxValue - 2))) {
+                audioSource.Play();
+            }
+        }
+
 
         float valuePercent = Mathf.Max(((1.0f * currValue) / (1.0f * maxValue)), 0.0f);
         float newXPos = valuePercent * (minXPosValue - maxXPosValue) + minXPosValue;

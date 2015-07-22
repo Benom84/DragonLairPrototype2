@@ -16,6 +16,7 @@ public class TutorialHandlerScript : MonoBehaviour {
     private GameObject specialAttackBaloon;
     private GameObject crystalUsageBaloon;
     private GameObject currentMana;
+    private GameObject pauseButton;
 
 
     private float startTime;
@@ -27,6 +28,7 @@ public class TutorialHandlerScript : MonoBehaviour {
         specialAttackBaloon = transform.Find("Canvas/specialAttackBaloon").gameObject;
         crystalUsageBaloon = transform.Find("Canvas/crystalUsageBaloon").gameObject;
         currentMana = transform.Find("Canvas/crystalUsageBaloon/ManaBar").gameObject;
+        pauseButton = GameObject.FindGameObjectWithTag("PauseButton");
         regularAttackBaloon.SetActive(false);
         specialAttackBaloon.SetActive(false);
         crystalUsageBaloon.SetActive(false);
@@ -49,6 +51,7 @@ public class TutorialHandlerScript : MonoBehaviour {
             passedRegularAttack = true;
             Time.timeScale = 0;
             regularAttackBaloon.SetActive(true);
+            pauseButton.SetActive(false);
         }
 
         if (!passedSpecialAttack && Time.time > startTime + specialAttackTime)
@@ -56,6 +59,7 @@ public class TutorialHandlerScript : MonoBehaviour {
             passedSpecialAttack = true;
             Time.timeScale = 0;
             specialAttackBaloon.SetActive(true);
+            pauseButton.SetActive(false);
         }
 
         if (!passedCrystalUsage && Time.time > startTime + crystalUsageTime)
@@ -64,6 +68,7 @@ public class TutorialHandlerScript : MonoBehaviour {
             Time.timeScale = 0;
             
             crystalUsageBaloon.SetActive(true);
+            pauseButton.SetActive(false);
             currentMana.GetComponent<BarMovement>().setValue(GameObject.FindGameObjectWithTag("ManaBar").GetComponent<BarMovement>().currValue);
         }
 	}
@@ -74,6 +79,7 @@ public class TutorialHandlerScript : MonoBehaviour {
         regularAttackBaloon.SetActive(false);
         specialAttackBaloon.SetActive(false);
         crystalUsageBaloon.SetActive(false);
+        pauseButton.SetActive(true);
 
     }
 

@@ -453,7 +453,7 @@ public class Player : MonoBehaviour
         if (gameController.isSoundEffectsOn)
             GetComponent<AudioSource>().PlayOneShot(screamSound, 1f);
 
-        Instantiate(screamEffect);
+        dragonAnimator.SetTrigger("scream");
 
         foreach (GameObject enemy in gameController.getAllEnemiesOnBoard())
         {
