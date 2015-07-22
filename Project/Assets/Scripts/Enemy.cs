@@ -58,6 +58,7 @@ public class Enemy : MonoBehaviour
     private SpriteRenderer enemySpriteRenderer;
     private HealingOrbScript healingOrbScript;
     private Color pink = new Color(1, 0.078431372f, 0.5764706f);
+    private bool alreadySetIsDying = false;
     
     
 
@@ -335,7 +336,12 @@ public class Enemy : MonoBehaviour
 
         rigidbody2D.velocity = Vector2.zero;
         arrivedAtDestination = true;
-        animator.SetTrigger("isDying");
+        if (!alreadySetIsDying)
+        {
+            alreadySetIsDying = true;
+            animator.SetTrigger("isDying");
+        }
+            
         animator.SetBool("dead", true);
         
     }
