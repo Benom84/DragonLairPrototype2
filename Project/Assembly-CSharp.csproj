@@ -78,6 +78,7 @@
      <Compile Include="Assets\Scripts\XML\UpgradeLevel.cs" />
      <Compile Include="Assets\Scripts\XML\Wave.cs" />
      <Compile Include="Assets\Scripts\XML\Waves.cs" />
+     <Compile Include="Assets\Sound.cs" />
      <Compile Include="Assets\SoundPlayerScript.cs" />
      <Compile Include="Assets\TutorialHandlerScript.cs" />
      <Compile Include="Assets\UnityAds\ShowAdOnLoad.cs" />
