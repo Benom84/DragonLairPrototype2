@@ -18,6 +18,7 @@ public class TimerBarMovement : MonoBehaviour {
     private int lastValue;
     private Text timerText;
     private AudioSource audioSource;
+    private GameController gameController;
 
 
     void Awake()
@@ -46,6 +47,7 @@ public class TimerBarMovement : MonoBehaviour {
 
 
         audioSource = GetComponent<AudioSource>();
+        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
 
         currValue = 0;
         lastValue = 0;
@@ -93,7 +95,8 @@ public class TimerBarMovement : MonoBehaviour {
         if (audioSource != null)
         {
             if ((currValue == 1) || (currValue == (maxValue / 2)) || (currValue == (maxValue - 2))) {
-                audioSource.Play();
+                if (gameController.isSoundEffectsOn)
+                    audioSource.Play();
             }
         }
 
