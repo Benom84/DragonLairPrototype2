@@ -531,6 +531,11 @@ public class UIscript : MonoBehaviour
         return allUpgradeLevel;
     }
 
+    public void Rate()
+    {
+        Application.OpenURL("market://details?id=com.TeamAvocado.DragonRage/");
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -541,7 +546,7 @@ public class UIscript : MonoBehaviour
             }
             else if (gameObject.tag == "Lobby")
             {
-                LoadScene("FirstScreen");
+                LoadScene("MainMenu");
             }
             else if (gameObject.tag == "Store")
             {

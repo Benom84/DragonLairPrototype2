@@ -159,7 +159,8 @@ public class GameController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            PauseGame();
+            if (!gameEnded)
+                PauseGame();
         }
     }
 
