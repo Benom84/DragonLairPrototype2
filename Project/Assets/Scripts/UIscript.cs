@@ -82,12 +82,14 @@ public class UIscript : MonoBehaviour
 
     public Sprite coin;
     public Sprite crystal;
+    public bool LoadDataFromPreviousSession = true;
 
     public void Start()
     {
         if (gameObject.tag == "FirstScreen")
         {
-            //DataController.dataController.Load();
+            if (LoadDataFromPreviousSession)
+                DataController.dataController.Load();
         }
         else if (gameObject.tag == "Store")
         {

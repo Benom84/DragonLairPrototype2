@@ -1,0 +1,135 @@
+fileFormatVersion: 2
+guid: 59b8936df17b0b340b5fb5f010fa4a6b
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: EffectsOn
+    21300002: EffectsOnPressed
+    21300004: EffectsOffPressed
+    21300006: EffectsOff
+    21300008: MusicOn
+    21300010: MusicOnPressed
+    21300012: MusicOffPressed
+    21300014: MusicOff
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: EffectsOn
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 175
+        width: 126
+        height: 144
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: EffectsOnPressed
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 166
+        width: 126
+        height: 144
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: EffectsOffPressed
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 187
+        width: 126
+        height: 144
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: EffectsOff
+      rect:
+        serializedVersion: 2
+        x: 942
+        y: 190
+        width: 126
+        height: 144
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: MusicOn
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 51
+        width: 202
+        height: 121
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: MusicOnPressed
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 41
+        width: 202
+        height: 122
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: MusicOffPressed
+      rect:
+        serializedVersion: 2
+        x: 619
+        y: 61
+        width: 202
+        height: 122
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: MusicOff
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 65
+        width: 202
+        height: 122
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
