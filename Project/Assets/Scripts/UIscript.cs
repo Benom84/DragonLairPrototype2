@@ -242,15 +242,6 @@ public class UIscript : MonoBehaviour
             }
 
             FireRoarCanvas.SetActive(true);
-            
-//#if UNITY_ANDROID
-//            if (DataController.dataController.level > 3)
-//            {
-//                Advertisement.Initialize("56547", true);
-
-//                StartCoroutine(ShowAdWhenReady());
-//            }
-//#endif
         }
     }
 
@@ -464,7 +455,16 @@ public class UIscript : MonoBehaviour
                         buttons[numberOfUpgrade].transform.FindChild("Text").GetComponent<Text>().text = DataController.dataController.upgradesLevel[numberOfUpgrade].ToString();
 
                         totalCoinsText.text = DataController.dataController.coins.ToString();
-                        upgradeCostText.text = allUpgrades[numberOfUpgrade][DataController.dataController.upgradesLevel[numberOfUpgrade]].Cost.ToString();
+
+                        costOfUpgrade = allUpgrades[numberOfUpgrade][DataController.dataController.upgradesLevel[numberOfUpgrade]].Cost;
+                        upgradeCostText.text = costOfUpgrade.ToString();
+
+                        Image buttonImage = upgradeButton.GetComponent<Image>();
+                        if (!EnoughMoney(costOfUpgrade))
+                        {
+                            buttonImage.sprite = notEnoughMoneyUpgradeButton;
+                            enoughMoney = false;
+                        }
                     }
                 }
             else if (DataController.dataController.crystals >= costOfUpgrade)
@@ -476,7 +476,16 @@ public class UIscript : MonoBehaviour
                     buttons[numberOfUpgrade].transform.FindChild("Text").GetComponent<Text>().text = DataController.dataController.upgradesLevel[numberOfUpgrade].ToString();
 
                     totalCrystalsText.text = DataController.dataController.crystals.ToString();
-                    upgradeCostText.text = allUpgrades[numberOfUpgrade][DataController.dataController.upgradesLevel[numberOfUpgrade]].Cost.ToString();
+
+                    costOfUpgrade = allUpgrades[numberOfUpgrade][DataController.dataController.upgradesLevel[numberOfUpgrade]].Cost;
+                    upgradeCostText.text = costOfUpgrade.ToString();
+
+                    Image buttonImage = upgradeButton.GetComponent<Image>();
+                    if (!EnoughCrystals(costOfUpgrade))
+                    {
+                        buttonImage.sprite = notEnoughMoneyUpgradeButton;
+                        enoughMoney = false;
+                    }
                 }
             
         }

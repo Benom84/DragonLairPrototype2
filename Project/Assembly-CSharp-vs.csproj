@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\HealingOrbScript.cs" />
      <Compile Include="Assets\Lobby.cs" />
+     <Compile Include="Assets\MusicButtonHandler.cs" />
      <Compile Include="Assets\ScreamDestroy.cs" />
      <Compile Include="Assets\Scripts\BarMovement.cs" />
      <Compile Include="Assets\Scripts\ButtonStamina.cs" />

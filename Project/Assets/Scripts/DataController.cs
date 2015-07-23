@@ -131,6 +131,9 @@ public class DataController : MonoBehaviour {
         data.coins = coins;
         data.crystals = crystals;
 
+        data.isMusicOn = isMusicOn;
+        data.isSoundEffectsOn = isSoundEffectsOn;
+
         data.b_fireDamageLevel = upgradesLevel[0];
         data.b_fireAgilityLevel = upgradesLevel[1];
         data.b_waterDamageLevel = upgradesLevel[2];
@@ -210,6 +213,9 @@ public class DataController : MonoBehaviour {
             coins = data.coins;
             crystals = data.crystals;
 
+            isMusicOn = data.isMusicOn;
+            isSoundEffectsOn = data.isSoundEffectsOn;
+
             b_fireDamageLevel = data.b_fireDamageLevel;
             b_fireAgilityLevel = data.b_fireAgilityLevel;
             b_waterDamageLevel = data.b_waterDamageLevel;
@@ -282,4 +288,7 @@ public class PlayerData
     public int m_meteorLevel;
     public int m_iceLevel;
     public int m_manaLevel;
+
+    public bool isMusicOn;
+    public bool isSoundEffectsOn;
 }
