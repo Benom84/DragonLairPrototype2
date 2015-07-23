@@ -15,50 +15,21 @@ public class MusicButtonHandler : MonoBehaviour {
     private Image image;
     private Button button;
 
-    void Start()
+    void Awake()
     {
         image = GetComponent<Image>();
         button = GetComponent<Button>();
         if (music)
         {
-            if (DataController.dataController.isMusicOn)
-            {
-                image.sprite = OnSprite;
-                SpriteState st = button.spriteState;
-                st.highlightedSprite = OnSprite;
-                st.highlightedSprite = OnSpritePressed;
-                button.spriteState = st;
-
-            }
-            else
-            {
-                image.sprite = OffSprite;
-                SpriteState st = button.spriteState;
-                st.highlightedSprite = OffSprite;
-                st.highlightedSprite = OffSpritePressed;
-                button.spriteState = st;
-            }
+            SetImage(DataController.dataController.isMusicOn);
+           
         }
 
         else
         {
-            if (DataController.dataController.isSoundEffectsOn)
-            {
-                image.sprite = OnSprite;
-                SpriteState st = button.spriteState;
-                st.highlightedSprite = OnSprite;
-                st.highlightedSprite = OnSpritePressed;
-                button.spriteState = st;
-
-            }
-            else
-            {
-                image.sprite = OffSprite;
-                SpriteState st = button.spriteState;
-                st.highlightedSprite = OffSprite;
-                st.highlightedSprite = OffSpritePressed;
-                button.spriteState = st;
-            }
+            Debug.Log("Effects is: " + DataController.dataController.isSoundEffectsOn);
+            SetImage(DataController.dataController.isSoundEffectsOn);
+           
         }
     }
 
@@ -66,48 +37,40 @@ public class MusicButtonHandler : MonoBehaviour {
     {
         if (music)
         {
-            if (DataController.dataController.isMusicOn)
-            {
-                image.sprite = OffSprite;
-                SpriteState st = button.spriteState;
-                st.highlightedSprite = OffSprite;
-                st.highlightedSprite = OffSpritePressed;
-                button.spriteState = st;
-                DataController.dataController.isMusicOn = false;
-
-            }
-            else
-            {
-                image.sprite = OnSprite;
-                SpriteState st = button.spriteState;
-                st.highlightedSprite = OnSprite;
-                st.highlightedSprite = OnSpritePressed;
-                button.spriteState = st;
-                DataController.dataController.isMusicOn = true;
-            }
+            Debug.Log("Music was: " + DataController.dataController.isMusicOn);
+            SetImage(!DataController.dataController.isMusicOn);
+            DataController.dataController.isMusicOn = !DataController.dataController.isMusicOn;
+           
         }
 
         else
         {
-            if (DataController.dataController.isSoundEffectsOn)
-            {
-                image.sprite = OffSprite;
-                SpriteState st = button.spriteState;
-                st.highlightedSprite = OffSprite;
-                st.highlightedSprite = OffSpritePressed;
-                button.spriteState = st;
-                DataController.dataController.isSoundEffectsOn = false;
+            Debug.Log("Effects was: " + DataController.dataController.isSoundEffectsOn);
+            SetImage(!DataController.dataController.isSoundEffectsOn);
+            DataController.dataController.isSoundEffectsOn = !DataController.dataController.isSoundEffectsOn;
+            
+        }
 
-            }
-            else
-            {
-                image.sprite = OnSprite;
-                SpriteState st = button.spriteState;
-                st.highlightedSprite = OnSprite;
-                st.highlightedSprite = OnSpritePressed;
-                button.spriteState = st;
-                DataController.dataController.isSoundEffectsOn = true;
-            }
+        DataController.dataController.Save();
+    }
+
+    public void SetImage(bool on)
+    {
+        if (on)
+        {
+            image.sprite = OnSprite;
+            SpriteState st = button.spriteState;
+            st.highlightedSprite = OnSprite;
+            st.pressedSprite = OnSpritePressed;
+            button.spriteState = st;
+        }
+        else
+        {
+            image.sprite = OffSprite;
+            SpriteState st = button.spriteState;
+            st.highlightedSprite = OffSprite;
+            st.pressedSprite = OffSpritePressed;
+            button.spriteState = st;
         }
     }
 	

@@ -89,7 +89,12 @@ public class UIscript : MonoBehaviour
         if (gameObject.tag == "FirstScreen")
         {
             if (LoadDataFromPreviousSession)
+            {
                 DataController.dataController.Load();
+                GameObject.FindGameObjectWithTag("MusicButton").GetComponent<MusicButtonHandler>().SetImage(DataController.dataController.isMusicOn);
+                GameObject.FindGameObjectWithTag("SoundEffectsButton").GetComponent<MusicButtonHandler>().SetImage(DataController.dataController.isSoundEffectsOn);
+            }
+                
         }
         else if (gameObject.tag == "Store")
         {
@@ -556,6 +561,10 @@ public class UIscript : MonoBehaviour
                 Application.Quit();
             }
             else if (gameObject.tag == "Lobby")
+            {
+                LoadScene("MainMenu");
+            }
+            else if (gameObject.tag == "AboutScreen")
             {
                 LoadScene("MainMenu");
             }
