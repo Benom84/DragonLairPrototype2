@@ -549,7 +549,7 @@ public class UIscript : MonoBehaviour
 
     public void Rate()
     {
-        Application.OpenURL("market://details?id=com.TeamAvocado.DragonRage/");
+        Application.OpenURL("market://details?id=com.TeamAvocado.DragonRage");
     }
 
     void Update()
