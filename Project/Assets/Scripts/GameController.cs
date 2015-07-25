@@ -428,7 +428,8 @@ public class GameController : MonoBehaviour
         if (DataController.dataController != null)
         {
             
-            DataController.dataController.level += (gameLost) ? 0 : 1;
+            if (DataController.dataController.level < DataController.dataController.maxLevel)
+                DataController.dataController.level += (gameLost) ? 0 : 1;
             DataController.dataController.coins += coins;
             DataController.dataController.crystals += crystals;
             DataController.dataController.Save();

@@ -59,6 +59,7 @@ public class DataController : MonoBehaviour {
     public int meteorManaValue = 20;
     public int iceManaValue = 20;
     public int earthquakeManaValue = 20;
+    public int maxLevel = 12;
 
 	void Awake () {
         if (dataController == null)

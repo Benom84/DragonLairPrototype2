@@ -216,7 +216,11 @@ public class Player : MonoBehaviour
 
     private void setFireAttackSpeed()
     {
-        if (fireAttackDelay == 0.55f)
+        if (fireAttackDelay == 0.6f)
+        {
+            fireAttackSpeed = 7.0f;
+        }
+        else if (fireAttackDelay == 0.55f)
         {
             fireAttackSpeed = 6.0f;
         }

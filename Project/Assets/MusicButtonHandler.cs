@@ -27,7 +27,6 @@ public class MusicButtonHandler : MonoBehaviour {
 
         else
         {
-            Debug.Log("Effects is: " + DataController.dataController.isSoundEffectsOn);
             SetImage(DataController.dataController.isSoundEffectsOn);
            
         }
@@ -37,7 +36,6 @@ public class MusicButtonHandler : MonoBehaviour {
     {
         if (music)
         {
-            Debug.Log("Music was: " + DataController.dataController.isMusicOn);
             SetImage(!DataController.dataController.isMusicOn);
             DataController.dataController.isMusicOn = !DataController.dataController.isMusicOn;
            
@@ -45,7 +43,6 @@ public class MusicButtonHandler : MonoBehaviour {
 
         else
         {
-            Debug.Log("Effects was: " + DataController.dataController.isSoundEffectsOn);
             SetImage(!DataController.dataController.isSoundEffectsOn);
             DataController.dataController.isSoundEffectsOn = !DataController.dataController.isSoundEffectsOn;
             
